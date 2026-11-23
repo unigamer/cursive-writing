@@ -124,8 +124,18 @@
       </div>
       <ul id="warnings" class="warnings"></ul>
       <div id="stage" class="stage">
-        <div id="sheet" class="sheet"></div>
+        <div id="viewport" class="viewport" tabindex="0" role="group"
+             aria-label="Preview. Plus and minus keys zoom, arrow keys pan, 0 fits the page.">
+          <div id="sheet" class="sheet"></div>
+        </div>
+        <div class="zoom" role="toolbar" aria-label="Zoom">
+          <button type="button" id="zoom-out" title="Zoom out (−)" aria-label="Zoom out">−</button>
+          <output id="zoom-level" aria-live="polite">Fit</output>
+          <button type="button" id="zoom-in" title="Zoom in (+)" aria-label="Zoom in">+</button>
+          <button type="button" id="zoom-fit" title="Fit the page (0)">Fit</button>
+        </div>
       </div>
+      <p class="hint zoom-hint">Pinch or Ctrl + scroll to zoom, drag to pan, double-click to zoom in or back out.</p>
       <p class="footnote">
         The SVG is in millimetres, with one Inkscape layer and a group per line, so it plots directly from Inkscape
         or a plotter's own SVG tools. It matches the command-line tool's output byte for byte.

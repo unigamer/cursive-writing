@@ -192,11 +192,147 @@ function setButtons(on) {
 
 // ------------------------------------------------------------ preview
 
+let sheetShape = "";
+
 function sizeSheet(s) {
   const [w, h] = pageDims(s);
-  const sheet = $("sheet");
-  sheet.style.aspectRatio = `${w} / ${h}`;
-  sheet.style.maxWidth = `max(260px, calc((100vh - 190px) * ${w / h}))`;
+  const shape = `${w} / ${h}`;
+  if (shape === sheetShape) return;
+  sheetShape = shape;
+  const vp = $("viewport");
+  vp.style.aspectRatio = shape;
+  vp.style.maxWidth = `max(260px, calc((100vh - 190px) * ${w / h}))`;
+  $("sheet").style.aspectRatio = shape;
+  setZoom(1); // a different page: start from the whole sheet again
+}
+
+// ------------------------------------------------------------ zoom and pan
+//
+// The viewport keeps the page's fitted size; zooming widens the sheet inside
+// it (so the SVG is redrawn sharp, not scaled as a bitmap) and panning
+// scrolls the viewport. Pinch or Ctrl/Cmd + wheel zooms about the pointer.
+
+const ZOOM_MIN = 1;
+const ZOOM_MAX = 16;
+const ZOOM_STEP = 1.5;
+let zoom = 1;
+
+/** Zoom to z, keeping the point (cx, cy) of the viewport (in px) still. */
+function setZoom(z, cx, cy) {
+  const vp = $("viewport");
+  z = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, z));
+  if (cx === undefined) [cx, cy] = [vp.clientWidth / 2, vp.clientHeight / 2];
+  const k = z / zoom;
+  const left = (vp.scrollLeft + cx) * k - cx;
+  const top = (vp.scrollTop + cy) * k - cy;
+  zoom = z;
+  $("sheet").style.width = `${z * 100}%`;
+  vp.scrollLeft = left; // the browser clamps these to the sheet
+  vp.scrollTop = top;
+  vp.classList.toggle("zoomed", z > 1);
+  $("zoom-level").textContent = z === 1 ? "Fit" : `${Math.round(z * 100)}%`;
+  $("zoom-out").disabled = z <= ZOOM_MIN;
+  $("zoom-in").disabled = z >= ZOOM_MAX;
+  $("zoom-fit").disabled = z === 1;
+}
+
+function initZoom() {
+  const vp = $("viewport");
+  const local = (e) => {
+    const r = vp.getBoundingClientRect();
+    return [e.clientX - r.left, e.clientY - r.top];
+  };
+
+  $("zoom-in").addEventListener("click", () => setZoom(zoom * ZOOM_STEP));
+  $("zoom-out").addEventListener("click", () => setZoom(zoom / ZOOM_STEP));
+  $("zoom-fit").addEventListener("click", () => setZoom(1));
+
+  vp.addEventListener(
+    "wheel",
+    (e) => {
+      const px = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? vp.clientHeight : 1;
+      if (e.ctrlKey || e.metaKey) {
+        // trackpad pinches arrive as ctrl + wheel
+        e.preventDefault();
+        setZoom(zoom * Math.exp(-e.deltaY * px * 0.0025), ...local(e));
+        return;
+      }
+      if (zoom === 1) return; // let the page scroll
+      const dx = e.shiftKey && !e.deltaX ? e.deltaY : e.deltaX;
+      const dy = e.shiftKey && !e.deltaX ? 0 : e.deltaY;
+      const canX = (dx < 0 && vp.scrollLeft > 0) || (dx > 0 && vp.scrollLeft < vp.scrollWidth - vp.clientWidth - 1);
+      const canY = (dy < 0 && vp.scrollTop > 0) || (dy > 0 && vp.scrollTop < vp.scrollHeight - vp.clientHeight - 1);
+      if (!canX && !canY) return; // at the edge: scroll the page instead
+      e.preventDefault();
+      vp.scrollLeft += dx * px;
+      vp.scrollTop += dy * px;
+    },
+    { passive: false },
+  );
+
+  // drag to pan; two fingers pinch and pan together
+  const pointers = new Map();
+  let last = null; // {x, y, dist} of the previous move
+  const gesture = () => {
+    const ps = [...pointers.values()];
+    const x = ps.reduce((a, p) => a + p.x, 0) / ps.length;
+    const y = ps.reduce((a, p) => a + p.y, 0) / ps.length;
+    const dist = ps.length > 1 ? Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y) : 0;
+    return { x, y, dist };
+  };
+  vp.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 1 && zoom === 1 && e.pointerType !== "mouse") return; // page scroll
+    try {
+      vp.setPointerCapture(e.pointerId); // keep panning when the pointer leaves the preview
+    } catch { /* not an active pointer (e.g. already lifted) */ }
+    last = gesture();
+  });
+  vp.addEventListener("pointermove", (e) => {
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (!last || (pointers.size === 1 && zoom === 1)) return;
+    const g = gesture();
+    if (pointers.size > 1 && last.dist > 0) {
+      const r = vp.getBoundingClientRect();
+      setZoom(zoom * (g.dist / last.dist), g.x - r.left, g.y - r.top);
+    }
+    vp.scrollLeft -= g.x - last.x;
+    vp.scrollTop -= g.y - last.y;
+    if (Math.abs(g.x - last.x) + Math.abs(g.y - last.y) > 0) vp.classList.add("dragging");
+    last = g;
+  });
+  const lift = (e) => {
+    pointers.delete(e.pointerId);
+    last = pointers.size ? gesture() : null;
+    if (!pointers.size) vp.classList.remove("dragging");
+  };
+  vp.addEventListener("pointerup", lift);
+  vp.addEventListener("pointercancel", lift);
+
+  vp.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    setZoom(zoom < 3 ? 4 : 1, ...local(e));
+  });
+
+  vp.addEventListener("keydown", (e) => {
+    const pan = 60;
+    const keys = {
+      "+": () => setZoom(zoom * ZOOM_STEP),
+      "=": () => setZoom(zoom * ZOOM_STEP),
+      "-": () => setZoom(zoom / ZOOM_STEP),
+      0: () => setZoom(1),
+      ArrowLeft: () => (vp.scrollLeft -= pan),
+      ArrowRight: () => (vp.scrollLeft += pan),
+      ArrowUp: () => (vp.scrollTop -= pan),
+      ArrowDown: () => (vp.scrollTop += pan),
+    };
+    if (e.ctrlKey || e.metaKey || e.altKey || !keys[e.key]) return;
+    if (e.key.startsWith("Arrow") && zoom === 1) return; // nothing to pan; let the page scroll
+    e.preventDefault();
+    keys[e.key]();
+  });
 }
 
 function showSvg(svg, s) {
@@ -345,6 +481,7 @@ async function init() {
   $("dl-svg").addEventListener("click", downloadSvg);
   $("dl-png").addEventListener("click", downloadPng);
   $("copy-cli").addEventListener("click", copyCli);
+  initZoom();
   // The single-file page shows its licences in-page; open them without
   // touching the URL hash, which holds the settings.
   $("licences-link").addEventListener("click", (e) => {

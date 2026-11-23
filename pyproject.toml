@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Text to joined, single-line cursive script for pen plotters"
 requires-python = ">=3.10"
 license = { text = "MIT (code); OFL-1.1 (style data in styles/, see styles/LICENSE.md)" }
-dependencies = ["numpy", "pillow"]
+dependencies = ["numpy", "pillow", "scipy"]
 
 [project.optional-dependencies]
 extract = ["freetype-py", "fonttools", "scikit-image", "scipy", "skan"]

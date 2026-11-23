@@ -37,8 +37,8 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Install test dependencies
-        run: pip install numpy pillow pytest
+      - name: Install the package and test dependencies
+        run: pip install ".[dev]"
 
       - name: Check the committed web data matches styles/
         run: python tools/build_web.py --check

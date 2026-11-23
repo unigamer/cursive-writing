@@ -10,8 +10,8 @@ const STANDALONE = window.CURSIVE_STANDALONE;
 const DEFAULTS = {
   text: "Dear friend,\nThank you for everything.",
   style: "copperplate",
-  size: 6,
-  page: "a5",
+  size: 8,
+  page: "a4",
   orient: "landscape",
   pw: 200,
   ph: 120,
@@ -20,7 +20,7 @@ const DEFAULTS = {
   seed: 3,
   variation: 1,
   pen: 0.35,
-  shade: 0.6,
+  shade: 0.5,
 };
 const NUMERIC = ["size", "pw", "ph", "margin", "seed", "variation", "pen", "shade"];
 const PAGES_MM = { a3: [297, 420], a4: [210, 297], a5: [148, 210], a6: [105, 148], letter: [215.9, 279.4], dl: [220, 110], c5: [229, 162] };

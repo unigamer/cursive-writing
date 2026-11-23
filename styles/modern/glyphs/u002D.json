@@ -1,0 +1,41 @@
+{
+ "char": "-",
+ "advance": 1.1944,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.1591,
+     0.5818
+    ],
+    [
+     0.2412,
+     0.6233
+    ],
+    [
+     0.2677,
+     0.6313
+    ],
+    [
+     0.8234,
+     0.6324
+    ],
+    [
+     0.8414,
+     0.6368
+    ],
+    [
+     0.95,
+     0.6864
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.1,
+ "entry": "mid",
+ "exit": "high",
+ "source": "Parisienne-Regular.ttf"
+}

@@ -1,0 +1,24 @@
+{
+ "styles": [
+  {
+   "id": "copperplate",
+   "name": "Copperplate",
+   "source_font": "PinyonScript-Regular.ttf (SIL Open Font License)"
+  },
+  {
+   "id": "formal",
+   "name": "Formal",
+   "source_font": "GreatVibes-Regular.ttf (SIL Open Font License)"
+  },
+  {
+   "id": "modern",
+   "name": "Modern",
+   "source_font": "Parisienne-Regular.ttf (SIL Open Font License)"
+  },
+  {
+   "id": "spencerian",
+   "name": "Spencerian",
+   "source_font": "MonsieurLaDoulaise-Regular.ttf (SIL Open Font License)"
+  }
+ ]
+}

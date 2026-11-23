@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glyph Editor</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --panel: #ffffff; --ink: #1d1d2b; --muted: #8a8a96; --line: #e4e2dc;
+    --accent: #2f5bd3; --conn: #d8352a; --defer: #7d9cc9; --ok: #1f8a4c; --hl: #e08a00;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 13px/1.4 system-ui, sans-serif; color: var(--ink); background: var(--bg);
+         display: grid; grid-template-columns: 220px 1fr 280px; grid-template-rows: auto 1fr auto; height: 100vh; }
+  header { grid-column: 1 / -1; display: flex; gap: 12px; align-items: center; padding: 8px 12px;
+           border-bottom: 1px solid var(--line); background: var(--panel); }
+  header h1 { font-size: 15px; margin: 0 8px 0 0; }
+  #list { overflow: auto; padding: 8px; border-right: 1px solid var(--line); background: var(--panel); }
+  #list h3 { margin: 10px 0 4px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 3px; }
+  .chip { width: 30px; height: 30px; border: 1px solid var(--line); background: #fff; border-radius: 4px;
+          cursor: pointer; font-size: 15px; position: relative; }
+  .chip.sel { border-color: var(--accent); background: #eaf0ff; }
+  .chip.edited::after { content: ""; position: absolute; right: 2px; top: 2px; width: 5px; height: 5px;
+                        border-radius: 50%; background: var(--ok); }
+  #canvasWrap { position: relative; overflow: hidden; }
+  svg { display: block; width: 100%; height: 100%; user-select: none; }
+  #side { overflow: auto; padding: 10px 12px; border-left: 1px solid var(--line); background: var(--panel); }
+  #side label { display: flex; justify-content: space-between; align-items: center; margin: 5px 0; gap: 8px; }
+  #side input[type=number] { width: 80px; }
+  #side select { width: 90px; }
+  #side button { margin: 2px 2px 2px 0; }
+  .sec { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 6px; }
+  .sec h4 { margin: 2px 0 6px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .strokes div { padding: 3px 6px; border-radius: 4px; cursor: pointer; }
+  .strokes div.sel { background: #eaf0ff; }
+  footer { grid-column: 1 / -1; border-top: 1px solid var(--line); background: var(--panel); display: grid;
+           grid-template-columns: 260px 1fr; height: 260px; }
+  #pvControls { padding: 8px 12px; border-right: 1px solid var(--line); }
+  #pvControls textarea { width: 100%; height: 120px; font: 13px ui-monospace, monospace; }
+  #preview { overflow: auto; }
+  .status { margin-left: auto; color: var(--muted); }
+  .dirty { color: var(--hl); font-weight: 600; }
+  kbd { font: 11px ui-monospace, monospace; border: 1px solid var(--line); border-bottom-width: 2px; padding: 0 4px; border-radius: 3px; }
+  .help { color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Glyph editor</h1>
+  <select id="styleSel"></select>
+  <button id="undoBtn" title="Ctrl+Z">Undo</button>
+  <button id="saveBtn" title="Ctrl+S"><b>Save</b></button>
+  <button id="revertBtn">Revert</button>
+  <span id="status" class="status"></span>
+</header>
+
+<div id="list"></div>
+<div id="canvasWrap"><svg id="cv"></svg></div>
+
+<div id="side">
+  <div><b id="gTitle">–</b> <span id="gFile" class="help"></span></div>
+  <label>Entry <select id="entry"><option>low</option><option>mid</option><option>high</option><option>none</option></select></label>
+  <label>Exit <select id="exit"><option>low</option><option>high</option><option>none</option></select></label>
+  <label>Advance <input id="advance" type="number" step="0.01"></label>
+  <label>Lead-in <input id="leadIn" type="number" step="0.01" min="0"></label>
+  <label>Lead-out <input id="leadOut" type="number" step="0.01" min="0"></label>
+
+  <div class="sec"><h4>Strokes</h4>
+    <div id="strokes" class="strokes"></div>
+    <div>
+      <button id="reverseBtn">Reverse</button>
+      <button id="deferBtn">Toggle deferred</button>
+      <button id="mainBtn">Make main</button>
+      <button id="joinBtn" title="Append the selected stroke to the end of the main stroke">Join to main</button>
+      <button id="splitBtn" title="Split the selected stroke at the selected point">Split at point</button>
+      <button id="delStrokeBtn">Delete</button>
+    </div>
+    <div>
+      <button id="smoothBtn">Smooth</button>
+      <button id="resampleBtn">Resample</button>
+      <button id="trimStartBtn" title="Delete points before the selected point">Trim before</button>
+      <button id="trimEndBtn" title="Delete points after the selected point">Trim after</button>
+    </div>
+  </div>
+
+  <div class="sec"><h4>Editing</h4>
+    <label>Brush radius <input id="brush" type="range" min="0" max="0.6" step="0.02" value="0.12"></label>
+    <div class="help">
+      Drag points (the brush moves neighbours too) · <kbd>Alt</kbd>-click or right-click a point to delete it ·
+      double-click the line to add a point · drag the red squares to move the lead-in / lead-out cuts ·
+      drag the dashed handle to change the advance · click a line to select its stroke ·
+      <kbd>[</kbd> <kbd>]</kbd> previous / next glyph · scroll to zoom, drag the background to pan.
+    </div>
+  </div>
+  <div class="sec"><h4>Style joins</h4>
+    <label>no_join_pairs <input id="noJoinPairs" type="text" placeholder="e.g. Bo Gx" style="width:140px"></label>
+    <button id="saveMetaBtn">Save style rules</button>
+  </div>
+</div>
+
+<footer>
+  <div id="pvControls">
+    <textarea id="pvText"></textarea>
+    <label class="help">Variation <input id="pvVar" type="range" min="0" max="1.5" step="0.1" value="0"></label>
+    <label class="help"><input id="pvAuto" type="checkbox" checked> auto context for the glyph</label>
+  </div>
+  <div id="preview"><svg id="pv"></svg></div>
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+let styleName = null, glyphs = {}, meta = {}, stem = null, glyph = null, saved = null;
+let undo = [], selStroke = 0, selPoint = -1;
+let view = { x0: -1.6, y0: 3.4, scale: 120 };  // screen = (x - x0)*scale, (y0 - y)*scale
+
+// ---------------------------------------------------------------- geometry
+function arcLengths(p) { const a = [0]; for (let i = 1; i < p.length; i++) a.push(a[i-1] + Math.hypot(p[i][0]-p[i-1][0], p[i][1]-p[i-1][1])); return a; }
+function pointAt(p, s) {
+  const a = arcLengths(p); s = Math.max(0, Math.min(s, a[a.length-1]));
+  for (let i = 1; i < p.length; i++) if (a[i] >= s) { const t = (s - a[i-1]) / Math.max(a[i]-a[i-1], 1e-12);
+    return [p[i-1][0] + t*(p[i][0]-p[i-1][0]), p[i-1][1] + t*(p[i][1]-p[i-1][1])]; }
+  return p[p.length-1];
+}
+function project(p, q) {  // -> {s, i, t, d}: arc length of the closest point on polyline p to q
+  const a = arcLengths(p); let best = { s: 0, i: 0, t: 0, d: 1e9 };
+  for (let i = 1; i < p.length; i++) {
+    const ax = p[i-1][0], ay = p[i-1][1], bx = p[i][0], by = p[i][1];
+    const L2 = (bx-ax)**2 + (by-ay)**2; let t = L2 ? ((q[0]-ax)*(bx-ax) + (q[1]-ay)*(by-ay)) / L2 : 0;
+    t = Math.max(0, Math.min(1, t));
+    const d = Math.hypot(ax + t*(bx-ax) - q[0], ay + t*(by-ay) - q[1]);
+    if (d < best.d) best = { s: a[i-1] + t*(a[i]-a[i-1]), i, t, d };
+  }
+  return best;
+}
+function sub(p, s0, s1) {  // portion of polyline between arc lengths
+  const a = arcLengths(p), out = [pointAt(p, s0)];
+  for (let i = 0; i < p.length; i++) if (a[i] > s0 && a[i] < s1) out.push(p[i]);
+  out.push(pointAt(p, s1)); return out;
+}
+function resample(p, step) {
+  const a = arcLengths(p), L = a[a.length-1]; if (L === 0) return p.slice();
+  const n = Math.max(2, Math.ceil(L / step) + 1), out = [];
+  for (let k = 0; k < n; k++) out.push(pointAt(p, L * k / (n-1)));
+  return out;
+}
+const r4 = (v) => Math.round(v * 1e4) / 1e4;
+
+// ---------------------------------------------------------------- state
+const clone = (o) => JSON.parse(JSON.stringify(o));
+function pushUndo() { undo.push(clone(glyph)); if (undo.length > 200) undo.shift(); }
+function dirty() { return glyph && JSON.stringify(glyph) !== JSON.stringify(saved); }
+function setStatus(msg) { $("status").innerHTML = (dirty() ? '<span class="dirty">unsaved</span> · ' : '') + (msg || ''); }
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  const j = await r.json(); if (!r.ok) throw new Error(j.error || r.statusText); return j;
+}
+
+async function loadStyles() {
+  const names = await api("/api/styles");
+  $("styleSel").innerHTML = names.map(n => `<option>${n}</option>`).join("");
+  const want = new URLSearchParams(location.hash.slice(1)).get("style");
+  if (want && names.includes(want)) $("styleSel").value = want;
+  await loadStyle($("styleSel").value);
+}
+async function loadStyle(name) {
+  if (dirty() && !confirm("Discard unsaved changes?")) { $("styleSel").value = styleName; return; }
+  styleName = name; const d = await api(`/api/style?name=${encodeURIComponent(name)}`);
+  glyphs = d.glyphs; meta = d.meta;
+  $("noJoinPairs").value = (meta.no_join_pairs || []).join(" ");
+  buildList();
+  const want = new URLSearchParams(location.hash.slice(1)).get("g");
+  selectGlyph(want && glyphs[want] ? want : (glyphs["a"] ? "a" : Object.keys(glyphs)[0]), true);
+}
+function groupOf(st) {
+  const c = glyphs[st].char;
+  if (/[a-z]/.test(c)) return "lowercase"; if (/[A-Z]/.test(c)) return "capitals";
+  if (/[0-9]/.test(c)) return "digits"; return "punctuation";
+}
+function buildList() {
+  const groups = {};
+  for (const st of Object.keys(glyphs)) (groups[groupOf(st)] ||= []).push(st);
+  const order = ["lowercase", "capitals", "digits", "punctuation"];
+  $("list").innerHTML = order.filter(g => groups[g]).map(g => `<h3>${g}</h3><div class="chips">` +
+    groups[g].sort((a, b) => glyphs[a].char.localeCompare(glyphs[b].char) || a.localeCompare(b)).map(st =>
+      `<button class="chip ${glyphs[st].edited ? 'edited' : ''}" data-st="${st}" title="${st}">${glyphs[st].char.replace("<","&lt;")}${st.includes(".") ? "<sub style='font-size:8px'>" + st.split(".").slice(1).join(".").replace("alt", "") + "</sub>" : ""}</button>`).join("") + "</div>").join("");
+  for (const b of $("list").querySelectorAll(".chip")) b.onclick = () => selectGlyph(b.dataset.st);
+}
+function selectGlyph(st, force) {
+  if (!force && dirty() && !confirm("Discard unsaved changes to this glyph?")) return;
+  stem = st; glyph = clone(glyphs[st]); saved = clone(glyph); undo = []; selStroke = 0; selPoint = -1;
+  for (const b of $("list").querySelectorAll(".chip")) b.classList.toggle("sel", b.dataset.st === st);
+  location.hash = `style=${styleName}&g=${encodeURIComponent(st)}`;
+  if ($("pvAuto").checked) $("pvText").value = autoContext(glyph.char);
+  refresh();
+}
+function autoContext(c) {
+  if (/[a-z]/.test(c)) return `n${c}n o${c}o a${c}e ${c}${c}\nmi${c}l l${c}u ${c}ing`;
+  if (/[A-Z]/.test(c)) return `${c}ane ${c}oral ${c}inn\n${c}${c.toLowerCase()}s ${c}`;
+  return `one${c} two${c} 3${c}4`;
+}
+
+// ---------------------------------------------------------------- drawing
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+const S = (p) => [(p[0] - view.x0) * view.scale, (view.y0 - p[1]) * view.scale];
+const U = (sx, sy) => [sx / view.scale + view.x0, view.y0 - sy / view.scale];
+const poly = (p) => p.map(q => S(q).map(v => v.toFixed(1)).join(",")).join(" ");
+
+function draw() {
+  const svg = $("cv"); svg.innerHTML = "";
+  const W = svg.clientWidth, H = svg.clientHeight;
+  // guides
+  for (const [y, lab, col] of [[-1, "-1", "#eee"], [0, "baseline", "#f0c8c8"], [1, "x-height", "#c8d8f0"], [2, "2", "#eee"], [3, "3", "#eee"]]) {
+    const [, sy] = S([0, y]); el("line", { x1: 0, x2: W, y1: sy, y2: sy, stroke: col }, svg);
+    el("text", { x: 4, y: sy - 3, fill: "#b0b0b8", "font-size": 10 }, svg).textContent = lab;
+  }
+  const slant = meta.glyph_slant || 0;
+  for (const x of [0, glyph.advance]) {
+    const a = S([x - slant * 1.5, -1.5]), b = S([x + slant * 3.2, 3.2]);
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#ddd", "stroke-dasharray": x ? "6 4" : "" }, svg);
+  }
+  // advance handle
+  const ah = S([glyph.advance, -1.3]);
+  const adv = el("rect", { x: ah[0] - 6, y: ah[1] - 6, width: 12, height: 12, fill: "#fff", stroke: "#999", cursor: "ew-resize" }, svg);
+  adv.onmousedown = (e) => startDrag(e, "advance");
+
+  glyph.strokes.forEach((st, k) => {
+    const pts = st.points, sel = k === selStroke;
+    const col = k === 0 ? "var(--ink)" : "var(--defer)";
+    const pl = el("polyline", { points: poly(pts), fill: "none", stroke: col, "stroke-width": sel ? 2.6 : 1.6, "stroke-linejoin": "round", "stroke-linecap": "round", cursor: "pointer" }, svg);
+    const hit = el("polyline", { points: poly(pts), fill: "none", stroke: "transparent", "stroke-width": 12, cursor: "pointer" }, svg);
+    hit.onmousedown = (e) => { if (e.button === 0) { selStroke = k; selPoint = -1; refresh(false); e.stopPropagation(); } };
+    hit.ondblclick = (e) => { insertPoint(k, mouseU(e)); e.stopPropagation(); };
+  });
+  // lead-in / lead-out overlays on the main stroke
+  const main = glyph.strokes[0].points, L = arcLengths(main).at(-1);
+  if (glyph.lead_in > 0) el("polyline", { points: poly(sub(main, 0, glyph.lead_in)), fill: "none", stroke: "var(--conn)", "stroke-width": 3, opacity: .55 }, svg);
+  if (glyph.lead_out > 0) el("polyline", { points: poly(sub(main, L - glyph.lead_out, L)), fill: "none", stroke: "var(--conn)", "stroke-width": 3, opacity: .55 }, svg);
+  for (const [which, s] of [["lead_in", glyph.lead_in], ["lead_out", L - glyph.lead_out]]) {
+    const q = S(pointAt(main, s));
+    const m = el("rect", { x: q[0] - 6, y: q[1] - 6, width: 12, height: 12, fill: "#fff", stroke: "var(--conn)", "stroke-width": 2, cursor: "move" }, svg);
+    m.onmousedown = (e) => startDrag(e, which);
+    el("title", {}, m).textContent = which.replace("_", "-");
+  }
+  // points of the selected stroke
+  const sp = glyph.strokes[selStroke].points;
+  sp.forEach((p, i) => {
+    const [x, y] = S(p);
+    const end = i === 0 ? "var(--ok)" : i === sp.length - 1 ? "var(--conn)" : null;
+    const c = el("circle", { cx: x, cy: y, r: end ? 5.5 : (i === selPoint ? 5 : 3.2), fill: end || (i === selPoint ? "var(--hl)" : "#fff"), stroke: end || "var(--accent)", "stroke-width": 1.3, cursor: "grab" }, svg);
+    c.onmousedown = (e) => {
+      if (e.altKey || e.button === 2) { deletePoint(i); e.preventDefault(); e.stopPropagation(); return; }
+      selPoint = i; startDrag(e, "point", i);
+    };
+    c.oncontextmenu = (e) => e.preventDefault();
+  });
+  // direction arrow at the start of the selected stroke
+  if (sp.length > 2) {
+    const a = S(sp[0]), b = S(pointAt(sp, 0.12));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "var(--ok)", "stroke-width": 2, "marker-end": "" }, svg);
+  }
+}
+
+function drawStrokeList() {
+  $("strokes").innerHTML = glyph.strokes.map((s, k) =>
+    `<div class="${k === selStroke ? 'sel' : ''}" data-k="${k}">${k === 0 ? "main" : (s.kind === "dot" ? "dot" : "stroke")} ${k} · ${s.points.length} pts${s.deferred ? " · deferred" : ""}</div>`).join("");
+  for (const d of $("strokes").children) d.onclick = () => { selStroke = +d.dataset.k; selPoint = -1; refresh(false); };
+}
+
+function syncFields() {
+  $("gTitle").textContent = `“${glyph.char}”`; $("gFile").textContent = stem + ".json" + (glyph.edited ? " · edited" : "");
+  $("entry").value = glyph.entry; $("exit").value = glyph.exit;
+  $("advance").value = r4(glyph.advance); $("leadIn").value = r4(glyph.lead_in); $("leadOut").value = r4(glyph.lead_out);
+}
+
+function refresh(doPreview = true) { draw(); drawStrokeList(); syncFields(); setStatus(); if (doPreview) schedulePreview(); }
+
+// ---------------------------------------------------------------- editing ops
+function mouseU(e) { const r = $("cv").getBoundingClientRect(); return U(e.clientX - r.left, e.clientY - r.top); }
+let drag = null;
+function startDrag(e, kind, index) {
+  e.preventDefault(); e.stopPropagation(); pushUndo();
+  const pts = glyph.strokes[selStroke].points;
+  drag = { kind, index, start: mouseU(e), orig: clone(pts), arc: arcLengths(pts) };
+  refresh(false);
+}
+window.addEventListener("mousemove", (e) => {
+  if (!drag) return;
+  const m = mouseU(e);
+  if (drag.kind === "pan") {
+    const r = $("cv").getBoundingClientRect();
+    view.x0 = drag.v.x0 - (e.clientX - drag.sx) / view.scale; view.y0 = drag.v.y0 + (e.clientY - drag.sy) / view.scale;
+    draw(); return;
+  }
+  if (drag.kind === "point") {
+    const dx = m[0] - drag.start[0], dy = m[1] - drag.start[1];
+    const R = +$("brush").value, a = drag.arc, s0 = a[drag.index], pts = glyph.strokes[selStroke].points;
+    for (let i = 0; i < pts.length; i++) {
+      const d = Math.abs(a[i] - s0);
+      const w = i === drag.index ? 1 : (R > 0 && d < R ? 0.5 * (1 + Math.cos(Math.PI * d / R)) : 0);
+      if (w > 0) pts[i] = [r4(drag.orig[i][0] + w * dx), r4(drag.orig[i][1] + w * dy)];
+    }
+  } else if (drag.kind === "lead_in" || drag.kind === "lead_out") {
+    const main = glyph.strokes[0].points, L = arcLengths(main).at(-1), s = project(main, m).s;
+    if (drag.kind === "lead_in") glyph.lead_in = r4(Math.max(0, Math.min(s, L)));
+    else glyph.lead_out = r4(Math.max(0, L - s));
+  } else if (drag.kind === "advance") {
+    glyph.advance = r4(Math.max(0, m[0] + (meta.glyph_slant || 0) * 1.3));
+  }
+  refresh(false); schedulePreview();
+});
+window.addEventListener("mouseup", () => { if (drag) { drag = null; refresh(); } });
+$("cv").addEventListener("mousedown", (e) => {
+  if (e.button !== 0) return;
+  drag = { kind: "pan", sx: e.clientX, sy: e.clientY, v: { ...view } };
+});
+$("cv").addEventListener("wheel", (e) => {
+  e.preventDefault(); const m = mouseU(e), f = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+  view.scale *= f; const r = $("cv").getBoundingClientRect(), sx = e.clientX - r.left, sy = e.clientY - r.top;
+  view.x0 = m[0] - sx / view.scale; view.y0 = m[1] + sy / view.scale; draw();
+}, { passive: false });
+$("cv").addEventListener("contextmenu", (e) => e.preventDefault());
+
+function insertPoint(k, q) {
+  pushUndo(); const pts = glyph.strokes[k].points, pr = project(pts, q);
+  pts.splice(pr.i, 0, [r4(q[0]), r4(q[1])]); selStroke = k; selPoint = pr.i; refresh();
+}
+function deletePoint(i) {
+  const pts = glyph.strokes[selStroke].points; if (pts.length <= 2) return;
+  pushUndo(); pts.splice(i, 1); selPoint = -1; refresh();
+}
+function op(fn) { pushUndo(); fn(); refresh(); }
+$("reverseBtn").onclick = () => op(() => glyph.strokes[selStroke].points.reverse());
+$("deferBtn").onclick = () => op(() => { const s = glyph.strokes[selStroke]; if (selStroke) s.deferred = !s.deferred; });
+$("mainBtn").onclick = () => op(() => {
+  if (!selStroke) return; const [s] = glyph.strokes.splice(selStroke, 1);
+  glyph.strokes.forEach(t => t.deferred = true); s.deferred = false; s.kind = "line"; glyph.strokes.unshift(s); selStroke = 0;
+});
+$("joinBtn").onclick = () => op(() => {
+  if (!selStroke) return; const main = glyph.strokes[0].points, q = glyph.strokes[selStroke].points;
+  const e = main.at(-1), d0 = Math.hypot(q[0][0]-e[0], q[0][1]-e[1]), d1 = Math.hypot(q.at(-1)[0]-e[0], q.at(-1)[1]-e[1]);
+  glyph.strokes[0].points = main.concat(d1 < d0 ? q.slice().reverse() : q);
+  glyph.strokes.splice(selStroke, 1); selStroke = 0;
+});
+$("splitBtn").onclick = () => op(() => {
+  const pts = glyph.strokes[selStroke].points; if (selPoint <= 0 || selPoint >= pts.length - 1) return alert("Select an interior point first.");
+  const a = pts.slice(0, selPoint + 1), b = pts.slice(selPoint);
+  glyph.strokes[selStroke].points = a;
+  glyph.strokes.splice(selStroke + 1, 0, { points: b, deferred: true, kind: "line" });
+});
+$("delStrokeBtn").onclick = () => op(() => { if (glyph.strokes.length > 1) { glyph.strokes.splice(selStroke, 1); selStroke = 0; if (!glyph.strokes[0].deferred === false) glyph.strokes[0].deferred = false; } });
+$("smoothBtn").onclick = () => op(() => {
+  const p = glyph.strokes[selStroke].points; const q = p.map(v => v.slice());
+  for (let i = 1; i < p.length - 1; i++) for (const k of [0, 1]) q[i][k] = r4(0.25 * p[i-1][k] + 0.5 * p[i][k] + 0.25 * p[i+1][k]);
+  glyph.strokes[selStroke].points = q;
+});
+$("resampleBtn").onclick = () => op(() => { glyph.strokes[selStroke].points = resample(glyph.strokes[selStroke].points, 0.04).map(p => p.map(r4)); });
+$("trimStartBtn").onclick = () => op(() => { if (selPoint > 0) { glyph.strokes[selStroke].points.splice(0, selPoint); selPoint = 0; } });
+$("trimEndBtn").onclick = () => op(() => { const p = glyph.strokes[selStroke].points; if (selPoint >= 0) p.splice(selPoint + 1); });
+for (const [id, key, num] of [["entry", "entry"], ["exit", "exit"], ["advance", "advance", 1], ["leadIn", "lead_in", 1], ["leadOut", "lead_out", 1]])
+  $(id).onchange = () => op(() => glyph[key] = num ? +$(id).value : $(id).value);
+$("undoBtn").onclick = () => { if (undo.length) { glyph = undo.pop(); refresh(); } };
+$("revertBtn").onclick = () => { pushUndo(); glyph = clone(saved); refresh(); };
+$("saveBtn").onclick = save;
+async function save() {
+  try {
+    const r = await api("/api/save", { style: styleName, file: stem, glyph });
+    glyph.edited = true; glyphs[stem] = clone(glyph); saved = clone(glyph); buildList();
+    for (const b of $("list").querySelectorAll(".chip")) b.classList.toggle("sel", b.dataset.st === stem);
+    setStatus("saved " + r.file); schedulePreview();
+  } catch (e) { setStatus("save failed: " + e.message); }
+}
+$("saveMetaBtn").onclick = async () => {
+  meta.no_join_pairs = $("noJoinPairs").value.split(/\s+/).filter(Boolean);
+  await api("/api/save_meta", { style: styleName, meta }); setStatus("style rules saved"); schedulePreview();
+};
+$("styleSel").onchange = () => loadStyle($("styleSel").value);
+window.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
+  if ((e.ctrlKey || e.metaKey) && e.key === "z") { e.preventDefault(); $("undoBtn").onclick(); }
+  else if ((e.ctrlKey || e.metaKey) && e.key === "s") { e.preventDefault(); save(); }
+  else if (e.key === "[" || e.key === "]") {
+    const chips = [...$("list").querySelectorAll(".chip")].map(b => b.dataset.st), i = chips.indexOf(stem);
+    const j = (i + (e.key === "]" ? 1 : -1) + chips.length) % chips.length; selectGlyph(chips[j]);
+  } else if ((e.key === "Delete" || e.key === "Backspace") && selPoint >= 0) deletePoint(selPoint);
+});
+window.addEventListener("beforeunload", (e) => { if (dirty()) { e.preventDefault(); e.returnValue = ""; } });
+window.addEventListener("resize", () => draw());
+
+// ---------------------------------------------------------------- live preview
+let pvTimer = null, pvSeq = 0;
+function schedulePreview() { clearTimeout(pvTimer); pvTimer = setTimeout(runPreview, 120); }
+$("pvText").oninput = () => { $("pvAuto").checked = false; schedulePreview(); };
+$("pvVar").oninput = schedulePreview;
+async function runPreview() {
+  const seq = ++pvSeq; let d;
+  try { d = await api("/api/preview", { style: styleName, text: $("pvText").value, glyph, variation: +$("pvVar").value, seed: 1 }); }
+  catch (e) { setStatus("preview failed: " + e.message); return; }
+  if (seq !== pvSeq) return;
+  const svg = $("pv"); svg.innerHTML = "";
+  const scale = 46, lineH = 3.6 * scale, gap = (d.word_space + 0.5) * scale;
+  let y = 2.6 * scale, maxW = 0;
+  const words = $("pvText").value.split("\n").map(l => l.split(/\s+/).filter(Boolean));
+  d.lines.forEach((line, li) => {
+    let x = 20;
+    line.forEach((pieces, wi) => {
+      const all = pieces.flatMap(p => p[0]); if (!all.length) return;
+      const minx = Math.min(...all.map(q => q[0])), maxx = Math.max(...all.map(q => q[0]));
+      const wtext = (words[li] || [])[wi] || "";
+      for (const [pts, kind, gi] of pieces) {
+        const hl = kind !== "conn" && wtext[gi] === glyph.char;
+        const col = kind === "conn" ? "var(--conn)" : kind === "deferred" ? "var(--defer)" : hl ? "var(--hl)" : "var(--ink)";
+        el("polyline", { points: pts.map(q => `${(x + (q[0] - minx) * scale).toFixed(1)},${(y - q[1] * scale).toFixed(1)}`).join(" "),
+          fill: "none", stroke: col, "stroke-width": 1.4, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+      }
+      x += (maxx - minx) * scale + gap;
+    });
+    maxW = Math.max(maxW, x); y += lineH;
+  });
+  svg.setAttribute("width", maxW + 20); svg.setAttribute("height", y);
+  svg.style.width = (maxW + 20) + "px"; svg.style.height = y + "px";
+}
+
+loadStyles().catch(e => setStatus("load failed: " + e.message));
+</script>
+</body>
+</html>

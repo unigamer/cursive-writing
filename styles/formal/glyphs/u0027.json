@@ -1,0 +1,41 @@
+{
+ "char": "'",
+ "advance": 0.317,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.5091,
+     1.8727
+    ],
+    [
+     0.4895,
+     1.8413
+    ],
+    [
+     0.4757,
+     1.8073
+    ],
+    [
+     0.3512,
+     1.4629
+    ],
+    [
+     0.3372,
+     1.4195
+    ],
+    [
+     0.3409,
+     1.3955
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.1,
+ "entry": "high",
+ "exit": "high",
+ "source": "GreatVibes-Regular.ttf"
+}

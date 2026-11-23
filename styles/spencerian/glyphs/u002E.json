@@ -1,0 +1,25 @@
+{
+ "char": ".",
+ "advance": 0.9335,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.1227,
+     0.0455
+    ],
+    [
+     0.3091,
+     0.2
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.0,
+ "entry": "low",
+ "exit": "low",
+ "source": "MonsieurLaDoulaise-Regular.ttf"
+}

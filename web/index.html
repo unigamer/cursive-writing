@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cursive Writer</title>
+  <meta name="description" content="Joined single-line cursive for pen plotters, generated in the browser.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 22c4 0 6-12 9-12s-2 12 2 12 5-9 7-9-1 9 3 9 3-3 3-3' fill='none' stroke='%23233' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Cursive Writer</h1>
+    <p class="tagline">Joined, single-line script for pen plotters. Everything is computed in your browser.</p>
+  </header>
+
+  <main class="layout">
+    <form id="controls" class="controls" autocomplete="off" onsubmit="return false">
+      <label class="field">
+        <span class="label">Text</span>
+        <textarea id="text" rows="6" spellcheck="true"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="label">Style</span>
+        <select id="style"></select>
+        <span class="hint" id="style-credit"></span>
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span class="label">Size <span class="unit">x-height, mm</span></span>
+          <input id="size" type="number" min="1" max="60" step="0.5">
+        </label>
+        <label class="field">
+          <span class="label">Margin <span class="unit">mm</span></span>
+          <input id="margin" type="number" min="0" max="100" step="1">
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span class="label">Page</span>
+          <select id="page">
+            <option value="a3">A3</option>
+            <option value="a4">A4</option>
+            <option value="a5">A5</option>
+            <option value="a6">A6</option>
+            <option value="letter">Letter</option>
+            <option value="dl">DL</option>
+            <option value="c5">C5</option>
+            <option value="custom">Custom…</option>
+          </select>
+        </label>
+        <div class="field">
+          <span class="label">Orientation</span>
+          <div class="segmented" role="radiogroup" aria-label="Orientation">
+            <label><input type="radio" name="orient" value="portrait" checked><span>Portrait</span></label>
+            <label><input type="radio" name="orient" value="landscape"><span>Landscape</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="custom-page" hidden>
+        <label class="field">
+          <span class="label">Width <span class="unit">mm</span></span>
+          <input id="page-w" type="number" min="20" max="2000" step="1">
+        </label>
+        <label class="field">
+          <span class="label">Height <span class="unit">mm</span></span>
+          <input id="page-h" type="number" min="20" max="2000" step="1">
+        </label>
+      </div>
+
+      <div class="field">
+        <span class="label">Align</span>
+        <div class="segmented" role="radiogroup" aria-label="Alignment">
+          <label><input type="radio" name="align" value="left" checked><span>Left</span></label>
+          <label><input type="radio" name="align" value="center"><span>Centre</span></label>
+          <label><input type="radio" name="align" value="right"><span>Right</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="label">Variation <output id="variation-out"></output></span>
+        <input id="variation" type="range" min="0" max="3" step="0.05">
+        <span class="hint">0 draws every letter identically; 1 is the default.</span>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span class="label">Seed</span>
+          <span class="with-button">
+            <input id="seed" type="number" min="0" step="1">
+            <button type="button" id="reseed" title="Pick a new random seed" aria-label="New random seed">⟳</button>
+          </span>
+        </label>
+        <label class="field">
+          <span class="label">Pen <span class="unit">mm</span></span>
+          <input id="pen" type="number" min="0.05" max="3" step="0.05">
+        </label>
+      </div>
+
+      <div class="field">
+        <span class="label">Shading <output id="shade-out"></output></span>
+        <input id="shade" type="range" min="0" max="1.5" step="0.05">
+        <span class="hint">Extra passes on downstrokes, like a pointed pen. They add no pen lifts.</span>
+      </div>
+
+      <label class="check">
+        <input id="guides" type="checkbox" checked>
+        <span>Show margins in the preview</span>
+      </label>
+    </form>
+
+    <section class="output" aria-label="Preview">
+      <div class="toolbar">
+        <div id="status" class="status" aria-live="polite">Loading…</div>
+        <div class="actions">
+          <button type="button" id="copy-cli" title="Copy the equivalent python -m cursive.cli command">Copy CLI</button>
+          <button type="button" id="dl-png">PNG</button>
+          <button type="button" id="dl-svg" class="primary">Download SVG</button>
+        </div>
+      </div>
+      <ul id="warnings" class="warnings"></ul>
+      <div id="stage" class="stage">
+        <div id="sheet" class="sheet"></div>
+      </div>
+      <p class="footnote">
+        The SVG is in millimetres, with one Inkscape layer and a group per line, so it plots directly from Inkscape
+        or a plotter's own SVG tools. It matches the command-line tool's output byte for byte.
+      </p>
+    </section>
+  </main>
+
+  <footer class="credits">
+    The script styles are traced from fonts by other designers and are shared under the SIL Open Font License;
+    the program is under the MIT License. What you write with it is yours.
+    <a id="licences-link" href="LICENSES.txt">Licences and credits</a>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

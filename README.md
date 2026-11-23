@@ -47,6 +47,10 @@ Pen-up travel is already short. Each word is one stroke, followed by its i-dots 
 
 ## In the browser
 
+**Try it:** <https://unigamer.github.io/cursive-writing/> · **Single file:** [cursive-writer.html](https://github.com/unigamer/cursive-writing/releases/latest/download/cursive-writer.html) (download, then open it; works offline)
+
+Publishing a GitHub release runs `.github/workflows/release.yml`. It runs the tests, builds the single-file page, attaches it to the release, links it from the release notes, and updates the GitHub Pages site. To refresh the site without a release, run the workflow by hand from the Actions tab.
+
 `web/` is a static page that does the same job with no backend. All the layout and joining runs in the browser, in a JavaScript port of the engine.
 
 ```sh

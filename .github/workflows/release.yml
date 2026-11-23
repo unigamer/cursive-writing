@@ -1,0 +1,101 @@
+# On each published release:
+#   1. run the tests (Python, and the JS engine's parity with it under deno)
+#   2. build the single-file page and attach it to the release
+#   3. publish the web page to GitHub Pages, with the single file beside it
+#   4. add both links to the release notes
+#
+# Can also be run by hand (Actions > Release > Run workflow) to refresh the
+# Pages site without making a release.
+
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write # attach the file and edit the release notes
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install test dependencies
+        run: pip install numpy pillow pytest
+
+      - name: Check the committed web data matches styles/
+        run: python tools/build_web.py --check
+
+      - name: Test
+        run: python -m pytest -q
+
+      - name: Build the site
+        run: |
+          mkdir -p _site
+          cp -r web/index.html web/app.css web/app.js web/worker.js web/LICENSES.txt web/cursive web/data _site/
+          python tools/build_web.py --standalone _site/cursive-writer.html
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cursive-writer
+          path: _site/cursive-writer.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  release-assets:
+    if: github.event_name == 'release'
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ github.event.release.tag_name }}
+      PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: cursive-writer
+
+      - name: Attach the single-file page
+        run: gh release upload "$TAG" cursive-writer.html --clobber
+
+      - name: Link it from the release notes
+        run: |
+          body="$(gh release view "$TAG" --json body --jq .body)"
+          case "$body" in *"cursive-writer.html"*) exit 0 ;; esac
+          printf '%s\n\n---\n\n**Try it in the browser:** %s\n\n**Single-file version:** download [cursive-writer.html](https://github.com/%s/releases/download/%s/cursive-writer.html) and open it. It works offline and needs no server.\n' \
+            "$body" "$PAGE_URL" "$GH_REPO" "$TAG" > notes.md
+          gh release edit "$TAG" --notes-file notes.md

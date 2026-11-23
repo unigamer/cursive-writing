@@ -2,6 +2,8 @@
 
 Text in, joined single-line cursive out, as SVG for a pen plotter.
 
+!["Dear Margaret, Thank you for the lovely flowers. Warmest wishes, Oliver" in the copperplate style with shading](docs/images/hero.png)
+
 Ordinary script fonts don't work on a plotter for two reasons:
 
 - They are outline fonts, so the plotter traces both edges of every stroke.
@@ -19,6 +21,24 @@ Four styles are included:
 | `formal` *(experimental)* | copperplate-like, with word-final and word-initial letter forms | Great Vibes |
 
 Copperplate, Spencerian and Modern are the most polished. In Formal, a few letters (notably `n`) are less legible.
+
+The same card in each style (x-height 5 mm, seed 3, no shading):
+
+**copperplate**
+
+![copperplate sample](docs/images/style-copperplate.png)
+
+**spencerian**
+
+![spencerian sample](docs/images/style-spencerian.png)
+
+**modern**
+
+![modern sample](docs/images/style-modern.png)
+
+**formal**
+
+![formal sample](docs/images/style-formal.png)
 
 ## Usage
 
@@ -40,6 +60,38 @@ python3 -m venv .venv && .venv/bin/pip install numpy pillow
 | `--variation` | `0` gives identical letters every time; `1` is the default; higher is looser. |
 | `--shade` | Imitates pointed-pen thick downstrokes by adding extra pen passes, up to this width in mm. The passes are woven into the stroke, so they add no pen lifts. |
 | `--align` | `left` / `center` / `right` |
+
+### What the options do
+
+**`--variation`** — `0`, `1` (default), `2`. With `0` every copy of a letter is identical; higher values loosen size, slant, spacing and baseline.
+
+| `--variation 0` | ![minimum minimum, variation 0](docs/images/variation-0.png) |
+|---|---|
+| `--variation 1` | ![minimum minimum, variation 1](docs/images/variation-1.png) |
+| `--variation 2` | ![minimum minimum, variation 2](docs/images/variation-2.png) |
+
+**`--seed`** — the same text and settings with three seeds. Each seed gives different letter shapes, and repeats exactly.
+
+| `--seed 1` | ![Hello there, Lucy, seed 1](docs/images/seed-1.png) |
+|---|---|
+| `--seed 2` | ![Hello there, Lucy, seed 2](docs/images/seed-2.png) |
+| `--seed 3` | ![Hello there, Lucy, seed 3](docs/images/seed-3.png) |
+
+**`--shade`** — off, and `0.6` mm. Downstrokes get thicker, like a pointed pen; the plotter still draws each word in one stroke.
+
+| `--shade 0` | ![Many happy returns, no shading](docs/images/shade-0.png) |
+|---|---|
+| `--shade 0.6` | ![Many happy returns, 0.6 mm shading](docs/images/shade-0.6.png) |
+
+**`--size`** — the x-height in mm, shown here at the same scale: 4 mm and 8 mm. The pen width stays the same, so small writing looks heavier (see *Legibility*).
+
+| `--size 4` | ![A tiny note at 4 mm](docs/images/size-4.png) |
+|---|---|
+| `--size 8` | ![A tiny note at 8 mm](docs/images/size-8.png) |
+
+The samples are made by `python tools/readme_images.py`; re-run it after changing glyphs or joins.
+
+### Output
 
 The SVG is in millimetres. All ink sits in one Inkscape layer, with a group per line, so it plots directly from Inkscape or a plotter's own SVG tools.
 
@@ -120,6 +172,11 @@ How it stays identical to Python:
    7. Each glyph gets automatic **lead-in** and **lead-out** cut points: the entry upstroke and the exit hairline. An entry stroke that belongs to a loop (the eye of an e) is only cut up to the crossing.
    8. Capitals that finish high or to the side (B, D, O, P, S…) are marked as non-joining, as is any letter that ends on a descender tip.
 2. **Joining** (`cursive/join.py`)
+
+   ![handwriting, with each letter in alternating blue and green and the connecting strokes in red](docs/images/joins.png)
+
+   *Letters alternate blue and green; the red connectors are made by the join engine. Grey is drawn after the word (i-dots, t-bar).*
+
    - When two letters join, the first letter's lead-out and the second's lead-in are cut off and replaced with one connector curve.
    - The connector leaves smoothly along the first letter's direction of travel.
    - Into oval letters (a, o, d, g, q) it sweeps under the oval and rises along the slant, so it meets the oval in a sharp point.

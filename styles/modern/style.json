@@ -3,7 +3,7 @@
   "source_font": "Parisienne-Regular.ttf (SIL Open Font License)",
   "slant": 0,
   "tracking": 0.0,
-  "word_space": 0.7,
+  "word_space": 0.85,
   "line_height": 4.2,
   "tension": 0.45,
   "no_join_after": ".,;:!?'\"-&0123456789",
@@ -12,5 +12,5 @@
   "variation": {},
   "glyph_slant": 0.6222,
   "even_spacing": 0.55,
-  "counter_width": 0.204
+  "counter_width": 0.216
 }

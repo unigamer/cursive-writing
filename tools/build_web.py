@@ -86,7 +86,8 @@ def _ofl_text() -> str:
 def styles_license() -> str:
     """styles/LICENSE.md: the style data is a modified version of OFL fonts."""
     rfns = [m for n in style_names() for m in re.findall(r'Reserved Font Names? "?([^".,]+)', font_copyright(n))]
-    reserved = " and ".join(f'"{r.strip()}"' for r in rfns) or "none here"
+    quoted = [f'"{r.strip()}"' for r in rfns]
+    reserved = (", ".join(quoted[:-1]) + " and " + quoted[-1]) if len(quoted) > 1 else (quoted[0] if quoted else "none here")
     lines = [
         "# Licence for the style data",
         "",

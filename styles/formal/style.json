@@ -3,7 +3,7 @@
   "source_font": "GreatVibes-Regular.ttf (SIL Open Font License)",
   "slant": 0,
   "tracking": 0.0,
-  "word_space": 0.7,
+  "word_space": 0.85,
   "line_height": 4.2,
   "tension": 0.45,
   "no_join_after": ".,;:!?'\"-&0123456789",
@@ -12,5 +12,5 @@
   "variation": {},
   "glyph_slant": 0.6573,
   "even_spacing": 0.38,
-  "counter_width": 0.172
+  "counter_width": 0.213
 }

@@ -1,0 +1,29 @@
+{
+ "char": "'",
+ "advance": 0.5276,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.3864,
+     1.6227
+    ],
+    [
+     0.3692,
+     1.5704
+    ],
+    [
+     0.3091,
+     1.15
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.0959,
+ "entry": "high",
+ "exit": "high",
+ "source": "Allura-Regular.ttf"
+}

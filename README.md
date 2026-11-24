@@ -11,16 +11,17 @@ Ordinary script fonts don't work on a plotter for two reasons:
 
 This project rebuilds each letter as a single pen path, then joins letters inside a word with real connecting strokes. Every word is drawn as one continuous line, like handwriting.
 
-Four styles are included:
+Seven styles are included:
 
 | style | look | built from (SIL OFL) |
 |---|---|---|
 | `copperplate` | formal, steep slant, looped ascenders | Pinyon Script |
 | `spencerian` | light, airy, flourished capitals | Monsieur La Doulaise |
 | `modern` | rounder and cleaner | Parisienne |
-| `formal` *(experimental)* | copperplate-like, with word-final and word-initial letter forms | Great Vibes |
-
-Copperplate, Spencerian and Modern are the most polished. In Formal, a few letters (notably `n`) are less legible.
+| `formal` | copperplate-like, with word-final and word-initial letter forms | Great Vibes |
+| `signature` | brisk brush script, no ascender loops | Alex Brush |
+| `flowing` | light, looped ascenders, long descender loops | Allura |
+| `roundhand` | upright and round, even line, italic-like | Petit Formal Script |
 
 The same card in each style (x-height 5 mm, seed 3, no shading):
 
@@ -39,6 +40,18 @@ The same card in each style (x-height 5 mm, seed 3, no shading):
 **formal**
 
 ![formal sample](docs/images/style-formal.png)
+
+**signature**
+
+![signature sample](docs/images/style-signature.png)
+
+**flowing**
+
+![flowing sample](docs/images/style-flowing.png)
+
+**roundhand**
+
+![roundhand sample](docs/images/style-roundhand.png)
 
 ## Usage
 
@@ -112,7 +125,7 @@ python3 -m http.server -d web 8000   # then open http://localhost:8000
 
 Any static host can serve the `web/` folder (GitHub Pages, Netlify, S3…). Opening `index.html` straight from disk won't work, because browsers block module scripts and `fetch` on `file://` pages.
 
-To share it as **one HTML file** that needs no server, build the standalone page. It holds the CSS, the engine and the style data (about 1.4 MB with all four styles), works offline and opens straight from disk:
+To share it as **one HTML file** that needs no server, build the standalone page. It holds the CSS, the engine and the style data (about 2.2 MB with all seven styles), works offline and opens straight from disk:
 
 ```sh
 python3 tools/build_web.py --standalone                          # dist/cursive-writer.html
@@ -145,7 +158,7 @@ How it stays identical to Python:
 ## Joining rules
 
 - Letters join only **within a word**. A space, line break, punctuation, digit or symbol always lifts the pen.
-- Capitals join only where the style says that's traditional: `"join_capitals"` in `style.json` (Spencerian: H I J L Q U V). Other capitals stand alone, kerned like ordinary letters.
+- Capitals join only where the style says that's traditional: `"join_capitals"` in `style.json` (Spencerian: H I J L Q U V). Other capitals stand alone, kerned a little tighter than ordinary letters (see *Even spacing*).
 - Each glyph declares whether it can be joined into (`entry`) and whether it joins onward (`exit`). `"none"` means never.
 - `style.json` can block more joins:
   - `no_join_after`: characters that never join to the next letter (punctuation and digits by default)
@@ -195,11 +208,14 @@ How it stays identical to Python:
    - Plus a smooth displacement field applied to whole lines after joining. It wobbles the line without ever breaking a join.
 4. **Layout** (`cursive/layout.py`)
    - Word gaps are measured on the ink in the x-height band, with the slant removed, so descender loops and t-bars don't distort spacing.
-   - A word is nudged right (by at most about one x-height) if a capital's swash would otherwise touch the previous word.
+   - Then the actual ink is checked, flourishes and hairlines included. If any part of a word comes closer to the previous word than the style's `word_clear` (default 0.9 × the letter gap), the word moves right, by at most 1.2 x-heights so spacing stays even. Closer than a letter gap, two words read as one: flowing's exit hairlines and capital lead-ins used to do this ("PaulKevin").
+   - Words never touch. A big swash that is still within 0.3 x-heights after that (Spencerian W or J reaching back over the previous word) is pushed further, up to 4 x-heights.
+   - Line breaks count these pushes, so a line never runs past the page width.
    - Lines wrap to the page width.
 5. **Even spacing** (`cursive/spacing.py`, `"even_spacing"` in `style.json`)
    - Lowercase letters are re-spaced so the gap between letter bodies is the same for every pair. Bodies are measured without their entry and exit hairlines, since the joins replace those.
    - Round letters tuck in slightly, as they do optically.
+   - A capital that doesn't join is kerned tighter, to `capital_gap` (default 0.72 × the letter gap). There's no connector bridging the gap after it, so a full letter gap there reads as too wide.
 
 Glyphs are plain JSON in `styles/<style>/glyphs/`, in x-height units (baseline y=0, x-height y=1). Variants sit beside the main file:
 
@@ -263,6 +279,7 @@ Each style has about 1,350 pairs: every lowercase pair, plus every capital follo
 - a kinked departure, or a sharp arrival anywhere but the top of a letter
 - connectors that run backwards
 - extra spacing
+- cutting the top off a letter that starts with a downstroke (an h would turn into an n)
 
 For each pair, a search tries alternatives to the defaults and keeps the best:
 
@@ -273,13 +290,14 @@ For each pair, a search tries alternatives to the defaults and keeps the best:
 - extra spacing
 - entering a closed-loop letter over the top, at its corner, or from below
 - a retrace arrival up the stem
+- cutting a short entry stroke (the hairline into i, n, u) back to the top of its stem, so a join arriving high goes straight across
 - not joining at all, which is cheap after a capital and expensive between lowercase letters
 
-The search starts from several points (the defaults, and each entry form forced on) so it doesn't get stuck. Pairs still scoring poorly then get a joint grid search over exit cut, arrival, entry form and spacing, since some fixes need two settings to change at once. With these joins, Spencerian's mean join score fell from 4.6 to under 1. Its lowercase pairs average about 0.15, and every lowercase pair still joins. Capitals listed in `join_capitals` join; the rest (K, M, N…) end in a flourish that curls under or back to the left, so joining them would cut through the letter, and standing alone is traditional for them.
+The search starts from several points (the defaults, and each entry form forced on) so it doesn't get stuck. Pairs still scoring poorly then get a joint grid search over exit cut, arrival, entry form and spacing, since some fixes need two settings to change at once. In every style, lowercase pairs average a join score of about 0.1, and every lowercase pair joins. Capitals listed in `join_capitals` join; the rest (K, M, N…) end in a flourish that curls under or back to the left, so joining them would cut through the letter, and standing alone is traditional for them.
 
 The results go in `pairs.json`, which the join engine reads. Re-run `optimise` after editing glyphs. Entries marked `"manual": true` are hand-tuned and are never overwritten.
 
-Pairs that don't join are then kerned so they are spaced like normal letters (body gap = the style's letter gap, with a small clearance for flourishes):
+Pairs that don't join are then kerned so they are spaced like normal letters, with a small clearance for flourishes. The body gap is the style's letter gap, or its tighter `capital_gap` after a capital. Re-run this after changing either in `style.json`:
 
 ```bash
 python tools/pairs.py kern spencerian
@@ -309,8 +327,11 @@ Minimum x-height (mm) so 95% of counters keep at least half a pen width of white
 |---|---|---|---|
 | spencerian | 1.3 | 2.2 | 3.1 |
 | copperplate | 1.6 | 2.6 | 3.6 |
-| formal | 2.6 | 4.4 | 6.1 |
-| modern | 2.2 | 3.7 | 5.2 |
+| formal | 2.1 | 3.5 | 4.9 |
+| modern | 2.1 | 3.5 | 4.9 |
+| signature | 1.8 | 2.9 | 4.1 |
+| flowing | 1.2 | 2.1 | 2.9 |
+| roundhand | 1.4 | 2.3 | 3.2 |
 
 `--shade` widens downstrokes, so add the shading width to the pen width when using it. Narrow slivers (a t drawn up and back down its stem) and tiny knots where strokes cross are not counted: they close into a thicker line or a dot, which still reads.
 
@@ -330,13 +351,14 @@ For fixes that should come from the extractor itself, use `styles/<style>/extrac
 | `bar` | Splits a crossbar off as a separate stroke drawn after the word. |
 | `lead_in`, `lead_out`, `entry`, `exit`, `advance` | Override the automatic values. |
 
-## Known rough edges
+## Notes on the letter forms
 
-- Pen order comes from heuristics, so some glyphs are still imperfect. `python tools/audit.py` lists the suspicious ones, and the editor is the way to fix them. Examples:
-  - Copperplate's `x` is drawn as one stroke.
-  - Some Spencerian capitals retrace part of their flourish.
-- Spencerian's flourished capitals can reach into the line above at tight line spacing. Raise `line_height` in its `style.json` if that matters.
-- An Allura-based style was tried and dropped. Its letter designs (for example a d ending in a descending flick) don't suit joined writing.
+- Pen order comes from heuristics plus hand edits. `python tools/audit.py` lists glyphs whose path looks unusual (for example a stroke drawn up and back down the same line, which is how pointed tops are made), and the editor is the way to change them.
+- Some source fonts don't connect every letter. To make them join, a few letters have exits that the fonts don't have:
+  - Allura (`flowing`): b ends in a small loop at the top of its bowl; d and p end on the baseline instead of a downward flick; s runs back along its base.
+  - Alex Brush (`signature`) and Petit Formal Script (`roundhand`): g, j, y (and q in roundhand) get a descender loop that comes back up through the stem; p closes its bowl and leaves along the baseline.
+  - In every style x is drawn as one stroke through the centre, and its second diagonal is drawn after the word, like a t-bar.
+- Spencerian's capitals are tall, so its `line_height` is 8 x-heights. Lowering it lets the flourishes reach into the line above.
 - Not built: the optional neural model trained on this engine's output.
 
 ## Prior work surveyed
@@ -351,7 +373,7 @@ For fixes that should come from the extractor itself, use `styles/<style>/extrac
 ## Licence
 
 - **Code** (Python, JavaScript, the web page, tools): MIT License, see [LICENSE](LICENSE).
-- **Style data** (`styles/`, and the copies in `web/data/` and built pages): traced from fonts under the SIL Open Font License 1.1, so it is a modified version of those fonts and stays under the OFL. [styles/LICENSE.md](styles/LICENSE.md) lists each font's copyright and holds the licence. It may be used, changed and redistributed, also commercially and with any software, but not sold on its own, and it must keep those notices. The styles have their own names because "Parisienne" and "Monsieur La Doulaise" are Reserved Font Names.
+- **Style data** (`styles/`, and the copies in `web/data/` and built pages): traced from fonts under the SIL Open Font License 1.1, so it is a modified version of those fonts and stays under the OFL. [styles/LICENSE.md](styles/LICENSE.md) lists each font's copyright and holds the licence. It may be used, changed and redistributed, also commercially and with any software, but not sold on its own, and it must keep those notices. The styles have their own names because "Parisienne", "Petit Formal Script" and "Monsieur La Doulaise" are Reserved Font Names.
 - **Fonts** in `fonts/`: SIL Open Font License, see `fonts/OFL-*.txt`.
 - **numpy-derived code** in `web/cursive/rng.js` and `geometry.js`: see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 - **Your writing**: SVGs, PNGs and plotted cards made with this are not covered by any of these licences.

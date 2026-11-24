@@ -77,6 +77,10 @@ export function loadStyle(bundle) {
     use_forms: true,
     pairs: bundle.pairs ?? {},
     letter_gap: Number(meta.even_spacing ?? 0.6),
+    // least ink distance between words before one is pushed (layout.js)
+    word_clear: Number(meta.word_clear ?? Math.max(0.3, 0.9 * Number(meta.even_spacing ?? 0.6))),
+    // body gap after an unjoined capital; only the kerning tool uses it (pairs.json carries the result)
+    capital_gap: Number(meta.capital_gap ?? 0.72 * Number(meta.even_spacing ?? 0.6)),
     join_capitals: meta.join_capitals ?? "",
     counter_width: Number(meta.counter_width ?? 0.0),
   };

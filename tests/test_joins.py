@@ -7,7 +7,7 @@ from cursive.join import connector
 from cursive.layout import layout, place_word
 from cursive.variation import Variation
 
-STYLES = ["copperplate", "spencerian", "modern", "formal"]
+STYLES = ["copperplate", "spencerian", "modern", "formal", "signature", "flowing", "roundhand"]
 
 
 def available(name):
@@ -170,3 +170,65 @@ def test_symbols_never_join():
             if c in st.glyphs:
                 g = st.glyphs[c][0]
                 assert not st.can_join(a, g) and not st.can_join(g, a), (name, c)
+
+
+def test_unjoined_capitals_use_the_capital_gap(style):
+    """pairs.json kerning is current: an unjoined capital sits closer to the
+    next letter than joined lowercase letters sit to each other."""
+    from cursive.join import pair_params
+    from cursive.spacing import kern_gap, unjoined_dx
+
+    assert style.capital_gap < style.letter_gap
+    checked = 0
+    for pr in ("Ro", "Ma", "Ke", "Bo", "Ni", "Pa", "Xa"):
+        a, b = style.glyphs[pr[0]][0], style.glyphs[pr[1]][0]
+        prm = pair_params(style, a, b)
+        if prm["join"] or style.pairs.get(pr, {}).get("manual"):
+            continue
+        assert kern_gap(style, a, b) == style.capital_gap
+        assert prm["dx"] == pytest.approx(unjoined_dx(style, a, b), abs=1e-6), pr
+        checked += 1
+    assert checked
+
+
+def _word_ink(style, text):
+    """Ink of each word of a one-line layout (no variation), as point sets."""
+    lines = layout(text, style, width=None, amount=0.0)
+    assert len(lines) == 1
+    counts = [len(joined_word(style, w).paths) for w in text.split()]
+    paths = lines[0].paths
+    out, k = [], 0
+    for n in counts:
+        out.append(np.vstack([g.resample(p, 0.02) if len(p) > 1 else p for p in paths[k:k + n]]))
+        k += n
+    return out
+
+
+@pytest.mark.parametrize("text", ["Paul Kevin", "House. Kindly", "bed. Work", "of June", "daft Jim.",
+                                  "engagement. We", "quartz, judge", "Owen Tom"])
+def test_neighbouring_words_keep_clear(style, text):
+    from cursive.layout import WORD_TOUCH
+
+    A, B = _word_ink(style, text)
+    d = float(np.min(np.linalg.norm(A[:, None] - B[None], axis=2)))
+    assert d >= WORD_TOUCH - 0.03, (text, d)  # never touching, in any style
+
+
+def test_pushed_words_still_fit_the_line(style):
+    """A word pushed clear of a swash takes its extra space into account when
+    lines are broken, so no line runs past the width."""
+    text = "bed. Work of June daft Jim. House. Kindly Paul Kevin quartz, judge " * 3
+    for ln in layout(text, style, width=30.0, amount=0.0):
+        assert ln.width <= 30.0 + 1e-9
+
+
+@pytest.mark.parametrize("text", ["House. Kindly", "Paul Kevin", "Owen Tom", "May. Notes"])
+def test_word_gaps_stay_wider_than_letter_gaps(text):
+    """Flowing's exit hairlines and capital lead-ins used to close a word gap to
+    less than its letter gap, so two words read as one."""
+    st = available("flowing")
+    if st is None:
+        pytest.skip()
+    A, B = _word_ink(st, text)
+    d = float(np.min(np.linalg.norm(A[:, None] - B[None], axis=2)))
+    assert d >= st.word_clear - 0.03, (text, d)

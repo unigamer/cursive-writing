@@ -45,7 +45,7 @@ they are licensed under the same licence, reproduced at the end.
 In short: they may be used, modified and redistributed, also commercially
 and bundled with any software, but not sold on their own; each copy must
 keep these notices and the licence; and a modified version must not be
-called by a Reserved Font Name ("Parisienne" and "Monsieur La Doulaise"),
+called by a Reserved Font Name ("Parisienne", "Petit Formal Script" and "Monsieur La Doulaise"),
 which is why the styles have their own names.
 
 Writing produced with these styles (SVG, PNG, plotted ink) is not covered
@@ -56,6 +56,13 @@ by the licence and may be used freely.
 Traced from PinyonScript-Regular.ttf (SIL Open Font License).
 
 - Original font: Copyright 2024 The Pinyon Project Authors (https://github.com/SorkinType/Pinyon)
+- Modifications: Copyright (c) 2026 unigamer
+
+## Flowing (`styles/flowing/`)
+
+Traced from Allura-Regular.ttf (SIL Open Font License).
+
+- Original font: Copyright 2010 The Allura Project Authors (https://github.com/googlefonts/allura)
 - Modifications: Copyright (c) 2026 unigamer
 
 ## Formal (`styles/formal/`)
@@ -70,6 +77,20 @@ Traced from GreatVibes-Regular.ttf (SIL Open Font License).
 Traced from Parisienne-Regular.ttf (SIL Open Font License).
 
 - Original font: Copyright (c) 2012 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved Font Names "Parisienne"
+- Modifications: Copyright (c) 2026 unigamer
+
+## Roundhand (`styles/roundhand/`)
+
+Traced from PetitFormalScript-Regular.ttf (SIL Open Font License).
+
+- Original font: Copyright (c) 2011, Pablo Impallari (www.impallari.com|impallari@gmail.com), Copyright (c) 2011, Brenda Gallo. (gbrenda1987@gmail.com), Copyright (c) 2011, Rodrigo Fuenzalida (www.rfuenzalida.com|hello@rfuenzalida.com), with Reserved Font Name Petit Formal Script.
+- Modifications: Copyright (c) 2026 unigamer
+
+## Signature (`styles/signature/`)
+
+Traced from AlexBrush-Regular.ttf (SIL Open Font License).
+
+- Original font: Copyright 2011 The Alex Brush Project Authors (https://github.com/googlefonts/alex-brush)
 - Modifications: Copyright (c) 2026 unigamer
 
 ## Spencerian (`styles/spencerian/`)

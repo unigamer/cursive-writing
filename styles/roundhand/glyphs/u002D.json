@@ -1,0 +1,41 @@
+{
+ "char": "-",
+ "advance": 0.8893,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.1455,
+     0.5182
+    ],
+    [
+     0.2022,
+     0.5494
+    ],
+    [
+     0.2202,
+     0.554
+    ],
+    [
+     0.628,
+     0.5548
+    ],
+    [
+     0.6554,
+     0.5608
+    ],
+    [
+     0.7045,
+     0.5864
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.1,
+ "entry": "mid",
+ "exit": "high",
+ "source": "PetitFormalScript-Regular.ttf"
+}

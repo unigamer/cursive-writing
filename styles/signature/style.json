@@ -1,0 +1,16 @@
+{
+  "name": "Signature",
+  "source_font": "AlexBrush-Regular.ttf (SIL Open Font License)",
+  "slant": 0,
+  "tracking": 0.0,
+  "word_space": 0.7,
+  "line_height": 3.8,
+  "tension": 0.45,
+  "no_join_after": ".,;:!?'\"-&0123456789",
+  "no_join_before": ".,;:!?'\"-&0123456789",
+  "no_join_pairs": [],
+  "variation": {},
+  "glyph_slant": 0.8502,
+  "even_spacing": 0.52,
+  "counter_width": 0.255
+}

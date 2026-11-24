@@ -93,11 +93,20 @@ def ink_edges(paths, slant: float, side: str) -> float | None:
     return 0.5 * float(np.mean(vals)) + 0.5 * ext
 
 
+def kern_gap(style, a, b) -> float:
+    """Body gap for an unjoined pair. A capital standing alone before a
+    lowercase letter has no connector bridging the space, so the same gap as
+    between joined letters reads too wide; it gets the tighter capital gap."""
+    if a.char.isupper() and b.char.islower():
+        return style.capital_gap
+    return style.letter_gap
+
+
 def unjoined_dx(style, a, b, gap: float | None = None, clear: float = 0.2) -> float:
     """Spacing adjustment for a pair drawn WITHOUT a join, so it is kerned like
-    normal letters: the body gap matches the style's letter gap, and no part of
-    either letter (flourishes included) comes closer than `clear`."""
-    gap = style.letter_gap if gap is None else gap
+    normal letters: the body gap matches `kern_gap`, and no part of either
+    letter (flourishes included) comes closer than `clear`."""
+    gap = kern_gap(style, a, b) if gap is None else gap
     A = [s.points for s in a.strokes]
     B = [s.points for s in b.strokes]
     ra = ink_edges(A, style.glyph_slant, "right")

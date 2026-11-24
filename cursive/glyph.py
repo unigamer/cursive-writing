@@ -29,6 +29,12 @@ from pathlib import Path
 import numpy as np
 
 STYLES_DIR = Path(__file__).resolve().parents[1] / "styles"
+# An unjoined capital is kerned to this fraction of the letter gap: with no
+# connector bridging it, a full letter gap after a capital reads as too wide.
+CAPITAL_GAP = 0.72
+# Neighbouring words keep at least this fraction of the letter gap between
+# their ink (never less than 0.3): any closer and two words read as one.
+WORD_CLEAR = 0.9
 
 
 def glyph_name(ch: str) -> str:
@@ -118,6 +124,8 @@ class Style:
     use_forms: bool = True  # use init/fina forms when the style has them
     pairs: dict = field(default_factory=dict)  # per-pair join overrides (pairs.json)
     letter_gap: float = 0.6  # body gap between letters (even_spacing), also used to kern unjoined pairs
+    word_clear: float = 0.54  # least ink distance between words before one is pushed (layout.py)
+    capital_gap: float = 0.432  # body gap after a capital that doesn't join (default 0.72 x letter_gap)
     join_capitals: str = ""  # capitals that traditionally join to the next letter
     counter_width: float = 0.0  # narrow end (5th percentile) of letter counters, x-heights
     # (measured by tools/legibility.py --save; 0 = unknown)
@@ -156,6 +164,8 @@ class Style:
             no_join_before=set(meta.get("no_join_before", "")),
             variation=meta.get("variation", {}),
             letter_gap=float(meta.get("even_spacing", 0.6)),
+            word_clear=float(meta.get("word_clear", max(0.3, WORD_CLEAR * float(meta.get("even_spacing", 0.6))))),
+            capital_gap=float(meta.get("capital_gap", CAPITAL_GAP * float(meta.get("even_spacing", 0.6)))),
             counter_width=float(meta.get("counter_width", 0.0)),
             join_capitals=meta.get("join_capitals", ""),
         )

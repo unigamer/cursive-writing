@@ -19,8 +19,15 @@ class Line:
     baseline: float  # y of this line's baseline
 
 
-WORD_CLEAR = 0.3  # minimum distance (x-heights) between ink of neighbouring words
-WORD_PUSH_MAX = 1.2  # most a word is moved right to keep that clearance
+# Neighbouring words are kept apart by their actual ink, so flourishes, long
+# t-bars and capital swashes never close up the gap. Two tiers:
+#  - the style's `word_clear` (about one letter gap: closer than that and two
+#    words read as one), bought with a limited push so spacing stays even;
+#  - WORD_TOUCH, never broken: a swash that would cross the previous word is
+#    pushed clear however far that takes (up to WORD_TOUCH_MAX).
+WORD_PUSH_MAX = 1.2  # most a word is moved right to keep `word_clear`
+WORD_TOUCH = 0.3  # hard minimum distance (x-heights) between ink of neighbouring words
+WORD_TOUCH_MAX = 4.0  # most a word is moved right to keep WORD_TOUCH
 
 
 def clearance_push(A: np.ndarray, B: np.ndarray, clear: float, limit: float) -> float:
@@ -38,6 +45,19 @@ def clearance_push(A: np.ndarray, B: np.ndarray, clear: float, limit: float) -> 
     while closest(d) < clear and d < limit:
         d += 0.1
     return min(d, limit)
+
+
+def word_push(style: Style, prev, ink: np.ndarray, lo: float) -> float:
+    """Extra space (beyond word_space) before a word so its ink keeps clear of
+    the previous word's. `prev` is the previous word's (word, (lo, hi), ink, push)
+    entry; `ink`, `lo` are the new word's resampled ink and body left edge."""
+    _, (plo, phi), pink, _ = prev
+    A = pink - np.array([plo, 0.0])
+    B = ink + np.array([(phi - plo) + style.word_space - lo, 0.0])
+    push = clearance_push(A, B, style.word_clear, WORD_PUSH_MAX)
+    if push >= WORD_PUSH_MAX:
+        push += clearance_push(A, B + np.array([push, 0.0]), WORD_TOUCH, WORD_TOUCH_MAX - push)
+    return push
 
 
 def body_extent(paths, slant: float) -> tuple[float, float]:
@@ -108,27 +128,18 @@ def layout(text: str, style: Style, width: float | None = None, seed: int | None
     y = 0.0
     for para in text.split("\n"):
         words = para.split()
-        cur: list[tuple[Word, float]] = []
+        cur: list[tuple[Word, tuple[float, float], np.ndarray, float]] = []  # word, body extent, ink, push
         cur_w = 0.0
 
-        # words are spaced by their actual ink, so flourishes and long
-        # t-bars never close up the gap between words
         def flush():
             nonlocal cur, cur_w, y
             paths = []
             x = 0.0
-            prev_ink = None
-            for word, (lo, hi) in cur:
-                ink = np.vstack([g.resample(p, 0.03) if len(p) > 1 else p for p in word.paths])
-                shift = np.array([x - lo, 0.0])
-                if prev_ink is not None:
-                    # swashes may reach into the gap: keep them clear of the
-                    # previous word (up to a limit, so spacing stays even)
-                    push = clearance_push(prev_ink, ink + shift, WORD_CLEAR, WORD_PUSH_MAX)
+            for k, (word, (lo, hi), _, push) in enumerate(cur):
+                if k:
                     x += push
-                    shift[0] += push
-                paths.extend(p + np.array([shift[0], y]) for p in word.paths)
-                prev_ink = ink + shift
+                shift = x - lo
+                paths.extend(p + np.array([shift, y]) for p in word.paths)
                 x += (hi - lo) + style.word_space
             lines.append(Line(paths, max(x - style.word_space, 0.0), y))
             y -= style.line_height
@@ -139,11 +150,14 @@ def layout(text: str, style: Style, width: float | None = None, seed: int | None
             if not word.paths:
                 continue
             lo, hi = body_extent(word.paths, style.glyph_slant)
-            add = (hi - lo) if not cur else style.word_space + (hi - lo)
+            ink = np.vstack([g.resample(p, 0.03) if len(p) > 1 else p for p in word.paths])
+            push = word_push(style, cur[-1], ink, lo) if cur else 0.0
+            add = (hi - lo) if not cur else style.word_space + push + (hi - lo)
             if width is not None and cur and cur_w + add > width:
                 flush()
+                push = 0.0
                 add = hi - lo
-            cur.append((word, (lo, hi)))
+            cur.append((word, (lo, hi), ink, push))
             cur_w += add
         flush()
 

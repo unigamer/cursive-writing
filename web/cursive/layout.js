@@ -6,8 +6,11 @@ import { assembleWord } from "./join.js";
 import { isAlpha, isLower, options } from "./style.js";
 import { Variation } from "./variation.js";
 
-const WORD_CLEAR = 0.3;
+// Neighbouring words keep clear by their ink: style.word_clear with a limited
+// push, and WORD_TOUCH always (see layout.py).
 const WORD_PUSH_MAX = 1.2;
+const WORD_TOUCH = 0.3;
+const WORD_TOUCH_MAX = 4.0;
 
 // Python's str.split() whitespace
 const PY_SPACE = new RegExp(
@@ -47,6 +50,16 @@ export function clearancePush(A, B, clear, limit) {
   let d = 0.0;
   while (closest(d) < clear && d < limit) d += 0.1;
   return Math.min(d, limit);
+}
+
+/** Extra space (beyond word_space) before a word so its ink keeps clear of the previous word's. */
+export function wordPush(style, prev, ink, lo) {
+  const [, [plo, phi], pink] = prev;
+  const A = g.add(pink, [-plo, 0.0]);
+  const B = g.add(ink, [phi - plo + style.word_space - lo, 0.0]);
+  let push = clearancePush(A, B, style.word_clear, WORD_PUSH_MAX);
+  if (push >= WORD_PUSH_MAX) push += clearancePush(A, g.add(B, [push, 0.0]), WORD_TOUCH, WORD_TOUCH_MAX - push);
+  return push;
 }
 
 /** Left/right edge of a word's ink within the x-height band, slant removed. */
@@ -121,19 +134,12 @@ export function layout(text, style, { width = null, seed = 0, amount = 1.0, alig
     const flush = () => {
       const paths = [];
       let x = 0.0;
-      let prevInk = null;
-      for (const [word, [lo, hi]] of cur) {
-        const ink = word.paths.flatMap((p) => (p.length > 1 ? g.resample(p, 0.03) : p));
-        let sx = x - lo;
-        if (prevInk !== null) {
-          const push = clearancePush(prevInk, g.add(ink, [sx, 0.0]), WORD_CLEAR, WORD_PUSH_MAX);
-          x += push;
-          sx += push;
-        }
+      cur.forEach(([word, [lo, hi], , push], k) => {
+        if (k) x += push;
+        const sx = x - lo;
         for (const p of word.paths) paths.push(g.add(p, [sx, y]));
-        prevInk = g.add(ink, [sx, 0.0]);
         x += hi - lo + style.word_space;
-      }
+      });
       lines.push({ paths, width: Math.max(x - style.word_space, 0.0), baseline: y });
       y -= style.line_height;
       cur = [];
@@ -143,12 +149,15 @@ export function layout(text, style, { width = null, seed = 0, amount = 1.0, alig
       const [word] = placeWord(wtext, style, v);
       if (!word.paths.length) continue;
       const [lo, hi] = bodyExtent(word.paths, style.glyph_slant);
-      let addW = !cur.length ? hi - lo : style.word_space + (hi - lo);
+      const ink = word.paths.flatMap((p) => (p.length > 1 ? g.resample(p, 0.03) : p));
+      let push = cur.length ? wordPush(style, cur[cur.length - 1], ink, lo) : 0.0;
+      let addW = !cur.length ? hi - lo : style.word_space + push + (hi - lo);
       if (width !== null && cur.length && curW + addW > width) {
         flush();
+        push = 0.0;
         addW = hi - lo;
       }
-      cur.push([word, [lo, hi]]);
+      cur.push([word, [lo, hi], ink, push]);
       curW += addW;
     }
     flush();

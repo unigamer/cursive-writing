@@ -4,7 +4,7 @@
   "slant": 0,
   "tracking": 0.0,
   "word_space": 1.1,
-  "line_height": 7.0,
+  "line_height": 8.0,
   "tension": 0.45,
   "no_join_after": ".,;:!?'\"-&0123456789",
   "no_join_before": ".,;:!?'\"-&0123456789",
@@ -12,6 +12,6 @@
   "variation": {},
   "glyph_slant": 1.1378,
   "even_spacing": 0.9,
-  "counter_width": 0.336,
+  "counter_width": 0.335,
   "join_capitals": "HIJLQUV"
 }

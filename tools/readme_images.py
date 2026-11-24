@@ -25,7 +25,7 @@ from sheets import COLORS, debug_word  # noqa: E402
 
 OUT = ROOT / "docs" / "images"
 INK = (25, 25, 60)
-STYLES = ["copperplate", "spencerian", "modern", "formal"]
+STYLES = ["copperplate", "spencerian", "modern", "formal", "signature", "flowing", "roundhand"]
 
 
 def render(text, style, path, size=5.0, width=1000.0, dpi=150, pen=0.35, pad=4.0, **kw):

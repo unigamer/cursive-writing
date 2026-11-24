@@ -34,7 +34,8 @@ Run the tests and `build_web.py --check` locally before releasing; a failure in 
 - **Keep Python and JS in lockstep.** Any change to runtime code in `cursive/` (glyph, join, variation, layout, spacing, shade, render) must be mirrored in `web/cursive/`. `tests/test_web.py` checks byte-identical SVG and the numpy-exact RNG in `web/cursive/rng.js`; don't "simplify" rounding or summation order there.
 - **After editing anything in `styles/`, re-run `tools/build_web.py`** and commit the regenerated `web/data/`, `styles/LICENSE.md` and `web/LICENSES.txt`.
 - After editing glyphs, re-run `tools/pairs.py optimise <style>`. Never overwrite pair entries marked `"manual": true` or glyphs marked `"edited"`.
+- After changing `even_spacing` or `capital_gap` in a `style.json` (or after `optimise`), re-run `tools/pairs.py kern <style>` so unjoined pairs are re-kerned.
 - Judge visual changes by rendering PNGs (`tools/sheets.py`, `--png`); there is no plotter available to test on.
-- Licensing: code is MIT, style data is OFL-1.1. The standalone HTML must carry all notices (build_web.py embeds them, tests enforce). Style names must not use the fonts' Reserved Font Names (Parisienne, Monsieur La Doulaise).
+- Licensing: code is MIT, style data is OFL-1.1. The standalone HTML must carry all notices (build_web.py embeds them, tests enforce). Style names must not use the fonts' Reserved Font Names (Parisienne, Petit Formal Script, Monsieur La Doulaise).
 - Don't write plotter trademark names in code, docs or UI; say "pen plotter".
 - Don't commit unless asked.

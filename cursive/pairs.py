@@ -109,6 +109,16 @@ def _opens_with_low_loop(b: Glyph) -> bool:
     return _LOW_LOOP[k]
 
 
+def _downstroke_start(b: Glyph) -> float:
+    """Penalty weight for cutting into a letter that opens with a downstroke
+    from the top (no entry hairline of its own): 0 if it opens otherwise,
+    2 for an ascender top (h, k, l, b), 1 for an x-height stem (i, r, u)."""
+    p = b.main.points
+    if b.lead_in > 0 or len(p) < 2 or p[0, 1] < 0.8 or g.start_tangent(p, 0.06)[1] > -0.3:
+        return 0.0
+    return 2.0 if p[0, 1] > 1.3 else 1.0
+
+
 def evaluate(style: Style, a: Glyph, b: Glyph, prm: dict) -> JoinResult:
     """Join a->b with parameters `prm` and score it."""
     A = a.main.points
@@ -207,6 +217,9 @@ def evaluate(style: Style, a: Glyph, b: Glyph, prm: dict) -> JoinResult:
     parts["backwards"] = 2.0 * max(0.0, back - 0.08)
 
     parts["dx"] = 1.5 * abs(prm["dx"])
+    # cutting the top off a letter that starts with a downstroke shortens the
+    # letter itself (an h turns into an n): the connector should climb to the top
+    parts["chop"] = _downstroke_start(b) * max(0.0, prm["lead_in"] - b.lead_in)
     return JoinResult(sum(parts.values()), parts, prev, conn, nxt)
 
 
@@ -215,6 +228,22 @@ def evaluate(style: Style, a: Glyph, b: Glyph, prm: dict) -> JoinResult:
 
 def _descends(gl: Glyph) -> bool:
     return float(gl.main.points[:, 1].min()) < -0.6
+
+
+def _first_peak(b: Glyph) -> float:
+    """Arc length to the top of a letter's opening upstroke (a short entry stub
+    rising into a stem, as in i, n, u). Cutting there lets a join that arrives
+    high (after b, o, v, w) go straight across to the top of the stem instead
+    of diving to the stub. 0 if the letter does not open by rising to x-height."""
+    p = b.main.points
+    if len(p) < 3 or p[0, 1] > 0.7:
+        return 0.0
+    i = 0
+    while i < len(p) - 1 and p[i + 1, 1] >= p[i, 1] - 1e-3:
+        i += 1
+    if p[i, 1] < 0.75:
+        return 0.0
+    return round(max(0.0, float(g.arc_lengths(p)[i]) - 0.02), 3)
 
 
 def _candidates(style: Style, a: Glyph, b: Glyph, base: dict) -> dict[str, list]:
@@ -226,7 +255,7 @@ def _candidates(style: Style, a: Glyph, b: Glyph, base: dict) -> dict[str, list]
                                          0.15, 0.3, 0.45, 0.6)
                  if 0 <= v <= 0.6 * La})
     li = sorted({round(v, 3) for v in (base["lead_in"], 0.0, base["lead_in"] * 0.5,
-                                         base["lead_in"] + 0.15, 0.15, 0.3)
+                                         base["lead_in"] + 0.15, 0.15, 0.3, _first_peak(b))
                  if 0 <= v <= 0.6 * Lb})
     return {
         "lead_out": lo,
@@ -255,6 +284,9 @@ def optimise_pair(style: Style, a: Glyph, b: Glyph, passes: int = 2) -> tuple[di
     # stuck (e.g. an exit cut that only looks bad until the entry form changes)
     starts = [dict(base), {**base, "over": True}, {**base, "over": "corner"},
               {**base, "over": "bottom"}, {**base, "arrive": "glyph"}]
+    peak = _first_peak(b)
+    if peak in cands["lead_in"]:
+        starts.append({**base, "lead_in": peak, "arrive": "chord"})
     for start in starts:
         cur = start
         cur_r = evaluate(style, a, b, cur) if start is not base else default
@@ -277,8 +309,12 @@ def optimise_pair(style: Style, a: Glyph, b: Glyph, passes: int = 2) -> tuple[di
     if best_r.score > GRID_ABOVE:
         # coordinate descent moves one setting at a time and can stall where
         # two must change together (exit cut + arrival); try them jointly
-        for lo, arr, ov, dx in itertools.product(cands["lead_out"], cands["arrive"], cands["over"], cands["dx"]):
-            trial = {**best, "lead_out": lo, "arrive": arr, "over": ov, "dx": dx}
+        # (with or without cutting the entry up to its first peak)
+        # (capitals are skipped: they rarely join, and their big glyphs are slow)
+        entries = sorted({best["lead_in"], peak} if peak in cands["lead_in"] and not a.char.isupper()
+                         else {best["lead_in"]})
+        for li, lo, arr, ov, dx in itertools.product(entries, cands["lead_out"], cands["arrive"], cands["over"], cands["dx"]):
+            trial = {**best, "lead_in": li, "lead_out": lo, "arrive": arr, "over": ov, "dx": dx}
             r = evaluate(style, a, b, trial)
             if r.score < best_r.score - 1e-6:
                 best, best_r = trial, r

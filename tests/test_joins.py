@@ -259,3 +259,31 @@ def test_every_space_counts():
     assert layout("cat dog   ", st, width=None, amount=0.0)[0].width == pytest.approx(plain.width)
     for ln in layout("cat" + " " * 40 + "dog", st, width=10.0, amount=0.0):
         assert len(ln.paths) and min(float(p[:, 0].min()) for p in ln.paths) < 1.0
+
+
+def test_missing_characters_are_reported(style):
+    from cursive.glyph import missing_chars_warning
+
+    groups = dict(style.char_groups())
+    assert groups["lowercase"] == "abcdefghijklmnopqrstuvwxyz"
+    assert groups["capitals"] == "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    assert groups["digits"] == "0123456789"
+    assert sum(len(c) for c in groups.values()) == len(style.glyphs)
+    assert style.missing_chars("Hello, world!\n\t ") == ""
+    assert style.missing_chars("Café crème €") == "éè€"  # each once, in order
+    assert missing_chars_warning("X", "é") == 'The X style has no glyph for "é"; it is left out.'
+
+
+def test_cli_warns_about_missing_characters_and_lists_them(tmp_path, capsys):
+    from cursive.cli import main
+
+    main(["Café €", "--style", "modern", "-o", str(tmp_path / "x.svg")])
+    err = capsys.readouterr().err
+    assert '"é", "€"' in err and "--list-chars" in err
+    main(["Cafe", "--style", "modern", "-o", str(tmp_path / "y.svg")])
+    assert "no glyph" not in capsys.readouterr().err
+    main(["--list-chars", "--style", "modern"])
+    out = capsys.readouterr().out
+    assert "abcdefghijklmnopqrstuvwxyz" in out and "£" in out
+    main(["--list-chars", "--style", "all"])
+    assert capsys.readouterr().out.count("characters, plus spaces") == len(STYLES)

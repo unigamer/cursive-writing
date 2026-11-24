@@ -191,3 +191,30 @@ class Style:
         if a.char in self.no_join_after or b.char in self.no_join_before:
             return False
         return (a.char + b.char) not in self.no_join_pairs
+
+    def char_groups(self) -> list[tuple[str, str]]:
+        """Every character this style can write, grouped for display:
+        [(group name, characters)], each group in code point order."""
+        cs = sorted(self.glyphs)
+        groups = [
+            ("lowercase", [c for c in cs if c.islower()]),
+            ("capitals", [c for c in cs if c.isupper()]),
+            ("digits", [c for c in cs if c.isdigit()]),
+            ("punctuation and symbols", [c for c in cs if not (c.islower() or c.isupper() or c.isdigit())]),
+        ]
+        return [(name, "".join(chars)) for name, chars in groups if chars]
+
+    def missing_chars(self, text: str) -> str:
+        """Characters in `text` this style has no glyph for (whitespace aside),
+        each once, in order of first appearance. They are left out when writing."""
+        out = []
+        for ch in text:
+            if not ch.isspace() and ch not in self.glyphs and ch not in out:
+                out.append(ch)
+        return "".join(out)
+
+
+def missing_chars_warning(style_name: str, missing: str) -> str:
+    """The warning shown for characters a style can't write (CLI and web page)."""
+    shown = ", ".join(f'"{c}"' for c in missing)
+    return f"The {style_name} style has no glyph for {shown}; {'it is' if len(missing) == 1 else 'they are'} left out."

@@ -73,6 +73,7 @@ python3 -m venv .venv && .venv/bin/pip install numpy pillow
 | `--variation` | `0` gives identical letters every time; `1` is the default; higher is looser. |
 | `--shade` | Imitates pointed-pen thick downstrokes by adding extra pen passes, up to this width in mm. The passes are woven into the stroke, so they add no pen lifts. |
 | `--align` | `left` / `center` / `right` |
+| `--list-chars` | Print every character the style can write and exit (`--style all` lists every style). Any other character in the text is left out, with a warning naming it; the web page shows the same warning and lists the characters under *Style*. |
 
 ### What the options do
 
@@ -228,7 +229,7 @@ Glyphs are plain JSON in `styles/<style>/glyphs/`, in x-height units (baseline y
 
 Extract a font's own alternates by glyph name with `--variants`, e.g. `--variants "e.fina t.fina b.init g.alt"`. Only Great Vibes (formal) ships useful ones; the other fonts have none, which is why loop variation and flourishes are procedural.
 
-Every style also has digits, `. , ; : ! ? ' " - & ( ) / % £ $ @ # + = *`.
+Every style also has digits, `. , ; : ! ? ' " - & ( ) / % £ $ @ # + = *`. Accented letters, curly quotes and dashes are not included yet; `--list-chars` shows the exact set.
 
 ## Tuning a style
 

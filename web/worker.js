@@ -1,8 +1,8 @@
 // Runs the engine off the main thread so typing stays responsive.
 // Messages in:  {id, text, style, opts}
-// Messages out: {id, svg, stats, warnings, lines, ms} or {id, error}
+// Messages out: {id, svg, stats, warnings, lines, chars, ms} or {id, error}
 
-import { generate, loadStyle } from "./cursive/index.js";
+import { charGroups, generate, loadStyle } from "./cursive/index.js";
 
 const styles = new Map(); // id -> Promise<style>
 
@@ -44,6 +44,7 @@ self.onmessage = async (e) => {
       stats: out.stats,
       warnings: out.warnings,
       lines: out.lines,
+      chars: charGroups(st),
       ms: performance.now() - t0,
     });
   } catch (err) {

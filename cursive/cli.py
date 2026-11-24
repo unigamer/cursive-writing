@@ -12,7 +12,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .glyph import STYLES_DIR, Style
+from .glyph import STYLES_DIR, Style, missing_chars_warning
 from .layout import layout
 from .render import lines_to_mm, page_size, stats, to_svg
 
@@ -20,8 +20,11 @@ from .render import lines_to_mm, page_size, stats, to_svg
 def main(argv=None):
     styles = sorted(p.name for p in STYLES_DIR.iterdir() if (p / "glyphs").is_dir()) if STYLES_DIR.exists() else []
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("text", help="text to write; use '-' to read stdin")
-    ap.add_argument("--style", default=styles[0] if styles else None, help=f"one of {styles} or a path")
+    ap.add_argument("text", nargs="?", help="text to write; use '-' to read stdin")
+    ap.add_argument("--style", default=styles[0] if styles else None,
+                    help=f"one of {styles} or a path (--list-chars also takes 'all')")
+    ap.add_argument("--list-chars", action="store_true",
+                    help="print every character the style can write, then exit")
     ap.add_argument("--size", type=float, default=6.0, help="x-height in mm (default 6)")
     ap.add_argument("--page", default="a4", help="a4, a5, a4-landscape, letter, or WxH in mm")
     ap.add_argument("--margin", type=float, default=20.0, help="page margin in mm")
@@ -34,9 +37,21 @@ def main(argv=None):
     ap.add_argument("-o", "--out", default="out.svg")
     ap.add_argument("--png", help="also write a PNG preview")
     args = ap.parse_args(argv)
+    if args.list_chars:
+        for name in (styles if args.style == "all" else [args.style]):
+            print_chars(Style.load(name))
+        return
+    if args.text is None:
+        ap.error("the text to write is required (or use --list-chars)")
+    if args.style == "all":
+        ap.error("--style all only works with --list-chars")
 
     text = sys.stdin.read() if args.text == "-" else args.text.replace("\\n", "\n")
     style = Style.load(args.style)
+    missing = style.missing_chars(text)
+    if missing:
+        msg = missing_chars_warning(style.name, missing)
+        print(f"warning: {msg[0].lower()}{msg[1:-1]} (see --list-chars)", file=sys.stderr)
     pw, ph = page_size(args.page)
     lines, mm = make_page(text, style, size=args.size, page=(pw, ph), margin=args.margin, align=args.align,
                           seed=args.seed, variation=args.variation, pen=args.pen, shade=args.shade)
@@ -58,6 +73,13 @@ def main(argv=None):
           f"{s['pen_down_mm'] / 1000:.2f} m drawn")
     if args.png:
         save_png(mm, (pw, ph), args.png)
+
+
+def print_chars(style: Style) -> None:
+    groups = style.char_groups()
+    print(f"{style.name}: {sum(len(c) for _, c in groups)} characters, plus spaces and line breaks")
+    for name, chars in groups:
+        print(f"  {name + ':':25s}{' '.join(chars) if name.startswith('punct') else chars}")
 
 
 def make_page(text, style, size=6.0, page=(210, 297), margin=20.0, align="left", seed=0,

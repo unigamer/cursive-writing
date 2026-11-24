@@ -12,6 +12,10 @@ import { cutEnd, cutStart } from "./join.js";
 export const isAlpha = (c) => /^\p{L}$/u.test(c);
 export const isLower = (c) => c !== c.toUpperCase() && c === c.toLowerCase();
 export const isUpper = (c) => c !== c.toLowerCase() && c === c.toUpperCase();
+// Python's str.isspace()
+export const isSpace = (c) =>
+  /^[\t\n\x0b\x0c\r\x1c-\x1f \x85\xa0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]$/.test(c);
+const isDigit = (c) => /^\p{Nd}$/u.test(c);
 
 function glyphFromDict(d) {
   return {
@@ -154,4 +158,30 @@ function applyEvenSpacing(style, gap, chars) {
       gl.advance = right - left + gap;
     }
   }
+}
+
+/** Every character the style can write, grouped for display (Style.char_groups). */
+export function charGroups(style) {
+  const cs = [...style.glyphs.keys()].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+  const groups = [
+    ["lowercase", cs.filter((c) => isLower(c))],
+    ["capitals", cs.filter((c) => isUpper(c))],
+    ["digits", cs.filter((c) => isDigit(c))],
+    ["punctuation and symbols", cs.filter((c) => !(isLower(c) || isUpper(c) || isDigit(c)))],
+  ];
+  return groups.filter(([, chars]) => chars.length).map(([name, chars]) => [name, chars.join("")]);
+}
+
+/** Characters in `text` the style has no glyph for, once each, in order (Style.missing_chars). */
+export function missingChars(style, text) {
+  const out = [];
+  for (const ch of text) if (!isSpace(ch) && !style.glyphs.has(ch) && !out.includes(ch)) out.push(ch);
+  return out.join("");
+}
+
+/** The warning for characters a style can't write (glyph.missing_chars_warning). */
+export function missingCharsWarning(styleName, missing) {
+  const n = Array.from(missing).length;
+  const shown = Array.from(missing, (c) => `"${c}"`).join(", ");
+  return `The ${styleName} style has no glyph for ${shown}; ${n === 1 ? "it is" : "they are"} left out.`;
 }

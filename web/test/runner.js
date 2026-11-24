@@ -7,8 +7,10 @@
 //   {op: "page",  style, text, opts}            -> {svg, mm}
 //   {op: "words", style, words, seed, amount}   -> [[path, ...] per word]
 //   {op: "rng",   seed, n}                      -> a mixed stream of draws
+//   {op: "chars", style, text}                  -> {groups, missing, warning}
 
-import { Generator, generate, loadStyle, placeWord, Variation } from "../cursive/index.js";
+import { charGroups, Generator, generate, loadStyle, missingChars, placeWord, Variation } from "../cursive/index.js";
+import { missingCharsWarning } from "../cursive/style.js";
 
 const here = new URL(".", import.meta.url);
 const readText = globalThis.Deno
@@ -40,6 +42,10 @@ for (const r of requests) {
     const out = [];
     for (let i = 0; i < r.n; i++) out.push(gen.integers(3), gen.normal(0, 0.03), gen.uniform(0.5, 0.9), gen.integers(2));
     results.push(out);
+  } else if (r.op === "chars") {
+    const st = await style(r.style);
+    const missing = missingChars(st, r.text);
+    results.push({ groups: charGroups(st), missing, warning: missing ? missingCharsWarning(st.name, missing) : null });
   } else {
     throw new Error(`unknown op ${r.op}`);
   }

@@ -249,3 +249,18 @@ def test_standalone_engine_writes_the_same_pages(js_tmp, standalone):
     assert out.returncode == 0, out.stderr
     for (name, text, o), got in zip(cases, json.loads(out.stdout)):
         assert got.get("svg") == python_page(name, text, o)[1], (name, text, got.get("error"))
+
+
+@needs_js
+def test_supported_and_missing_characters_match(js_tmp):
+    from cursive.glyph import missing_chars_warning
+
+    texts = ["Café — naïve €5 «ok» 𝒜 ß\tend", "plain text, nothing missing!", "éé è é"]
+    cases = [(s, t) for s in STYLES for t in texts]
+    got = run_js([{"op": "chars", "style": s, "text": t} for s, t in cases], js_tmp)
+    for (name, text), js in zip(cases, got):
+        st = Style.load(name)
+        missing = st.missing_chars(text)
+        assert js["groups"] == [list(gr) for gr in st.char_groups()], name
+        assert js["missing"] == missing, (name, text)
+        assert js["warning"] == (missing_chars_warning(st.name, missing) if missing else None)

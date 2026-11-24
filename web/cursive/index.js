@@ -4,9 +4,9 @@
 import { layout } from "./layout.js";
 import { linesToMm, pageSize, stats, toSvg } from "./render.js";
 import { shadePaths } from "./shade.js";
-import { loadStyle } from "./style.js";
+import { charGroups, loadStyle, missingChars, missingCharsWarning } from "./style.js";
 
-export { loadStyle, layout, pageSize };
+export { charGroups, loadStyle, layout, missingChars, pageSize };
 export { placeWord } from "./layout.js";
 export { Generator } from "./rng.js";
 export { Variation } from "./variation.js";
@@ -49,6 +49,8 @@ export function generate(text, style, opts = {}) {
   const svg = toSvg(mm, page, o.pen, title);
 
   const warnings = [];
+  const missing = missingChars(style, text);
+  if (missing) warnings.push(`${missingCharsWarning(style.name, missing)} See the character list under Style.`);
   if (style.counter_width) {
     const need = minSizeFor(style.counter_width, o.pen + o.shade);
     if (o.size < need) {

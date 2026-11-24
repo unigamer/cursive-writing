@@ -3,7 +3,7 @@
 
 import * as g from "./geometry.js";
 import { assembleWord } from "./join.js";
-import { isAlpha, isLower, options } from "./style.js";
+import { isAlpha, isLower, isSpace, options } from "./style.js";
 import { Variation } from "./variation.js";
 
 // Neighbouring words keep clear by their ink: style.word_clear with a limited
@@ -12,19 +12,13 @@ const WORD_PUSH_MAX = 1.2;
 const WORD_TOUCH = 0.3;
 const WORD_TOUCH_MAX = 4.0;
 
-// Python's str.split() whitespace
-const PY_SPACE = new RegExp(
-  "[\\t\\n\\x0b\\x0c\\r\\x1c-\\x1f \\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000]+",
-);
-const IS_SPACE = new RegExp(`^${PY_SPACE.source.slice(0, -1)}$`);
-
 /** Words of a paragraph, each with the number of whitespace characters before it (see split_words). */
 export function splitWords(para) {
   const out = [];
   let n = 0;
   let cur = "";
   for (const ch of para) {
-    if (IS_SPACE.test(ch)) {
+    if (isSpace(ch)) {
       if (cur) {
         out.push([n, cur]);
         n = 0;

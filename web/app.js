@@ -168,6 +168,7 @@ function onResult(r) {
   $("status").textContent =
     `${r.lines} ${r.lines === 1 ? "line" : "lines"} · ${st.paths} pen strokes · ` +
     `${(st.pen_down_mm / 1000).toFixed(2)} m drawn · ${(st.pen_up_mm / 1000).toFixed(2)} m travel · ${Math.round(r.ms)} ms`;
+  showChars(r.chars);
   const ul = $("warnings");
   ul.replaceChildren(
     ...r.warnings.map((w) => {
@@ -177,6 +178,22 @@ function onResult(r) {
     }),
   );
   setButtons(true);
+}
+
+let shownChars = "";
+function showChars(groups) {
+  const key = JSON.stringify(groups);
+  if (!groups || key === shownChars) return;
+  shownChars = key;
+  $("charset-list").replaceChildren(
+    ...groups.flatMap(([name, chars]) => {
+      const dt = document.createElement("dt");
+      dt.textContent = name[0].toUpperCase() + name.slice(1);
+      const dd = document.createElement("dd");
+      dd.textContent = name.startsWith("punct") ? Array.from(chars).join(" ") : chars;
+      return [dt, dd];
+    }),
+  );
 }
 
 function showError(msg) {

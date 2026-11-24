@@ -144,6 +144,8 @@ def page_cases():
              dict(size=8, page="200x120", margin=10, seed=11, align="center", variation=2.0)),
             (s, "minimum running elegant handwriting cursive",
              dict(size=4, page="letter", margin=12, seed=7, align="right", pen=0.5, shade=0.4)),
+            (s, "    Two  spaces,   three   and\ta tab;\u00a0\u3000odd ones     at a wrap point too",
+             dict(size=9, page="a5", margin=10, seed=5)),
             (s, "Zebra Quilt Xylophone Juggling Kites <&>",
              dict(size=7, page="dl", margin=8, seed=123456789, variation=0.0, pen=1.0)),
         ]

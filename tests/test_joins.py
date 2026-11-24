@@ -232,3 +232,30 @@ def test_word_gaps_stay_wider_than_letter_gaps(text):
     A, B = _word_ink(st, text)
     d = float(np.min(np.linalg.norm(A[:, None] - B[None], axis=2)))
     assert d >= st.word_clear - 0.03, (text, d)
+
+
+def _body_gap(style, text):
+    lines = layout(text, style, width=None, amount=0.0)
+    from cursive.layout import body_extent
+    A, B = _word_ink(style, text)
+    k = style.glyph_slant
+    return body_extent([B], k)[0] - body_extent([A], k)[1], lines[0]
+
+
+def test_every_space_counts():
+    """Each typed space widens the gap by one word space; leading spaces indent."""
+    st = available("modern")
+    if st is None:
+        pytest.skip()
+    one, _ = _body_gap(st, "cat dog")
+    three, _ = _body_gap(st, "cat   dog")
+    assert three - one == pytest.approx(2 * st.word_space, abs=1e-9)
+    plain = layout("cat dog", st, width=None, amount=0.0)[0]
+    indented = layout("  cat dog", st, width=None, amount=0.0)[0]
+    assert indented.width - plain.width == pytest.approx(2 * st.word_space, abs=1e-9)
+    shift = min(float(p[:, 0].min()) for p in indented.paths) - min(float(p[:, 0].min()) for p in plain.paths)
+    assert shift == pytest.approx(2 * st.word_space, abs=1e-9)
+    # trailing spaces and spaces at a line break take no room
+    assert layout("cat dog   ", st, width=None, amount=0.0)[0].width == pytest.approx(plain.width)
+    for ln in layout("cat" + " " * 40 + "dog", st, width=10.0, amount=0.0):
+        assert len(ln.paths) and min(float(p[:, 0].min()) for p in ln.paths) < 1.0

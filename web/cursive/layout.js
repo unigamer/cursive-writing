@@ -16,7 +16,26 @@ const WORD_TOUCH_MAX = 4.0;
 const PY_SPACE = new RegExp(
   "[\\t\\n\\x0b\\x0c\\r\\x1c-\\x1f \\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000]+",
 );
-export const pySplit = (s) => s.split(PY_SPACE).filter((w) => w.length);
+const IS_SPACE = new RegExp(`^${PY_SPACE.source.slice(0, -1)}$`);
+
+/** Words of a paragraph, each with the number of whitespace characters before it (see split_words). */
+export function splitWords(para) {
+  const out = [];
+  let n = 0;
+  let cur = "";
+  for (const ch of para) {
+    if (IS_SPACE.test(ch)) {
+      if (cur) {
+        out.push([n, cur]);
+        n = 0;
+        cur = "";
+      }
+      n += 1;
+    } else cur += ch;
+  }
+  if (cur) out.push([n, cur]);
+  return out;
+}
 
 /** Smallest of the distances between points of A and of B shifted right by d. */
 function closestShifted(A, B, d) {
@@ -52,11 +71,11 @@ export function clearancePush(A, B, clear, limit) {
   return Math.min(d, limit);
 }
 
-/** Extra space (beyond word_space) before a word so its ink keeps clear of the previous word's. */
-export function wordPush(style, prev, ink, lo) {
+/** Extra space (beyond `gap`, the typed spaces) before a word so its ink keeps clear of the previous word's. */
+export function wordPush(style, prev, ink, lo, gap) {
   const [, [plo, phi], pink] = prev;
   const A = g.add(pink, [-plo, 0.0]);
-  const B = g.add(ink, [phi - plo + style.word_space - lo, 0.0]);
+  const B = g.add(ink, [phi - plo + gap - lo, 0.0]);
   let push = clearancePush(A, B, style.word_clear, WORD_PUSH_MAX);
   if (push >= WORD_PUSH_MAX) push += clearancePush(A, g.add(B, [push, 0.0]), WORD_TOUCH, WORD_TOUCH_MAX - push);
   return push;
@@ -129,35 +148,47 @@ export function layout(text, style, { width = null, seed = 0, amount = 1.0, alig
   const lines = [];
   let y = 0.0;
   for (const para of text.split("\n")) {
-    let cur = [];
+    let cur = []; // [word, [lo, hi], ink, gap, push]
     let curW = 0.0;
+    let lead = 0.0; // indent of the line being built (leading spaces of the paragraph)
+    let firstLine = true;
     const flush = () => {
       const paths = [];
-      let x = 0.0;
-      cur.forEach(([word, [lo, hi], , push], k) => {
-        if (k) x += push;
+      let x = lead;
+      cur.forEach(([word, [lo, hi], , gap, push], k) => {
+        if (k) x += gap + push; // spaces at a line break are dropped
         const sx = x - lo;
         for (const p of word.paths) paths.push(g.add(p, [sx, y]));
-        x += hi - lo + style.word_space;
+        x += hi - lo;
       });
-      lines.push({ paths, width: Math.max(x - style.word_space, 0.0), baseline: y });
+      lines.push({ paths, width: x, baseline: y });
       y -= style.line_height;
       cur = [];
       curW = 0.0;
+      lead = 0.0;
+      firstLine = false;
     };
-    for (const wtext of pySplit(para)) {
+    let spaces = 0;
+    for (const [n, wtext] of splitWords(para)) {
+      spaces += n;
       const [word] = placeWord(wtext, style, v);
-      if (!word.paths.length) continue;
+      if (!word.paths.length) continue; // nothing drawn: its spaces carry over to the next word
+      const gap = style.word_space * spaces;
+      spaces = 0;
       const [lo, hi] = bodyExtent(word.paths, style.glyph_slant);
       const ink = word.paths.flatMap((p) => (p.length > 1 ? g.resample(p, 0.03) : p));
-      let push = cur.length ? wordPush(style, cur[cur.length - 1], ink, lo) : 0.0;
-      let addW = !cur.length ? hi - lo : style.word_space + push + (hi - lo);
+      if (!cur.length && firstLine) {
+        lead = gap;
+        curW = lead;
+      }
+      let push = cur.length ? wordPush(style, cur[cur.length - 1], ink, lo, gap) : 0.0;
+      let addW = !cur.length ? hi - lo : gap + push + (hi - lo);
       if (width !== null && cur.length && curW + addW > width) {
         flush();
         push = 0.0;
         addW = hi - lo;
       }
-      cur.push([word, [lo, hi], ink, push]);
+      cur.push([word, [lo, hi], ink, gap, push]);
       curW += addW;
     }
     flush();

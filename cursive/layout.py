@@ -47,13 +47,33 @@ def clearance_push(A: np.ndarray, B: np.ndarray, clear: float, limit: float) -> 
     return min(d, limit)
 
 
-def word_push(style: Style, prev, ink: np.ndarray, lo: float) -> float:
-    """Extra space (beyond word_space) before a word so its ink keeps clear of
-    the previous word's. `prev` is the previous word's (word, (lo, hi), ink, push)
-    entry; `ink`, `lo` are the new word's resampled ink and body left edge."""
-    _, (plo, phi), pink, _ = prev
+def split_words(para: str) -> list[tuple[int, str]]:
+    """Words of a paragraph, each with the number of whitespace characters
+    before it. Every space counts, so "a  b" is wider than "a b" and leading
+    spaces indent; trailing spaces are dropped."""
+    out: list[tuple[int, str]] = []
+    n, cur = 0, ""
+    for ch in para:
+        if ch.isspace():
+            if cur:
+                out.append((n, cur))
+                n, cur = 0, ""
+            n += 1
+        else:
+            cur += ch
+    if cur:
+        out.append((n, cur))
+    return out
+
+
+def word_push(style: Style, prev, ink: np.ndarray, lo: float, gap: float) -> float:
+    """Extra space (beyond `gap`, the typed spaces) before a word so its ink
+    keeps clear of the previous word's. `prev` is the previous word's
+    (word, (lo, hi), ink, gap, push) entry; `ink`, `lo` are the new word's
+    resampled ink and body left edge."""
+    _, (plo, phi), pink, _, _ = prev
     A = pink - np.array([plo, 0.0])
-    B = ink + np.array([(phi - plo) + style.word_space - lo, 0.0])
+    B = ink + np.array([(phi - plo) + gap - lo, 0.0])
     push = clearance_push(A, B, style.word_clear, WORD_PUSH_MAX)
     if push >= WORD_PUSH_MAX:
         push += clearance_push(A, B + np.array([push, 0.0]), WORD_TOUCH, WORD_TOUCH_MAX - push)
@@ -127,37 +147,46 @@ def layout(text: str, style: Style, width: float | None = None, seed: int | None
     lines: list[Line] = []
     y = 0.0
     for para in text.split("\n"):
-        words = para.split()
-        cur: list[tuple[Word, tuple[float, float], np.ndarray, float]] = []  # word, body extent, ink, push
+        # word, body extent, ink, gap (typed spaces before it), push
+        cur: list[tuple[Word, tuple[float, float], np.ndarray, float, float]] = []
         cur_w = 0.0
+        lead = 0.0  # indent of the line being built (leading spaces of the paragraph)
+        first_line = True
 
         def flush():
-            nonlocal cur, cur_w, y
+            nonlocal cur, cur_w, y, lead, first_line
             paths = []
-            x = 0.0
-            for k, (word, (lo, hi), _, push) in enumerate(cur):
+            x = lead
+            for k, (word, (lo, hi), _, gap, push) in enumerate(cur):
                 if k:
-                    x += push
+                    x += gap + push  # spaces at a line break are dropped
                 shift = x - lo
                 paths.extend(p + np.array([shift, y]) for p in word.paths)
-                x += (hi - lo) + style.word_space
-            lines.append(Line(paths, max(x - style.word_space, 0.0), y))
+                x += hi - lo
+            lines.append(Line(paths, x, y))
             y -= style.line_height
-            cur, cur_w = [], 0.0
+            cur, cur_w, lead, first_line = [], 0.0, 0.0, False
 
-        for wtext in words:
+        spaces = 0
+        for n, wtext in split_words(para):
+            spaces += n
             word, _ = place_word(wtext, style, var)
             if not word.paths:
-                continue
+                continue  # nothing drawn: its spaces carry over to the next word
+            gap = style.word_space * spaces
+            spaces = 0
             lo, hi = body_extent(word.paths, style.glyph_slant)
             ink = np.vstack([g.resample(p, 0.03) if len(p) > 1 else p for p in word.paths])
-            push = word_push(style, cur[-1], ink, lo) if cur else 0.0
-            add = (hi - lo) if not cur else style.word_space + push + (hi - lo)
+            if not cur and first_line:
+                lead = gap
+                cur_w = lead
+            push = word_push(style, cur[-1], ink, lo, gap) if cur else 0.0
+            add = (hi - lo) if not cur else gap + push + (hi - lo)
             if width is not None and cur and cur_w + add > width:
                 flush()
                 push = 0.0
                 add = hi - lo
-            cur.append((word, (lo, hi), ink, push))
+            cur.append((word, (lo, hi), ink, gap, push))
             cur_w += add
         flush()
 

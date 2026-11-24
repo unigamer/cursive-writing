@@ -211,6 +211,7 @@ How it stays identical to Python:
    - Then the actual ink is checked, flourishes and hairlines included. If any part of a word comes closer to the previous word than the style's `word_clear` (default 0.9 × the letter gap), the word moves right, by at most 1.2 x-heights so spacing stays even. Closer than a letter gap, two words read as one: flowing's exit hairlines and capital lead-ins used to do this ("PaulKevin").
    - Words never touch. A big swash that is still within 0.3 x-heights after that (Spencerian W or J reaching back over the previous word) is pushed further, up to 4 x-heights.
    - Line breaks count these pushes, so a line never runs past the page width.
+   - Every space counts: two spaces leave twice the word gap, and spaces at the start of a paragraph indent its first line. Trailing spaces, and spaces where a line wraps, take no room. A tab counts as one space.
    - Lines wrap to the page width.
 5. **Even spacing** (`cursive/spacing.py`, `"even_spacing"` in `style.json`)
    - Lowercase letters are re-spaced so the gap between letter bodies is the same for every pair. Bodies are measured without their entry and exit hairlines, since the joins replace those.

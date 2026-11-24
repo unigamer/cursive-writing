@@ -156,6 +156,7 @@ function run() {
 const pending = new Map();
 
 function onResult(r) {
+  if (r.sample) return showSample(r);
   const s = pending.get(r.id);
   pending.delete(r.id);
   if (r.id !== latest) return; // a newer request is on its way
@@ -219,7 +220,7 @@ function sizeSheet(s) {
   sheetShape = shape;
   const vp = $("viewport");
   vp.style.aspectRatio = shape;
-  vp.style.maxWidth = `max(260px, calc((100vh - 190px) * ${w / h}))`;
+  vp.style.maxWidth = `max(260px, calc((100vh - 270px) * ${w / h}))`;
   $("sheet").style.aspectRatio = shape;
   setZoom(1); // a different page: start from the whole sheet again
 }
@@ -248,7 +249,7 @@ function setZoom(z, cx, cy) {
   vp.scrollLeft = left; // the browser clamps these to the sheet
   vp.scrollTop = top;
   vp.classList.toggle("zoomed", z > 1);
-  $("zoom-level").textContent = z === 1 ? "Fit" : `${Math.round(z * 100)}%`;
+  $("zoom-level").textContent = `${Math.round(z * 100)}%`;
   $("zoom-out").disabled = z <= ZOOM_MIN;
   $("zoom-in").disabled = z >= ZOOM_MAX;
   $("zoom-fit").disabled = z === 1;
@@ -378,8 +379,149 @@ function updateLabels(s) {
   $("shade-out").textContent = s.shade > 0 ? `${s.shade.toFixed(2)} mm` : "off";
   $("custom-page").hidden = s.page !== "custom";
   for (const el of document.querySelectorAll('input[name="orient"]')) el.disabled = s.page === "custom";
+  updatePicker(s.style);
   const st = styleInfo.get(s.style);
   $("style-credit").textContent = st?.source_font ? `Built from ${st.source_font.replace(/\s*\(.*\)\s*$/, "")}` : "";
+}
+
+// ------------------------------------------------------------ style picker
+//
+// A listbox in place of the <select> (kept, hidden, as the form's value) so
+// each style's name can be shown written in that style by the engine itself.
+
+const SAMPLE_OPTS = { size: 5, page: "400x60", margin: 10, align: "left", seed: 0, variation: 0, pen: 0.35, shade: 0 };
+const samples = new Map(); // style id -> <svg> cropped to its ink
+
+function requestSamples() {
+  for (const [id, st] of styleInfo) {
+    worker.postMessage({ id: 0, sample: id, style: id, text: st.name, opts: SAMPLE_OPTS });
+  }
+}
+
+/** The engine's page, cropped to the writing. Paths are "M x,y L x,y x,y ...". */
+function showSample(r) {
+  if (r.error) return;
+  const doc = new DOMParser().parseFromString(r.svg, "image/svg+xml");
+  const svg = doc.documentElement;
+  let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const p of svg.querySelectorAll("path")) {
+    const n = p.getAttribute("d").match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
+    for (let i = 0; i + 1 < n.length; i += 2) {
+      x0 = Math.min(x0, n[i]); x1 = Math.max(x1, n[i]);
+      y0 = Math.min(y0, n[i + 1]); y1 = Math.max(y1, n[i + 1]);
+    }
+  }
+  if (!Number.isFinite(x0)) return;
+  const pad = 0.6;
+  svg.setAttribute("viewBox", `${x0 - pad} ${y0 - pad} ${x1 - x0 + 2 * pad} ${y1 - y0 + 2 * pad}`);
+  svg.removeAttribute("width");
+  svg.removeAttribute("height");
+  svg.querySelector("title")?.remove();
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  samples.set(r.sample, document.importNode(svg, true));
+  for (const el of document.querySelectorAll(`[data-style="${r.sample}"] .sample`)) {
+    el.replaceChildren(samples.get(r.sample).cloneNode(true));
+  }
+}
+
+function sampleEl(id) {
+  const box = document.createElement("span");
+  box.className = "sample";
+  box.dataset.fallback = styleInfo.get(id)?.name ?? id;
+  const svg = samples.get(id);
+  if (svg) box.append(svg.cloneNode(true));
+  return box;
+}
+
+function pickerItem(id) {
+  const name = document.createElement("span");
+  name.className = "picker-name";
+  name.textContent = styleInfo.get(id)?.name ?? id;
+  return [sampleEl(id), name];
+}
+
+function buildPicker() {
+  const list = $("style-list");
+  list.replaceChildren(
+    ...[...styleInfo.keys()].map((id) => {
+      const li = document.createElement("li");
+      li.id = `style-opt-${id}`;
+      li.setAttribute("role", "option");
+      li.dataset.style = id;
+      li.append(...pickerItem(id));
+      li.addEventListener("click", () => choose(id));
+      return li;
+    }),
+  );
+  const btn = $("style-button");
+  btn.addEventListener("click", () => (list.hidden ? openPicker() : closePicker(false)));
+  btn.addEventListener("keydown", (e) => {
+    if (["ArrowDown", "ArrowUp"].includes(e.key)) {
+      e.preventDefault();
+      openPicker();
+    }
+  });
+  list.addEventListener("keydown", (e) => {
+    const ids = [...styleInfo.keys()];
+    const at = ids.indexOf(list.getAttribute("aria-activedescendant")?.slice(10));
+    const go = (i) => highlight(ids[(i + ids.length) % ids.length]);
+    if (e.key === "ArrowDown") go(at + 1);
+    else if (e.key === "ArrowUp") go(at - 1);
+    else if (e.key === "Home") go(0);
+    else if (e.key === "End") go(ids.length - 1);
+    else if (e.key === "Enter" || e.key === " ") choose(ids[at]);
+    else if (e.key === "Escape") closePicker(true);
+    else if (e.key === "Tab") closePicker(false);
+    else return;
+    e.preventDefault();
+  });
+  list.addEventListener("mousemove", (e) => {
+    const li = e.target.closest("li");
+    if (li) highlight(li.dataset.style, false);
+  });
+  document.addEventListener("pointerdown", (e) => {
+    if (!list.hidden && !e.target.closest(".picker")) closePicker(false);
+  });
+}
+
+function highlight(id, scroll = true) {
+  const list = $("style-list");
+  for (const li of list.children) li.classList.toggle("active", li.dataset.style === id);
+  list.setAttribute("aria-activedescendant", `style-opt-${id}`);
+  if (scroll) $(`style-opt-${id}`)?.scrollIntoView({ block: "nearest" });
+}
+
+function openPicker() {
+  const list = $("style-list");
+  list.hidden = false;
+  $("style-button").setAttribute("aria-expanded", "true");
+  highlight($("style").value);
+  list.focus();
+}
+
+function closePicker(refocus) {
+  $("style-list").hidden = true;
+  $("style-button").setAttribute("aria-expanded", "false");
+  if (refocus) $("style-button").focus();
+}
+
+function choose(id) {
+  closePicker(true);
+  if (!id || id === $("style").value) return;
+  $("style").value = id;
+  $("style").dispatchEvent(new Event("change", { bubbles: true }));
+}
+
+let pickerShown = "";
+function updatePicker(id) {
+  for (const li of $("style-list").children) li.setAttribute("aria-selected", String(li.dataset.style === id));
+  const key = `${id}:${samples.has(id)}`;
+  if (key === pickerShown) return;
+  pickerShown = key;
+  const btn = $("style-button");
+  btn.dataset.style = id;
+  btn.replaceChildren(...pickerItem(id));
 }
 
 // ------------------------------------------------------------ downloads
@@ -513,9 +655,10 @@ async function init() {
     toForm(readHash());
     schedule(0);
   });
-  // warm the other styles in the background so switching is instant
-  for (const id of styleInfo.keys()) worker.postMessage({ id: 0, style: id, preload: true });
+  buildPicker();
   run();
+  // write each style's name in that style; this also loads every style so switching is instant
+  requestSamples();
 }
 
 init();

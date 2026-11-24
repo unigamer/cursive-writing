@@ -1,5 +1,5 @@
 // Runs the engine off the main thread so typing stays responsive.
-// Messages in:  {id, text, style, opts}
+// Messages in:  {id, text, style, opts, sample?}  (sample is echoed back)
 // Messages out: {id, svg, stats, warnings, lines, chars, ms} or {id, error}
 
 import { charGroups, generate, loadStyle } from "./cursive/index.js";
@@ -32,7 +32,7 @@ function getStyle(id) {
 }
 
 self.onmessage = async (e) => {
-  const { id, text, style, opts, preload } = e.data;
+  const { id, text, style, opts, preload, sample } = e.data;
   try {
     const st = await getStyle(style);
     if (preload) return;
@@ -40,6 +40,7 @@ self.onmessage = async (e) => {
     const out = generate(text, st, opts);
     self.postMessage({
       id,
+      sample,
       svg: out.svg,
       stats: out.stats,
       warnings: out.warnings,
@@ -48,6 +49,6 @@ self.onmessage = async (e) => {
       ms: performance.now() - t0,
     });
   } catch (err) {
-    self.postMessage({ id, error: String(err?.message ?? err) });
+    self.postMessage({ id, sample, error: String(err?.message ?? err) });
   }
 };

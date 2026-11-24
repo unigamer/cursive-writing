@@ -79,7 +79,8 @@ def print_chars(style: Style) -> None:
     groups = style.char_groups()
     print(f"{style.name}: {sum(len(c) for _, c in groups)} characters, plus spaces and line breaks")
     for name, chars in groups:
-        print(f"  {name + ':':25s}{' '.join(chars) if name.startswith('punct') else chars}")
+        spaced = name not in ("lowercase", "capitals", "digits")  # easier to tell apart
+        print(f"  {name + ':':25s}{' '.join(chars) if spaced else chars}")
 
 
 def make_page(text, style, size=6.0, page=(210, 297), margin=20.0, align="left", seed=0,

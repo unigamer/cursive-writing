@@ -105,7 +105,7 @@ def _opens_with_low_loop(b: Glyph) -> bool:
     k = id(b)
     if k not in _LOW_LOOP:
         # e also opens with a small loop, but is meant to be entered low
-        _LOW_LOOP[k] = b.char in "adgoq" and top_start_variant(b.main.points) is not None
+        _LOW_LOOP[k] = b.char in "adgoqæœ" and top_start_variant(b.main.points) is not None
     return _LOW_LOOP[k]
 
 
@@ -325,9 +325,19 @@ def optimise_pair(style: Style, a: Glyph, b: Glyph, passes: int = 2) -> tuple[di
     return best, best_r, default
 
 
+def own_letters(style: Style) -> tuple[list[str], list[str]]:
+    """(lowercase, capitals) that have their own pair entries: a-z, A-Z, then
+    letters like æ, ß, Œ. Composed accented letters (é) are left out: they
+    share their base letter's entries."""
+    extra = sorted(c for c, v in style.glyphs.items()
+                   if c.isalpha() and not c.isascii() and not v[0].base)
+    lower = [c for c in string.ascii_lowercase if c in style.glyphs] + [c for c in extra if c.islower()]
+    upper = [c for c in string.ascii_uppercase if c in style.glyphs] + [c for c in extra if c.isupper()]
+    return lower, upper
+
+
 def all_pairs(style: Style) -> list[tuple[str, str]]:
-    lower = [c for c in string.ascii_lowercase if c in style.glyphs]
-    upper = [c for c in string.ascii_uppercase if c in style.glyphs]
+    lower, upper = own_letters(style)
     return [(x, y) for x in lower + upper for y in lower]
 
 

@@ -120,7 +120,7 @@ def place_word(text: str, style: Style, var: Variation, overrides: dict | None =
             return p @ m.T + o
 
         if placed:  # per-pair spacing adjustment from the optimised pair table
-            pair = style.pairs.get(placed[-1].glyph.char + gl.char)
+            pair = style.pairs.get(placed[-1].glyph.key + gl.key)
             if pair and pair.get("dx"):
                 x += float(pair["dx"])
                 shifted = np.array([x, 0.0]) + off

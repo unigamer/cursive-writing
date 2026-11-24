@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from cursive.glyph import STYLES_DIR, Style  # noqa: E402
 from cursive.join import pair_params  # noqa: E402
-from cursive.pairs import all_pairs, evaluate, optimise_style  # noqa: E402
+from cursive.pairs import all_pairs, evaluate, optimise_style, own_letters  # noqa: E402
 
 
 def draw_pair(d, res, ox, oy, scale, label):
@@ -82,9 +82,10 @@ def main():
         # hand-tuned pairs ("manual": true in pairs.json) are never overwritten
         f = sdir / "pairs.json"
         old = json.loads(f.read_text()).get("pairs", {}) if f.exists() else {}
-        if not args.pairs:
-            # a full run starts afresh, except for hand-tuned entries
-            old = {k: v for k, v in old.items() if v.get("manual")}
+        # a full run starts afresh, except for hand-tuned entries; a partial run
+        # does the same for its own pairs (an old override may no longer be needed)
+        redone = None if not args.pairs else {x + y for x, y in pairs}
+        old = {k: v for k, v in old.items() if v.get("manual") or (redone is not None and k not in redone)}
         old.update({k: v for k, v in out["pairs"].items() if not old.get(k, {}).get("manual")})
         f.write_text(json.dumps({"note": "per-pair join settings found by tools/pairs.py optimise",
                                  "pairs": dict(sorted(old.items()))}, indent=1))
@@ -106,8 +107,10 @@ def main():
         f = sdir / "pairs.json"
         data = json.loads(f.read_text()) if f.exists() else {"pairs": {}}
         table = data["pairs"]
-        letters = [c for c in string.ascii_letters if c in style.glyphs]
-        others = [c for c in style.glyphs if c not in letters]
+        lower, upper = own_letters(style)
+        letters = lower + upper
+        # composed letters (é) share their base letter's entries
+        others = [c for c, v in style.glyphs.items() if not c.isalpha() and not v[0].base]
         firsts = letters + others
         seconds = letters + others
         n = 0

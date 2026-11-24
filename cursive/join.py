@@ -124,7 +124,7 @@ def pair_params(style: Style, a: Glyph, b: Glyph) -> dict:
     optimised per-pair table (pairs.json)."""
     p = {"join": style.can_join(a, b), "dx": 0.0, "lead_out": a.lead_out, "lead_in": b.lead_in,
          "tension": style.tension, "arrive": "auto", "over": None}
-    o = style.pairs.get(a.char + b.char)
+    o = style.pairs.get(a.key + b.key)
     if o:
         p.update({k: v for k, v in o.items() if k in p})
         if not style.can_join(a, b):

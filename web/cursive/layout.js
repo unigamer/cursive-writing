@@ -114,7 +114,7 @@ export function placeWord(text, style, v, overrides = null) {
     const warp = isLower(ch) ? v.loopWarp(gl.strokes[0].points, style.glyph_slant) : null;
     let o = [x + off[0], 0.0 + off[1]];
     if (placed.length) {
-      const pair = style.pairs[placed[placed.length - 1].glyph.char + gl.char];
+      const pair = style.pairs[placed[placed.length - 1].glyph.key + gl.key];
       if (pair && pair.dx) {
         x += Number(pair.dx);
         o = [x + off[0], 0.0 + off[1]];

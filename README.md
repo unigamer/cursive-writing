@@ -229,7 +229,20 @@ Glyphs are plain JSON in `styles/<style>/glyphs/`, in x-height units (baseline y
 
 Extract a font's own alternates by glyph name with `--variants`, e.g. `--variants "e.fina t.fina b.init g.alt"`. Only Great Vibes (formal) ships useful ones; the other fonts have none, which is why loop variation and flourishes are procedural.
 
-Every style also has digits, `. , ; : ! ? ' " - & ( ) / % £ $ @ # + = *`. Accented letters, curly quotes and dashes are not included yet; `--list-chars` shows the exact set.
+Every style has the same 156 characters (`--list-chars` lists them):
+
+- a–z, A–Z and digits
+- the Western European letters: `à á â ã ä å æ ç è é ê ë ì í î ï ñ ò ó ô õ ö ø ù ú û ü ý ÿ œ ß`, and their capitals
+- punctuation and symbols: `. , ; : ! ? ¡ ¿ ' " ‘ ’ “ ” « » - – — … & ( ) / % £ € $ @ # + = *`
+
+**Accented letters are composed, not traced.** `é` is the style's own `e` (with its hand edits, alternates and positional forms) plus an acute accent drawn after the word, like an i-dot. It carries `"base": "e"`, so it joins, kerns and uses the pair table exactly like `e`, and `café` is written with the same pen path as `cafe`. The accents come from the source font: `tools/compose_glyphs.py` renders each accented glyph, subtracts the plain letter and traces what is left into `styles/<style>/marks.json`. Marks too small to trace become a straight dash, or a circle for a ring. The slash of ø and Ø is drawn straight through the bowl. The accented i's are built on a dotless i.
+
+```sh
+python tools/compose_glyphs.py copperplate --sheet accents.png   # (re)write every composed letter
+python tools/compose_glyphs.py copperplate --remark "éÉ"          # re-trace these marks from the font
+```
+
+Composed files are rewritten on every run, so re-run it after editing a base letter; `tests/test_compose.py` fails while any is stale. To move an accent, edit its points in `marks.json` and re-run. æ, œ, ß, Æ and Œ are traced like any other letter and have their own optimised pairs.
 
 ## Tuning a style
 
@@ -269,7 +282,7 @@ python tools/pairs.py sheet spencerian -o worst.png  # worst joins: default | op
 python tools/pairs.py sheet spencerian --pairs "Ho oa bo" -o some.png
 ```
 
-Each style has about 1,350 pairs: every lowercase pair, plus every capital followed by a lowercase letter. Each join is scored automatically (`cursive/pairs.py`), adding penalties for:
+Each style has about 1,650 pairs: every lowercase pair, plus every capital followed by a lowercase letter (a–z and A–Z, plus æ, œ, ß, Æ and Œ; composed letters such as é use their base letter's pairs). Each join is scored automatically (`cursive/pairs.py`), adding penalties for:
 
 - the connector crossing a letter, or running along on top of one
 - letters colliding

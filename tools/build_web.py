@@ -44,7 +44,8 @@ WEB_LICENSES = WEB / "LICENSES.txt"
 AUTHOR = "unigamer"  # as in LICENSE
 YEAR = 2026
 
-GLYPH_KEYS = ("char", "advance", "strokes", "lead_in", "lead_out", "entry", "exit", "hook_retrace", "final_trim")
+GLYPH_KEYS = ("char", "advance", "strokes", "lead_in", "lead_out", "entry", "exit", "hook_retrace", "final_trim",
+              "base")
 PAIR_KEYS = ("join", "dx", "lead_out", "lead_in", "tension", "arrive", "over")  # what join.pair_params reads
 
 

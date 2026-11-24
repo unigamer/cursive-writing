@@ -1,0 +1,41 @@
+{
+ "char": "\u2014",
+ "advance": 1.5929,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.0136,
+     0.6455
+    ],
+    [
+     0.0903,
+     0.6769
+    ],
+    [
+     0.1182,
+     0.6817
+    ],
+    [
+     1.4836,
+     0.6822
+    ],
+    [
+     1.5109,
+     0.6884
+    ],
+    [
+     1.5864,
+     0.7227
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.1,
+ "entry": "mid",
+ "exit": "high",
+ "source": "PinyonScript-Regular.ttf"
+}

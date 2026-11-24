@@ -1,0 +1,53 @@
+{
+ "char": "\u2026",
+ "advance": 2.9095,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.3091,
+     0.2
+    ],
+    [
+     0.1227,
+     0.0455
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  },
+  {
+   "points": [
+    [
+     1.3227,
+     0.2
+    ],
+    [
+     1.1364,
+     0.0455
+    ]
+   ],
+   "deferred": true,
+   "kind": "line"
+  },
+  {
+   "points": [
+    [
+     2.2864,
+     0.2
+    ],
+    [
+     2.1,
+     0.0455
+    ]
+   ],
+   "deferred": true,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.0,
+ "entry": "low",
+ "exit": "low",
+ "source": "MonsieurLaDoulaise-Regular.ttf"
+}

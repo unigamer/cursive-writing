@@ -66,7 +66,7 @@ export function pairParams(style, a, b) {
     arrive: "auto",
     over: null,
   };
-  const o = style.pairs[a.char + b.char];
+  const o = style.pairs[a.key + b.key];
   if (o) {
     for (const k of Object.keys(o)) if (k in p) p[k] = o[k];
     if (!canJoin(style, a, b)) p.join = false;

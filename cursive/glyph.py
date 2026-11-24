@@ -69,6 +69,12 @@ class Glyph:
     exit: str = "low"
     hook_retrace: bool = False  # when joined, re-draw the cut lead-in as a flick out and back
     final_trim: float = 0.0  # arc length trimmed from the exit tail when the glyph ends a word
+    base: str = ""  # an accented letter composed on this base (é -> e) joins, kerns and pairs like it
+
+    @property
+    def key(self) -> str:
+        """The character this glyph joins and kerns as: its base letter, or itself."""
+        return self.base or self.char
 
     @property
     def main(self) -> Stroke:
@@ -94,6 +100,7 @@ class Glyph:
             exit=d.get("exit", "low"),
             hook_retrace=bool(d.get("hook_retrace", False)),
             final_trim=float(d.get("final_trim", 0.0)),
+            base=d.get("base", ""),
         )
 
 
@@ -174,7 +181,8 @@ class Style:
         if meta.get("even_spacing"):
             from .spacing import apply_even_spacing  # local import: spacing uses join
 
-            apply_even_spacing(style, float(meta["even_spacing"]), "abcdefghijklmnopqrstuvwxyz")
+            lower = "".join(sorted({c for c in glyphs if c.islower()} | {c for c, _ in forms if c.islower()}))
+            apply_even_spacing(style, float(meta["even_spacing"]), lower)
         return style
 
     def options(self, ch: str, position: str) -> list[Glyph]:
@@ -188,17 +196,19 @@ class Style:
             return False  # digits, punctuation and symbols always stand alone
         if a.exit == "none" or b.entry == "none":
             return False
-        if a.char in self.no_join_after or b.char in self.no_join_before:
+        if a.key in self.no_join_after or b.key in self.no_join_before:
             return False
-        return (a.char + b.char) not in self.no_join_pairs
+        return (a.key + b.key) not in self.no_join_pairs
 
     def char_groups(self) -> list[tuple[str, str]]:
         """Every character this style can write, grouped for display:
         [(group name, characters)], each group in code point order."""
         cs = sorted(self.glyphs)
         groups = [
-            ("lowercase", [c for c in cs if c.islower()]),
-            ("capitals", [c for c in cs if c.isupper()]),
+            ("lowercase", [c for c in cs if c.isascii() and c.islower()]),
+            ("capitals", [c for c in cs if c.isascii() and c.isupper()]),
+            ("more letters", [c for c in cs if not c.isascii() and c.islower()]
+             + [c for c in cs if not c.isascii() and c.isupper()]),
             ("digits", [c for c in cs if c.isdigit()]),
             ("punctuation and symbols", [c for c in cs if not (c.islower() or c.isupper() or c.isdigit())]),
         ]

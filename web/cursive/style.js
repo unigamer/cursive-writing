@@ -32,6 +32,9 @@ function glyphFromDict(d) {
     exit: d.exit ?? "low",
     hook_retrace: Boolean(d.hook_retrace ?? false),
     final_trim: Number(d.final_trim ?? 0.0),
+    base: d.base ?? "",
+    // the character this glyph joins and kerns as: its base letter (é -> e), or itself
+    key: d.base || d.char,
   };
 }
 
@@ -88,7 +91,10 @@ export function loadStyle(bundle) {
     join_capitals: meta.join_capitals ?? "",
     counter_width: Number(meta.counter_width ?? 0.0),
   };
-  if (meta.even_spacing) applyEvenSpacing(style, Number(meta.even_spacing), "abcdefghijklmnopqrstuvwxyz");
+  if (meta.even_spacing) {
+    const lower = new Set([...glyphs.keys(), ...[...forms.keys()].map((k) => k.split("|")[0])].filter((c) => isLower(c)));
+    applyEvenSpacing(style, Number(meta.even_spacing), [...lower].join(""));
+  }
   return style;
 }
 
@@ -102,8 +108,8 @@ export function options(style, ch, position) {
 export function canJoin(style, a, b) {
   if (!(isAlpha(a.char) && isAlpha(b.char))) return false;
   if (a.exit === "none" || b.entry === "none") return false;
-  if (style.no_join_after.has(a.char) || style.no_join_before.has(b.char)) return false;
-  return !style.no_join_pairs.has(a.char + b.char);
+  if (style.no_join_after.has(a.key) || style.no_join_before.has(b.key)) return false;
+  return !style.no_join_pairs.has(a.key + b.key);
 }
 
 // ------------------------------------------------------------ even spacing
@@ -163,9 +169,11 @@ function applyEvenSpacing(style, gap, chars) {
 /** Every character the style can write, grouped for display (Style.char_groups). */
 export function charGroups(style) {
   const cs = [...style.glyphs.keys()].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+  const ascii = (c) => c.codePointAt(0) < 128;
   const groups = [
-    ["lowercase", cs.filter((c) => isLower(c))],
-    ["capitals", cs.filter((c) => isUpper(c))],
+    ["lowercase", cs.filter((c) => ascii(c) && isLower(c))],
+    ["capitals", cs.filter((c) => ascii(c) && isUpper(c))],
+    ["more letters", [...cs.filter((c) => !ascii(c) && isLower(c)), ...cs.filter((c) => !ascii(c) && isUpper(c))]],
     ["digits", cs.filter((c) => isDigit(c))],
     ["punctuation and symbols", cs.filter((c) => !(isLower(c) || isUpper(c) || isDigit(c)))],
   ];

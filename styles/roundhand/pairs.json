@@ -209,6 +209,26 @@
    "join": false,
    "dx": 0.187
   },
+  "!\u00c6": {
+   "join": false,
+   "dx": 0.079
+  },
+  "!\u00df": {
+   "join": false,
+   "dx": 0.02
+  },
+  "!\u00e6": {
+   "join": false,
+   "dx": 0.02
+  },
+  "!\u0152": {
+   "join": false,
+   "dx": 0.096
+  },
+  "!\u0153": {
+   "join": false,
+   "dx": 0.02
+  },
   "\"A": {
    "join": false,
    "dx": 0.0
@@ -414,6 +434,26 @@
    "dx": 0.0
   },
   "\"z": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\"\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\"\u00df": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\"\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\"\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\"\u0153": {
    "join": false,
    "dx": 0.0
   },
@@ -625,6 +665,26 @@
    "join": false,
    "dx": 0.283
   },
+  "#\u00c6": {
+   "join": false,
+   "dx": 0.175
+  },
+  "#\u00df": {
+   "join": false,
+   "dx": 0.116
+  },
+  "#\u00e6": {
+   "join": false,
+   "dx": 0.116
+  },
+  "#\u0152": {
+   "join": false,
+   "dx": 0.192
+  },
+  "#\u0153": {
+   "join": false,
+   "dx": 0.116
+  },
   "$A": {
    "join": false,
    "dx": 0.102
@@ -832,6 +892,26 @@
   "$z": {
    "join": false,
    "dx": 0.271
+  },
+  "$\u00c6": {
+   "join": false,
+   "dx": 0.163
+  },
+  "$\u00df": {
+   "join": false,
+   "dx": 0.105
+  },
+  "$\u00e6": {
+   "join": false,
+   "dx": 0.104
+  },
+  "$\u0152": {
+   "join": false,
+   "dx": 0.18
+  },
+  "$\u0153": {
+   "join": false,
+   "dx": 0.105
   },
   "%A": {
    "join": false,
@@ -1041,6 +1121,26 @@
    "join": false,
    "dx": 0.403
   },
+  "%\u00c6": {
+   "join": false,
+   "dx": 0.295
+  },
+  "%\u00df": {
+   "join": false,
+   "dx": 0.236
+  },
+  "%\u00e6": {
+   "join": false,
+   "dx": 0.236
+  },
+  "%\u0152": {
+   "join": false,
+   "dx": 0.312
+  },
+  "%\u0153": {
+   "join": false,
+   "dx": 0.236
+  },
   "&A": {
    "join": false,
    "dx": 0.039
@@ -1249,6 +1349,26 @@
    "join": false,
    "dx": 0.209
   },
+  "&\u00c6": {
+   "join": false,
+   "dx": 0.101
+  },
+  "&\u00df": {
+   "join": false,
+   "dx": 0.042
+  },
+  "&\u00e6": {
+   "join": false,
+   "dx": 0.042
+  },
+  "&\u0152": {
+   "join": false,
+   "dx": 0.117
+  },
+  "&\u0153": {
+   "join": false,
+   "dx": 0.042
+  },
   "'A": {
    "join": false,
    "dx": 0.0
@@ -1454,6 +1574,26 @@
    "dx": 0.0
   },
   "'z": {
+   "join": false,
+   "dx": 0.0
+  },
+  "'\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "'\u00df": {
+   "join": false,
+   "dx": 0.0
+  },
+  "'\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "'\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  "'\u0153": {
    "join": false,
    "dx": 0.0
   },
@@ -1665,6 +1805,26 @@
    "join": false,
    "dx": -0.063
   },
+  "(\u00c6": {
+   "join": false,
+   "dx": -0.171
+  },
+  "(\u00df": {
+   "join": false,
+   "dx": -0.23
+  },
+  "(\u00e6": {
+   "join": false,
+   "dx": -0.23
+  },
+  "(\u0152": {
+   "join": false,
+   "dx": -0.155
+  },
+  "(\u0153": {
+   "join": false,
+   "dx": -0.23
+  },
   ")A": {
    "join": false,
    "dx": 0.198
@@ -1872,6 +2032,26 @@
   ")z": {
    "join": false,
    "dx": 0.368
+  },
+  ")\u00c6": {
+   "join": false,
+   "dx": 0.26
+  },
+  ")\u00df": {
+   "join": false,
+   "dx": 0.201
+  },
+  ")\u00e6": {
+   "join": false,
+   "dx": 0.201
+  },
+  ")\u0152": {
+   "join": false,
+   "dx": 0.276
+  },
+  ")\u0153": {
+   "join": false,
+   "dx": 0.201
   },
   "*A": {
    "join": false,
@@ -2081,6 +2261,26 @@
    "join": false,
    "dx": 0.223
   },
+  "*\u00c6": {
+   "join": false,
+   "dx": 0.115
+  },
+  "*\u00df": {
+   "join": false,
+   "dx": 0.056
+  },
+  "*\u00e6": {
+   "join": false,
+   "dx": 0.056
+  },
+  "*\u0152": {
+   "join": false,
+   "dx": 0.132
+  },
+  "*\u0153": {
+   "join": false,
+   "dx": 0.056
+  },
   "+A": {
    "join": false,
    "dx": 0.142
@@ -2289,6 +2489,26 @@
    "join": false,
    "dx": 0.312
   },
+  "+\u00c6": {
+   "join": false,
+   "dx": 0.204
+  },
+  "+\u00df": {
+   "join": false,
+   "dx": 0.145
+  },
+  "+\u00e6": {
+   "join": false,
+   "dx": 0.145
+  },
+  "+\u0152": {
+   "join": false,
+   "dx": 0.22
+  },
+  "+\u0153": {
+   "join": false,
+   "dx": 0.145
+  },
   ",A": {
    "join": false,
    "dx": 0.0
@@ -2494,6 +2714,26 @@
    "dx": 0.0
   },
   ",z": {
+   "join": false,
+   "dx": 0.0
+  },
+  ",\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  ",\u00df": {
+   "join": false,
+   "dx": 0.14
+  },
+  ",\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  ",\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  ",\u0153": {
    "join": false,
    "dx": 0.0
   },
@@ -2705,6 +2945,26 @@
    "join": false,
    "dx": 0.308
   },
+  "-\u00c6": {
+   "join": false,
+   "dx": 0.2
+  },
+  "-\u00df": {
+   "join": false,
+   "dx": 0.141
+  },
+  "-\u00e6": {
+   "join": false,
+   "dx": 0.141
+  },
+  "-\u0152": {
+   "join": false,
+   "dx": 0.216
+  },
+  "-\u0153": {
+   "join": false,
+   "dx": 0.141
+  },
   ".A": {
    "join": false,
    "dx": 0.289
@@ -2913,6 +3173,26 @@
    "join": false,
    "dx": 0.459
   },
+  ".\u00c6": {
+   "join": false,
+   "dx": 0.351
+  },
+  ".\u00df": {
+   "join": false,
+   "dx": 0.292
+  },
+  ".\u00e6": {
+   "join": false,
+   "dx": 0.292
+  },
+  ".\u0152": {
+   "join": false,
+   "dx": 0.367
+  },
+  ".\u0153": {
+   "join": false,
+   "dx": 0.292
+  },
   "/A": {
    "join": false,
    "dx": 0.024
@@ -3120,6 +3400,26 @@
   "/z": {
    "join": false,
    "dx": 0.194
+  },
+  "/\u00c6": {
+   "join": false,
+   "dx": 0.086
+  },
+  "/\u00df": {
+   "join": false,
+   "dx": 0.027
+  },
+  "/\u00e6": {
+   "join": false,
+   "dx": 0.027
+  },
+  "/\u0152": {
+   "join": false,
+   "dx": 0.102
+  },
+  "/\u0153": {
+   "join": false,
+   "dx": 0.027
   },
   "00": {
    "join": false,
@@ -3369,6 +3669,26 @@
    "join": false,
    "dx": 0.391
   },
+  "0\u00c6": {
+   "join": false,
+   "dx": 0.283
+  },
+  "0\u00df": {
+   "join": false,
+   "dx": 0.224
+  },
+  "0\u00e6": {
+   "join": false,
+   "dx": 0.224
+  },
+  "0\u0152": {
+   "join": false,
+   "dx": 0.299
+  },
+  "0\u0153": {
+   "join": false,
+   "dx": 0.224
+  },
   "10": {
    "join": false,
    "dx": -0.022
@@ -3616,6 +3936,26 @@
   "1z": {
    "join": false,
    "dx": 0.173
+  },
+  "1\u00c6": {
+   "join": false,
+   "dx": 0.065
+  },
+  "1\u00df": {
+   "join": false,
+   "dx": 0.006
+  },
+  "1\u00e6": {
+   "join": false,
+   "dx": 0.006
+  },
+  "1\u0152": {
+   "join": false,
+   "dx": 0.082
+  },
+  "1\u0153": {
+   "join": false,
+   "dx": 0.006
   },
   "20": {
    "join": false,
@@ -3865,6 +4205,26 @@
    "join": false,
    "dx": 0.345
   },
+  "2\u00c6": {
+   "join": false,
+   "dx": 0.237
+  },
+  "2\u00df": {
+   "join": false,
+   "dx": 0.178
+  },
+  "2\u00e6": {
+   "join": false,
+   "dx": 0.178
+  },
+  "2\u0152": {
+   "join": false,
+   "dx": 0.253
+  },
+  "2\u0153": {
+   "join": false,
+   "dx": 0.178
+  },
   "30": {
    "join": false,
    "dx": 0.143
@@ -4112,6 +4472,26 @@
   "3z": {
    "join": false,
    "dx": 0.338
+  },
+  "3\u00c6": {
+   "join": false,
+   "dx": 0.23
+  },
+  "3\u00df": {
+   "join": false,
+   "dx": 0.171
+  },
+  "3\u00e6": {
+   "join": false,
+   "dx": 0.171
+  },
+  "3\u0152": {
+   "join": false,
+   "dx": 0.247
+  },
+  "3\u0153": {
+   "join": false,
+   "dx": 0.171
   },
   "40": {
    "join": false,
@@ -4361,6 +4741,26 @@
    "join": false,
    "dx": 0.428
   },
+  "4\u00c6": {
+   "join": false,
+   "dx": 0.32
+  },
+  "4\u00df": {
+   "join": false,
+   "dx": 0.261
+  },
+  "4\u00e6": {
+   "join": false,
+   "dx": 0.261
+  },
+  "4\u0152": {
+   "join": false,
+   "dx": 0.336
+  },
+  "4\u0153": {
+   "join": false,
+   "dx": 0.261
+  },
   "50": {
    "join": false,
    "dx": 0.148
@@ -4608,6 +5008,26 @@
   "5z": {
    "join": false,
    "dx": 0.343
+  },
+  "5\u00c6": {
+   "join": false,
+   "dx": 0.235
+  },
+  "5\u00df": {
+   "join": false,
+   "dx": 0.176
+  },
+  "5\u00e6": {
+   "join": false,
+   "dx": 0.176
+  },
+  "5\u0152": {
+   "join": false,
+   "dx": 0.251
+  },
+  "5\u0153": {
+   "join": false,
+   "dx": 0.176
   },
   "60": {
    "join": false,
@@ -4857,6 +5277,26 @@
    "join": false,
    "dx": 0.366
   },
+  "6\u00c6": {
+   "join": false,
+   "dx": 0.258
+  },
+  "6\u00df": {
+   "join": false,
+   "dx": 0.199
+  },
+  "6\u00e6": {
+   "join": false,
+   "dx": 0.199
+  },
+  "6\u0152": {
+   "join": false,
+   "dx": 0.275
+  },
+  "6\u0153": {
+   "join": false,
+   "dx": 0.199
+  },
   "70": {
    "join": false,
    "dx": -0.036
@@ -5104,6 +5544,26 @@
   "7z": {
    "join": false,
    "dx": 0.159
+  },
+  "7\u00c6": {
+   "join": false,
+   "dx": 0.051
+  },
+  "7\u00df": {
+   "join": false,
+   "dx": -0.008
+  },
+  "7\u00e6": {
+   "join": false,
+   "dx": -0.008
+  },
+  "7\u0152": {
+   "join": false,
+   "dx": 0.067
+  },
+  "7\u0153": {
+   "join": false,
+   "dx": -0.008
   },
   "80": {
    "join": false,
@@ -5353,6 +5813,26 @@
    "join": false,
    "dx": 0.324
   },
+  "8\u00c6": {
+   "join": false,
+   "dx": 0.216
+  },
+  "8\u00df": {
+   "join": false,
+   "dx": 0.158
+  },
+  "8\u00e6": {
+   "join": false,
+   "dx": 0.157
+  },
+  "8\u0152": {
+   "join": false,
+   "dx": 0.233
+  },
+  "8\u0153": {
+   "join": false,
+   "dx": 0.158
+  },
   "90": {
    "join": false,
    "dx": 0.13
@@ -5601,6 +6081,26 @@
    "join": false,
    "dx": 0.325
   },
+  "9\u00c6": {
+   "join": false,
+   "dx": 0.217
+  },
+  "9\u00df": {
+   "join": false,
+   "dx": 0.158
+  },
+  "9\u00e6": {
+   "join": false,
+   "dx": 0.158
+  },
+  "9\u0152": {
+   "join": false,
+   "dx": 0.233
+  },
+  "9\u0153": {
+   "join": false,
+   "dx": 0.158
+  },
   ":A": {
    "join": false,
    "dx": 0.119
@@ -5808,6 +6308,26 @@
   ":z": {
    "join": false,
    "dx": 0.289
+  },
+  ":\u00c6": {
+   "join": false,
+   "dx": 0.181
+  },
+  ":\u00df": {
+   "join": false,
+   "dx": 0.122
+  },
+  ":\u00e6": {
+   "join": false,
+   "dx": 0.122
+  },
+  ":\u0152": {
+   "join": false,
+   "dx": 0.198
+  },
+  ":\u0153": {
+   "join": false,
+   "dx": 0.122
   },
   ";A": {
    "join": false,
@@ -6017,6 +6537,26 @@
    "join": false,
    "dx": 0.239
   },
+  ";\u00c6": {
+   "join": false,
+   "dx": 0.131
+  },
+  ";\u00df": {
+   "join": false,
+   "dx": 0.072
+  },
+  ";\u00e6": {
+   "join": false,
+   "dx": 0.072
+  },
+  ";\u0152": {
+   "join": false,
+   "dx": 0.147
+  },
+  ";\u0153": {
+   "join": false,
+   "dx": 0.072
+  },
   "=A": {
    "join": false,
    "dx": 0.248
@@ -6224,6 +6764,26 @@
   "=z": {
    "join": false,
    "dx": 0.418
+  },
+  "=\u00c6": {
+   "join": false,
+   "dx": 0.31
+  },
+  "=\u00df": {
+   "join": false,
+   "dx": 0.251
+  },
+  "=\u00e6": {
+   "join": false,
+   "dx": 0.251
+  },
+  "=\u0152": {
+   "join": false,
+   "dx": 0.326
+  },
+  "=\u0153": {
+   "join": false,
+   "dx": 0.251
   },
   "?A": {
    "join": false,
@@ -6433,6 +6993,26 @@
    "join": false,
    "dx": 0.026
   },
+  "?\u00c6": {
+   "join": false,
+   "dx": -0.082
+  },
+  "?\u00df": {
+   "join": false,
+   "dx": -0.141
+  },
+  "?\u00e6": {
+   "join": false,
+   "dx": -0.141
+  },
+  "?\u0152": {
+   "join": false,
+   "dx": -0.066
+  },
+  "?\u0153": {
+   "join": false,
+   "dx": -0.141
+  },
   "@A": {
    "join": false,
    "dx": 0.052
@@ -6640,6 +7220,26 @@
   "@z": {
    "join": false,
    "dx": 0.222
+  },
+  "@\u00c6": {
+   "join": false,
+   "dx": 0.114
+  },
+  "@\u00df": {
+   "join": false,
+   "dx": 0.055
+  },
+  "@\u00e6": {
+   "join": false,
+   "dx": 0.055
+  },
+  "@\u0152": {
+   "join": false,
+   "dx": 0.13
+  },
+  "@\u0153": {
+   "join": false,
+   "dx": 0.055
   },
   "A!": {
    "join": false,
@@ -6919,9 +7519,81 @@
    "score": 0.15,
    "was": 2.607
   },
+  "A\u00a1": {
+   "join": false,
+   "dx": 0.127
+  },
   "A\u00a3": {
    "join": false,
    "dx": 0.033
+  },
+  "A\u00ab": {
+   "join": false,
+   "dx": 0.358
+  },
+  "A\u00bb": {
+   "join": false,
+   "dx": 0.234
+  },
+  "A\u00bf": {
+   "join": false,
+   "dx": 0.068
+  },
+  "A\u00df": {
+   "lead_out": 0.766,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.451
+  },
+  "A\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 12.837
+  },
+  "A\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.178,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.445,
+   "was": 5.11
+  },
+  "A\u2013": {
+   "join": false,
+   "dx": 0.276
+  },
+  "A\u2014": {
+   "join": false,
+   "dx": 0.239
+  },
+  "A\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "A\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "A\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "A\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "A\u2026": {
+   "join": false,
+   "dx": 0.235
+  },
+  "A\u20ac": {
+   "join": false,
+   "dx": 0.388
   },
   "B!": {
    "join": false,
@@ -7251,9 +7923,82 @@
    "score": 1.6,
    "was": 5.998
   },
+  "B\u00a1": {
+   "join": false,
+   "dx": -0.141
+  },
   "B\u00a3": {
    "join": false,
    "dx": -0.234
+  },
+  "B\u00ab": {
+   "join": false,
+   "dx": 0.09
+  },
+  "B\u00bb": {
+   "join": false,
+   "dx": -0.034
+  },
+  "B\u00bf": {
+   "join": false,
+   "dx": -0.2
+  },
+  "B\u00df": {
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "score": 0.177,
+   "was": 11.725
+  },
+  "B\u00e6": {
+   "join": false,
+   "dx": -0.185,
+   "lead_in": 0.15,
+   "score": 1.6,
+   "was": 24.56
+  },
+  "B\u0153": {
+   "join": false,
+   "dx": -0.185,
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "tension": 0.3,
+   "arrive": "slant",
+   "over": "bottom",
+   "score": 1.6,
+   "was": 12.495
+  },
+  "B\u2013": {
+   "join": false,
+   "dx": 0.009
+  },
+  "B\u2014": {
+   "join": false,
+   "dx": -0.029
+  },
+  "B\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "B\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "B\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "B\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "B\u2026": {
+   "join": false,
+   "dx": -0.033
+  },
+  "B\u20ac": {
+   "join": false,
+   "dx": 0.12
   },
   "C!": {
    "join": false,
@@ -7520,9 +8265,80 @@
    "score": 0.15,
    "was": 2.843
   },
+  "C\u00a1": {
+   "join": false,
+   "dx": 0.055
+  },
   "C\u00a3": {
    "join": false,
    "dx": -0.039
+  },
+  "C\u00ab": {
+   "join": false,
+   "dx": 0.286
+  },
+  "C\u00bb": {
+   "join": false,
+   "dx": 0.162
+  },
+  "C\u00bf": {
+   "join": false,
+   "dx": -0.004
+  },
+  "C\u00df": {
+   "lead_out": 0.446,
+   "lead_in": 2.039,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.4
+  },
+  "C\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.19
+  },
+  "C\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.03,
+   "was": 5.172
+  },
+  "C\u2013": {
+   "join": false,
+   "dx": 0.204
+  },
+  "C\u2014": {
+   "join": false,
+   "dx": 0.167
+  },
+  "C\u2018": {
+   "join": false,
+   "dx": 0.08
+  },
+  "C\u2019": {
+   "join": false,
+   "dx": 0.1
+  },
+  "C\u201c": {
+   "join": false,
+   "dx": 0.08
+  },
+  "C\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "C\u2026": {
+   "join": false,
+   "dx": 0.163
+  },
+  "C\u20ac": {
+   "join": false,
+   "dx": 0.316
   },
   "D!": {
    "join": false,
@@ -7852,9 +8668,77 @@
    "join": false,
    "dx": -0.006
   },
+  "D\u00a1": {
+   "join": false,
+   "dx": -0.129
+  },
   "D\u00a3": {
    "join": false,
    "dx": -0.222
+  },
+  "D\u00ab": {
+   "join": false,
+   "dx": 0.102
+  },
+  "D\u00bb": {
+   "join": false,
+   "dx": -0.022
+  },
+  "D\u00bf": {
+   "join": false,
+   "dx": -0.188
+  },
+  "D\u00c6": {
+   "join": false,
+   "dx": 0.054
+  },
+  "D\u00df": {
+   "join": false,
+   "dx": -0.173
+  },
+  "D\u00e6": {
+   "join": false,
+   "dx": -0.173
+  },
+  "D\u0152": {
+   "join": false,
+   "dx": 0.07
+  },
+  "D\u0153": {
+   "join": false,
+   "dx": -0.173
+  },
+  "D\u2013": {
+   "join": false,
+   "dx": 0.02
+  },
+  "D\u2014": {
+   "join": false,
+   "dx": -0.017
+  },
+  "D\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "D\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "D\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "D\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "D\u2026": {
+   "join": false,
+   "dx": -0.021
+  },
+  "D\u20ac": {
+   "join": false,
+   "dx": 0.132
   },
   "E!": {
    "join": false,
@@ -8120,9 +9004,79 @@
    "score": 0.15,
    "was": 2.855
   },
+  "E\u00a1": {
+   "join": false,
+   "dx": 0.109
+  },
   "E\u00a3": {
    "join": false,
    "dx": 0.016
+  },
+  "E\u00ab": {
+   "join": false,
+   "dx": 0.34
+  },
+  "E\u00bb": {
+   "join": false,
+   "dx": 0.216
+  },
+  "E\u00bf": {
+   "join": false,
+   "dx": 0.05
+  },
+  "E\u00df": {
+   "lead_out": 0.46,
+   "lead_in": 2.039,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.408
+  },
+  "E\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 23.214
+  },
+  "E\u0153": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.03,
+   "was": 5.19
+  },
+  "E\u2013": {
+   "join": false,
+   "dx": 0.259
+  },
+  "E\u2014": {
+   "join": false,
+   "dx": 0.221
+  },
+  "E\u2018": {
+   "join": false,
+   "dx": 0.08
+  },
+  "E\u2019": {
+   "join": false,
+   "dx": 0.1
+  },
+  "E\u201c": {
+   "join": false,
+   "dx": 0.06
+  },
+  "E\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "E\u2026": {
+   "join": false,
+   "dx": 0.217
+  },
+  "E\u20ac": {
+   "join": false,
+   "dx": 0.37
   },
   "F!": {
    "join": false,
@@ -8452,9 +9406,77 @@
    "join": false,
    "dx": -0.038
   },
+  "F\u00a1": {
+   "join": false,
+   "dx": -0.161
+  },
   "F\u00a3": {
    "join": false,
    "dx": -0.254
+  },
+  "F\u00ab": {
+   "join": false,
+   "dx": 0.07
+  },
+  "F\u00bb": {
+   "join": false,
+   "dx": -0.054
+  },
+  "F\u00bf": {
+   "join": false,
+   "dx": -0.22
+  },
+  "F\u00c6": {
+   "join": false,
+   "dx": 0.022
+  },
+  "F\u00df": {
+   "join": false,
+   "dx": -0.205
+  },
+  "F\u00e6": {
+   "join": false,
+   "dx": -0.205
+  },
+  "F\u0152": {
+   "join": false,
+   "dx": 0.039
+  },
+  "F\u0153": {
+   "join": false,
+   "dx": -0.205
+  },
+  "F\u2013": {
+   "join": false,
+   "dx": -0.011
+  },
+  "F\u2014": {
+   "join": false,
+   "dx": -0.049
+  },
+  "F\u2018": {
+   "join": false,
+   "dx": 0.26
+  },
+  "F\u2019": {
+   "join": false,
+   "dx": 0.18
+  },
+  "F\u201c": {
+   "join": false,
+   "dx": 0.26
+  },
+  "F\u201d": {
+   "join": false,
+   "dx": 0.02
+  },
+  "F\u2026": {
+   "join": false,
+   "dx": -0.052
+  },
+  "F\u20ac": {
+   "join": false,
+   "dx": 0.1
   },
   "G!": {
    "join": false,
@@ -8729,9 +9751,80 @@
    "score": 0.15,
    "was": 2.85
   },
+  "G\u00a1": {
+   "join": false,
+   "dx": 0.045
+  },
   "G\u00a3": {
    "join": false,
    "dx": -0.048
+  },
+  "G\u00ab": {
+   "join": false,
+   "dx": 0.277
+  },
+  "G\u00bb": {
+   "join": false,
+   "dx": 0.152
+  },
+  "G\u00bf": {
+   "join": false,
+   "dx": -0.014
+  },
+  "G\u00df": {
+   "lead_out": 0.3,
+   "lead_in": 2.039,
+   "tension": 0.3,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.535
+  },
+  "G\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.246
+  },
+  "G\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.03,
+   "was": 5.186
+  },
+  "G\u2013": {
+   "join": false,
+   "dx": 0.195
+  },
+  "G\u2014": {
+   "join": false,
+   "dx": 0.157
+  },
+  "G\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "G\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "G\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "G\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "G\u2026": {
+   "join": false,
+   "dx": 0.154
+  },
+  "G\u20ac": {
+   "join": false,
+   "dx": 0.306
   },
   "H!": {
    "join": false,
@@ -9011,9 +10104,80 @@
    "score": 0.15,
    "was": 2.626
   },
+  "H\u00a1": {
+   "join": false,
+   "dx": 0.134
+  },
   "H\u00a3": {
    "join": false,
    "dx": 0.041
+  },
+  "H\u00ab": {
+   "join": false,
+   "dx": 0.365
+  },
+  "H\u00bb": {
+   "join": false,
+   "dx": 0.241
+  },
+  "H\u00bf": {
+   "join": false,
+   "dx": 0.075
+  },
+  "H\u00df": {
+   "lead_out": 0.797,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.425
+  },
+  "H\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 12.847
+  },
+  "H\u0153": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.03,
+   "was": 5.12
+  },
+  "H\u2013": {
+   "join": false,
+   "dx": 0.284
+  },
+  "H\u2014": {
+   "join": false,
+   "dx": 0.246
+  },
+  "H\u2018": {
+   "join": false,
+   "dx": 0.2
+  },
+  "H\u2019": {
+   "join": false,
+   "dx": 0.2
+  },
+  "H\u201c": {
+   "join": false,
+   "dx": 0.2
+  },
+  "H\u201d": {
+   "join": false,
+   "dx": 0.04
+  },
+  "H\u2026": {
+   "join": false,
+   "dx": 0.242
+  },
+  "H\u20ac": {
+   "join": false,
+   "dx": 0.395
   },
   "I!": {
    "join": false,
@@ -9343,9 +10507,77 @@
    "join": false,
    "dx": -0.13
   },
+  "I\u00a1": {
+   "join": false,
+   "dx": -0.253
+  },
   "I\u00a3": {
    "join": false,
    "dx": -0.346
+  },
+  "I\u00ab": {
+   "join": false,
+   "dx": -0.022
+  },
+  "I\u00bb": {
+   "join": false,
+   "dx": -0.146
+  },
+  "I\u00bf": {
+   "join": false,
+   "dx": -0.312
+  },
+  "I\u00c6": {
+   "join": false,
+   "dx": -0.07
+  },
+  "I\u00df": {
+   "join": false,
+   "dx": -0.297
+  },
+  "I\u00e6": {
+   "join": false,
+   "dx": -0.297
+  },
+  "I\u0152": {
+   "join": false,
+   "dx": -0.054
+  },
+  "I\u0153": {
+   "join": false,
+   "dx": -0.297
+  },
+  "I\u2013": {
+   "join": false,
+   "dx": -0.103
+  },
+  "I\u2014": {
+   "join": false,
+   "dx": -0.141
+  },
+  "I\u2018": {
+   "join": false,
+   "dx": 0.14
+  },
+  "I\u2019": {
+   "join": false,
+   "dx": 0.06
+  },
+  "I\u201c": {
+   "join": false,
+   "dx": 0.14
+  },
+  "I\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "I\u2026": {
+   "join": false,
+   "dx": -0.145
+  },
+  "I\u20ac": {
+   "join": false,
+   "dx": 0.008
   },
   "J!": {
    "join": false,
@@ -9621,9 +10853,80 @@
    "score": 0.15,
    "was": 2.845
   },
+  "J\u00a1": {
+   "join": false,
+   "dx": 0.138
+  },
   "J\u00a3": {
    "join": false,
    "dx": 0.045
+  },
+  "J\u00ab": {
+   "join": false,
+   "dx": 0.37
+  },
+  "J\u00bb": {
+   "join": false,
+   "dx": 0.245
+  },
+  "J\u00bf": {
+   "join": false,
+   "dx": 0.079
+  },
+  "J\u00df": {
+   "lead_out": 0.3,
+   "lead_in": 2.039,
+   "tension": 0.3,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.536
+  },
+  "J\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.219
+  },
+  "J\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.03,
+   "was": 5.18
+  },
+  "J\u2013": {
+   "join": false,
+   "dx": 0.288
+  },
+  "J\u2014": {
+   "join": false,
+   "dx": 0.251
+  },
+  "J\u2018": {
+   "join": false,
+   "dx": 0.1
+  },
+  "J\u2019": {
+   "join": false,
+   "dx": 0.02
+  },
+  "J\u201c": {
+   "join": false,
+   "dx": 0.1
+  },
+  "J\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "J\u2026": {
+   "join": false,
+   "dx": 0.247
+  },
+  "J\u20ac": {
+   "join": false,
+   "dx": 0.399
   },
   "K!": {
    "join": false,
@@ -9953,9 +11256,77 @@
    "join": false,
    "dx": 0.237
   },
+  "K\u00a1": {
+   "join": false,
+   "dx": 0.114
+  },
   "K\u00a3": {
    "join": false,
    "dx": 0.021
+  },
+  "K\u00ab": {
+   "join": false,
+   "dx": 0.346
+  },
+  "K\u00bb": {
+   "join": false,
+   "dx": 0.221
+  },
+  "K\u00bf": {
+   "join": false,
+   "dx": 0.055
+  },
+  "K\u00c6": {
+   "join": false,
+   "dx": 0.297
+  },
+  "K\u00df": {
+   "join": false,
+   "dx": 0.07
+  },
+  "K\u00e6": {
+   "join": false,
+   "dx": 0.07
+  },
+  "K\u0152": {
+   "join": false,
+   "dx": 0.314
+  },
+  "K\u0153": {
+   "join": false,
+   "dx": 0.07
+  },
+  "K\u2013": {
+   "join": false,
+   "dx": 0.264
+  },
+  "K\u2014": {
+   "join": false,
+   "dx": 0.226
+  },
+  "K\u2018": {
+   "join": false,
+   "dx": 0.18
+  },
+  "K\u2019": {
+   "join": false,
+   "dx": 0.1
+  },
+  "K\u201c": {
+   "join": false,
+   "dx": 0.18
+  },
+  "K\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "K\u2026": {
+   "join": false,
+   "dx": 0.223
+  },
+  "K\u20ac": {
+   "join": false,
+   "dx": 0.375
   },
   "L!": {
    "join": false,
@@ -10210,9 +11581,80 @@
    "score": 0.15,
    "was": 2.826
   },
+  "L\u00a1": {
+   "join": false,
+   "dx": 0.11
+  },
   "L\u00a3": {
    "join": false,
    "dx": 0.017
+  },
+  "L\u00ab": {
+   "join": false,
+   "dx": 0.342
+  },
+  "L\u00bb": {
+   "join": false,
+   "dx": 0.217
+  },
+  "L\u00bf": {
+   "join": false,
+   "dx": 0.051
+  },
+  "L\u00df": {
+   "lead_out": 0.429,
+   "lead_in": 2.039,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.388
+  },
+  "L\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.217
+  },
+  "L\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.03,
+   "was": 5.139
+  },
+  "L\u2013": {
+   "join": false,
+   "dx": 0.26
+  },
+  "L\u2014": {
+   "join": false,
+   "dx": 0.223
+  },
+  "L\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "L\u2019": {
+   "join": false,
+   "dx": 0.02
+  },
+  "L\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "L\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "L\u2026": {
+   "join": false,
+   "dx": 0.219
+  },
+  "L\u20ac": {
+   "join": false,
+   "dx": 0.371
   },
   "M!": {
    "join": false,
@@ -10484,9 +11926,78 @@
    "score": 0.151,
    "was": 2.6
   },
+  "M\u00a1": {
+   "join": false,
+   "dx": 0.13
+  },
   "M\u00a3": {
    "join": false,
    "dx": 0.037
+  },
+  "M\u00ab": {
+   "join": false,
+   "dx": 0.362
+  },
+  "M\u00bb": {
+   "join": false,
+   "dx": 0.237
+  },
+  "M\u00bf": {
+   "join": false,
+   "dx": 0.071
+  },
+  "M\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.484
+  },
+  "M\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.012
+  },
+  "M\u0153": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.03,
+   "was": 5.104
+  },
+  "M\u2013": {
+   "join": false,
+   "dx": 0.28
+  },
+  "M\u2014": {
+   "join": false,
+   "dx": 0.242
+  },
+  "M\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "M\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "M\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "M\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "M\u2026": {
+   "join": false,
+   "dx": 0.239
+  },
+  "M\u20ac": {
+   "join": false,
+   "dx": 0.391
   },
   "N!": {
    "join": false,
@@ -10758,9 +12269,80 @@
    "score": 0.15,
    "was": 2.623
   },
+  "N\u00a1": {
+   "join": false,
+   "dx": 0.128
+  },
   "N\u00a3": {
    "join": false,
    "dx": 0.035
+  },
+  "N\u00ab": {
+   "join": false,
+   "dx": 0.359
+  },
+  "N\u00bb": {
+   "join": false,
+   "dx": 0.235
+  },
+  "N\u00bf": {
+   "join": false,
+   "dx": 0.069
+  },
+  "N\u00df": {
+   "lead_out": 0.766,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.461
+  },
+  "N\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.021
+  },
+  "N\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.452,
+   "was": 5.104
+  },
+  "N\u2013": {
+   "join": false,
+   "dx": 0.278
+  },
+  "N\u2014": {
+   "join": false,
+   "dx": 0.24
+  },
+  "N\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "N\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "N\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "N\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "N\u2026": {
+   "join": false,
+   "dx": 0.236
+  },
+  "N\u20ac": {
+   "join": false,
+   "dx": 0.389
   },
   "O!": {
    "join": false,
@@ -11090,9 +12672,77 @@
    "join": false,
    "dx": -0.033
   },
+  "O\u00a1": {
+   "join": false,
+   "dx": -0.156
+  },
   "O\u00a3": {
    "join": false,
    "dx": -0.249
+  },
+  "O\u00ab": {
+   "join": false,
+   "dx": 0.075
+  },
+  "O\u00bb": {
+   "join": false,
+   "dx": -0.049
+  },
+  "O\u00bf": {
+   "join": false,
+   "dx": -0.215
+  },
+  "O\u00c6": {
+   "join": false,
+   "dx": 0.027
+  },
+  "O\u00df": {
+   "join": false,
+   "dx": -0.2
+  },
+  "O\u00e6": {
+   "join": false,
+   "dx": -0.2
+  },
+  "O\u0152": {
+   "join": false,
+   "dx": 0.043
+  },
+  "O\u0153": {
+   "join": false,
+   "dx": -0.2
+  },
+  "O\u2013": {
+   "join": false,
+   "dx": -0.006
+  },
+  "O\u2014": {
+   "join": false,
+   "dx": -0.044
+  },
+  "O\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "O\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "O\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "O\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "O\u2026": {
+   "join": false,
+   "dx": -0.048
+  },
+  "O\u20ac": {
+   "join": false,
+   "dx": 0.105
   },
   "P!": {
    "join": false,
@@ -11422,9 +13072,77 @@
    "join": false,
    "dx": -0.138
   },
+  "P\u00a1": {
+   "join": false,
+   "dx": -0.262
+  },
   "P\u00a3": {
    "join": false,
    "dx": -0.355
+  },
+  "P\u00ab": {
+   "join": false,
+   "dx": -0.03
+  },
+  "P\u00bb": {
+   "join": false,
+   "dx": -0.155
+  },
+  "P\u00bf": {
+   "join": false,
+   "dx": -0.321
+  },
+  "P\u00c6": {
+   "join": false,
+   "dx": -0.078
+  },
+  "P\u00df": {
+   "join": false,
+   "dx": -0.305
+  },
+  "P\u00e6": {
+   "join": false,
+   "dx": -0.305
+  },
+  "P\u0152": {
+   "join": false,
+   "dx": -0.062
+  },
+  "P\u0153": {
+   "join": false,
+   "dx": -0.305
+  },
+  "P\u2013": {
+   "join": false,
+   "dx": -0.112
+  },
+  "P\u2014": {
+   "join": false,
+   "dx": -0.149
+  },
+  "P\u2018": {
+   "join": false,
+   "dx": 0.02
+  },
+  "P\u2019": {
+   "join": false,
+   "dx": 0.06
+  },
+  "P\u201c": {
+   "join": false,
+   "dx": 0.02
+  },
+  "P\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "P\u2026": {
+   "join": false,
+   "dx": -0.153
+  },
+  "P\u20ac": {
+   "join": false,
+   "dx": -0.001
   },
   "Q!": {
    "join": false,
@@ -11677,9 +13395,79 @@
    "score": 0.15,
    "was": 2.883
   },
+  "Q\u00a1": {
+   "join": false,
+   "dx": -0.154
+  },
   "Q\u00a3": {
    "join": false,
    "dx": -0.107
+  },
+  "Q\u00ab": {
+   "join": false,
+   "dx": 0.077
+  },
+  "Q\u00bb": {
+   "join": false,
+   "dx": -0.047
+  },
+  "Q\u00bf": {
+   "join": false,
+   "dx": -0.133
+  },
+  "Q\u00df": {
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "score": 0.0,
+   "was": 8.49
+  },
+  "Q\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 22.772
+  },
+  "Q\u0153": {
+   "lead_out": 0.35,
+   "tension": 0.6,
+   "arrive": "chord",
+   "over": "bottom",
+   "score": 0.8,
+   "was": 5.104
+  },
+  "Q\u2013": {
+   "join": false,
+   "dx": -0.005
+  },
+  "Q\u2014": {
+   "join": false,
+   "dx": -0.042
+  },
+  "Q\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Q\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Q\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Q\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Q\u2026": {
+   "join": false,
+   "dx": -0.046
+  },
+  "Q\u20ac": {
+   "join": false,
+   "dx": 0.107
   },
   "R!": {
    "join": false,
@@ -11952,9 +13740,79 @@
    "score": 0.15,
    "was": 2.595
   },
+  "R\u00a1": {
+   "join": false,
+   "dx": 0.118
+  },
   "R\u00a3": {
    "join": false,
    "dx": 0.025
+  },
+  "R\u00ab": {
+   "join": false,
+   "dx": 0.35
+  },
+  "R\u00bb": {
+   "join": false,
+   "dx": 0.225
+  },
+  "R\u00bf": {
+   "join": false,
+   "dx": 0.059
+  },
+  "R\u00df": {
+   "lead_out": 0.728,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.693
+  },
+  "R\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.158
+  },
+  "R\u0153": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.031,
+   "was": 5.1
+  },
+  "R\u2013": {
+   "join": false,
+   "dx": 0.268
+  },
+  "R\u2014": {
+   "join": false,
+   "dx": 0.23
+  },
+  "R\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "R\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "R\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "R\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "R\u2026": {
+   "join": false,
+   "dx": 0.227
+  },
+  "R\u20ac": {
+   "join": false,
+   "dx": 0.379
   },
   "S!": {
    "join": false,
@@ -12284,9 +14142,77 @@
    "join": false,
    "dx": -0.05
   },
+  "S\u00a1": {
+   "join": false,
+   "dx": -0.174
+  },
   "S\u00a3": {
    "join": false,
    "dx": -0.267
+  },
+  "S\u00ab": {
+   "join": false,
+   "dx": 0.058
+  },
+  "S\u00bb": {
+   "join": false,
+   "dx": -0.067
+  },
+  "S\u00bf": {
+   "join": false,
+   "dx": -0.233
+  },
+  "S\u00c6": {
+   "join": false,
+   "dx": 0.01
+  },
+  "S\u00df": {
+   "join": false,
+   "dx": -0.217
+  },
+  "S\u00e6": {
+   "join": false,
+   "dx": -0.217
+  },
+  "S\u0152": {
+   "join": false,
+   "dx": 0.026
+  },
+  "S\u0153": {
+   "join": false,
+   "dx": -0.217
+  },
+  "S\u2013": {
+   "join": false,
+   "dx": -0.024
+  },
+  "S\u2014": {
+   "join": false,
+   "dx": -0.061
+  },
+  "S\u2018": {
+   "join": false,
+   "dx": 0.04
+  },
+  "S\u2019": {
+   "join": false,
+   "dx": 0.06
+  },
+  "S\u201c": {
+   "join": false,
+   "dx": 0.04
+  },
+  "S\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "S\u2026": {
+   "join": false,
+   "dx": -0.065
+  },
+  "S\u20ac": {
+   "join": false,
+   "dx": 0.087
   },
   "T!": {
    "join": false,
@@ -12616,9 +14542,77 @@
    "join": false,
    "dx": -0.175
   },
+  "T\u00a1": {
+   "join": false,
+   "dx": -0.298
+  },
   "T\u00a3": {
    "join": false,
    "dx": -0.391
+  },
+  "T\u00ab": {
+   "join": false,
+   "dx": -0.066
+  },
+  "T\u00bb": {
+   "join": false,
+   "dx": -0.191
+  },
+  "T\u00bf": {
+   "join": false,
+   "dx": -0.357
+  },
+  "T\u00c6": {
+   "join": false,
+   "dx": -0.115
+  },
+  "T\u00df": {
+   "join": false,
+   "dx": -0.181
+  },
+  "T\u00e6": {
+   "join": false,
+   "dx": -0.342
+  },
+  "T\u0152": {
+   "join": false,
+   "dx": -0.098
+  },
+  "T\u0153": {
+   "join": false,
+   "dx": -0.341
+  },
+  "T\u2013": {
+   "join": false,
+   "dx": -0.148
+  },
+  "T\u2014": {
+   "join": false,
+   "dx": -0.186
+  },
+  "T\u2018": {
+   "join": false,
+   "dx": 0.32
+  },
+  "T\u2019": {
+   "join": false,
+   "dx": 0.24
+  },
+  "T\u201c": {
+   "join": false,
+   "dx": 0.32
+  },
+  "T\u201d": {
+   "join": false,
+   "dx": 0.06
+  },
+  "T\u2026": {
+   "join": false,
+   "dx": -0.189
+  },
+  "T\u20ac": {
+   "join": false,
+   "dx": -0.037
   },
   "U!": {
    "join": false,
@@ -12880,9 +14874,81 @@
    "score": 0.15,
    "was": 2.619
   },
+  "U\u00a1": {
+   "join": false,
+   "dx": 0.128
+  },
   "U\u00a3": {
    "join": false,
    "dx": 0.035
+  },
+  "U\u00ab": {
+   "join": false,
+   "dx": 0.36
+  },
+  "U\u00bb": {
+   "join": false,
+   "dx": 0.235
+  },
+  "U\u00bf": {
+   "join": false,
+   "dx": 0.069
+  },
+  "U\u00df": {
+   "lead_out": 0.734,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.719
+  },
+  "U\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.253
+  },
+  "U\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.0,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.438,
+   "was": 5.093
+  },
+  "U\u2013": {
+   "join": false,
+   "dx": 0.278
+  },
+  "U\u2014": {
+   "join": false,
+   "dx": 0.241
+  },
+  "U\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "U\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "U\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "U\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "U\u2026": {
+   "join": false,
+   "dx": 0.237
+  },
+  "U\u20ac": {
+   "join": false,
+   "dx": 0.389
   },
   "V!": {
    "join": false,
@@ -13212,9 +15278,77 @@
    "join": false,
    "dx": -0.008
   },
+  "V\u00a1": {
+   "join": false,
+   "dx": -0.132
+  },
   "V\u00a3": {
    "join": false,
    "dx": -0.225
+  },
+  "V\u00ab": {
+   "join": false,
+   "dx": 0.1
+  },
+  "V\u00bb": {
+   "join": false,
+   "dx": -0.024
+  },
+  "V\u00bf": {
+   "join": false,
+   "dx": -0.19
+  },
+  "V\u00c6": {
+   "join": false,
+   "dx": 0.052
+  },
+  "V\u00df": {
+   "join": false,
+   "dx": -0.175
+  },
+  "V\u00e6": {
+   "join": false,
+   "dx": -0.175
+  },
+  "V\u0152": {
+   "join": false,
+   "dx": 0.068
+  },
+  "V\u0153": {
+   "join": false,
+   "dx": -0.175
+  },
+  "V\u2013": {
+   "join": false,
+   "dx": 0.018
+  },
+  "V\u2014": {
+   "join": false,
+   "dx": -0.019
+  },
+  "V\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "V\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "V\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "V\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "V\u2026": {
+   "join": false,
+   "dx": -0.023
+  },
+  "V\u20ac": {
+   "join": false,
+   "dx": 0.129
   },
   "W!": {
    "join": false,
@@ -13544,9 +15678,77 @@
    "join": false,
    "dx": -0.006
   },
+  "W\u00a1": {
+   "join": false,
+   "dx": -0.129
+  },
   "W\u00a3": {
    "join": false,
    "dx": -0.222
+  },
+  "W\u00ab": {
+   "join": false,
+   "dx": 0.103
+  },
+  "W\u00bb": {
+   "join": false,
+   "dx": -0.022
+  },
+  "W\u00bf": {
+   "join": false,
+   "dx": -0.188
+  },
+  "W\u00c6": {
+   "join": false,
+   "dx": 0.054
+  },
+  "W\u00df": {
+   "join": false,
+   "dx": -0.172
+  },
+  "W\u00e6": {
+   "join": false,
+   "dx": -0.172
+  },
+  "W\u0152": {
+   "join": false,
+   "dx": 0.071
+  },
+  "W\u0153": {
+   "join": false,
+   "dx": -0.172
+  },
+  "W\u2013": {
+   "join": false,
+   "dx": 0.021
+  },
+  "W\u2014": {
+   "join": false,
+   "dx": -0.017
+  },
+  "W\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "W\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "W\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "W\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "W\u2026": {
+   "join": false,
+   "dx": -0.02
+  },
+  "W\u20ac": {
+   "join": false,
+   "dx": 0.132
   },
   "X!": {
    "join": false,
@@ -13801,9 +16003,79 @@
    "score": 0.15,
    "was": 2.725
   },
+  "X\u00a1": {
+   "join": false,
+   "dx": 0.104
+  },
   "X\u00a3": {
    "join": false,
    "dx": 0.011
+  },
+  "X\u00ab": {
+   "join": false,
+   "dx": 0.336
+  },
+  "X\u00bb": {
+   "join": false,
+   "dx": 0.211
+  },
+  "X\u00bf": {
+   "join": false,
+   "dx": 0.045
+  },
+  "X\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.425
+  },
+  "X\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.195
+  },
+  "X\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.03,
+   "was": 5.127
+  },
+  "X\u2013": {
+   "join": false,
+   "dx": 0.254
+  },
+  "X\u2014": {
+   "join": false,
+   "dx": 0.216
+  },
+  "X\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "X\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "X\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "X\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "X\u2026": {
+   "join": false,
+   "dx": 0.213
+  },
+  "X\u20ac": {
+   "join": false,
+   "dx": 0.365
   },
   "Y!": {
    "join": false,
@@ -14071,9 +16343,79 @@
    "score": 0.15,
    "was": 2.845
   },
+  "Y\u00a1": {
+   "join": false,
+   "dx": 0.138
+  },
   "Y\u00a3": {
    "join": false,
    "dx": 0.045
+  },
+  "Y\u00ab": {
+   "join": false,
+   "dx": 0.369
+  },
+  "Y\u00bb": {
+   "join": false,
+   "dx": 0.245
+  },
+  "Y\u00bf": {
+   "join": false,
+   "dx": 0.079
+  },
+  "Y\u00df": {
+   "lead_out": 0.3,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.549
+  },
+  "Y\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.234
+  },
+  "Y\u0153": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.031,
+   "was": 5.154
+  },
+  "Y\u2013": {
+   "join": false,
+   "dx": 0.288
+  },
+  "Y\u2014": {
+   "join": false,
+   "dx": 0.25
+  },
+  "Y\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Y\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Y\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Y\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Y\u2026": {
+   "join": false,
+   "dx": 0.246
+  },
+  "Y\u20ac": {
+   "join": false,
+   "dx": 0.399
   },
   "Z!": {
    "join": false,
@@ -14340,9 +16682,80 @@
    "score": 0.15,
    "was": 2.654
   },
+  "Z\u00a1": {
+   "join": false,
+   "dx": 0.135
+  },
   "Z\u00a3": {
    "join": false,
    "dx": 0.042
+  },
+  "Z\u00ab": {
+   "join": false,
+   "dx": 0.366
+  },
+  "Z\u00bb": {
+   "join": false,
+   "dx": 0.242
+  },
+  "Z\u00bf": {
+   "join": false,
+   "dx": 0.076
+  },
+  "Z\u00df": {
+   "lead_out": 0.45,
+   "lead_in": 2.039,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.894
+  },
+  "Z\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.168
+  },
+  "Z\u0153": {
+   "lead_out": 0.15,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "over": true,
+   "score": 0.176,
+   "was": 5.093
+  },
+  "Z\u2013": {
+   "join": false,
+   "dx": 0.285
+  },
+  "Z\u2014": {
+   "join": false,
+   "dx": 0.247
+  },
+  "Z\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Z\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Z\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Z\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "Z\u2026": {
+   "join": false,
+   "dx": 0.243
+  },
+  "Z\u20ac": {
+   "join": false,
+   "dx": 0.396
   },
   "a!": {
    "join": false,
@@ -14623,9 +17036,79 @@
    "score": 0.192,
    "was": 2.611
   },
+  "a\u00a1": {
+   "join": false,
+   "dx": 0.266
+  },
   "a\u00a3": {
    "join": false,
    "dx": 0.173
+  },
+  "a\u00ab": {
+   "join": false,
+   "dx": 0.498
+  },
+  "a\u00bb": {
+   "join": false,
+   "dx": 0.373
+  },
+  "a\u00bf": {
+   "join": false,
+   "dx": 0.207
+  },
+  "a\u00df": {
+   "lead_out": 0.74,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.463
+  },
+  "a\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.045
+  },
+  "a\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.225,
+   "was": 5.107
+  },
+  "a\u2013": {
+   "join": false,
+   "dx": 0.416
+  },
+  "a\u2014": {
+   "join": false,
+   "dx": 0.378
+  },
+  "a\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "a\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "a\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "a\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "a\u2026": {
+   "join": false,
+   "dx": 0.375
+  },
+  "a\u20ac": {
+   "join": false,
+   "dx": 0.527
   },
   "b!": {
    "join": false,
@@ -14863,9 +17346,70 @@
    "score": 0.15,
    "was": 2.652
   },
+  "b\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
   "b\u00a3": {
    "join": false,
    "dx": -0.218
+  },
+  "b\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "b\u00bb": {
+   "join": false,
+   "dx": -0.017
+  },
+  "b\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "b\u00df": {
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 12.608
+  },
+  "b\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "score": 0.152,
+   "was": 7.939
+  },
+  "b\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "b\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "b\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "b\u2019": {
+   "join": false,
+   "dx": 0.06
+  },
+  "b\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "b\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "b\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "b\u20ac": {
+   "join": false,
+   "dx": 0.137
   },
   "c!": {
    "join": false,
@@ -15132,9 +17676,80 @@
    "score": 0.168,
    "was": 2.589
   },
+  "c\u00a1": {
+   "join": false,
+   "dx": 0.318
+  },
   "c\u00a3": {
    "join": false,
    "dx": 0.224
+  },
+  "c\u00ab": {
+   "join": false,
+   "dx": 0.549
+  },
+  "c\u00bb": {
+   "join": false,
+   "dx": 0.425
+  },
+  "c\u00bf": {
+   "join": false,
+   "dx": 0.259
+  },
+  "c\u00df": {
+   "lead_out": 0.88,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.445
+  },
+  "c\u00e6": {
+   "dx": -0.15,
+   "lead_out": 0.3,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 1.886,
+   "was": 13.162
+  },
+  "c\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.226,
+   "was": 5.102
+  },
+  "c\u2013": {
+   "join": false,
+   "dx": 0.467
+  },
+  "c\u2014": {
+   "join": false,
+   "dx": 0.43
+  },
+  "c\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "c\u2019": {
+   "join": false,
+   "dx": 0.1
+  },
+  "c\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "c\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "c\u2026": {
+   "join": false,
+   "dx": 0.426
+  },
+  "c\u20ac": {
+   "join": false,
+   "dx": 0.579
   },
   "d!": {
    "join": false,
@@ -15409,9 +18024,80 @@
    "score": 0.192,
    "was": 2.604
   },
+  "d\u00a1": {
+   "join": false,
+   "dx": 0.266
+  },
   "d\u00a3": {
    "join": false,
    "dx": 0.173
+  },
+  "d\u00ab": {
+   "join": false,
+   "dx": 0.498
+  },
+  "d\u00bb": {
+   "join": false,
+   "dx": 0.373
+  },
+  "d\u00bf": {
+   "join": false,
+   "dx": 0.207
+  },
+  "d\u00df": {
+   "lead_out": 0.739,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.462
+  },
+  "d\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 13.008
+  },
+  "d\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.225,
+   "was": 5.107
+  },
+  "d\u2013": {
+   "join": false,
+   "dx": 0.416
+  },
+  "d\u2014": {
+   "join": false,
+   "dx": 0.378
+  },
+  "d\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "d\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "d\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "d\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "d\u2026": {
+   "join": false,
+   "dx": 0.375
+  },
+  "d\u20ac": {
+   "join": false,
+   "dx": 0.527
   },
   "e!": {
    "join": false,
@@ -15675,9 +18361,80 @@
    "score": 0.15,
    "was": 2.646
   },
+  "e\u00a1": {
+   "join": false,
+   "dx": 0.282
+  },
   "e\u00a3": {
    "join": false,
    "dx": 0.189
+  },
+  "e\u00ab": {
+   "join": false,
+   "dx": 0.514
+  },
+  "e\u00bb": {
+   "join": false,
+   "dx": 0.389
+  },
+  "e\u00bf": {
+   "join": false,
+   "dx": 0.223
+  },
+  "e\u00df": {
+   "lead_out": 0.883,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.503
+  },
+  "e\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 13.208
+  },
+  "e\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.0,
+   "was": 5.11
+  },
+  "e\u2013": {
+   "join": false,
+   "dx": 0.432
+  },
+  "e\u2014": {
+   "join": false,
+   "dx": 0.395
+  },
+  "e\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "e\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "e\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "e\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "e\u2026": {
+   "join": false,
+   "dx": 0.391
+  },
+  "e\u20ac": {
+   "join": false,
+   "dx": 0.543
   },
   "f!": {
    "join": false,
@@ -15928,9 +18685,79 @@
    "score": 0.0,
    "was": 2.672
   },
+  "f\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
   "f\u00a3": {
    "join": false,
    "dx": -0.218
+  },
+  "f\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "f\u00bb": {
+   "join": false,
+   "dx": -0.017
+  },
+  "f\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "f\u00df": {
+   "lead_out": 0.0,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 6.891
+  },
+  "f\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 7.829
+  },
+  "f\u0153": {
+   "lead_out": 0.27,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.246,
+   "was": 5.435
+  },
+  "f\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "f\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "f\u2018": {
+   "join": false,
+   "dx": 0.38
+  },
+  "f\u2019": {
+   "join": false,
+   "dx": 0.3
+  },
+  "f\u201c": {
+   "join": false,
+   "dx": 0.38
+  },
+  "f\u201d": {
+   "join": false,
+   "dx": 0.14
+  },
+  "f\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "f\u20ac": {
+   "join": false,
+   "dx": 0.137
   },
   "g!": {
    "join": false,
@@ -16190,9 +19017,78 @@
    "score": 0.15,
    "was": 2.749
   },
+  "g\u00a1": {
+   "join": false,
+   "dx": 0.032
+  },
   "g\u00a3": {
    "join": false,
    "dx": -0.061
+  },
+  "g\u00ab": {
+   "join": false,
+   "dx": 0.264
+  },
+  "g\u00bb": {
+   "join": false,
+   "dx": 0.139
+  },
+  "g\u00bf": {
+   "join": false,
+   "dx": -0.027
+  },
+  "g\u00df": {
+   "lead_out": 0.38,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 1.994
+  },
+  "g\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "score": 0.15,
+   "was": 12.761
+  },
+  "g\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.077,
+   "was": 5.152
+  },
+  "g\u2013": {
+   "join": false,
+   "dx": 0.182
+  },
+  "g\u2014": {
+   "join": false,
+   "dx": 0.144
+  },
+  "g\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "g\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "g\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "g\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "g\u2026": {
+   "join": false,
+   "dx": 0.141
+  },
+  "g\u20ac": {
+   "join": false,
+   "dx": 0.293
   },
   "h!": {
    "join": false,
@@ -16473,9 +19369,79 @@
    "score": 0.181,
    "was": 2.606
   },
+  "h\u00a1": {
+   "join": false,
+   "dx": 0.262
+  },
   "h\u00a3": {
    "join": false,
    "dx": 0.169
+  },
+  "h\u00ab": {
+   "join": false,
+   "dx": 0.493
+  },
+  "h\u00bb": {
+   "join": false,
+   "dx": 0.369
+  },
+  "h\u00bf": {
+   "join": false,
+   "dx": 0.203
+  },
+  "h\u00df": {
+   "lead_out": 0.768,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.452
+  },
+  "h\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 12.859
+  },
+  "h\u0153": {
+   "lead_out": 0.15,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.0,
+   "was": 5.117
+  },
+  "h\u2013": {
+   "join": false,
+   "dx": 0.412
+  },
+  "h\u2014": {
+   "join": false,
+   "dx": 0.374
+  },
+  "h\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "h\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "h\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "h\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "h\u2026": {
+   "join": false,
+   "dx": 0.37
+  },
+  "h\u20ac": {
+   "join": false,
+   "dx": 0.523
   },
   "i!": {
    "join": false,
@@ -16752,9 +19718,80 @@
    "score": 0.182,
    "was": 2.606
   },
+  "i\u00a1": {
+   "join": false,
+   "dx": 0.265
+  },
   "i\u00a3": {
    "join": false,
    "dx": 0.172
+  },
+  "i\u00ab": {
+   "join": false,
+   "dx": 0.497
+  },
+  "i\u00bb": {
+   "join": false,
+   "dx": 0.372
+  },
+  "i\u00bf": {
+   "join": false,
+   "dx": 0.206
+  },
+  "i\u00df": {
+   "lead_out": 0.757,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.452
+  },
+  "i\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 12.864
+  },
+  "i\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.0,
+   "was": 5.126
+  },
+  "i\u2013": {
+   "join": false,
+   "dx": 0.415
+  },
+  "i\u2014": {
+   "join": false,
+   "dx": 0.377
+  },
+  "i\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "i\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "i\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "i\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "i\u2026": {
+   "join": false,
+   "dx": 0.374
+  },
+  "i\u20ac": {
+   "join": false,
+   "dx": 0.526
   },
   "j!": {
    "join": false,
@@ -17015,9 +20052,78 @@
    "score": 0.15,
    "was": 2.749
   },
+  "j\u00a1": {
+   "join": false,
+   "dx": 0.031
+  },
   "j\u00a3": {
    "join": false,
    "dx": -0.062
+  },
+  "j\u00ab": {
+   "join": false,
+   "dx": 0.262
+  },
+  "j\u00bb": {
+   "join": false,
+   "dx": 0.138
+  },
+  "j\u00bf": {
+   "join": false,
+   "dx": -0.028
+  },
+  "j\u00df": {
+   "lead_out": 0.384,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 2.019
+  },
+  "j\u00e6": {
+   "lead_out": 0.384,
+   "lead_in": 0.15,
+   "score": 0.15,
+   "was": 7.761
+  },
+  "j\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.077,
+   "was": 5.159
+  },
+  "j\u2013": {
+   "join": false,
+   "dx": 0.18
+  },
+  "j\u2014": {
+   "join": false,
+   "dx": 0.143
+  },
+  "j\u2018": {
+   "join": false,
+   "dx": 0.04
+  },
+  "j\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "j\u201c": {
+   "join": false,
+   "dx": 0.04
+  },
+  "j\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "j\u2026": {
+   "join": false,
+   "dx": 0.139
+  },
+  "j\u20ac": {
+   "join": false,
+   "dx": 0.292
   },
   "k!": {
    "join": false,
@@ -17283,9 +20389,78 @@
    "score": 0.154,
    "was": 2.607
   },
+  "k\u00a1": {
+   "join": false,
+   "dx": 0.272
+  },
   "k\u00a3": {
    "join": false,
    "dx": 0.179
+  },
+  "k\u00ab": {
+   "join": false,
+   "dx": 0.504
+  },
+  "k\u00bb": {
+   "join": false,
+   "dx": 0.379
+  },
+  "k\u00bf": {
+   "join": false,
+   "dx": 0.213
+  },
+  "k\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.001,
+   "was": 0.475
+  },
+  "k\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.244
+  },
+  "k\u0153": {
+   "lead_out": 0.15,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.0,
+   "was": 5.101
+  },
+  "k\u2013": {
+   "join": false,
+   "dx": 0.422
+  },
+  "k\u2014": {
+   "join": false,
+   "dx": 0.384
+  },
+  "k\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "k\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "k\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "k\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "k\u2026": {
+   "join": false,
+   "dx": 0.381
+  },
+  "k\u20ac": {
+   "join": false,
+   "dx": 0.533
   },
   "l!": {
    "join": false,
@@ -17543,9 +20718,79 @@
    "score": 0.193,
    "was": 2.598
   },
+  "l\u00a1": {
+   "join": false,
+   "dx": 0.267
+  },
   "l\u00a3": {
    "join": false,
    "dx": 0.173
+  },
+  "l\u00ab": {
+   "join": false,
+   "dx": 0.498
+  },
+  "l\u00bb": {
+   "join": false,
+   "dx": 0.374
+  },
+  "l\u00bf": {
+   "join": false,
+   "dx": 0.208
+  },
+  "l\u00df": {
+   "lead_out": 0.73,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.001,
+   "was": 0.472
+  },
+  "l\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.227
+  },
+  "l\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.225,
+   "was": 5.101
+  },
+  "l\u2013": {
+   "join": false,
+   "dx": 0.416
+  },
+  "l\u2014": {
+   "join": false,
+   "dx": 0.379
+  },
+  "l\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "l\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "l\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "l\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "l\u2026": {
+   "join": false,
+   "dx": 0.375
+  },
+  "l\u20ac": {
+   "join": false,
+   "dx": 0.528
   },
   "m!": {
    "join": false,
@@ -17814,9 +21059,79 @@
    "score": 0.162,
    "was": 2.596
   },
+  "m\u00a1": {
+   "join": false,
+   "dx": 0.262
+  },
   "m\u00a3": {
    "join": false,
    "dx": 0.169
+  },
+  "m\u00ab": {
+   "join": false,
+   "dx": 0.493
+  },
+  "m\u00bb": {
+   "join": false,
+   "dx": 0.369
+  },
+  "m\u00bf": {
+   "join": false,
+   "dx": 0.203
+  },
+  "m\u00df": {
+   "lead_out": 0.701,
+   "lead_in": 2.039,
+   "arrive": "slant",
+   "score": 0.001,
+   "was": 2.595
+  },
+  "m\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 18.197
+  },
+  "m\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.225,
+   "was": 5.095
+  },
+  "m\u2013": {
+   "join": false,
+   "dx": 0.411
+  },
+  "m\u2014": {
+   "join": false,
+   "dx": 0.374
+  },
+  "m\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "m\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "m\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "m\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "m\u2026": {
+   "join": false,
+   "dx": 0.37
+  },
+  "m\u20ac": {
+   "join": false,
+   "dx": 0.523
   },
   "n!": {
    "join": false,
@@ -18097,9 +21412,78 @@
    "score": 0.182,
    "was": 2.605
   },
+  "n\u00a1": {
+   "join": false,
+   "dx": 0.262
+  },
   "n\u00a3": {
    "join": false,
    "dx": 0.169
+  },
+  "n\u00ab": {
+   "join": false,
+   "dx": 0.493
+  },
+  "n\u00bb": {
+   "join": false,
+   "dx": 0.369
+  },
+  "n\u00bf": {
+   "join": false,
+   "dx": 0.203
+  },
+  "n\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.451
+  },
+  "n\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 12.862
+  },
+  "n\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.0,
+   "was": 5.119
+  },
+  "n\u2013": {
+   "join": false,
+   "dx": 0.412
+  },
+  "n\u2014": {
+   "join": false,
+   "dx": 0.374
+  },
+  "n\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "n\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "n\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "n\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "n\u2026": {
+   "join": false,
+   "dx": 0.37
+  },
+  "n\u20ac": {
+   "join": false,
+   "dx": 0.523
   },
   "o!": {
    "join": false,
@@ -18330,9 +21714,78 @@
    "score": 0.0,
    "was": 2.684
   },
+  "o\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
   "o\u00a3": {
    "join": false,
    "dx": -0.218
+  },
+  "o\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "o\u00bb": {
+   "join": false,
+   "dx": -0.017
+  },
+  "o\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "o\u00df": {
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 2.237
+  },
+  "o\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.229,
+   "was": 8.13
+  },
+  "o\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "over": false,
+   "score": 0.289,
+   "was": 5.578
+  },
+  "o\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "o\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "o\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "o\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "o\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "o\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "o\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "o\u20ac": {
+   "join": false,
+   "dx": 0.137
   },
   "p!": {
    "join": false,
@@ -18592,9 +22045,79 @@
    "score": 0.15,
    "was": 2.86
   },
+  "p\u00a1": {
+   "join": false,
+   "dx": 0.067
+  },
   "p\u00a3": {
    "join": false,
    "dx": -0.006
+  },
+  "p\u00ab": {
+   "join": false,
+   "dx": 0.298
+  },
+  "p\u00bb": {
+   "join": false,
+   "dx": 0.174
+  },
+  "p\u00bf": {
+   "join": false,
+   "dx": 0.008
+  },
+  "p\u00df": {
+   "lead_out": 0.45,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 1.244
+  },
+  "p\u00e6": {
+   "lead_out": 0.45,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.182,
+   "was": 12.92
+  },
+  "p\u0153": {
+   "lead_out": 0.5,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.266,
+   "was": 5.106
+  },
+  "p\u2013": {
+   "join": false,
+   "dx": 0.217
+  },
+  "p\u2014": {
+   "join": false,
+   "dx": 0.179
+  },
+  "p\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "p\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "p\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "p\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "p\u2026": {
+   "join": false,
+   "dx": 0.175
+  },
+  "p\u20ac": {
+   "join": false,
+   "dx": 0.328
   },
   "q!": {
    "join": false,
@@ -18852,9 +22375,78 @@
    "score": 0.15,
    "was": 2.686
   },
+  "q\u00a1": {
+   "join": false,
+   "dx": 0.025
+  },
   "q\u00a3": {
    "join": false,
    "dx": -0.068
+  },
+  "q\u00ab": {
+   "join": false,
+   "dx": 0.256
+  },
+  "q\u00bb": {
+   "join": false,
+   "dx": 0.132
+  },
+  "q\u00bf": {
+   "join": false,
+   "dx": -0.034
+  },
+  "q\u00df": {
+   "lead_out": 0.779,
+   "lead_in": 2.039,
+   "tension": 0.3,
+   "arrive": "slant",
+   "score": 0.066,
+   "was": 5.538
+  },
+  "q\u00e6": {
+   "lead_out": 0.45,
+   "lead_in": 0.15,
+   "score": 0.15,
+   "was": 7.715
+  },
+  "q\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.081,
+   "was": 5.13
+  },
+  "q\u2013": {
+   "join": false,
+   "dx": 0.175
+  },
+  "q\u2014": {
+   "join": false,
+   "dx": 0.137
+  },
+  "q\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "q\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "q\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "q\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "q\u2026": {
+   "join": false,
+   "dx": 0.133
+  },
+  "q\u20ac": {
+   "join": false,
+   "dx": 0.286
   },
   "r!": {
    "join": false,
@@ -19102,9 +22694,77 @@
    "score": 0.0,
    "was": 2.743
   },
+  "r\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
   "r\u00a3": {
    "join": false,
    "dx": -0.218
+  },
+  "r\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "r\u00bb": {
+   "join": false,
+   "dx": 0.023
+  },
+  "r\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "r\u00df": {
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 9.315
+  },
+  "r\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "score": 0.15,
+   "was": 7.865
+  },
+  "r\u0153": {
+   "lead_out": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.124,
+   "was": 5.306
+  },
+  "r\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "r\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "r\u2018": {
+   "join": false,
+   "dx": 0.14
+  },
+  "r\u2019": {
+   "join": false,
+   "dx": 0.26
+  },
+  "r\u201c": {
+   "join": false,
+   "dx": 0.14
+  },
+  "r\u201d": {
+   "join": false,
+   "dx": 0.1
+  },
+  "r\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "r\u20ac": {
+   "join": false,
+   "dx": 0.137
   },
   "s!": {
    "join": false,
@@ -19381,9 +23041,79 @@
    "score": 0.0,
    "was": 2.857
   },
+  "s\u00a1": {
+   "join": false,
+   "dx": 0.081
+  },
   "s\u00a3": {
    "join": false,
    "dx": -0.012
+  },
+  "s\u00ab": {
+   "join": false,
+   "dx": 0.312
+  },
+  "s\u00bb": {
+   "join": false,
+   "dx": 0.188
+  },
+  "s\u00bf": {
+   "join": false,
+   "dx": 0.022
+  },
+  "s\u00df": {
+   "lead_out": 0.15,
+   "lead_in": 2.039,
+   "tension": 0.3,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.501
+  },
+  "s\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.247
+  },
+  "s\u0153": {
+   "lead_out": 0.15,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.043,
+   "was": 5.26
+  },
+  "s\u2013": {
+   "join": false,
+   "dx": 0.231
+  },
+  "s\u2014": {
+   "join": false,
+   "dx": 0.193
+  },
+  "s\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "s\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "s\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "s\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "s\u2026": {
+   "join": false,
+   "dx": 0.189
+  },
+  "s\u20ac": {
+   "join": false,
+   "dx": 0.342
   },
   "t!": {
    "join": false,
@@ -19663,9 +23393,80 @@
    "score": 0.182,
    "was": 2.606
   },
+  "t\u00a1": {
+   "join": false,
+   "dx": 0.298
+  },
   "t\u00a3": {
    "join": false,
    "dx": 0.205
+  },
+  "t\u00ab": {
+   "join": false,
+   "dx": 0.53
+  },
+  "t\u00bb": {
+   "join": false,
+   "dx": 0.405
+  },
+  "t\u00bf": {
+   "join": false,
+   "dx": 0.239
+  },
+  "t\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.452
+  },
+  "t\u00e6": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.375,
+   "was": 12.862
+  },
+  "t\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.114,
+   "was": 5.119
+  },
+  "t\u2013": {
+   "join": false,
+   "dx": 0.448
+  },
+  "t\u2014": {
+   "join": false,
+   "dx": 0.41
+  },
+  "t\u2018": {
+   "join": false,
+   "dx": 0.1
+  },
+  "t\u2019": {
+   "join": false,
+   "dx": 0.2
+  },
+  "t\u201c": {
+   "join": false,
+   "dx": 0.1
+  },
+  "t\u201d": {
+   "join": false,
+   "dx": 0.04
+  },
+  "t\u2026": {
+   "join": false,
+   "dx": 0.407
+  },
+  "t\u20ac": {
+   "join": false,
+   "dx": 0.559
   },
   "u!": {
    "join": false,
@@ -19945,9 +23746,78 @@
    "score": 0.154,
    "was": 2.612
   },
+  "u\u00a1": {
+   "join": false,
+   "dx": 0.267
+  },
   "u\u00a3": {
    "join": false,
    "dx": 0.174
+  },
+  "u\u00ab": {
+   "join": false,
+   "dx": 0.499
+  },
+  "u\u00bb": {
+   "join": false,
+   "dx": 0.374
+  },
+  "u\u00bf": {
+   "join": false,
+   "dx": 0.208
+  },
+  "u\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.46
+  },
+  "u\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 12.896
+  },
+  "u\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.001,
+   "was": 5.113
+  },
+  "u\u2013": {
+   "join": false,
+   "dx": 0.417
+  },
+  "u\u2014": {
+   "join": false,
+   "dx": 0.379
+  },
+  "u\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "u\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "u\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "u\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "u\u2026": {
+   "join": false,
+   "dx": 0.376
+  },
+  "u\u20ac": {
+   "join": false,
+   "dx": 0.528
   },
   "v!": {
    "join": false,
@@ -20202,9 +24072,77 @@
    "score": 0.0,
    "was": 0.718
   },
+  "v\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
   "v\u00a3": {
    "join": false,
    "dx": -0.218
+  },
+  "v\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "v\u00bb": {
+   "join": false,
+   "dx": -0.017
+  },
+  "v\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "v\u00df": {
+   "lead_out": 0.0,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 16.426
+  },
+  "v\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.198,
+   "was": 8.582
+  },
+  "v\u0153": {
+   "lead_out": 0.3,
+   "score": 0.288,
+   "was": 0.44
+  },
+  "v\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "v\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "v\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "v\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "v\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "v\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "v\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "v\u20ac": {
+   "join": false,
+   "dx": 0.137
   },
   "w!": {
    "join": false,
@@ -20460,9 +24398,77 @@
    "score": 0.0,
    "was": 0.713
   },
+  "w\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
   "w\u00a3": {
    "join": false,
    "dx": -0.218
+  },
+  "w\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "w\u00bb": {
+   "join": false,
+   "dx": -0.017
+  },
+  "w\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "w\u00df": {
+   "lead_out": 0.0,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 16.397
+  },
+  "w\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.199,
+   "was": 8.58
+  },
+  "w\u0153": {
+   "lead_out": 0.3,
+   "score": 0.284,
+   "was": 0.441
+  },
+  "w\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "w\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "w\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "w\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "w\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "w\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "w\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "w\u20ac": {
+   "join": false,
+   "dx": 0.137
   },
   "x!": {
    "join": false,
@@ -20748,9 +24754,81 @@
    "score": 0.003,
    "was": 2.644
   },
+  "x\u00a1": {
+   "join": false,
+   "dx": 0.388
+  },
   "x\u00a3": {
    "join": false,
    "dx": 0.295
+  },
+  "x\u00ab": {
+   "join": false,
+   "dx": 0.619
+  },
+  "x\u00bb": {
+   "join": false,
+   "dx": 0.495
+  },
+  "x\u00bf": {
+   "join": false,
+   "dx": 0.329
+  },
+  "x\u00df": {
+   "lead_out": 0.799,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.001,
+   "was": 2.581
+  },
+  "x\u00e6": {
+   "dx": -0.15,
+   "lead_out": 0.45,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.225,
+   "was": 18.046
+  },
+  "x\u0153": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 0.701,
+   "was": 5.119
+  },
+  "x\u2013": {
+   "join": false,
+   "dx": 0.537
+  },
+  "x\u2014": {
+   "join": false,
+   "dx": 0.5
+  },
+  "x\u2018": {
+   "join": false,
+   "dx": 0.08
+  },
+  "x\u2019": {
+   "join": false,
+   "dx": 0.2
+  },
+  "x\u201c": {
+   "join": false,
+   "dx": 0.08
+  },
+  "x\u201d": {
+   "join": false,
+   "dx": 0.04
+  },
+  "x\u2026": {
+   "join": false,
+   "dx": 0.496
+  },
+  "x\u20ac": {
+   "join": false,
+   "dx": 0.649
   },
   "y!": {
    "join": false,
@@ -21010,9 +25088,77 @@
    "score": 0.15,
    "was": 2.749
   },
+  "y\u00a1": {
+   "join": false,
+   "dx": 0.032
+  },
   "y\u00a3": {
    "join": false,
    "dx": -0.061
+  },
+  "y\u00ab": {
+   "join": false,
+   "dx": 0.263
+  },
+  "y\u00bb": {
+   "join": false,
+   "dx": 0.139
+  },
+  "y\u00bf": {
+   "join": false,
+   "dx": -0.027
+  },
+  "y\u00df": {
+   "lead_out": 0.6,
+   "lead_in": 2.039,
+   "tension": 0.3,
+   "score": 0.0,
+   "was": 1.989
+  },
+  "y\u00e6": {
+   "lead_out": 0.38,
+   "lead_in": 0.15,
+   "score": 0.15,
+   "was": 12.762
+  },
+  "y\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.077,
+   "was": 5.152
+  },
+  "y\u2013": {
+   "join": false,
+   "dx": 0.182
+  },
+  "y\u2014": {
+   "join": false,
+   "dx": 0.144
+  },
+  "y\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "y\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "y\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "y\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "y\u2026": {
+   "join": false,
+   "dx": 0.14
+  },
+  "y\u20ac": {
+   "join": false,
+   "dx": 0.293
   },
   "z!": {
    "join": false,
@@ -21291,9 +25437,307 @@
    "score": 0.0,
    "was": 2.602
   },
+  "z\u00a1": {
+   "join": false,
+   "dx": 0.322
+  },
   "z\u00a3": {
    "join": false,
    "dx": 0.229
+  },
+  "z\u00ab": {
+   "join": false,
+   "dx": 0.554
+  },
+  "z\u00bb": {
+   "join": false,
+   "dx": 0.429
+  },
+  "z\u00bf": {
+   "join": false,
+   "dx": 0.263
+  },
+  "z\u00df": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.061,
+   "was": 0.521
+  },
+  "z\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "glyph",
+   "score": 0.15,
+   "was": 13.091
+  },
+  "z\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.15,
+   "lead_in": 0.897,
+   "score": 0.474,
+   "was": 5.107
+  },
+  "z\u2013": {
+   "join": false,
+   "dx": 0.472
+  },
+  "z\u2014": {
+   "join": false,
+   "dx": 0.435
+  },
+  "z\u2018": {
+   "join": false,
+   "dx": 0.02
+  },
+  "z\u2019": {
+   "join": false,
+   "dx": 0.12
+  },
+  "z\u201c": {
+   "join": false,
+   "dx": 0.02
+  },
+  "z\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "z\u2026": {
+   "join": false,
+   "dx": 0.431
+  },
+  "z\u20ac": {
+   "join": false,
+   "dx": 0.583
+  },
+  "\u00a1A": {
+   "join": false,
+   "dx": -0.043
+  },
+  "\u00a1B": {
+   "join": false,
+   "dx": 0.131
+  },
+  "\u00a1C": {
+   "join": false,
+   "dx": 0.146
+  },
+  "\u00a1D": {
+   "join": false,
+   "dx": -0.05
+  },
+  "\u00a1E": {
+   "join": false,
+   "dx": 0.064
+  },
+  "\u00a1F": {
+   "join": false,
+   "dx": -0.112
+  },
+  "\u00a1G": {
+   "join": false,
+   "dx": -0.061
+  },
+  "\u00a1H": {
+   "join": false,
+   "dx": -0.059
+  },
+  "\u00a1I": {
+   "join": false,
+   "dx": -0.106
+  },
+  "\u00a1J": {
+   "join": false,
+   "dx": -0.499
+  },
+  "\u00a1K": {
+   "join": false,
+   "dx": -0.106
+  },
+  "\u00a1L": {
+   "join": false,
+   "dx": -0.243
+  },
+  "\u00a1M": {
+   "join": false,
+   "dx": -0.046
+  },
+  "\u00a1N": {
+   "join": false,
+   "dx": -0.048
+  },
+  "\u00a1O": {
+   "join": false,
+   "dx": 0.035
+  },
+  "\u00a1P": {
+   "join": false,
+   "dx": 0.131
+  },
+  "\u00a1Q": {
+   "join": false,
+   "dx": -0.136
+  },
+  "\u00a1R": {
+   "join": false,
+   "dx": 0.132
+  },
+  "\u00a1S": {
+   "join": false,
+   "dx": 0.029
+  },
+  "\u00a1T": {
+   "join": false,
+   "dx": -0.147
+  },
+  "\u00a1U": {
+   "join": false,
+   "dx": -0.041
+  },
+  "\u00a1V": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1W": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1X": {
+   "join": false,
+   "dx": -0.163
+  },
+  "\u00a1Y": {
+   "join": false,
+   "dx": -0.159
+  },
+  "\u00a1Z": {
+   "join": false,
+   "dx": -0.175
+  },
+  "\u00a1a": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1b": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1c": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1d": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1e": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1f": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1g": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1h": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1i": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1j": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1k": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1l": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1m": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1n": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1o": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1p": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1q": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1r": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1s": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1t": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1u": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1v": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1w": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1x": {
+   "join": false,
+   "dx": 0.153
+  },
+  "\u00a1y": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1z": {
+   "join": false,
+   "dx": 0.127
+  },
+  "\u00a1\u00c6": {
+   "join": false,
+   "dx": 0.019
+  },
+  "\u00a1\u00df": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1\u00e6": {
+   "join": false,
+   "dx": -0.04
+  },
+  "\u00a1\u0152": {
+   "join": false,
+   "dx": 0.035
+  },
+  "\u00a1\u0153": {
+   "join": false,
+   "dx": -0.04
   },
   "\u00a3A": {
    "join": false,
@@ -21502,6 +25946,4171 @@
   "\u00a3z": {
    "join": false,
    "dx": 0.315
+  },
+  "\u00a3\u00c6": {
+   "join": false,
+   "dx": 0.207
+  },
+  "\u00a3\u00df": {
+   "join": false,
+   "dx": 0.148
+  },
+  "\u00a3\u00e6": {
+   "join": false,
+   "dx": 0.148
+  },
+  "\u00a3\u0152": {
+   "join": false,
+   "dx": 0.223
+  },
+  "\u00a3\u0153": {
+   "join": false,
+   "dx": 0.148
+  },
+  "\u00abA": {
+   "join": false,
+   "dx": 0.093
+  },
+  "\u00abB": {
+   "join": false,
+   "dx": 0.267
+  },
+  "\u00abC": {
+   "join": false,
+   "dx": 0.282
+  },
+  "\u00abD": {
+   "join": false,
+   "dx": 0.086
+  },
+  "\u00abE": {
+   "join": false,
+   "dx": 0.2
+  },
+  "\u00abF": {
+   "join": false,
+   "dx": 0.024
+  },
+  "\u00abG": {
+   "join": false,
+   "dx": 0.075
+  },
+  "\u00abH": {
+   "join": false,
+   "dx": 0.077
+  },
+  "\u00abI": {
+   "join": false,
+   "dx": 0.03
+  },
+  "\u00abJ": {
+   "join": false,
+   "dx": -0.504
+  },
+  "\u00abK": {
+   "join": false,
+   "dx": 0.03
+  },
+  "\u00abL": {
+   "join": false,
+   "dx": -0.107
+  },
+  "\u00abM": {
+   "join": false,
+   "dx": 0.13
+  },
+  "\u00abN": {
+   "join": false,
+   "dx": 0.128
+  },
+  "\u00abO": {
+   "join": false,
+   "dx": 0.171
+  },
+  "\u00abP": {
+   "join": false,
+   "dx": 0.267
+  },
+  "\u00abQ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00abR": {
+   "join": false,
+   "dx": 0.268
+  },
+  "\u00abS": {
+   "join": false,
+   "dx": 0.165
+  },
+  "\u00abT": {
+   "join": false,
+   "dx": -0.011
+  },
+  "\u00abU": {
+   "join": false,
+   "dx": 0.135
+  },
+  "\u00abV": {
+   "join": false,
+   "dx": 0.136
+  },
+  "\u00abW": {
+   "join": false,
+   "dx": 0.136
+  },
+  "\u00abX": {
+   "join": false,
+   "dx": -0.027
+  },
+  "\u00abY": {
+   "join": false,
+   "dx": 0.037
+  },
+  "\u00abZ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00aba": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abb": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abc": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abd": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abe": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abf": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abg": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abh": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abi": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abj": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abk": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abl": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abm": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abn": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abo": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abp": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abq": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abr": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abs": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abt": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abu": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abv": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abw": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abx": {
+   "join": false,
+   "dx": 0.289
+  },
+  "\u00aby": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00abz": {
+   "join": false,
+   "dx": 0.263
+  },
+  "\u00ab\u00c6": {
+   "join": false,
+   "dx": 0.155
+  },
+  "\u00ab\u00df": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00ab\u00e6": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00ab\u0152": {
+   "join": false,
+   "dx": 0.171
+  },
+  "\u00ab\u0153": {
+   "join": false,
+   "dx": 0.096
+  },
+  "\u00bbA": {
+   "join": false,
+   "dx": 0.176
+  },
+  "\u00bbB": {
+   "join": false,
+   "dx": 0.35
+  },
+  "\u00bbC": {
+   "join": false,
+   "dx": 0.365
+  },
+  "\u00bbD": {
+   "join": false,
+   "dx": 0.169
+  },
+  "\u00bbE": {
+   "join": false,
+   "dx": 0.283
+  },
+  "\u00bbF": {
+   "join": false,
+   "dx": 0.107
+  },
+  "\u00bbG": {
+   "join": false,
+   "dx": 0.158
+  },
+  "\u00bbH": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u00bbI": {
+   "join": false,
+   "dx": 0.113
+  },
+  "\u00bbJ": {
+   "join": false,
+   "dx": -0.54
+  },
+  "\u00bbK": {
+   "join": false,
+   "dx": 0.113
+  },
+  "\u00bbL": {
+   "join": false,
+   "dx": -0.024
+  },
+  "\u00bbM": {
+   "join": false,
+   "dx": 0.153
+  },
+  "\u00bbN": {
+   "join": false,
+   "dx": 0.151
+  },
+  "\u00bbO": {
+   "join": false,
+   "dx": 0.254
+  },
+  "\u00bbP": {
+   "join": false,
+   "dx": 0.351
+  },
+  "\u00bbQ": {
+   "join": false,
+   "dx": 0.083
+  },
+  "\u00bbR": {
+   "join": false,
+   "dx": 0.351
+  },
+  "\u00bbS": {
+   "join": false,
+   "dx": 0.248
+  },
+  "\u00bbT": {
+   "join": false,
+   "dx": 0.072
+  },
+  "\u00bbU": {
+   "join": false,
+   "dx": 0.178
+  },
+  "\u00bbV": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbW": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbX": {
+   "join": false,
+   "dx": 0.056
+  },
+  "\u00bbY": {
+   "join": false,
+   "dx": 0.02
+  },
+  "\u00bbZ": {
+   "join": false,
+   "dx": 0.044
+  },
+  "\u00bba": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbb": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbc": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbd": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbe": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbf": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbg": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbh": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbi": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbj": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbk": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbl": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbm": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbn": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbo": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbp": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbq": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbr": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbs": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbt": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbu": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbv": {
+   "join": false,
+   "dx": 0.18
+  },
+  "\u00bbw": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbx": {
+   "join": false,
+   "dx": 0.372
+  },
+  "\u00bby": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bbz": {
+   "join": false,
+   "dx": 0.346
+  },
+  "\u00bb\u00c6": {
+   "join": false,
+   "dx": 0.238
+  },
+  "\u00bb\u00df": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bb\u00e6": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bb\u0152": {
+   "join": false,
+   "dx": 0.255
+  },
+  "\u00bb\u0153": {
+   "join": false,
+   "dx": 0.179
+  },
+  "\u00bfA": {
+   "join": false,
+   "dx": -0.087
+  },
+  "\u00bfB": {
+   "join": false,
+   "dx": 0.087
+  },
+  "\u00bfC": {
+   "join": false,
+   "dx": 0.102
+  },
+  "\u00bfD": {
+   "join": false,
+   "dx": -0.095
+  },
+  "\u00bfE": {
+   "join": false,
+   "dx": 0.019
+  },
+  "\u00bfF": {
+   "join": false,
+   "dx": -0.156
+  },
+  "\u00bfG": {
+   "join": false,
+   "dx": -0.105
+  },
+  "\u00bfH": {
+   "join": false,
+   "dx": -0.103
+  },
+  "\u00bfI": {
+   "join": false,
+   "dx": -0.15
+  },
+  "\u00bfJ": {
+   "join": false,
+   "dx": -0.244
+  },
+  "\u00bfK": {
+   "join": false,
+   "dx": -0.151
+  },
+  "\u00bfL": {
+   "join": false,
+   "dx": -0.267
+  },
+  "\u00bfM": {
+   "join": false,
+   "dx": -0.09
+  },
+  "\u00bfN": {
+   "join": false,
+   "dx": -0.072
+  },
+  "\u00bfO": {
+   "join": false,
+   "dx": -0.009
+  },
+  "\u00bfP": {
+   "join": false,
+   "dx": 0.087
+  },
+  "\u00bfQ": {
+   "join": false,
+   "dx": -0.18
+  },
+  "\u00bfR": {
+   "join": false,
+   "dx": 0.087
+  },
+  "\u00bfS": {
+   "join": false,
+   "dx": -0.015
+  },
+  "\u00bfT": {
+   "join": false,
+   "dx": -0.191
+  },
+  "\u00bfU": {
+   "join": false,
+   "dx": -0.085
+  },
+  "\u00bfV": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfW": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfX": {
+   "join": false,
+   "dx": -0.207
+  },
+  "\u00bfY": {
+   "join": false,
+   "dx": -0.183
+  },
+  "\u00bfZ": {
+   "join": false,
+   "dx": -0.2
+  },
+  "\u00bfa": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfb": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfc": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfd": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfe": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bff": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfg": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfh": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfi": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfj": {
+   "join": false,
+   "dx": 0.116
+  },
+  "\u00bfk": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfl": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfm": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfn": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfo": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfp": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfq": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfr": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfs": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bft": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfu": {
+   "join": false,
+   "dx": -0.085
+  },
+  "\u00bfv": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfw": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfx": {
+   "join": false,
+   "dx": 0.108
+  },
+  "\u00bfy": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bfz": {
+   "join": false,
+   "dx": 0.083
+  },
+  "\u00bf\u00c6": {
+   "join": false,
+   "dx": -0.025
+  },
+  "\u00bf\u00df": {
+   "join": false,
+   "dx": 0.076
+  },
+  "\u00bf\u00e6": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00bf\u0152": {
+   "join": false,
+   "dx": -0.009
+  },
+  "\u00bf\u0153": {
+   "join": false,
+   "dx": -0.084
+  },
+  "\u00c6!": {
+   "join": false,
+   "dx": 0.243
+  },
+  "\u00c6\"": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00c6#": {
+   "join": false,
+   "dx": 0.294
+  },
+  "\u00c6$": {
+   "join": false,
+   "dx": 0.29
+  },
+  "\u00c6%": {
+   "join": false,
+   "dx": 0.293
+  },
+  "\u00c6&": {
+   "join": false,
+   "dx": 0.187
+  },
+  "\u00c6'": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00c6(": {
+   "join": false,
+   "dx": 0.453
+  },
+  "\u00c6)": {
+   "join": false,
+   "dx": -0.13
+  },
+  "\u00c6*": {
+   "join": false,
+   "dx": 0.475
+  },
+  "\u00c6+": {
+   "join": false,
+   "dx": 0.311
+  },
+  "\u00c6,": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00c6-": {
+   "join": false,
+   "dx": 0.33
+  },
+  "\u00c6.": {
+   "join": false,
+   "dx": 0.217
+  },
+  "\u00c6/": {
+   "join": false,
+   "dx": 0.205
+  },
+  "\u00c60": {
+   "join": false,
+   "dx": 0.205
+  },
+  "\u00c61": {
+   "join": false,
+   "dx": 0.225
+  },
+  "\u00c62": {
+   "join": false,
+   "dx": 0.239
+  },
+  "\u00c63": {
+   "join": false,
+   "dx": 0.114
+  },
+  "\u00c64": {
+   "join": false,
+   "dx": 0.14
+  },
+  "\u00c65": {
+   "join": false,
+   "dx": 0.115
+  },
+  "\u00c66": {
+   "join": false,
+   "dx": 0.175
+  },
+  "\u00c67": {
+   "join": false,
+   "dx": -0.088
+  },
+  "\u00c68": {
+   "join": false,
+   "dx": 0.226
+  },
+  "\u00c69": {
+   "join": false,
+   "dx": 0.159
+  },
+  "\u00c6:": {
+   "join": false,
+   "dx": 0.277
+  },
+  "\u00c6;": {
+   "join": false,
+   "dx": 0.298
+  },
+  "\u00c6=": {
+   "join": false,
+   "dx": 0.184
+  },
+  "\u00c6?": {
+   "join": false,
+   "dx": 0.176
+  },
+  "\u00c6@": {
+   "join": false,
+   "dx": 0.289
+  },
+  "\u00c6a": {
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "score": 0.025,
+   "was": 0.194
+  },
+  "\u00c6b": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.858
+  },
+  "\u00c6d": {
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "score": 0.025,
+   "was": 0.196
+  },
+  "\u00c6e": {
+   "lead_out": 0.15,
+   "score": 0.0,
+   "was": 0.363
+  },
+  "\u00c6f": {
+   "lead_out": 0.15,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.604
+  },
+  "\u00c6h": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 11.053
+  },
+  "\u00c6i": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.774
+  },
+  "\u00c6j": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.893
+  },
+  "\u00c6k": {
+   "lead_out": 0.0,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 11.064
+  },
+  "\u00c6l": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.846
+  },
+  "\u00c6m": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 12.9
+  },
+  "\u00c6n": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 12.893
+  },
+  "\u00c6o": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 2.544
+  },
+  "\u00c6p": {
+   "lead_out": 0.475,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.9
+  },
+  "\u00c6r": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 7.893
+  },
+  "\u00c6t": {
+   "lead_out": 0.0,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 2.784
+  },
+  "\u00c6u": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.852
+  },
+  "\u00c6v": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.852
+  },
+  "\u00c6w": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.845
+  },
+  "\u00c6y": {
+   "lead_out": 0.95,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.852
+  },
+  "\u00c6\u00a1": {
+   "join": false,
+   "dx": 0.108
+  },
+  "\u00c6\u00a3": {
+   "join": false,
+   "dx": 0.015
+  },
+  "\u00c6\u00ab": {
+   "join": false,
+   "dx": 0.34
+  },
+  "\u00c6\u00bb": {
+   "join": false,
+   "dx": 0.215
+  },
+  "\u00c6\u00bf": {
+   "join": false,
+   "dx": 0.049
+  },
+  "\u00c6\u00df": {
+   "lead_out": 0.3,
+   "lead_in": 2.039,
+   "tension": 0.3,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.405
+  },
+  "\u00c6\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 13.202
+  },
+  "\u00c6\u0153": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.031,
+   "was": 5.207
+  },
+  "\u00c6\u2013": {
+   "join": false,
+   "dx": 0.258
+  },
+  "\u00c6\u2014": {
+   "join": false,
+   "dx": 0.221
+  },
+  "\u00c6\u2018": {
+   "join": false,
+   "dx": 0.08
+  },
+  "\u00c6\u2019": {
+   "join": false,
+   "dx": 0.1
+  },
+  "\u00c6\u201c": {
+   "join": false,
+   "dx": 0.08
+  },
+  "\u00c6\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00c6\u2026": {
+   "join": false,
+   "dx": 0.217
+  },
+  "\u00c6\u20ac": {
+   "join": false,
+   "dx": 0.369
+  },
+  "\u00df!": {
+   "join": false,
+   "dx": 0.01
+  },
+  "\u00df\"": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df#": {
+   "join": false,
+   "dx": 0.061
+  },
+  "\u00df$": {
+   "join": false,
+   "dx": 0.057
+  },
+  "\u00df%": {
+   "join": false,
+   "dx": 0.061
+  },
+  "\u00df&": {
+   "join": false,
+   "dx": -0.045
+  },
+  "\u00df'": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df(": {
+   "join": false,
+   "dx": 0.22
+  },
+  "\u00df)": {
+   "join": false,
+   "dx": -0.363
+  },
+  "\u00df*": {
+   "join": false,
+   "dx": 0.243
+  },
+  "\u00df+": {
+   "join": false,
+   "dx": 0.079
+  },
+  "\u00df,": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df-": {
+   "join": false,
+   "dx": 0.097
+  },
+  "\u00df.": {
+   "join": false,
+   "dx": -0.016
+  },
+  "\u00df/": {
+   "join": false,
+   "dx": -0.028
+  },
+  "\u00df0": {
+   "join": false,
+   "dx": -0.028
+  },
+  "\u00df1": {
+   "join": false,
+   "dx": -0.008
+  },
+  "\u00df2": {
+   "join": false,
+   "dx": 0.006
+  },
+  "\u00df3": {
+   "join": false,
+   "dx": -0.119
+  },
+  "\u00df4": {
+   "join": false,
+   "dx": -0.093
+  },
+  "\u00df5": {
+   "join": false,
+   "dx": -0.118
+  },
+  "\u00df6": {
+   "join": false,
+   "dx": -0.058
+  },
+  "\u00df7": {
+   "join": false,
+   "dx": -0.321
+  },
+  "\u00df8": {
+   "join": false,
+   "dx": -0.006
+  },
+  "\u00df9": {
+   "join": false,
+   "dx": -0.074
+  },
+  "\u00df:": {
+   "join": false,
+   "dx": 0.045
+  },
+  "\u00df;": {
+   "join": false,
+   "dx": 0.065
+  },
+  "\u00df=": {
+   "join": false,
+   "dx": -0.049
+  },
+  "\u00df?": {
+   "join": false,
+   "dx": -0.057
+  },
+  "\u00df@": {
+   "join": false,
+   "dx": 0.056
+  },
+  "\u00dfb": {
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.761
+  },
+  "\u00dff": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.662
+  },
+  "\u00dfh": {
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.766
+  },
+  "\u00dfi": {
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.722
+  },
+  "\u00dfj": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.735
+  },
+  "\u00dfk": {
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.746
+  },
+  "\u00dfl": {
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.757
+  },
+  "\u00dfm": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.735
+  },
+  "\u00dfn": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.738
+  },
+  "\u00dfo": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 2.589
+  },
+  "\u00dfp": {
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.717
+  },
+  "\u00dfr": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.735
+  },
+  "\u00dfs": {
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.002,
+   "was": 1.867
+  },
+  "\u00dft": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.789
+  },
+  "\u00dfu": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.738
+  },
+  "\u00dfv": {
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.738
+  },
+  "\u00dfw": {
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.738
+  },
+  "\u00dfy": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.738
+  },
+  "\u00df\u00a1": {
+   "join": false,
+   "dx": -0.124
+  },
+  "\u00df\u00a3": {
+   "join": false,
+   "dx": -0.218
+  },
+  "\u00df\u00ab": {
+   "join": false,
+   "dx": 0.107
+  },
+  "\u00df\u00bb": {
+   "join": false,
+   "dx": -0.017
+  },
+  "\u00df\u00bf": {
+   "join": false,
+   "dx": -0.183
+  },
+  "\u00df\u00df": {
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 8.462
+  },
+  "\u00df\u00e6": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 7.755
+  },
+  "\u00df\u0153": {
+   "lead_in": 0.897,
+   "tension": 0.6,
+   "score": 0.108,
+   "was": 5.115
+  },
+  "\u00df\u2013": {
+   "join": false,
+   "dx": 0.025
+  },
+  "\u00df\u2014": {
+   "join": false,
+   "dx": -0.012
+  },
+  "\u00df\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00df\u2026": {
+   "join": false,
+   "dx": -0.016
+  },
+  "\u00df\u20ac": {
+   "join": false,
+   "dx": 0.137
+  },
+  "\u00e6!": {
+   "join": false,
+   "dx": 0.386
+  },
+  "\u00e6\"": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6#": {
+   "join": false,
+   "dx": 0.437
+  },
+  "\u00e6$": {
+   "join": false,
+   "dx": 0.433
+  },
+  "\u00e6%": {
+   "join": false,
+   "dx": 0.437
+  },
+  "\u00e6&": {
+   "join": false,
+   "dx": 0.331
+  },
+  "\u00e6'": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6(": {
+   "join": false,
+   "dx": 0.596
+  },
+  "\u00e6)": {
+   "join": false,
+   "dx": 0.013
+  },
+  "\u00e6*": {
+   "join": false,
+   "dx": 0.619
+  },
+  "\u00e6+": {
+   "join": false,
+   "dx": 0.455
+  },
+  "\u00e6,": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6-": {
+   "join": false,
+   "dx": 0.473
+  },
+  "\u00e6.": {
+   "join": false,
+   "dx": 0.36
+  },
+  "\u00e6/": {
+   "join": false,
+   "dx": 0.348
+  },
+  "\u00e60": {
+   "join": false,
+   "dx": 0.348
+  },
+  "\u00e61": {
+   "join": false,
+   "dx": 0.368
+  },
+  "\u00e62": {
+   "join": false,
+   "dx": 0.382
+  },
+  "\u00e63": {
+   "join": false,
+   "dx": 0.257
+  },
+  "\u00e64": {
+   "join": false,
+   "dx": 0.283
+  },
+  "\u00e65": {
+   "join": false,
+   "dx": 0.258
+  },
+  "\u00e66": {
+   "join": false,
+   "dx": 0.318
+  },
+  "\u00e67": {
+   "join": false,
+   "dx": 0.055
+  },
+  "\u00e68": {
+   "join": false,
+   "dx": 0.37
+  },
+  "\u00e69": {
+   "join": false,
+   "dx": 0.302
+  },
+  "\u00e6:": {
+   "join": false,
+   "dx": 0.421
+  },
+  "\u00e6;": {
+   "join": false,
+   "dx": 0.441
+  },
+  "\u00e6=": {
+   "join": false,
+   "dx": 0.327
+  },
+  "\u00e6?": {
+   "join": false,
+   "dx": 0.319
+  },
+  "\u00e6@": {
+   "join": false,
+   "dx": 0.432
+  },
+  "\u00e6b": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.333
+  },
+  "\u00e6e": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "score": 0.001,
+   "was": 2.725
+  },
+  "\u00e6f": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.606
+  },
+  "\u00e6h": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 5.433
+  },
+  "\u00e6i": {
+   "lead_out": 0.923,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.152,
+   "was": 2.614
+  },
+  "\u00e6j": {
+   "lead_out": 0.773,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.16,
+   "was": 2.689
+  },
+  "\u00e6k": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 5.411
+  },
+  "\u00e6l": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.315
+  },
+  "\u00e6m": {
+   "lead_out": 0.15,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 12.771
+  },
+  "\u00e6n": {
+   "lead_out": 0.15,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 12.78
+  },
+  "\u00e6o": {
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 2.545
+  },
+  "\u00e6p": {
+   "lead_out": 0.15,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.742
+  },
+  "\u00e6r": {
+   "lead_out": 0.3,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.763
+  },
+  "\u00e6t": {
+   "lead_out": 0.923,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.151,
+   "was": 2.597
+  },
+  "\u00e6u": {
+   "lead_out": 0.923,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.152,
+   "was": 2.64
+  },
+  "\u00e6v": {
+   "lead_out": 0.923,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.152,
+   "was": 2.648
+  },
+  "\u00e6w": {
+   "lead_out": 0.923,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.152,
+   "was": 2.648
+  },
+  "\u00e6y": {
+   "lead_out": 0.923,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.152,
+   "was": 2.648
+  },
+  "\u00e6\u00a1": {
+   "join": false,
+   "dx": 0.251
+  },
+  "\u00e6\u00a3": {
+   "join": false,
+   "dx": 0.158
+  },
+  "\u00e6\u00ab": {
+   "join": false,
+   "dx": 0.483
+  },
+  "\u00e6\u00bb": {
+   "join": false,
+   "dx": 0.359
+  },
+  "\u00e6\u00bf": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u00e6\u00df": {
+   "lead_out": 0.773,
+   "lead_in": 2.039,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.987
+  },
+  "\u00e6\u00e6": {
+   "lead_out": 0.15,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.073
+  },
+  "\u00e6\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.0,
+   "was": 5.088
+  },
+  "\u00e6\u2013": {
+   "join": false,
+   "dx": 0.401
+  },
+  "\u00e6\u2014": {
+   "join": false,
+   "dx": 0.364
+  },
+  "\u00e6\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6\u2019": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u00e6\u2026": {
+   "join": false,
+   "dx": 0.36
+  },
+  "\u00e6\u20ac": {
+   "join": false,
+   "dx": 0.513
+  },
+  "\u0152!": {
+   "join": false,
+   "dx": 0.244
+  },
+  "\u0152\"": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0152#": {
+   "join": false,
+   "dx": 0.294
+  },
+  "\u0152$": {
+   "join": false,
+   "dx": 0.29
+  },
+  "\u0152%": {
+   "join": false,
+   "dx": 0.294
+  },
+  "\u0152&": {
+   "join": false,
+   "dx": 0.188
+  },
+  "\u0152'": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0152(": {
+   "join": false,
+   "dx": 0.454
+  },
+  "\u0152)": {
+   "join": false,
+   "dx": -0.129
+  },
+  "\u0152*": {
+   "join": false,
+   "dx": 0.476
+  },
+  "\u0152+": {
+   "join": false,
+   "dx": 0.312
+  },
+  "\u0152,": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0152-": {
+   "join": false,
+   "dx": 0.33
+  },
+  "\u0152.": {
+   "join": false,
+   "dx": 0.218
+  },
+  "\u0152/": {
+   "join": false,
+   "dx": 0.205
+  },
+  "\u01520": {
+   "join": false,
+   "dx": 0.205
+  },
+  "\u01521": {
+   "join": false,
+   "dx": 0.225
+  },
+  "\u01522": {
+   "join": false,
+   "dx": 0.239
+  },
+  "\u01523": {
+   "join": false,
+   "dx": 0.115
+  },
+  "\u01524": {
+   "join": false,
+   "dx": 0.141
+  },
+  "\u01525": {
+   "join": false,
+   "dx": 0.116
+  },
+  "\u01526": {
+   "join": false,
+   "dx": 0.176
+  },
+  "\u01527": {
+   "join": false,
+   "dx": -0.087
+  },
+  "\u01528": {
+   "join": false,
+   "dx": 0.227
+  },
+  "\u01529": {
+   "join": false,
+   "dx": 0.159
+  },
+  "\u0152:": {
+   "join": false,
+   "dx": 0.278
+  },
+  "\u0152;": {
+   "join": false,
+   "dx": 0.298
+  },
+  "\u0152=": {
+   "join": false,
+   "dx": 0.184
+  },
+  "\u0152?": {
+   "join": false,
+   "dx": 0.176
+  },
+  "\u0152@": {
+   "join": false,
+   "dx": 0.29
+  },
+  "\u0152b": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.869
+  },
+  "\u0152e": {
+   "lead_out": 0.15,
+   "score": 0.0,
+   "was": 0.299
+  },
+  "\u0152f": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.613
+  },
+  "\u0152h": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 11.076
+  },
+  "\u0152i": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.773
+  },
+  "\u0152j": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.89
+  },
+  "\u0152k": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 11.087
+  },
+  "\u0152l": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 0.857
+  },
+  "\u0152m": {
+   "lead_out": 0.45,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 12.905
+  },
+  "\u0152n": {
+   "lead_out": 0.3,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 12.898
+  },
+  "\u0152o": {
+   "lead_out": 0.15,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 2.54
+  },
+  "\u0152p": {
+   "lead_out": 0.3,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.912
+  },
+  "\u0152r": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 7.905
+  },
+  "\u0152t": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.695
+  },
+  "\u0152u": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.862
+  },
+  "\u0152v": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.854
+  },
+  "\u0152w": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.854
+  },
+  "\u0152y": {
+   "lead_out": 0.894,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.15,
+   "was": 2.854
+  },
+  "\u0152\u00a1": {
+   "join": false,
+   "dx": 0.109
+  },
+  "\u0152\u00a3": {
+   "join": false,
+   "dx": 0.016
+  },
+  "\u0152\u00ab": {
+   "join": false,
+   "dx": 0.341
+  },
+  "\u0152\u00bb": {
+   "join": false,
+   "dx": 0.216
+  },
+  "\u0152\u00bf": {
+   "join": false,
+   "dx": 0.05
+  },
+  "\u0152\u00df": {
+   "lead_out": 0.447,
+   "lead_in": 2.039,
+   "arrive": "slant",
+   "score": 0.0,
+   "was": 0.413
+  },
+  "\u0152\u00e6": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "score": 0.15,
+   "was": 18.228
+  },
+  "\u0152\u0153": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "over": true,
+   "score": 0.031,
+   "was": 5.177
+  },
+  "\u0152\u2013": {
+   "join": false,
+   "dx": 0.259
+  },
+  "\u0152\u2014": {
+   "join": false,
+   "dx": 0.221
+  },
+  "\u0152\u2018": {
+   "join": false,
+   "dx": 0.08
+  },
+  "\u0152\u2019": {
+   "join": false,
+   "dx": 0.1
+  },
+  "\u0152\u201c": {
+   "join": false,
+   "dx": 0.06
+  },
+  "\u0152\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0152\u2026": {
+   "join": false,
+   "dx": 0.218
+  },
+  "\u0152\u20ac": {
+   "join": false,
+   "dx": 0.37
+  },
+  "\u0153!": {
+   "join": false,
+   "dx": 0.462
+  },
+  "\u0153\"": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0153#": {
+   "join": false,
+   "dx": 0.512
+  },
+  "\u0153$": {
+   "join": false,
+   "dx": 0.508
+  },
+  "\u0153%": {
+   "join": false,
+   "dx": 0.512
+  },
+  "\u0153&": {
+   "join": false,
+   "dx": 0.406
+  },
+  "\u0153'": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0153(": {
+   "join": false,
+   "dx": 0.672
+  },
+  "\u0153)": {
+   "join": false,
+   "dx": 0.089
+  },
+  "\u0153*": {
+   "join": false,
+   "dx": 0.694
+  },
+  "\u0153+": {
+   "join": false,
+   "dx": 0.53
+  },
+  "\u0153,": {
+   "join": false,
+   "dx": 0.02
+  },
+  "\u0153-": {
+   "join": false,
+   "dx": 0.548
+  },
+  "\u0153.": {
+   "join": false,
+   "dx": 0.436
+  },
+  "\u0153/": {
+   "join": false,
+   "dx": 0.423
+  },
+  "\u01530": {
+   "join": false,
+   "dx": 0.423
+  },
+  "\u01531": {
+   "join": false,
+   "dx": 0.443
+  },
+  "\u01532": {
+   "join": false,
+   "dx": 0.457
+  },
+  "\u01533": {
+   "join": false,
+   "dx": 0.333
+  },
+  "\u01534": {
+   "join": false,
+   "dx": 0.359
+  },
+  "\u01535": {
+   "join": false,
+   "dx": 0.334
+  },
+  "\u01536": {
+   "join": false,
+   "dx": 0.394
+  },
+  "\u01537": {
+   "join": false,
+   "dx": 0.131
+  },
+  "\u01538": {
+   "join": false,
+   "dx": 0.445
+  },
+  "\u01539": {
+   "join": false,
+   "dx": 0.377
+  },
+  "\u0153:": {
+   "join": false,
+   "dx": 0.496
+  },
+  "\u0153;": {
+   "join": false,
+   "dx": 0.516
+  },
+  "\u0153=": {
+   "join": false,
+   "dx": 0.402
+  },
+  "\u0153?": {
+   "join": false,
+   "dx": 0.394
+  },
+  "\u0153@": {
+   "join": false,
+   "dx": 0.508
+  },
+  "\u0153a": {
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "score": 0.028,
+   "was": 0.336
+  },
+  "\u0153b": {
+   "lead_out": 0.87,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.008,
+   "was": 0.343
+  },
+  "\u0153c": {
+   "lead_out": 0.6,
+   "score": 0.055,
+   "was": 0.277
+  },
+  "\u0153d": {
+   "lead_out": 0.6,
+   "lead_in": 0.3,
+   "score": 0.028,
+   "was": 0.338
+  },
+  "\u0153e": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "tension": 0.6,
+   "score": 0.226,
+   "was": 2.724
+  },
+  "\u0153f": {
+   "lead_out": 0.0,
+   "lead_in": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.603
+  },
+  "\u0153h": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 5.424
+  },
+  "\u0153i": {
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.159,
+   "was": 2.594
+  },
+  "\u0153j": {
+   "lead_out": 0.87,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.159,
+   "was": 2.712
+  },
+  "\u0153k": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 6.014
+  },
+  "\u0153l": {
+   "lead_out": 0.3,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.002,
+   "was": 0.338
+  },
+  "\u0153m": {
+   "lead_out": 0.15,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.001,
+   "was": 12.767
+  },
+  "\u0153n": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 12.783
+  },
+  "\u0153o": {
+   "lead_out": 0.0,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 2.543
+  },
+  "\u0153p": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.745
+  },
+  "\u0153r": {
+   "lead_out": 0.0,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.0,
+   "was": 7.767
+  },
+  "\u0153t": {
+   "lead_out": 0.87,
+   "lead_in": 0.15,
+   "arrive": "chord",
+   "score": 0.175,
+   "was": 2.632
+  },
+  "\u0153u": {
+   "lead_out": 0.87,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.159,
+   "was": 2.602
+  },
+  "\u0153v": {
+   "lead_out": 0.87,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.159,
+   "was": 2.602
+  },
+  "\u0153w": {
+   "lead_out": 0.87,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.159,
+   "was": 2.602
+  },
+  "\u0153y": {
+   "lead_out": 0.87,
+   "lead_in": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.159,
+   "was": 2.602
+  },
+  "\u0153\u00a1": {
+   "join": false,
+   "dx": 0.327
+  },
+  "\u0153\u00a3": {
+   "join": false,
+   "dx": 0.234
+  },
+  "\u0153\u00ab": {
+   "join": false,
+   "dx": 0.559
+  },
+  "\u0153\u00bb": {
+   "join": false,
+   "dx": 0.434
+  },
+  "\u0153\u00bf": {
+   "join": false,
+   "dx": 0.268
+  },
+  "\u0153\u00df": {
+   "lead_out": 0.87,
+   "lead_in": 0.3,
+   "tension": 0.6,
+   "arrive": "chord",
+   "score": 0.0,
+   "was": 0.659
+  },
+  "\u0153\u00e6": {
+   "dx": -0.15,
+   "lead_out": 0.3,
+   "tension": 0.6,
+   "arrive": "retrace",
+   "score": 0.265,
+   "was": 13.12
+  },
+  "\u0153\u0153": {
+   "dx": 0.15,
+   "lead_out": 0.0,
+   "lead_in": 0.897,
+   "score": 0.225,
+   "was": 5.098
+  },
+  "\u0153\u2013": {
+   "join": false,
+   "dx": 0.477
+  },
+  "\u0153\u2014": {
+   "join": false,
+   "dx": 0.439
+  },
+  "\u0153\u2018": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0153\u2019": {
+   "join": false,
+   "dx": 0.04
+  },
+  "\u0153\u201c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0153\u201d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u0153\u2026": {
+   "join": false,
+   "dx": 0.436
+  },
+  "\u0153\u20ac": {
+   "join": false,
+   "dx": 0.588
+  },
+  "\u2013A": {
+   "join": false,
+   "dx": 0.183
+  },
+  "\u2013B": {
+   "join": false,
+   "dx": 0.357
+  },
+  "\u2013C": {
+   "join": false,
+   "dx": 0.372
+  },
+  "\u2013D": {
+   "join": false,
+   "dx": 0.176
+  },
+  "\u2013E": {
+   "join": false,
+   "dx": 0.29
+  },
+  "\u2013F": {
+   "join": false,
+   "dx": 0.114
+  },
+  "\u2013G": {
+   "join": false,
+   "dx": 0.165
+  },
+  "\u2013H": {
+   "join": false,
+   "dx": 0.167
+  },
+  "\u2013I": {
+   "join": false,
+   "dx": 0.12
+  },
+  "\u2013J": {
+   "join": false,
+   "dx": -0.534
+  },
+  "\u2013K": {
+   "join": false,
+   "dx": 0.12
+  },
+  "\u2013L": {
+   "join": false,
+   "dx": -0.017
+  },
+  "\u2013M": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u2013N": {
+   "join": false,
+   "dx": 0.158
+  },
+  "\u2013O": {
+   "join": false,
+   "dx": 0.261
+  },
+  "\u2013P": {
+   "join": false,
+   "dx": 0.357
+  },
+  "\u2013Q": {
+   "join": false,
+   "dx": 0.09
+  },
+  "\u2013R": {
+   "join": false,
+   "dx": 0.358
+  },
+  "\u2013S": {
+   "join": false,
+   "dx": 0.255
+  },
+  "\u2013T": {
+   "join": false,
+   "dx": 0.079
+  },
+  "\u2013U": {
+   "join": false,
+   "dx": 0.185
+  },
+  "\u2013V": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013W": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013X": {
+   "join": false,
+   "dx": 0.063
+  },
+  "\u2013Y": {
+   "join": false,
+   "dx": 0.027
+  },
+  "\u2013Z": {
+   "join": false,
+   "dx": 0.05
+  },
+  "\u2013a": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013b": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013c": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013d": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013e": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013f": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013g": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013h": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013i": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013j": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013k": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013l": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013m": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013n": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013o": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013p": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013q": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013r": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013s": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013t": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013u": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013v": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013w": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013x": {
+   "join": false,
+   "dx": 0.378
+  },
+  "\u2013y": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013z": {
+   "join": false,
+   "dx": 0.353
+  },
+  "\u2013\u00c6": {
+   "join": false,
+   "dx": 0.245
+  },
+  "\u2013\u00df": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013\u00e6": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2013\u0152": {
+   "join": false,
+   "dx": 0.261
+  },
+  "\u2013\u0153": {
+   "join": false,
+   "dx": 0.186
+  },
+  "\u2014A": {
+   "join": false,
+   "dx": 0.19
+  },
+  "\u2014B": {
+   "join": false,
+   "dx": 0.363
+  },
+  "\u2014C": {
+   "join": false,
+   "dx": 0.379
+  },
+  "\u2014D": {
+   "join": false,
+   "dx": 0.182
+  },
+  "\u2014E": {
+   "join": false,
+   "dx": 0.296
+  },
+  "\u2014F": {
+   "join": false,
+   "dx": 0.121
+  },
+  "\u2014G": {
+   "join": false,
+   "dx": 0.172
+  },
+  "\u2014H": {
+   "join": false,
+   "dx": 0.174
+  },
+  "\u2014I": {
+   "join": false,
+   "dx": 0.126
+  },
+  "\u2014J": {
+   "join": false,
+   "dx": -0.527
+  },
+  "\u2014K": {
+   "join": false,
+   "dx": 0.126
+  },
+  "\u2014L": {
+   "join": false,
+   "dx": -0.011
+  },
+  "\u2014M": {
+   "join": false,
+   "dx": 0.167
+  },
+  "\u2014N": {
+   "join": false,
+   "dx": 0.165
+  },
+  "\u2014O": {
+   "join": false,
+   "dx": 0.268
+  },
+  "\u2014P": {
+   "join": false,
+   "dx": 0.364
+  },
+  "\u2014Q": {
+   "join": false,
+   "dx": 0.097
+  },
+  "\u2014R": {
+   "join": false,
+   "dx": 0.364
+  },
+  "\u2014S": {
+   "join": false,
+   "dx": 0.262
+  },
+  "\u2014T": {
+   "join": false,
+   "dx": 0.086
+  },
+  "\u2014U": {
+   "join": false,
+   "dx": 0.191
+  },
+  "\u2014V": {
+   "join": false,
+   "dx": 0.192
+  },
+  "\u2014W": {
+   "join": false,
+   "dx": 0.192
+  },
+  "\u2014X": {
+   "join": false,
+   "dx": 0.069
+  },
+  "\u2014Y": {
+   "join": false,
+   "dx": 0.034
+  },
+  "\u2014Z": {
+   "join": false,
+   "dx": 0.057
+  },
+  "\u2014a": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014b": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014c": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014d": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014e": {
+   "join": false,
+   "dx": 0.192
+  },
+  "\u2014f": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014g": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014h": {
+   "join": false,
+   "dx": 0.192
+  },
+  "\u2014i": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014j": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014k": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014l": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014m": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014n": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014o": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014p": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014q": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014r": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014s": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014t": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014u": {
+   "join": false,
+   "dx": 0.192
+  },
+  "\u2014v": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014w": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014x": {
+   "join": false,
+   "dx": 0.385
+  },
+  "\u2014y": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014z": {
+   "join": false,
+   "dx": 0.359
+  },
+  "\u2014\u00c6": {
+   "join": false,
+   "dx": 0.251
+  },
+  "\u2014\u00df": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2014\u00e6": {
+   "join": false,
+   "dx": 0.192
+  },
+  "\u2014\u0152": {
+   "join": false,
+   "dx": 0.268
+  },
+  "\u2014\u0153": {
+   "join": false,
+   "dx": 0.193
+  },
+  "\u2018A": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018B": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018C": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018D": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018E": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018F": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018G": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018H": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018I": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018J": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018K": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018L": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018M": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018N": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018O": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018P": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018Q": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018R": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018S": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018T": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018U": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018V": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018W": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018X": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018Y": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018Z": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018a": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018b": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018e": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018f": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018g": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018h": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018i": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018j": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018k": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018l": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018m": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018n": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018o": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018p": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018q": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018r": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018s": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018t": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018u": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018v": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018w": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018x": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018y": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018z": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018\u00df": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2018\u0153": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019A": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019B": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019C": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019D": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019E": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019F": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019G": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019H": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019I": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019J": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019K": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019L": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019M": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019N": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019O": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019P": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019Q": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019R": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019S": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019T": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019U": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019V": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019W": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019X": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019Y": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019Z": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019a": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019b": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019c": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019d": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019e": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019f": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019g": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019h": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019i": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019j": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019k": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019l": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019m": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019n": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019o": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019p": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019q": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019r": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019s": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019t": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019u": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019v": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019w": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019x": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019y": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019z": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019\u00df": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2019\u0153": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cA": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cB": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cC": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cD": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cE": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cF": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cG": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cH": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cI": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cJ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cK": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cL": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cM": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cN": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cO": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cP": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cQ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cR": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cS": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cT": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cU": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cV": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cW": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cX": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cY": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cZ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ca": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cb": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cc": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cd": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ce": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cf": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cg": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ch": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ci": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cj": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ck": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cl": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cm": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cn": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201co": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cp": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cq": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cr": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cs": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ct": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cu": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cv": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cw": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cx": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cy": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201cz": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201c\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201c\u00df": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201c\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201c\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201c\u0153": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dA": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dB": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dC": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dD": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dE": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dF": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dG": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dH": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dI": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dJ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dK": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dL": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dM": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u201dN": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u201dO": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dP": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dQ": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dR": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dS": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dT": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dU": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u201dV": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u201dW": {
+   "join": false,
+   "dx": 0.16
+  },
+  "\u201dX": {
+   "join": false,
+   "dx": 0.1
+  },
+  "\u201dY": {
+   "join": false,
+   "dx": 0.06
+  },
+  "\u201dZ": {
+   "join": false,
+   "dx": 0.04
+  },
+  "\u201da": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201db": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dc": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dd": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201de": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201df": {
+   "join": false,
+   "dx": 0.02
+  },
+  "\u201dg": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dh": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201di": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dj": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dk": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dl": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dm": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dn": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201do": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dp": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dq": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dr": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201ds": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dt": {
+   "join": false,
+   "dx": 0.02
+  },
+  "\u201du": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dv": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dw": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dx": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dy": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201dz": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201d\u00c6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201d\u00df": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201d\u00e6": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201d\u0152": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u201d\u0153": {
+   "join": false,
+   "dx": 0.0
+  },
+  "\u2026A": {
+   "join": false,
+   "dx": 0.368
+  },
+  "\u2026B": {
+   "join": false,
+   "dx": 0.542
+  },
+  "\u2026C": {
+   "join": false,
+   "dx": 0.557
+  },
+  "\u2026D": {
+   "join": false,
+   "dx": 0.36
+  },
+  "\u2026E": {
+   "join": false,
+   "dx": 0.474
+  },
+  "\u2026F": {
+   "join": false,
+   "dx": 0.299
+  },
+  "\u2026G": {
+   "join": false,
+   "dx": 0.35
+  },
+  "\u2026H": {
+   "join": false,
+   "dx": 0.352
+  },
+  "\u2026I": {
+   "join": false,
+   "dx": 0.305
+  },
+  "\u2026J": {
+   "join": false,
+   "dx": -0.189
+  },
+  "\u2026K": {
+   "join": false,
+   "dx": 0.304
+  },
+  "\u2026L": {
+   "join": false,
+   "dx": 0.168
+  },
+  "\u2026M": {
+   "join": false,
+   "dx": 0.345
+  },
+  "\u2026N": {
+   "join": false,
+   "dx": 0.343
+  },
+  "\u2026O": {
+   "join": false,
+   "dx": 0.446
+  },
+  "\u2026P": {
+   "join": false,
+   "dx": 0.542
+  },
+  "\u2026Q": {
+   "join": false,
+   "dx": 0.275
+  },
+  "\u2026R": {
+   "join": false,
+   "dx": 0.542
+  },
+  "\u2026S": {
+   "join": false,
+   "dx": 0.44
+  },
+  "\u2026T": {
+   "join": false,
+   "dx": 0.264
+  },
+  "\u2026U": {
+   "join": false,
+   "dx": 0.37
+  },
+  "\u2026V": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026W": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026X": {
+   "join": false,
+   "dx": 0.248
+  },
+  "\u2026Y": {
+   "join": false,
+   "dx": 0.212
+  },
+  "\u2026Z": {
+   "join": false,
+   "dx": 0.235
+  },
+  "\u2026a": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026b": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026c": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026d": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026e": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026f": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026g": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026h": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026i": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026j": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026k": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026l": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026m": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026n": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026o": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026p": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026q": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026r": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026s": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026t": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026u": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026v": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026w": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026x": {
+   "join": false,
+   "dx": 0.563
+  },
+  "\u2026y": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026z": {
+   "join": false,
+   "dx": 0.538
+  },
+  "\u2026\u00c6": {
+   "join": false,
+   "dx": 0.43
+  },
+  "\u2026\u00df": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026\u00e6": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u2026\u0152": {
+   "join": false,
+   "dx": 0.446
+  },
+  "\u2026\u0153": {
+   "join": false,
+   "dx": 0.371
+  },
+  "\u20acA": {
+   "join": false,
+   "dx": -0.277
+  },
+  "\u20acB": {
+   "join": false,
+   "dx": -0.123
+  },
+  "\u20acC": {
+   "join": false,
+   "dx": -0.108
+  },
+  "\u20acD": {
+   "join": false,
+   "dx": -0.244
+  },
+  "\u20acE": {
+   "join": false,
+   "dx": -0.19
+  },
+  "\u20acF": {
+   "join": false,
+   "dx": -0.126
+  },
+  "\u20acG": {
+   "join": false,
+   "dx": -0.314
+  },
+  "\u20acH": {
+   "join": false,
+   "dx": -0.253
+  },
+  "\u20acI": {
+   "join": false,
+   "dx": -0.28
+  },
+  "\u20acJ": {
+   "join": false,
+   "dx": -0.473
+  },
+  "\u20acK": {
+   "join": false,
+   "dx": -0.28
+  },
+  "\u20acL": {
+   "join": false,
+   "dx": -0.257
+  },
+  "\u20acM": {
+   "join": false,
+   "dx": 0.04
+  },
+  "\u20acN": {
+   "join": false,
+   "dx": 0.038
+  },
+  "\u20acO": {
+   "join": false,
+   "dx": -0.218
+  },
+  "\u20acP": {
+   "join": false,
+   "dx": -0.122
+  },
+  "\u20acQ": {
+   "join": false,
+   "dx": -0.39
+  },
+  "\u20acR": {
+   "join": false,
+   "dx": -0.122
+  },
+  "\u20acS": {
+   "join": false,
+   "dx": -0.225
+  },
+  "\u20acT": {
+   "join": false,
+   "dx": -0.121
+  },
+  "\u20acU": {
+   "join": false,
+   "dx": 0.025
+  },
+  "\u20acV": {
+   "join": false,
+   "dx": 0.026
+  },
+  "\u20acW": {
+   "join": false,
+   "dx": 0.026
+  },
+  "\u20acX": {
+   "join": false,
+   "dx": -0.037
+  },
+  "\u20acY": {
+   "join": false,
+   "dx": -0.073
+  },
+  "\u20acZ": {
+   "join": false,
+   "dx": -0.109
+  },
+  "\u20aca": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acb": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acc": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acd": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20ace": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acf": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acg": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20ach": {
+   "join": false,
+   "dx": -0.274
+  },
+  "\u20aci": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acj": {
+   "join": false,
+   "dx": -0.274
+  },
+  "\u20ack": {
+   "join": false,
+   "dx": -0.274
+  },
+  "\u20acl": {
+   "join": false,
+   "dx": -0.293
+  },
+  "\u20acm": {
+   "join": false,
+   "dx": -0.274
+  },
+  "\u20acn": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20aco": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acp": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acq": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acr": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acs": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20act": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acu": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acv": {
+   "join": false,
+   "dx": -0.293
+  },
+  "\u20acw": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acx": {
+   "join": false,
+   "dx": -0.101
+  },
+  "\u20acy": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20acz": {
+   "join": false,
+   "dx": -0.127
+  },
+  "\u20ac\u00c6": {
+   "join": false,
+   "dx": -0.235
+  },
+  "\u20ac\u00df": {
+   "join": false,
+   "dx": -0.254
+  },
+  "\u20ac\u00e6": {
+   "join": false,
+   "dx": -0.294
+  },
+  "\u20ac\u0152": {
+   "join": false,
+   "dx": -0.218
+  },
+  "\u20ac\u0153": {
+   "join": false,
+   "dx": -0.294
   }
  }
 }

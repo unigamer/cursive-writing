@@ -190,7 +190,8 @@ function showChars(groups) {
       const dt = document.createElement("dt");
       dt.textContent = name[0].toUpperCase() + name.slice(1);
       const dd = document.createElement("dd");
-      dd.textContent = name.startsWith("punct") ? Array.from(chars).join(" ") : chars;
+      const spaced = !["lowercase", "capitals", "digits"].includes(name); // easier to tell apart
+      dd.textContent = spaced ? Array.from(chars).join(" ") : chars;
       return [dt, dd];
     }),
   );

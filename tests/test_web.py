@@ -109,7 +109,10 @@ def test_random_stream_matches_numpy(js_tmp):
 
 
 WORDS = ([a + b for a in string.ascii_letters for b in string.ascii_lowercase]
-         + ["minimum", "handwriting", "Quick,", "fox's", "£12.50!", "e-mail", "(yes)", "\"Hi\"", "ü"])
+         + ["minimum", "handwriting", "Quick,", "fox's", "£12.50!", "e-mail", "(yes)", "\"Hi\"", "ü"]
+         # composed accented letters (all variants and forms), and letters with their own pairs
+         + ["café", "naïve", "Ångström", "façade", "señor", "Zoë", "Écoute", "øre", "élève", "gâteau",
+            "cæsar", "manœuvre", "straße", "Œuvre", "Æsop", "¿Qué?", "«oui»", "‘so’ — “it” – …", "€5"])
 
 
 @needs_js

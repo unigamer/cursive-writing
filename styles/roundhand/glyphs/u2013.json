@@ -1,0 +1,41 @@
+{
+ "char": "\u2013",
+ "advance": 0.842,
+ "strokes": [
+  {
+   "points": [
+    [
+     0.0682,
+     0.5227
+    ],
+    [
+     0.1171,
+     0.5484
+    ],
+    [
+     0.1444,
+     0.5543
+    ],
+    [
+     0.6301,
+     0.555
+    ],
+    [
+     0.6482,
+     0.5593
+    ],
+    [
+     0.7045,
+     0.5909
+    ]
+   ],
+   "deferred": false,
+   "kind": "line"
+  }
+ ],
+ "lead_in": 0.0,
+ "lead_out": 0.1,
+ "entry": "mid",
+ "exit": "high",
+ "source": "PetitFormalScript-Regular.ttf"
+}

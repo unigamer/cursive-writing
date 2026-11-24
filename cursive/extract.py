@@ -494,6 +494,12 @@ def _dot(center, r, n=14) -> np.ndarray:
 def extract_glyph(face: freetype.Face, char: str, xh_units: float, slant: float = 0.0,
                   hint: dict | None = None, glyph_name: str | None = None) -> dict | None:
     img, orow, ocol, adv_px, _ = render(face, char, xh_units, glyph_name)
+    return extract_image(img, orow, ocol, adv_px, char, slant, hint)
+
+
+def extract_image(img: np.ndarray, orow: float, ocol: float, adv_px: float, char: str, slant: float = 0.0,
+                  hint: dict | None = None) -> dict | None:
+    """Trace a rendered bitmap (see `render`) into a glyph dict."""
     if img.sum() == 0:
         return None
     # small blobs (dots of i, j, '.', ':') become plotted dots, not skeletons

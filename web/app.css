@@ -61,16 +61,16 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 24px;
+  padding: 8px 24px;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
 }
 .mark {
   flex: none;
-  width: 40px;
-  height: 40px;
-  padding: 6px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  border-radius: 8px;
   background: var(--accent);
   fill: none;
   stroke: var(--accent-ink);
@@ -79,13 +79,8 @@ body {
 }
 .top h1 {
   margin: 0;
-  font: italic 600 24px/1.15 Georgia, "Times New Roman", serif;
+  font: italic 600 21px/1.15 Georgia, "Times New Roman", serif;
   letter-spacing: 0.01em;
-}
-.tagline {
-  margin: 2px 0 0;
-  font-size: 13px;
-  color: var(--muted);
 }
 
 .layout {
@@ -253,6 +248,31 @@ input[type="range"] {
 }
 .check input { accent-color: var(--accent); }
 
+.view-opts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-right: auto;
+}
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.swatch input[type="color"] {
+  width: 30px;
+  height: 26px;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--field);
+  cursor: pointer;
+}
+.swatch:has(input:disabled) { opacity: 0.45; cursor: default; }
+
 button {
   font: inherit;
   font-size: 13px;
@@ -338,6 +358,10 @@ button:disabled { opacity: 0.5; cursor: default; }
   touch-action: pan-y; /* one finger scrolls the page; two fingers zoom the preview */
   overscroll-behavior: contain;
 }
+/* a transparent PNG: show the page as a checkerboard */
+.viewport.clear, .viewport.clear .sheet {
+  background: repeating-conic-gradient(#e4e4e4 0 25%, #fff 0 50%) 0 0 / 16px 16px;
+}
 .viewport.zoomed { cursor: grab; touch-action: none; }
 .viewport.dragging { cursor: grabbing; }
 .viewport.dragging .sheet { user-select: none; }
@@ -345,7 +369,7 @@ button:disabled { opacity: 0.5; cursor: default; }
 .sheet {
   position: relative;
   width: 100%;
-  background: var(--paper);
+  background: var(--page-colour, var(--paper));
   transition: opacity 120ms;
 }
 
@@ -383,7 +407,7 @@ button:disabled { opacity: 0.5; cursor: default; }
   width: 100%;
   height: auto;
 }
-.sheet svg path { stroke: #1d2140; }
+.sheet svg path { stroke: var(--ink-stroke, #000); }
 .sheet .guides {
   position: absolute;
   border: 1px dashed var(--guide);

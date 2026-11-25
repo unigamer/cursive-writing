@@ -320,15 +320,17 @@ python tools/pairs.py kern spencerian
 
 ### Visual snapshots
 
-`tests/snapshots/` holds two cards per style, as SVG: a letter with variation and shading, and a plain sheet (no variation) with the alphabet, common doubled letters, every capital and the digits. `tools/snapshots.py` redraws them and compares the geometry: the same number of pen strokes, and every stroke within 0.05 mm of the stored one. Any glyph, pair or engine change that moves ink therefore fails the check until it's accepted:
+`tests/snapshots/` holds two cards per style, as SVG: a letter with variation and shading, and a plain sheet (no variation) with the alphabet, common doubled letters, every capital and the digits. `tools/snapshots.py` redraws them and compares the geometry: the same number of pen strokes, and every stroke within 0.05 mm of the stored one. Any glyph, pair or engine change that moves ink therefore shows up, with pictures:
 
 ```sh
-python tools/snapshots.py                    # check (also part of pytest)
+python tools/snapshots.py                    # list the cards that changed
 python tools/snapshots.py --diff diffs/      # before | after | overlay PNG for each changed card
-python tools/snapshots.py --update           # accept the change; commit tests/snapshots/ with it
+python tools/snapshots.py --update           # rewrite the snapshots (CI does this on main)
 ```
 
-`.github/workflows/ci.yml` runs this, `build_web.py --check` and the tests on every push and pull request. When a card changes, the job summary lists it, and the before/after pictures are attached to the run as the `snapshot-diffs` artifact. On a pull request the workflow also posts the pictures in a comment. It stores them on the `snapshot-diffs` branch so the comment can show them, and later runs edit the same comment, which says all clear once the snapshots match again. Pull requests from forks get only the summary and artifact, because their token can't push or comment. GitHub also shows changed snapshot SVGs as images in a pull request's file view.
+`.github/workflows/ci.yml` runs this, `build_web.py --check` and the tests on every push and pull request. Snapshot changes are for review and never fail the build. When cards change, the job summary lists them, and the before/after pictures are attached to the run as the `snapshot-diffs` artifact. On a pull request the workflow also posts the pictures in a comment. It stores them on the `snapshot-diffs` branch so the comment can show them, and later runs edit the same comment. Pull requests from forks get only the summary and artifact, because their token can't push or comment.
+
+**Merging is approval.** After a merge to `main` passes its tests, CI regenerates `tests/snapshots/` and commits them to `main`, so the next pull request is compared with what `main` now draws. Nobody needs to run `--update` by hand.
 
 ### Reviewing what matters most
 

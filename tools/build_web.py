@@ -9,7 +9,8 @@ pair "score"/"was"/"note"/"manual") are left out to keep downloads small.
     python tools/build_web.py           # all styles
     python tools/build_web.py --check   # exit 1 if a bundle is out of date
 
-Re-run after editing glyphs, style.json or pairs.json.
+Re-run after editing glyphs, style.json or pairs.json, and after bumping the
+version in pyproject.toml: the page footer names the release it comes from.
 
 It also writes the licence files that must travel with the style data, which
 is derived from fonts under the SIL Open Font License: styles/LICENSE.md and
@@ -38,6 +39,7 @@ STYLES = ROOT / "styles"
 WEB = ROOT / "web"
 OUT = WEB / "data"
 STANDALONE_OUT = ROOT / "dist" / "cursive-writer.html"
+PAGES_COPY = "https://unigamer.github.io/cursive-writing/cursive-writer.html"  # as in web/app.js
 FONTS = ROOT / "fonts"
 STYLES_LICENSE = STYLES / "LICENSE.md"
 WEB_LICENSES = WEB / "LICENSES.txt"
@@ -171,6 +173,28 @@ def index() -> str:
     return json.dumps({"styles": styles}, indent=1, ensure_ascii=False) + "\n"
 
 
+# ------------------------------------------------------------------ page
+
+
+_VERSION = re.compile(r'(<a id="version" href="[^"]*/releases/tag/)v[^"]*(">release )v[^<]*(</a>)')
+
+
+def version() -> str:
+    m = re.search(r'^version = "([^"]+)"', (ROOT / "pyproject.toml").read_text(), re.M)
+    if not m:
+        raise SystemExit("pyproject.toml: no version")
+    return m[1]
+
+
+def page_html() -> str:
+    """web/index.html with the footer naming the current release (pyproject version)."""
+    html = (WEB / "index.html").read_text()
+    if len(_VERSION.findall(html)) != 1:
+        raise ValueError('web/index.html no longer contains the <a id="version"> release link')
+    v = version()
+    return _VERSION.sub(lambda m: f"{m[1]}v{v}{m[2]}v{v}{m[3]}", html)
+
+
 # ------------------------------------------------------------------ single file
 
 _IMPORT = re.compile(r'^import (?:\* as (\w+)|\{([^}]*)\}) from "\./([\w/]+)\.js";$')
@@ -275,7 +299,7 @@ def standalone_html(names: list[str] | None = None) -> str:
     if unknown:
         raise SystemExit(f"unknown style(s): {', '.join(sorted(unknown))}")
     styles = [s for s in json.loads(index())["styles"] if s["id"] in names]
-    html = (WEB / "index.html").read_text()
+    html = page_html()
     css = _inline_safe((WEB / "app.css").read_text(), "app.css")
     blocks = "\n".join([
         '<script type="application/json" id="cursive-styles">'
@@ -283,6 +307,9 @@ def standalone_html(names: list[str] | None = None) -> str:
         '<script type="text/plain" id="cursive-engine">' + _inline_safe(engine_js(names), "the engine") + "</script>",
         "<script>\n" + _inline_safe((WEB / "standalone.js").read_text(), "standalone.js") + "</script>",
         '<script type="module">\n' + _inline_safe((WEB / "app.js").read_text(), "app.js") + "</script>",
+        # runs before the module above (modules wait for the whole page): keep the
+        # page as it arrived, for "Download offline copy"
+        "<script>CURSIVE_STANDALONE.source = CURSIVE_STANDALONE.pageSource();</script>",
     ])
     notice = ("<!--\n  Cursive Writer. Code: MIT License. Script style data: modified versions of\n"
               "  fonts under the SIL Open Font License 1.1:\n"
@@ -291,10 +318,14 @@ def standalone_html(names: list[str] | None = None) -> str:
               "  this page (element #licences).\n-->\n")
     licences = (f'<details id="licences" class="licences">\n<summary>Licences</summary>\n'
                 f"<pre>{_html.escape(licenses_text(), quote=False)}</pre>\n</details>\n")
+    # the served page's short licences section links to LICENSES.txt; here it holds the full text
+    html, n = re.subn(r'<details id="licences"[\s\S]*?</details>\n', lambda _: licences, html)
+    if n != 1:
+        raise ValueError('web/index.html no longer contains <details id="licences">')
     for old, new in [("<!doctype html>\n", "<!doctype html>\n" + notice),
                      ('<link rel="stylesheet" href="app.css">', f"<style>\n{css}</style>"),
-                     ('href="LICENSES.txt"', 'href="#licences"'),
-                     ("</footer>", "</footer>\n" + licences),
+                     # app.js saves the page itself; the link is only a fallback
+                     ('href="cursive-writer.html"', f'href="{PAGES_COPY}"'),
                      ('<script type="module" src="app.js"></script>', blocks)]:
         if html.count(old) != 1:
             raise ValueError(f"web/index.html no longer contains {old!r}")
@@ -321,6 +352,7 @@ def main(argv=None):
         files[OUT / "index.json"] = index()
         files[STYLES_LICENSE] = styles_license()
         files[WEB_LICENSES] = licenses_text()
+        files[WEB / "index.html"] = page_html()
     stale = [p for p, text in files.items() if not p.exists() or p.read_text() != text]
     if args.check:
         for p in stale:

@@ -93,10 +93,17 @@ def ink_edges(paths, slant: float, side: str) -> float | None:
     return 0.5 * float(np.mean(vals)) + 0.5 * ext
 
 
+HYPHEN_GAP = 0.4  # x letter_gap: a hyphen binds the two halves of one word
+
+
 def kern_gap(style, a, b) -> float:
     """Body gap for an unjoined pair. A capital standing alone before a
     lowercase letter has no connector bridging the space, so the same gap as
-    between joined letters reads too wide; it gets the tighter capital gap."""
+    between joined letters reads too wide; it gets the tighter capital gap.
+    A hyphen is a short mark with no joins either side; at the full letter gap
+    it reads as two separate words ("vibe - coding"), so it sits closer."""
+    if a.char == "-" or b.char == "-":
+        return HYPHEN_GAP * style.letter_gap
     if a.char.isupper() and b.char.islower():
         return style.capital_gap
     return style.letter_gap

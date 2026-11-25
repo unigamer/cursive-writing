@@ -47,9 +47,9 @@ STYLES = ["copperplate", "spencerian", "modern", "formal", "signature", "flowing
 #  card   - ordinary use: variation, shading, mixed text
 #  plain  - variation 0: every lowercase pair family and the capitals, so a
 #           glyph or join change shows up without random jitter in the way
-CARD = ("Dear Margaret,\nThank you for the lovely flowers; the little garden\n"
+CARD = ("Dear Margaret,\nThank you for the lovely flowers; the little old-fashioned garden\n"
         "looks wonderful. Café at 10? Œuvres, naïve & “quoted” — 42%!\n"
-        "Warmest wishes, Oliver")
+        "Warmest wishes from your next-door neighbour, Oliver")
 PLAIN = ("abcdefghijklmnopqrstuvwxyz zyxwvutsrqponmlkjihgfedcba\n"
          "minimum running bookkeeper attitude coffee squeeze jinx\n"
          "Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India\n"

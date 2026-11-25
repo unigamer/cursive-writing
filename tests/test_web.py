@@ -151,6 +151,8 @@ def page_cases():
              dict(size=9, page="a5", margin=10, seed=5)),
             (s, "Zebra Quilt Xylophone Juggling Kites <&>",
              dict(size=7, page="dl", margin=8, seed=123456789, variation=0.0, pen=1.0)),
+            (s, "Little letters: coffee, butter, attitude, Mississippi, Llanelli, Wattt, AAh",
+             dict(size=6, page="a5-landscape", margin=12, seed=21 + i)),
         ]
     return cases
 

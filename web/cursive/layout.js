@@ -109,7 +109,9 @@ export function placeWord(text, style, v, overrides = null) {
       x += style.word_space * 0.5;
       return;
     }
-    const gl = v.choose(opts);
+    // the second of a doubled letter (ll, ee) must not look stamped from the first
+    v.repeat = placed.length > 0 && i > 0 && chars[i - 1] === ch;
+    const gl = v.choose(opts, v.repeat ? placed[placed.length - 1].glyph : null);
     const [m, off, dadv] = v.glyphTransform();
     const warp = isLower(ch) ? v.loopWarp(gl.strokes[0].points, style.glyph_slant) : null;
     let o = [x + off[0], 0.0 + off[1]];

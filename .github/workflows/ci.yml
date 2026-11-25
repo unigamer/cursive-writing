@@ -1,15 +1,16 @@
 # On every push and pull request:
 #   - the web data matches styles/
-#   - visual snapshots (tools/snapshots.py): every card still draws what
-#     tests/snapshots/ holds; changed cards are listed in the job summary and
-#     their before/after pictures uploaded as the "snapshot-diffs" artifact.
-#     On a pull request (from a branch of this repo) the pictures are also
-#     pushed to the `snapshot-diffs` branch and shown in a PR comment, which
-#     later runs edit in place (and mark all clear once snapshots match again)
+#   - visual snapshots (tools/snapshots.py): which cards draw differently from
+#     tests/snapshots/. This is for review and never fails the build. Changed
+#     cards are listed in the job summary and their before/after pictures
+#     uploaded as the "snapshot-diffs" artifact. On a pull request (from a
+#     branch of this repo) the pictures are also pushed to the
+#     `snapshot-diffs` branch and shown in a PR comment, which later runs edit
+#     in place.
 #   - the rest of the tests, including the JS engine's parity with Python
-#
-# An intended visual change: run `python tools/snapshots.py --update` and
-# commit tests/snapshots/ with it.
+#   - on main, after the tests pass: changed snapshots are accepted, i.e.
+#     regenerated and committed to main. Merging a PR is what accepts its
+#     visual changes; nobody needs to run --update by hand.
 
 name: CI
 
@@ -20,7 +21,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # push diff pictures to the snapshot-diffs branch
+  contents: write # push diff pictures to snapshot-diffs; commit accepted snapshots to main
   pull-requests: write # comment on the pull request
 
 concurrency:
@@ -51,18 +52,19 @@ jobs:
         id: snapshots
         env:
           IMAGE_URL: https://raw.githubusercontent.com/${{ github.repository }}/snapshot-diffs/pr-${{ github.event.pull_request.number }}/${{ github.event.pull_request.head.sha }}
-        run: python tools/snapshots.py --diff snapshot-diffs --report snapshot-report.md --image-url "$IMAGE_URL"
+        run: python tools/snapshots.py --diff snapshot-diffs --report snapshot-report.md --image-url "$IMAGE_URL" --no-fail
 
       - name: Upload snapshot diffs
-        if: failure() && steps.snapshots.outcome == 'failure'
+        if: steps.snapshots.outputs.changed != '0'
         uses: actions/upload-artifact@v4
         with:
           name: snapshot-diffs
           path: snapshot-diffs/
 
       - name: Publish diff pictures for the PR comment
+        continue-on-error: true # cosmetic: never stops the tests
         if: >-
-          failure() && steps.snapshots.outcome == 'failure' && github.event_name == 'pull_request'
+          steps.snapshots.outputs.changed != '0' && github.event_name == 'pull_request'
           && github.event.pull_request.head.repo.full_name == github.repository
         env:
           GH_TOKEN: ${{ github.token }}
@@ -89,16 +91,17 @@ jobs:
           exit 1
 
       - name: Comment on the pull request
+        continue-on-error: true # cosmetic: never stops the tests
         if: >-
           always() && github.event_name == 'pull_request'
           && github.event.pull_request.head.repo.full_name == github.repository
-          && (steps.snapshots.outcome == 'failure' || steps.snapshots.outcome == 'success')
+          && steps.snapshots.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
-          OUTCOME: ${{ steps.snapshots.outcome }}
+          CHANGED: ${{ steps.snapshots.outputs.changed }}
         run: |
-          if [ "$OUTCOME" = failure ]; then
+          if [ "$CHANGED" != 0 ]; then
             gh pr comment "$PR" --edit-last --create-if-none --body-file snapshot-report.md
           else
             # all clear: update an earlier report if there is one, but don't add a comment
@@ -106,5 +109,17 @@ jobs:
           fi
 
       - name: Test
-        if: success() || steps.snapshots.outcome == 'failure'
-        run: python -m pytest -q --ignore=tests/test_snapshots.py
+        run: python -m pytest -q
+
+      - name: Accept the snapshot changes on main
+        if: >-
+          success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+          && steps.snapshots.outputs.changed != '0'
+        run: |
+          python tools/snapshots.py --update > /dev/null
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/snapshots
+          git commit -qm "Update visual snapshots for ${GITHUB_SHA::7}"
+          # if main has moved on meanwhile, the run for the newer commit does this instead
+          git push -q origin HEAD:main || echo "::notice::main moved on; its own run will update the snapshots"

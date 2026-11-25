@@ -8182,8 +8182,8 @@
   "Cc": {
    "join": false,
    "dx": -0.391,
-   "lead_out": 0.15,
-   "lead_in": 0.0,
+   "lead_out": 0.6,
+   "lead_in": 0.765,
    "tension": 0.6,
    "score": 1.6,
    "was": 17.378
@@ -8191,10 +8191,9 @@
   "Cd": {
    "join": false,
    "dx": -0.391,
-   "lead_out": 0.15,
+   "lead_out": 0.6,
    "lead_in": 0.551,
    "tension": 0.6,
-   "arrive": "slant",
    "score": 1.6,
    "was": 17.603
   },
@@ -8210,7 +8209,7 @@
    "join": false,
    "dx": -0.391,
    "lead_out": 0.15,
-   "lead_in": 0.3,
+   "arrive": "chord",
    "score": 1.6,
    "was": 17.457
   },
@@ -8228,16 +8227,14 @@
   "Ch": {
    "join": false,
    "dx": -0.391,
-   "lead_out": 0.15,
-   "arrive": "chord",
+   "lead_out": 0.6,
    "score": 1.6,
    "was": 17.291
   },
   "Ci": {
    "join": false,
    "dx": -0.391,
-   "lead_out": 0.15,
-   "lead_in": 0.15,
+   "lead_out": 0.3,
    "arrive": "chord",
    "score": 1.6,
    "was": 14.798
@@ -8255,8 +8252,7 @@
   "Ck": {
    "join": false,
    "dx": -0.391,
-   "lead_out": 0.15,
-   "arrive": "chord",
+   "lead_out": 0.6,
    "score": 1.6,
    "was": 17.29
   },
@@ -8288,9 +8284,9 @@
    "join": false,
    "dx": -0.391,
    "lead_out": 0.6,
+   "lead_in": 0.889,
    "tension": 0.3,
    "arrive": "retrace",
-   "over": true,
    "score": 1.6,
    "was": 15.814
   },
@@ -8307,7 +8303,6 @@
    "join": false,
    "dx": -0.391,
    "lead_out": 0.6,
-   "tension": 0.3,
    "over": true,
    "score": 1.6,
    "was": 19.606
@@ -8334,10 +8329,10 @@
   "Ct": {
    "join": false,
    "dx": -0.391,
-   "lead_out": 0.15,
+   "lead_out": 0.6,
    "lead_in": 0.15,
    "tension": 0.3,
-   "arrive": "chord",
+   "arrive": "retrace",
    "score": 1.6,
    "was": 16.976
   },
@@ -8373,9 +8368,10 @@
    "join": false,
    "dx": -0.028,
    "lead_out": 0.15,
+   "lead_in": 0.474,
    "tension": 0.6,
    "score": 1.6,
-   "was": 11.911
+   "was": 21.965
   },
   "Cy": {
    "join": false,
@@ -8389,8 +8385,10 @@
   "Cz": {
    "join": false,
    "dx": -0.109,
-   "lead_out": 0.6,
+   "lead_out": 0.15,
+   "lead_in": 1.255,
    "tension": 0.6,
+   "arrive": "retrace",
    "score": 1.6,
    "was": 21.888
   },
@@ -9034,19 +9032,14 @@
   "Ee": {
    "join": false,
    "dx": -0.528,
-   "lead_out": 0.15,
-   "lead_in": 0.15,
-   "tension": 0.3,
-   "arrive": "retrace",
-   "over": true,
+   "arrive": "chord",
    "score": 1.6,
    "was": 18.474
   },
   "Ef": {
    "join": false,
    "dx": -0.528,
-   "lead_out": 0.15,
-   "lead_in": 0.3,
+   "arrive": "slant",
    "score": 1.6,
    "was": 18.195
   },
@@ -9063,9 +9056,8 @@
   "Eh": {
    "join": false,
    "dx": -0.528,
-   "lead_out": 0.15,
+   "lead_out": 0.6,
    "tension": 0.6,
-   "arrive": "chord",
    "score": 1.6,
    "was": 18.306
   },
@@ -9090,9 +9082,8 @@
   "Ek": {
    "join": false,
    "dx": -0.528,
-   "lead_out": 0.15,
+   "lead_out": 0.6,
    "tension": 0.6,
-   "arrive": "chord",
    "score": 1.6,
    "was": 18.308
   },
@@ -9162,7 +9153,6 @@
    "join": false,
    "dx": -0.302,
    "lead_out": 0.15,
-   "tension": 0.6,
    "arrive": "chord",
    "score": 1.6,
    "was": 13.376
@@ -9170,9 +9160,9 @@
   "Et": {
    "join": false,
    "dx": -0.528,
-   "lead_out": 0.35,
+   "lead_out": 0.15,
    "lead_in": 0.3,
-   "arrive": "slant",
+   "arrive": "retrace",
    "score": 1.6,
    "was": 19.457
   },
@@ -9189,10 +9179,9 @@
   "Ev": {
    "join": false,
    "dx": -0.264,
-   "lead_out": 0.15,
    "lead_in": 0.4,
    "tension": 0.6,
-   "arrive": "chord",
+   "arrive": "slant",
    "score": 1.6,
    "was": 13.217
   },
@@ -9210,17 +9199,18 @@
    "join": false,
    "dx": -0.165,
    "lead_out": 0.15,
-   "tension": 0.3,
+   "lead_in": 0.474,
+   "tension": 0.6,
+   "arrive": "chord",
    "score": 1.6,
-   "was": 13.212
+   "was": 13.233
   },
   "Ey": {
    "join": false,
    "dx": -0.228,
-   "lead_out": 0.15,
    "lead_in": 0.433,
    "tension": 0.6,
-   "arrive": "chord",
+   "arrive": "slant",
    "score": 1.6,
    "was": 13.225
   },
@@ -9447,18 +9437,16 @@
    "join": false,
    "dx": -1.18,
    "lead_out": 1.612,
-   "tension": 0.3,
    "arrive": "chord",
-   "score": 1.6,
+   "score": 4.6,
    "was": 12.127
   },
   "Fc": {
    "join": false,
    "dx": -1.179,
-   "lead_out": 0.0,
-   "lead_in": 0.307,
-   "tension": 0.3,
-   "arrive": "glyph",
+   "lead_out": 1.612,
+   "lead_in": 0.765,
+   "tension": 0.6,
    "score": 1.6,
    "was": 17.065
   },
@@ -9482,8 +9470,9 @@
   "Ff": {
    "join": false,
    "dx": -1.18,
-   "lead_out": 0.0,
-   "score": 1.6,
+   "lead_out": 1.612,
+   "arrive": "chord",
+   "score": 4.6,
    "was": 17.489
   },
   "Fg": {
@@ -9500,18 +9489,18 @@
    "join": false,
    "dx": -1.18,
    "lead_out": 1.612,
-   "tension": 0.6,
    "arrive": "chord",
-   "score": 1.6,
+   "score": 4.6,
    "was": 17.064
   },
   "Fi": {
    "join": false,
    "dx": -1.18,
    "lead_out": 1.612,
+   "tension": 0.6,
    "arrive": "retrace",
    "score": 1.6,
-   "was": 14.531
+   "was": 14.704
   },
   "Fj": {
    "join": false,
@@ -9520,7 +9509,7 @@
    "lead_in": 0.15,
    "arrive": "chord",
    "score": 1.6,
-   "was": 14.483
+   "was": 14.579
   },
   "Fk": {
    "join": false,
@@ -9528,7 +9517,7 @@
    "lead_out": 1.612,
    "tension": 0.6,
    "arrive": "chord",
-   "score": 1.6,
+   "score": 4.6,
    "was": 17.066
   },
   "Fl": {
@@ -9536,7 +9525,7 @@
    "dx": -1.18,
    "lead_out": 1.612,
    "tension": 0.6,
-   "score": 1.6,
+   "score": 4.6,
    "was": 12.125
   },
   "Fm": {
@@ -9609,7 +9598,7 @@
    "lead_out": 0.0,
    "lead_in": 0.15,
    "arrive": "glyph",
-   "score": 1.6,
+   "score": 4.6,
    "was": 16.614
   },
   "Fu": {
@@ -9619,14 +9608,14 @@
    "lead_in": 0.15,
    "arrive": "retrace",
    "score": 1.6,
-   "was": 14.465
+   "was": 14.543
   },
   "Fv": {
    "join": false,
    "dx": -0.916,
    "lead_out": 1.612,
-   "lead_in": 0.951,
-   "tension": 0.6,
+   "lead_in": 0.801,
+   "arrive": "chord",
    "score": 1.6,
    "was": 11.87
   },
@@ -9642,10 +9631,9 @@
    "join": false,
    "dx": -0.817,
    "lead_out": 1.612,
-   "lead_in": 0.972,
    "tension": 0.6,
    "score": 1.6,
-   "was": 11.794
+   "was": 11.75
   },
   "Fy": {
    "join": false,
@@ -10348,17 +10336,20 @@
    "was": 1.992
   },
   "Hm": {
+   "dx": 0.15,
    "lead_out": 0.6,
-   "lead_in": 0.874,
+   "lead_in": 1.125,
    "tension": 0.3,
-   "score": 1.396,
+   "arrive": "slant",
+   "score": 1.282,
    "was": 2.359
   },
   "Hn": {
    "lead_out": 0.6,
-   "lead_in": 0.929,
+   "lead_in": 1.161,
    "tension": 0.3,
-   "score": 1.387,
+   "arrive": "slant",
+   "score": 1.262,
    "was": 2.349
   },
   "Ho": {
@@ -10372,24 +10363,25 @@
   "Hp": {
    "dx": 0.45,
    "lead_out": 0.6,
-   "lead_in": 0.3,
+   "lead_in": 0.0,
    "tension": 0.3,
-   "score": 1.469,
+   "arrive": "slant",
+   "score": 1.43,
    "was": 10.532
   },
   "Hq": {
    "lead_out": 0.6,
-   "tension": 0.3,
    "arrive": "chord",
-   "score": 0.84,
+   "score": 0.834,
    "was": 6.56
   },
   "Hr": {
    "dx": 0.15,
    "lead_out": 0.6,
-   "lead_in": 0.496,
+   "lead_in": 0.0,
    "tension": 0.3,
-   "score": 1.397,
+   "arrive": "slant",
+   "score": 1.363,
    "was": 2.53
   },
   "Hs": {
@@ -10403,10 +10395,9 @@
   "Ht": {
    "dx": 0.45,
    "lead_out": 0.15,
-   "lead_in": 0.3,
    "tension": 0.3,
-   "arrive": "retrace",
-   "score": 2.17,
+   "arrive": "slant",
+   "score": 2.12,
    "was": 3.907
   },
   "Hu": {
@@ -10419,42 +10410,43 @@
   },
   "Hv": {
    "lead_out": 0.6,
-   "lead_in": 0.951,
+   "lead_in": 1.107,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.236,
+   "score": 1.111,
    "was": 2.265
   },
   "Hw": {
    "lead_out": 0.6,
-   "lead_in": 1.065,
+   "lead_in": 1.184,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.295,
+   "score": 1.18,
    "was": 2.319
   },
   "Hx": {
-   "dx": 0.45,
    "lead_out": 0.6,
-   "lead_in": 0.15,
+   "lead_in": 1.177,
    "tension": 0.3,
-   "score": 1.51,
-   "was": 7.436
+   "arrive": "slant",
+   "score": 1.253,
+   "was": 2.475
   },
   "Hy": {
    "lead_out": 0.6,
-   "lead_in": 0.866,
+   "lead_in": 1.127,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.336,
+   "score": 1.135,
    "was": 7.864
   },
   "Hz": {
    "dx": 0.15,
    "lead_out": 0.6,
-   "lead_in": 0.605,
+   "lead_in": 0.0,
    "tension": 0.3,
-   "score": 1.4,
+   "arrive": "slant",
+   "score": 1.371,
    "was": 7.625
   },
   "H\u00a1": {
@@ -10669,8 +10661,7 @@
    "was": 7.747
   },
   "Ii": {
-   "lead_out": 0.849,
-   "tension": 0.6,
+   "lead_out": 0.349,
    "arrive": "retrace",
    "score": 0.0,
    "was": 2.858
@@ -10905,10 +10896,27 @@
    "score": 4.465,
    "was": 8.681
   },
+  "Jb": {
+   "tension": 0.3,
+   "score": 3.258,
+   "was": 3.554
+  },
+  "Jc": {
+   "lead_in": 0.765,
+   "tension": 0.3,
+   "score": 3.391,
+   "was": 3.697
+  },
+  "Jd": {
+   "lead_in": 0.551,
+   "tension": 0.3,
+   "score": 3.528,
+   "was": 3.884
+  },
   "Je": {
-   "arrive": "chord",
-   "score": 3.016,
-   "was": 3.207
+   "tension": 0.3,
+   "score": 3.13,
+   "was": 3.409
   },
   "Jg": {
    "lead_out": 0.6,
@@ -10916,25 +10924,63 @@
    "score": 3.667,
    "was": 8.617
   },
+  "Jh": {
+   "tension": 0.3,
+   "score": 3.222,
+   "was": 3.418
+  },
   "Ji": {
-   "lead_in": 0.15,
-   "arrive": "chord",
-   "score": 2.977,
-   "was": 6.433
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 3.211,
+   "was": 7.375
   },
   "Jj": {
    "dx": 0.15,
    "lead_in": 0.3,
+   "tension": 0.3,
    "arrive": "chord",
-   "score": 3.289,
-   "was": 8.627
+   "score": 3.499,
+   "was": 9.592
+  },
+  "Jk": {
+   "tension": 0.3,
+   "score": 3.221,
+   "was": 3.418
+  },
+  "Jl": {
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 3.248,
+   "was": 3.552
+  },
+  "Jm": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.941,
+   "was": 3.411
+  },
+  "Jn": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.931,
+   "was": 3.438
   },
   "Jo": {
-   "lead_out": 0.6,
+   "lead_in": 0.889,
+   "tension": 0.3,
    "arrive": "retrace",
-   "over": true,
-   "score": 3.575,
+   "score": 3.503,
    "was": 7.41
+  },
+  "Jp": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.917,
+   "was": 3.362
   },
   "Jq": {
    "lead_out": 0.45,
@@ -10944,18 +10990,69 @@
    "score": 3.588,
    "was": 12.556
   },
-  "Jt": {
+  "Jr": {
    "lead_in": 0.15,
    "tension": 0.3,
    "arrive": "chord",
-   "score": 2.873,
-   "was": 4.627
+   "score": 2.942,
+   "was": 3.446
+  },
+  "Js": {
+   "lead_in": 0.0,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.984,
+   "was": 3.353
+  },
+  "Jt": {
+   "lead_out": 0.45,
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 3.147,
+   "was": 5.339
   },
   "Ju": {
-   "lead_in": 0.15,
+   "lead_in": 0.3,
+   "tension": 0.3,
    "arrive": "chord",
-   "score": 2.972,
-   "was": 6.251
+   "score": 3.165,
+   "was": 7.214
+  },
+  "Jv": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.942,
+   "was": 3.426
+  },
+  "Jw": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.92,
+   "was": 3.424
+  },
+  "Jx": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.87,
+   "was": 3.27
+  },
+  "Jy": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.918,
+   "was": 3.379
+  },
+  "Jz": {
+   "lead_in": 0.15,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 2.932,
+   "was": 3.443
   },
   "J\u00a1": {
    "join": false,
@@ -11171,7 +11268,6 @@
   "Kc": {
    "join": false,
    "dx": -0.475,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11192,16 +11288,15 @@
    "join": false,
    "dx": -0.475,
    "tension": 0.3,
-   "arrive": "slant",
-   "over": "bottom",
+   "arrive": "chord",
    "score": 1.6,
    "was": 26.813
   },
   "Kf": {
    "join": false,
    "dx": 0.565,
-   "lead_in": 0.15,
    "tension": 0.3,
+   "arrive": "slant",
    "score": 1.6,
    "was": 29.281
   },
@@ -11227,7 +11322,7 @@
    "join": false,
    "dx": -0.475,
    "lead_out": 0.6,
-   "lead_in": 0.3,
+   "lead_in": 0.15,
    "tension": 0.3,
    "arrive": "retrace",
    "score": 1.6,
@@ -11266,7 +11361,6 @@
   "Km": {
    "join": false,
    "dx": -0.211,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11276,7 +11370,6 @@
   "Kn": {
    "join": false,
    "dx": -0.195,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11297,7 +11390,7 @@
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.6,
+   "score": 4.6,
    "was": 29.003
   },
   "Kq": {
@@ -11311,7 +11404,6 @@
   "Kr": {
    "join": false,
    "dx": -0.219,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11350,7 +11442,6 @@
   "Kv": {
    "join": false,
    "dx": -0.211,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11360,7 +11451,6 @@
   "Kw": {
    "join": false,
    "dx": -0.171,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11370,17 +11460,15 @@
   "Kx": {
    "join": false,
    "dx": -0.113,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
    "score": 1.6,
-   "was": 25.953
+   "was": 25.957
   },
   "Ky": {
    "join": false,
    "dx": 0.545,
-   "lead_out": 0.6,
    "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
@@ -11390,8 +11478,7 @@
   "Kz": {
    "join": false,
    "dx": -0.193,
-   "lead_out": 0.6,
-   "lead_in": 0.15,
+   "lead_in": 0.0,
    "tension": 0.3,
    "arrive": "slant",
    "score": 1.6,
@@ -11649,10 +11736,10 @@
   },
   "Li": {
    "lead_out": 0.6,
-   "lead_in": 0.3,
+   "lead_in": 0.15,
    "tension": 0.3,
    "arrive": "chord",
-   "score": 0.038,
+   "score": 0.19,
    "was": 4.179
   },
   "Lj": {
@@ -11740,7 +11827,7 @@
   },
   "Lv": {
    "lead_out": 0.6,
-   "lead_in": 0.951,
+   "lead_in": 1.107,
    "tension": 0.3,
    "arrive": "chord",
    "score": 0.001,
@@ -11757,8 +11844,8 @@
    "lead_out": 0.6,
    "lead_in": 0.15,
    "tension": 0.3,
-   "score": 0.034,
-   "was": 6.329
+   "score": 0.071,
+   "was": 1.4
   },
   "Ly": {
    "lead_out": 0.6,
@@ -12400,10 +12487,9 @@
   "Nd": {
    "join": false,
    "dx": 0.452,
-   "lead_out": 0.15,
+   "lead_out": 0.45,
    "lead_in": 0.551,
    "tension": 0.6,
-   "arrive": "slant",
    "score": 1.6,
    "was": 21.303
   },
@@ -12419,8 +12505,7 @@
   "Nf": {
    "join": false,
    "dx": -0.769,
-   "lead_out": 0.15,
-   "lead_in": 0.3,
+   "lead_out": 0.6,
    "score": 4.6,
    "was": 21.113
   },
@@ -12438,9 +12523,8 @@
   "Nh": {
    "join": false,
    "dx": 1.492,
-   "lead_out": 0.15,
+   "lead_out": 0.6,
    "tension": 0.6,
-   "arrive": "chord",
    "score": 1.6,
    "was": 20.961
   },
@@ -12448,8 +12532,7 @@
    "join": false,
    "dx": -0.768,
    "lead_out": 0.15,
-   "lead_in": 0.15,
-   "arrive": "chord",
+   "arrive": "retrace",
    "score": 1.6,
    "was": 15.488
   },
@@ -12466,9 +12549,8 @@
   "Nk": {
    "join": false,
    "dx": 1.492,
-   "lead_out": 0.15,
+   "lead_out": 0.6,
    "tension": 0.6,
-   "arrive": "chord",
    "score": 1.6,
    "was": 20.956
   },
@@ -12509,9 +12591,8 @@
   "Np": {
    "join": false,
    "dx": -0.433,
-   "lead_out": 0.3,
+   "lead_out": 0.15,
    "lead_in": 1.186,
-   "tension": 0.3,
    "arrive": "chord",
    "score": 1.6,
    "was": 17.529
@@ -12578,7 +12659,8 @@
    "join": false,
    "dx": -0.464,
    "lead_out": 0.15,
-   "tension": 0.6,
+   "lead_in": 0.457,
+   "arrive": "chord",
    "score": 1.6,
    "was": 12.631
   },
@@ -12586,11 +12668,11 @@
    "join": false,
    "dx": -0.406,
    "lead_out": 0.15,
-   "lead_in": 0.822,
+   "lead_in": 0.474,
    "tension": 0.6,
    "arrive": "chord",
    "score": 1.6,
-   "was": 12.582
+   "was": 12.559
   },
   "Ny": {
    "join": false,
@@ -13656,9 +13738,9 @@
    "was": 1.629
   },
   "Qg": {
+   "lead_out": 0.6,
    "lead_in": 0.15,
-   "tension": 0.3,
-   "arrive": "slant",
+   "arrive": "chord",
    "over": "bottom",
    "score": 0.8,
    "was": 7.59
@@ -13678,8 +13760,11 @@
   },
   "Qj": {
    "dx": 1.2,
-   "arrive": "retrace",
-   "score": 1.8,
+   "lead_out": 0.3,
+   "lead_in": 0.3,
+   "tension": 0.3,
+   "arrive": "chord",
+   "score": 1.817,
    "was": 9.167
   },
   "Qk": {
@@ -13696,16 +13781,18 @@
   },
   "Qm": {
    "lead_out": 0.6,
-   "lead_in": 0.437,
+   "lead_in": 1.125,
    "tension": 0.3,
-   "score": 0.694,
+   "arrive": "chord",
+   "score": 0.611,
    "was": 1.313
   },
   "Qn": {
    "lead_out": 0.6,
-   "lead_in": 0.929,
+   "lead_in": 1.161,
    "tension": 0.3,
-   "score": 0.697,
+   "arrive": "chord",
+   "score": 0.607,
    "was": 1.297
   },
   "Qo": {
@@ -13724,17 +13811,17 @@
    "was": 8.73
   },
   "Qq": {
-   "lead_out": 0.6,
-   "lead_in": 0.15,
-   "over": true,
-   "score": 1.125,
+   "lead_out": 0.35,
+   "arrive": "chord",
+   "score": 0.804,
    "was": 6.137
   },
   "Qr": {
    "lead_out": 0.6,
-   "lead_in": 0.3,
+   "lead_in": 0.0,
    "tension": 0.3,
-   "score": 0.688,
+   "arrive": "slant",
+   "score": 0.656,
    "was": 1.431
   },
   "Qs": {
@@ -13745,10 +13832,10 @@
    "was": 1.403
   },
   "Qt": {
-   "lead_in": 0.3,
+   "dx": 0.15,
    "tension": 0.3,
-   "arrive": "retrace",
-   "score": 1.482,
+   "arrive": "chord",
+   "score": 1.427,
    "was": 2.626
   },
   "Qu": {
@@ -13760,39 +13847,42 @@
   },
   "Qv": {
    "lead_out": 0.6,
-   "lead_in": 0.951,
+   "lead_in": 1.107,
    "tension": 0.3,
    "arrive": "chord",
-   "score": 0.578,
+   "score": 0.471,
    "was": 1.249
   },
   "Qw": {
    "lead_out": 0.6,
-   "lead_in": 0.915,
+   "lead_in": 1.184,
    "tension": 0.3,
-   "score": 0.67,
+   "arrive": "chord",
+   "score": 0.534,
    "was": 1.288
   },
   "Qx": {
    "lead_out": 0.6,
-   "lead_in": 0.3,
+   "lead_in": 1.177,
    "tension": 0.3,
-   "score": 0.77,
-   "was": 6.392
+   "arrive": "chord",
+   "score": 0.597,
+   "was": 1.478
   },
   "Qy": {
    "lead_out": 0.6,
-   "lead_in": 0.866,
+   "lead_in": 1.127,
    "tension": 0.3,
    "arrive": "chord",
-   "score": 0.664,
+   "score": 0.492,
    "was": 1.316
   },
   "Qz": {
    "lead_out": 0.6,
-   "lead_in": 0.605,
+   "lead_in": 0.0,
    "tension": 0.3,
-   "score": 0.697,
+   "arrive": "slant",
+   "score": 0.662,
    "was": 1.516
   },
   "Q\u00a1": {
@@ -14514,8 +14604,8 @@
    "join": false,
    "dx": -0.544,
    "lead_out": 0.3,
+   "lead_in": 0.889,
    "arrive": "retrace",
-   "over": true,
    "score": 1.6,
    "was": 17.109
   },
@@ -14523,7 +14613,7 @@
    "join": false,
    "dx": -0.209,
    "lead_out": 0.3,
-   "lead_in": 1.186,
+   "lead_in": 1.265,
    "tension": 0.3,
    "score": 1.6,
    "was": 11.705
@@ -14551,6 +14641,7 @@
    "join": false,
    "dx": -0.319,
    "lead_out": 0.3,
+   "lead_in": 0.9,
    "tension": 0.3,
    "score": 1.6,
    "was": 11.823
@@ -14595,10 +14686,10 @@
    "join": false,
    "dx": -0.182,
    "lead_out": 0.3,
-   "lead_in": 0.3,
+   "lead_in": 0.15,
    "tension": 0.6,
    "score": 1.6,
-   "was": 11.755
+   "was": 11.723
   },
   "Sy": {
    "join": false,
@@ -14613,6 +14704,9 @@
    "join": false,
    "dx": -0.262,
    "lead_out": 0.3,
+   "lead_in": 1.359,
+   "tension": 0.6,
+   "arrive": "retrace",
    "score": 1.6,
    "was": 11.675
   },
@@ -14939,8 +15033,8 @@
    "join": false,
    "dx": -0.765,
    "lead_out": 0.15,
+   "lead_in": 0.889,
    "arrive": "retrace",
-   "over": true,
    "score": 1.6,
    "was": 15.213
   },
@@ -14948,7 +15042,7 @@
    "join": false,
    "dx": -0.43,
    "lead_out": 0.15,
-   "lead_in": 1.186,
+   "lead_in": 1.265,
    "tension": 0.3,
    "score": 1.6,
    "was": 11.157
@@ -14976,6 +15070,7 @@
    "join": false,
    "dx": -0.54,
    "lead_out": 0.15,
+   "lead_in": 0.9,
    "tension": 0.3,
    "score": 1.6,
    "was": 11.261
@@ -15024,9 +15119,10 @@
    "join": false,
    "dx": -0.403,
    "lead_out": 0.15,
+   "lead_in": 0.474,
    "tension": 0.3,
    "score": 1.6,
-   "was": 11.211
+   "was": 11.178
   },
   "Ty": {
    "join": false,
@@ -15041,7 +15137,9 @@
    "join": false,
    "dx": -0.483,
    "lead_out": 0.15,
-   "tension": 0.3,
+   "lead_in": 1.359,
+   "tension": 0.6,
+   "arrive": "retrace",
    "score": 1.6,
    "was": 11.133
   },
@@ -15341,41 +15439,40 @@
    "was": 7.242
   },
   "Um": {
-   "dx": 1.2,
+   "dx": 0.8,
    "lead_out": 0.15,
-   "lead_in": 0.874,
-   "tension": 0.3,
+   "lead_in": 1.125,
    "arrive": "slant",
-   "score": 1.8,
+   "score": 1.601,
    "was": 7.491
   },
   "Un": {
    "dx": 0.8,
-   "lead_out": 0.35,
-   "lead_in": 0.929,
-   "tension": 0.3,
+   "lead_out": 0.15,
+   "lead_in": 1.161,
    "arrive": "slant",
-   "score": 1.787,
+   "score": 1.588,
    "was": 7.471
   },
   "Uo": {
-   "tension": 0.3,
+   "lead_out": 0.6,
    "arrive": "slant",
-   "score": 0.858,
+   "score": 0.853,
    "was": 1.527
   },
   "Up": {
    "dx": 1.2,
    "lead_out": 0.15,
-   "lead_in": 1.186,
+   "lead_in": 1.265,
    "arrive": "slant",
    "score": 1.8,
    "was": 10.553
   },
   "Uq": {
    "lead_out": 0.35,
+   "tension": 0.6,
    "arrive": "chord",
-   "score": 1.097,
+   "score": 1.09,
    "was": 6.536
   },
   "Ur": {
@@ -15390,8 +15487,9 @@
   "Us": {
    "dx": 1.2,
    "lead_out": 0.15,
-   "lead_in": 0.3,
-   "arrive": "slant",
+   "lead_in": 0.0,
+   "tension": 0.3,
+   "arrive": "chord",
    "score": 1.8,
    "was": 7.469
   },
@@ -15415,46 +15513,44 @@
   "Uv": {
    "dx": 0.8,
    "lead_out": 0.15,
-   "lead_in": 0.951,
+   "lead_in": 1.107,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.598,
+   "score": 1.406,
    "was": 2.431
   },
   "Uw": {
    "dx": 0.8,
    "lead_out": 0.15,
-   "lead_in": 1.065,
+   "lead_in": 1.184,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.64,
+   "score": 1.471,
    "was": 7.482
   },
   "Ux": {
-   "join": false,
-   "dx": -0.097,
-   "lead_out": 0.35,
-   "lead_in": 0.972,
+   "dx": 0.8,
+   "lead_out": 0.15,
+   "lead_in": 1.177,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 6.0,
-   "was": 7.61
+   "score": 1.576,
+   "was": 2.664
   },
   "Uy": {
    "dx": 0.8,
    "lead_out": 0.15,
-   "lead_in": 1.016,
+   "lead_in": 1.127,
    "tension": 0.3,
    "arrive": "slant",
-   "score": 1.606,
+   "score": 1.438,
    "was": 13.225
   },
   "Uz": {
    "dx": 1.2,
    "lead_out": 0.15,
    "lead_in": 0.605,
-   "tension": 0.3,
-   "arrive": "chord",
+   "arrive": "slant",
    "score": 1.8,
    "was": 7.735
   },
@@ -15670,9 +15766,9 @@
   },
   "Vi": {
    "lead_out": 0.476,
-   "lead_in": 0.15,
-   "arrive": "chord",
-   "score": 0.001,
+   "tension": 0.3,
+   "arrive": "retrace",
+   "score": 0.005,
    "was": 2.721
   },
   "Vj": {
@@ -15683,11 +15779,10 @@
    "was": 2.615
   },
   "Vo": {
-   "lead_out": 1.301,
-   "lead_in": 0.3,
+   "lead_out": 1.101,
+   "lead_in": 0.889,
    "arrive": "retrace",
-   "over": true,
-   "score": 0.021,
+   "score": 0.016,
    "was": 6.464
   },
   "Vq": {
@@ -17116,9 +17211,9 @@
   "Zc": {
    "join": false,
    "dx": -0.409,
-   "lead_out": 0.0,
+   "lead_out": 0.15,
    "lead_in": 0.765,
-   "tension": 0.3,
+   "tension": 0.6,
    "arrive": "chord",
    "score": 1.6,
    "was": 5.825
@@ -17169,8 +17264,7 @@
    "join": false,
    "dx": -0.409,
    "lead_out": 0.15,
-   "lead_in": 0.15,
-   "arrive": "chord",
+   "arrive": "retrace",
    "score": 1.6,
    "was": 8.321
   },
@@ -17195,7 +17289,9 @@
   "Zl": {
    "join": false,
    "dx": -0.409,
-   "lead_out": 0.3,
+   "lead_out": 0.15,
+   "tension": 0.6,
+   "arrive": "chord",
    "score": 1.6,
    "was": 5.698
   },
@@ -17222,16 +17318,15 @@
    "join": false,
    "dx": -0.409,
    "lead_out": 0.15,
-   "tension": 0.6,
+   "lead_in": 0.889,
    "arrive": "retrace",
-   "over": true,
    "score": 1.6,
    "was": 7.369
   },
   "Zp": {
    "join": false,
    "dx": -0.073,
-   "lead_out": 0.361,
+   "lead_out": 0.3,
    "lead_in": 0.15,
    "tension": 0.6,
    "arrive": "slant",
@@ -17251,8 +17346,9 @@
   "Zr": {
    "join": false,
    "dx": -0.152,
-   "lead_out": 0.3,
-   "tension": 0.3,
+   "lead_out": 0.15,
+   "lead_in": 0.993,
+   "tension": 0.6,
    "arrive": "chord",
    "score": 1.6,
    "was": 5.474
@@ -17260,9 +17356,10 @@
   "Zs": {
    "join": false,
    "dx": -0.183,
-   "lead_out": 0.15,
+   "lead_out": 0.3,
+   "lead_in": 0.414,
    "tension": 0.6,
-   "arrive": "slant",
+   "arrive": "chord",
    "score": 1.6,
    "was": 5.55
   },
@@ -17278,7 +17375,7 @@
   "Zu": {
    "join": false,
    "dx": -0.409,
-   "lead_out": 0.3,
+   "lead_out": 0.15,
    "lead_in": 0.15,
    "tension": 0.6,
    "arrive": "chord",
@@ -17297,8 +17394,8 @@
   "Zw": {
    "join": false,
    "dx": -0.104,
-   "lead_out": 0.15,
-   "lead_in": 0.915,
+   "lead_out": 0.3,
+   "lead_in": 0.457,
    "arrive": "slant",
    "score": 1.6,
    "was": 5.522
@@ -17307,11 +17404,10 @@
    "join": false,
    "dx": -0.046,
    "lead_out": 0.15,
-   "lead_in": 0.822,
-   "tension": 0.6,
+   "lead_in": 0.947,
    "arrive": "slant",
    "score": 1.6,
-   "was": 5.491
+   "was": 5.487
   },
   "Zy": {
    "join": false,
@@ -17324,7 +17420,9 @@
   "Zz": {
    "join": false,
    "dx": -0.127,
-   "lead_out": 0.0,
+   "lead_out": 0.15,
+   "lead_in": 1.359,
+   "tension": 0.6,
    "arrive": "chord",
    "score": 1.6,
    "was": 5.515

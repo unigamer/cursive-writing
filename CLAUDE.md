@@ -8,7 +8,8 @@ Text in, joined single-line cursive SVG out, for pen plotters. A Python engine (
 .venv/bin/pip install -e ".[dev,extract]"      # setup (extract extras only needed for tools/extract_glyphs.py)
 .venv/bin/python -m pytest -q                   # all tests; tests/test_web.py needs deno or node, else skips
 .venv/bin/python tools/build_web.py             # rebuild web/data/ + licence files after any styles/ edit
-.venv/bin/python tools/build_web.py --check     # what CI runs: fails if web/data/ is stale
+.venv/bin/python tools/build_web.py --check     # CI runs this too: fails if web/data/ is stale
+.venv/bin/python tools/snapshots.py             # visual snapshots (CI runs it); --diff DIR for pictures, --update to accept
 .venv/bin/python tools/build_web.py --standalone   # single-file page -> dist/cursive-writer.html
 python3 -m http.server -d web 8000              # serve the web page (won't work from file://)
 .venv/bin/python -m cursive.cli "Hello" --style copperplate -o out.svg --png out.png
@@ -36,6 +37,7 @@ Run the tests and `build_web.py --check` locally before releasing; a failure in 
 - After editing a base letter, re-run `tools/compose_glyphs.py <style>` so its accented copies (é, è, ê…) follow; tests fail while they are stale. Never hand-edit composed glyphs (`"base"` set): edit the base letter or `marks.json`.
 - After editing glyphs, re-run `tools/pairs.py optimise <style>`. Never overwrite pair entries marked `"manual": true` or glyphs marked `"edited"`.
 - After changing `even_spacing` or `capital_gap` in a `style.json` (or after `optimise`), re-run `tools/pairs.py kern <style>` so unjoined pairs are re-kerned.
+- Any change that moves ink fails the snapshot check. Look at `tools/snapshots.py --diff`, then `--update` and commit `tests/snapshots/` with the change. CI (`.github/workflows/ci.yml`) runs it on every push and PR.
 - Judge visual changes by rendering PNGs (`tools/sheets.py`, `--png`); there is no plotter available to test on.
 - Licensing: code is MIT, style data is OFL-1.1. The standalone HTML must carry all notices (build_web.py embeds them, tests enforce). Style names must not use the fonts' Reserved Font Names (Parisienne, Petit Formal Script, Monsieur La Doulaise).
 - Don't write plotter trademark names in code, docs or UI; say "pen plotter".

@@ -2,9 +2,9 @@
 tests/snapshots/, so any change to glyphs, pairs or the engine that moves ink
 shows up as a failing check, with pictures of what moved.
 
-    python tools/snapshots.py                  # check; exit 1 if any card changed
+    python tools/snapshots.py                  # list changed cards; exit 1 if any
     python tools/snapshots.py --diff diffs/    # also draw before | after | overlay PNGs
-    python tools/snapshots.py --update         # accept the current output as the new snapshots
+    python tools/snapshots.py --update         # write the current output as the snapshots
     python tools/snapshots.py --update --only copperplate-card
 
 Cards are compared as geometry, not bytes: the same number of pen strokes, and
@@ -13,10 +13,12 @@ every stroke within TOLERANCE mm of the stored one
 differences between machines or numpy versions therefore don't fail the check;
 a moved join, a changed glyph or an extra pen lift does.
 
-In CI (.github/workflows/ci.yml) a failure lists the changed cards in the job
-summary and uploads the diff PNGs as an artifact. On a pull request it also
-pushes the PNGs to the `snapshot-diffs` branch and posts them in a comment
-(`--report`), which later runs update in place.
+Changes are for review, not failures. In CI (.github/workflows/ci.yml) changed
+cards are listed in the job summary and their PNGs uploaded as an artifact; on
+a pull request the PNGs are also pushed to the `snapshot-diffs` branch and
+posted in a comment (`--report`) that later runs update in place. Merging to
+main accepts the changes: CI runs --update there and commits the result, so
+--update is rarely needed by hand.
 """
 
 from __future__ import annotations
@@ -213,7 +215,8 @@ def report(changed: list[tuple[str, str]], image_url: str | None = None) -> str:
     out = [COMMENT_MARK, f"### Snapshots: {len(changed)} of {len(cases())} cards changed", "",
            "| card | change |", "|---|---|"]
     out += [f"| `{n}` | {w} |" for n, w in changed]
-    out += ["", "If this is intended, run `python tools/snapshots.py --update` and commit `tests/snapshots/`."]
+    out += ["", "This is for review and doesn't fail the build. Merging the pull request accepts these "
+                "changes: CI then updates `tests/snapshots/` on main."]
     if image_url:
         out += ["", "Each picture: before, after, then an overlay with changed strokes in red (before) "
                     "and blue (after); unchanged strokes are grey.", ""]
@@ -232,6 +235,8 @@ def main() -> int:
     ap.add_argument("--diff", type=Path, help="directory for before/after PNGs of changed cards")
     ap.add_argument("--report", type=Path, help="write a Markdown report (for a PR comment) here")
     ap.add_argument("--image-url", help="with --report: URL the --diff PNGs will be served from")
+    ap.add_argument("--no-fail", action="store_true",
+                    help="exit 0 even when cards changed (CI: changes are for review)")
     args = ap.parse_args()
     if args.update:
         SNAP_DIR.mkdir(parents=True, exist_ok=True)
@@ -253,9 +258,13 @@ def main() -> int:
     if summary:
         with open(summary, "a") as fh:
             fh.write(report(changed))
+    output = os.environ.get("GITHUB_OUTPUT")
+    if output:
+        with open(output, "a") as fh:
+            fh.write(f"changed={len(changed)}\n")
     if not changed:
         print(f"all {len(cases())} snapshot cards unchanged")
-    return 1 if changed else 0
+    return 1 if changed and not args.no_fail else 0
 
 
 if __name__ == "__main__":

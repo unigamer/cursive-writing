@@ -1,0 +1,110 @@
+# On every push and pull request:
+#   - the web data matches styles/
+#   - visual snapshots (tools/snapshots.py): every card still draws what
+#     tests/snapshots/ holds; changed cards are listed in the job summary and
+#     their before/after pictures uploaded as the "snapshot-diffs" artifact.
+#     On a pull request (from a branch of this repo) the pictures are also
+#     pushed to the `snapshot-diffs` branch and shown in a PR comment, which
+#     later runs edit in place (and mark all clear once snapshots match again)
+#   - the rest of the tests, including the JS engine's parity with Python
+#
+# An intended visual change: run `python tools/snapshots.py --update` and
+# commit tests/snapshots/ with it.
+
+name: CI
+
+on:
+  push:
+    branches-ignore: [snapshot-diffs]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write # push diff pictures to the snapshot-diffs branch
+  pull-requests: write # comment on the pull request
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install the package and test dependencies
+        run: pip install ".[dev]"
+
+      - name: Check the committed web data matches styles/
+        run: python tools/build_web.py --check
+
+      - name: Visual snapshots
+        id: snapshots
+        env:
+          IMAGE_URL: https://raw.githubusercontent.com/${{ github.repository }}/snapshot-diffs/pr-${{ github.event.pull_request.number }}/${{ github.event.pull_request.head.sha }}
+        run: python tools/snapshots.py --diff snapshot-diffs --report snapshot-report.md --image-url "$IMAGE_URL"
+
+      - name: Upload snapshot diffs
+        if: failure() && steps.snapshots.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshot-diffs
+          path: snapshot-diffs/
+
+      - name: Publish diff pictures for the PR comment
+        if: >-
+          failure() && steps.snapshots.outcome == 'failure' && github.event_name == 'pull_request'
+          && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          DEST: pr-${{ github.event.pull_request.number }}/${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir pub && cd pub
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          for try in 1 2 3; do
+            if git fetch -q --depth 1 origin snapshot-diffs; then
+              git checkout -q -B snapshot-diffs FETCH_HEAD
+            else
+              git checkout -q --orphan snapshot-diffs
+            fi
+            mkdir -p "$DEST" && cp ../snapshot-diffs/*.png "$DEST/"
+            git add "$DEST"
+            git commit -qm "Snapshot diffs: $DEST"
+            git push -q origin snapshot-diffs && exit 0
+            sleep 5 # another run pushed first: start again from its commit
+          done
+          exit 1
+
+      - name: Comment on the pull request
+        if: >-
+          always() && github.event_name == 'pull_request'
+          && github.event.pull_request.head.repo.full_name == github.repository
+          && (steps.snapshots.outcome == 'failure' || steps.snapshots.outcome == 'success')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          OUTCOME: ${{ steps.snapshots.outcome }}
+        run: |
+          if [ "$OUTCOME" = failure ]; then
+            gh pr comment "$PR" --edit-last --create-if-none --body-file snapshot-report.md
+          else
+            # all clear: update an earlier report if there is one, but don't add a comment
+            gh pr comment "$PR" --edit-last --body-file snapshot-report.md || true
+          fi
+
+      - name: Test
+        if: success() || steps.snapshots.outcome == 'failure'
+        run: python -m pytest -q --ignore=tests/test_snapshots.py

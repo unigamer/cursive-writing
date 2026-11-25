@@ -11,16 +11,12 @@
 <body>
   <header class="top">
     <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c4 0 6-12 9-12s-2 12 2 12 5-9 7-9-1 9 3 9 3-3 3-3"/></svg>
-    <div>
-      <h1>Cursive Writer</h1>
-      <p class="tagline">Joined, single-line script for pen plotters. Everything is computed in your browser.</p>
-    </div>
+    <h1>Cursive Writer</h1>
   </header>
 
   <main class="layout">
     <form id="controls" class="controls panel" autocomplete="off" onsubmit="return false">
-      <section class="group" aria-labelledby="g-writing">
-        <h2 id="g-writing">Writing</h2>
+      <section class="group" aria-label="Writing">
         <label class="field">
           <span class="label">Text</span>
           <textarea id="text" rows="6" spellcheck="true"></textarea>
@@ -103,11 +99,6 @@
             <label><input type="radio" name="orient" value="landscape"><span>Landscape</span></label>
           </div>
         </div>
-
-        <label class="check">
-          <input id="guides" type="checkbox" checked>
-          <span>Show margins in the preview</span>
-        </label>
       </section>
 
       <section class="group" aria-labelledby="g-hand">
@@ -136,7 +127,24 @@
 
     <section class="output panel" aria-label="Preview">
       <div class="panel-head">
-        <h2>Preview</h2>
+        <div class="view-opts" id="view-opts">
+          <label class="swatch" title="Ink colour">
+            <input id="ink" type="color" value="#000000">
+            <span>Ink</span>
+          </label>
+          <label class="swatch" title="Page colour (the PNG background)">
+            <input id="paper" type="color" value="#ffffff">
+            <span>Page</span>
+          </label>
+          <label class="check">
+            <input id="transparent" type="checkbox">
+            <span>Transparent PNG</span>
+          </label>
+          <label class="check">
+            <input id="guides" type="checkbox" checked>
+            <span>Show margins</span>
+          </label>
+        </div>
         <div class="actions">
           <button type="button" id="copy-cli" title="Copy the equivalent python -m cursive.cli command">Copy CLI</button>
           <button type="button" id="dl-png">PNG</button>

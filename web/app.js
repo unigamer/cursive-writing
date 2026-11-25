@@ -21,8 +21,14 @@ const DEFAULTS = {
   variation: 1,
   pen: 0.35,
   shade: 0.5,
+  ink: "#000000",
+  paper: "#ffffff",
+  transparent: false,
 };
 const NUMERIC = ["size", "pw", "ph", "margin", "seed", "variation", "pen", "shade"];
+const BOOLEAN = ["transparent"];
+const COLOURS = ["ink", "paper"];
+const HEX = /^#[0-9a-f]{6}$/i;
 const PAGES_MM = { a3: [297, 420], a4: [210, 297], a5: [148, 210], a6: [105, 148], letter: [215.9, 279.4], dl: [220, 110], c5: [229, 162] };
 
 // ------------------------------------------------------------ state <-> form
@@ -36,14 +42,18 @@ function readHash() {
     if (NUMERIC.includes(k)) {
       const n = Number(v);
       if (Number.isFinite(n)) s[k] = n;
-    } else s[k] = v;
+    } else if (BOOLEAN.includes(k)) s[k] = v === "1";
+    else if (COLOURS.includes(k)) s[k] = HEX.test(v) ? v.toLowerCase() : DEFAULTS[k];
+    else s[k] = v;
   }
   return s;
 }
 
 function writeHash(s) {
   const h = new URLSearchParams();
-  for (const [k, v] of Object.entries(s)) if (v !== DEFAULTS[k]) h.set(k, String(v));
+  for (const [k, v] of Object.entries(s)) {
+    if (v !== DEFAULTS[k]) h.set(k, typeof v === "boolean" ? (v ? "1" : "0") : String(v));
+  }
   const str = h.toString();
   history.replaceState(null, "", str ? `#${str}` : location.pathname + location.search);
 }
@@ -68,12 +78,17 @@ function toForm(s) {
   $("seed").value = s.seed;
   $("pen").value = s.pen;
   $("shade").value = s.shade;
+  $("ink").value = s.ink;
+  $("paper").value = s.paper;
+  $("transparent").checked = s.transparent;
 }
 
 function num(id, fallback, lo, hi) {
   const v = Number($(id).value);
   return Number.isFinite(v) && $(id).value !== "" ? Math.min(Math.max(v, lo), hi) : fallback;
 }
+
+const colour = (id) => (HEX.test($(id).value) ? $(id).value.toLowerCase() : DEFAULTS[id]);
 
 function fromForm() {
   return {
@@ -90,6 +105,9 @@ function fromForm() {
     variation: num("variation", DEFAULTS.variation, 0, 10),
     pen: num("pen", DEFAULTS.pen, 0.01, 10),
     shade: num("shade", DEFAULTS.shade, 0, 10),
+    ink: colour("ink"),
+    paper: colour("paper"),
+    transparent: $("transparent").checked,
   };
 }
 
@@ -103,6 +121,17 @@ function pageDims(s) {
   if (s.page === "custom") return [s.pw, s.ph];
   const [w, h] = PAGES_MM[s.page] ?? PAGES_MM.a4;
   return s.orient === "landscape" ? [h, w] : [w, h];
+}
+
+/** The engine's SVG (always drawn in black) in the chosen ink colour. */
+const inked = (svg, ink) => (ink === "#000000" ? svg : svg.replace('stroke="black"', `stroke="${ink}"`));
+
+/** Show the ink and page colours in the preview without asking the engine again. */
+function applyInk(s) {
+  $("sheet").style.setProperty("--ink-stroke", s.ink);
+  $("sheet").style.setProperty("--page-colour", s.paper);
+  $("viewport").classList.toggle("clear", s.transparent);
+  $("paper").disabled = s.transparent; // a transparent PNG has no page colour
 }
 
 const engineOpts = (s) => ({
@@ -143,9 +172,20 @@ function schedule(delay = 120) {
   timer = setTimeout(run, delay);
 }
 
+function restyle() {
+  const s = fromForm();
+  writeHash(s);
+  applyInk(s);
+  if (!current) return;
+  const guidesChanged = Boolean($("sheet").querySelector(".guides")) !== $("guides").checked;
+  current.settings = { ...current.settings, ink: s.ink, paper: s.paper, transparent: s.transparent };
+  if (guidesChanged) showSvg(current.svg, current.settings);
+}
+
 function run() {
   const s = fromForm();
   writeHash(s);
+  applyInk(s);
   updateLabels(s);
   sizeSheet(s);
   latest += 1;
@@ -543,7 +583,8 @@ function download(blob, name) {
 
 function downloadSvg() {
   if (!current) return;
-  download(new Blob([current.svg], { type: "image/svg+xml" }), `${fileStem(current.settings)}.svg`);
+  const svg = inked(current.svg, current.settings.ink);
+  download(new Blob([svg], { type: "image/svg+xml" }), `${fileStem(current.settings)}.svg`);
 }
 
 async function downloadPng() {
@@ -555,9 +596,11 @@ async function downloadPng() {
   canvas.width = Math.round(w * k);
   canvas.height = Math.round(h * k);
   const ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#fff";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  const svg = current.svg.replace('stroke="black"', 'stroke="#19193c"');
+  if (!current.settings.transparent) {
+    ctx.fillStyle = current.settings.paper;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  const svg = inked(current.svg, current.settings.ink);
   const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
   try {
     const img = new Image();
@@ -638,6 +681,8 @@ async function init() {
     $("seed").value = Math.floor(Math.random() * 100000);
     schedule(0);
   });
+  $("view-opts").addEventListener("input", restyle);
+  $("view-opts").addEventListener("change", restyle);
   $("dl-svg").addEventListener("click", downloadSvg);
   $("dl-png").addEventListener("click", downloadPng);
   $("copy-cli").addEventListener("click", copyCli);

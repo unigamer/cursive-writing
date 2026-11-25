@@ -17,6 +17,7 @@ export const DEFAULTS = {
   loop_width: 0.08,
   loop_height: 0.04,
   flourish: 0.35,
+  repeat_apart: 1.0,
 };
 
 export class Variation {
@@ -24,17 +25,32 @@ export class Variation {
     this.p = { ...DEFAULTS, ...(params ?? {}) };
     this.amount = amount;
     this.rng = new Generator(seed);
+    this.repeat = false; // set by placeWord while drawing the second of a doubled letter
+    this._last = {}; // the previous letter's draws, by slot
   }
 
   _n(key) {
     return this.rng.normal(0.0, this.p[key] * this.amount);
   }
 
+  /** A `key` draw for `slot`, kept `repeat_apart` std-devs from the previous
+   * letter's draw for that slot when this letter repeats it. */
+  _apart(slot, key) {
+    let v = this._n(key);
+    const s = this.p.repeat_apart * this.p[key] * this.amount;
+    if (this.repeat && slot in this._last && s > 0) {
+      const d = v - this._last[slot];
+      if (Math.abs(d) < s) v = this._last[slot] + (d >= 0 ? s : -s);
+    }
+    this._last[slot] = v;
+    return v;
+  }
+
   /** [matrix [[a,b],[c,d]], offset [x,y], extra advance] */
   glyphTransform() {
-    const sy = 1.0 + this._n("size");
-    const sx = sy * (1.0 + this._n("width"));
-    const shear = this._n("slant");
+    const sy = 1.0 + this._apart("size", "size");
+    const sx = sy * (1.0 + this._apart("width", "width"));
+    const shear = this._apart("slant", "slant");
     const m = [
       [sx, shear * sy],
       [0.0, sy],
@@ -44,10 +60,10 @@ export class Variation {
   }
 
   loopWarp(main, slant) {
-    const fw = this._n("loop_width");
-    const fh = this._n("loop_height");
-    const dw = this._n("loop_width");
-    const dh = this._n("loop_height");
+    const fw = this._apart("fw", "loop_width");
+    const fh = this._apart("fh", "loop_height");
+    const dw = this._apart("dw", "loop_width");
+    const dh = this._apart("dh", "loop_height");
     if (!(fw || fh || dw || dh)) return null;
     const upU = [];
     const dnU = [];
@@ -86,7 +102,10 @@ export class Variation {
     return this.rng.uniform(0.5, 0.9) * Math.min(1.0, this.amount);
   }
 
-  choose(opts) {
+  /** A random pick; `avoid` (the previous copy of a doubled letter) is left
+   * out when there is anything else to pick. */
+  choose(opts, avoid = null) {
+    if (avoid !== null && opts.length > 1 && opts.includes(avoid)) opts = opts.filter((o) => o !== avoid);
     return opts.length ? opts[this.rng.integers(opts.length)] : null;
   }
 

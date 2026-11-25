@@ -226,6 +226,37 @@ def extend_flourish(stroke: np.ndarray, length: float) -> np.ndarray:
     return np.vstack([stroke, tail[1:]])
 
 
+def _bar_only(pg: PlacedGlyph) -> bool:
+    """A t whose only deferred stroke is its crossbar."""
+    return pg.glyph.key == "t" and len(pg.deferred) == 1 and len(pg.deferred[0]) > 1
+
+
+def deferred_strokes(placed: list[PlacedGlyph], joins: list[tuple[int, int]]) -> list[tuple[int, np.ndarray]]:
+    """Strokes drawn after the word, left to right, as (glyph index, points).
+
+    Joined t's (tt, ttt) share one crossbar, as a scribe crosses them: the
+    first bar is stretched to end where the last one ends. One pen lift
+    instead of two, and it reads as a doubled t at a glance."""
+    out = []
+    joined = set(joins)
+    i = 0
+    while i < len(placed):
+        k = i
+        while _bar_only(placed[k]) and k + 1 < len(placed) and _bar_only(placed[k + 1]) and (k, k + 1) in joined:
+            k += 1
+        if k > i:
+            bar = placed[i].deferred[0]
+            a = g.arc_lengths(bar)
+            t = a / a[-1]
+            shift = placed[k].deferred[0][-1] - bar[-1]
+            out.append((i, bar + t[:, None] * shift))
+            i = k + 1
+            continue
+        out.extend((i, d) for d in placed[i].deferred)
+        i += 1
+    return out
+
+
 def assemble_word(placed: list[PlacedGlyph], style: Style) -> Word:
     """Join placed glyphs (already positioned) into pen paths."""
     w = Word()
@@ -262,9 +293,9 @@ def assemble_word(placed: list[PlacedGlyph], style: Style) -> Word:
     if current is not None:
         w.paths.append(current)
     # deferred strokes (dots, crossbars) after the word, left to right
-    for i, pg in enumerate(placed):
-        w.paths.extend(pg.deferred)
-        w.pieces.extend((d, "deferred", i) for d in pg.deferred)
+    for i, d in deferred_strokes(placed, w.joins):
+        w.paths.append(d)
+        w.pieces.append((d, "deferred", i))
     allp = np.vstack(w.paths)
     w.width = float(allp[:, 0].max()) if len(allp) else 0.0
     return w

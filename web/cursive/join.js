@@ -167,6 +167,36 @@ export function extendFlourish(stroke, len) {
  * Join placed glyphs (already positioned) into pen paths.
  * placed: [{glyph, main, deferred, x, flourish}]
  */
+const barOnly = (pg) => pg.glyph.key === "t" && pg.deferred.length === 1 && pg.deferred[0].length > 1;
+
+/** Strokes drawn after the word, left to right, as [glyph index, points].
+ * Joined t's (tt, ttt) share one crossbar: the first bar is stretched to end
+ * where the last one ends. */
+export function deferredStrokes(placed, joins) {
+  const out = [];
+  const joined = new Set(joins.map(([a, b]) => `${a},${b}`));
+  let i = 0;
+  while (i < placed.length) {
+    let k = i;
+    while (barOnly(placed[k]) && k + 1 < placed.length && barOnly(placed[k + 1]) && joined.has(`${k},${k + 1}`)) k++;
+    if (k > i) {
+      const bar = placed[i].deferred[0];
+      const a = g.arcLengths(bar);
+      const total = a[a.length - 1];
+      const end = bar[bar.length - 1];
+      const last = placed[k].deferred[0];
+      const sx = last[last.length - 1][0] - end[0];
+      const sy = last[last.length - 1][1] - end[1];
+      out.push([i, bar.map(([x, y], j) => [x + (a[j] / total) * sx, y + (a[j] / total) * sy])]);
+      i = k + 1;
+      continue;
+    }
+    for (const d of placed[i].deferred) out.push([i, d]);
+    i++;
+  }
+  return out;
+}
+
 export function assembleWord(placed, style) {
   const w = { paths: [], joins: [], width: 0.0, glyph_x: [], pieces: [] };
   if (!placed.length) return w;
@@ -197,12 +227,10 @@ export function assembleWord(placed, style) {
     w.glyph_x.push(pg.x);
   });
   if (current !== null) w.paths.push(current);
-  placed.forEach((pg, i) => {
-    for (const d of pg.deferred) {
-      w.paths.push(d);
-      w.pieces.push([d, "deferred", i]);
-    }
-  });
+  for (const [i, d] of deferredStrokes(placed, w.joins)) {
+    w.paths.push(d);
+    w.pieces.push([d, "deferred", i]);
+  }
   let mx = -Infinity;
   for (const p of w.paths) for (const q of p) if (q[0] > mx) mx = q[0];
   w.width = w.paths.length ? mx : 0.0;

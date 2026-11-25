@@ -201,11 +201,13 @@ How it stays identical to Python:
      - with a smooth under-curve into the bottom of the oval
    - A "retrace" arrival runs the hairline up a letter's first stem and turns sharply back down it, giving the pointed tops of i, u and t.
    - `tools/pairs.py optimise` chooses the best of these for every pair (see below).
+   - Joined t's (tt, ttt) share one crossbar, as a scribe would cross them: one pen lift instead of two.
    - Into letters that open with a small hook (c, and some a, d, q), the connector reaches the top. The pen flicks out along the hook and back before drawing the letter's back, which keeps c distinct from e.
 3. **Variation** (`cursive/variation.py`)
    - Seeded per-letter jitter: size, width, slant, baseline, spacing.
    - Ascender and descender loops vary in width and length from letter to letter (`loop_width`, `loop_height`), so repeated letters don't look stamped. The x-height body is untouched, so joins still meet.
    - Some word-final letters get a slightly longer finishing hairline that curls upward (`flourish`, the chance per word).
+   - Doubled letters (ll, ee, ss) never come out as copies of each other. The second never reuses the first's alternate, and its size, width, slant and loop draws are kept at least `repeat_apart` standard deviations (default 1) from the first's.
    - Plus a smooth displacement field applied to whole lines after joining. It wobbles the line without ever breaking a join.
 4. **Layout** (`cursive/layout.py`)
    - Word gaps are measured on the ink in the x-height band, with the slant removed, so descender loops and t-bars don't distort spacing.
@@ -310,7 +312,7 @@ For each pair, a search tries alternatives to the defaults and keeps the best:
 
 The search starts from several points (the defaults, and each entry form forced on) so it doesn't get stuck. Pairs still scoring poorly then get a joint grid search over exit cut, arrival, entry form and spacing, since some fixes need two settings to change at once. In every style, lowercase pairs average a join score of about 0.1, and every lowercase pair joins. Capitals listed in `join_capitals` join; the rest (K, M, N…) end in a flourish that curls under or back to the left, so joining them would cut through the letter, and standing alone is traditional for them.
 
-The results go in `pairs.json`, which the join engine reads. Re-run `optimise` after editing glyphs. Entries marked `"manual": true` are hand-tuned and are never overwritten.
+The search runs one worker process per CPU (`-j N` to change that); `--capitals` re-runs only the pairs that start with a capital, which are the slowest. The results go in `pairs.json`, which the join engine reads. Re-run `optimise` after editing glyphs. Entries marked `"manual": true` are hand-tuned and are never overwritten.
 
 Pairs that don't join are then kerned so they are spaced like normal letters, with a small clearance for flourishes. The body gap is the style's letter gap, or its tighter `capital_gap` after a capital. Re-run this after changing either in `style.json`:
 

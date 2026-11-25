@@ -288,3 +288,41 @@ def test_cli_warns_about_missing_characters_and_lists_them(tmp_path, capsys):
     assert "abcdefghijklmnopqrstuvwxyz" in out and "£" in out and "é" in out and "€" in out
     main(["--list-chars", "--style", "all"])
     assert capsys.readouterr().out.count("characters, plus spaces") == len(STYLES)
+
+
+def test_doubled_letters_differ(style):
+    """The second of ll / ee / ss never comes out as a copy of the first."""
+    for w in ["ll", "ee", "ss", "oo", "ff"]:
+        for seed in range(5):
+            word, _ = place_word(w, style, Variation(style.variation, seed, 1.0))
+            ps = [p for p, kind, _ in word.pieces if kind == "glyph"]
+            a, b = ps[0], ps[1]
+            # compare shapes, not positions: centre each and resample to the same count
+            ra, rb = (g.resample(p, g.length(p) / 60) for p in (a, b))
+            n = min(len(ra), len(rb))
+            ra, rb = ra[:n] - ra[:n].mean(0), rb[:n] - rb[:n].mean(0)
+            assert np.abs(ra - rb).max() > 0.01, (style.name, w, seed)
+
+
+def test_doubled_alternates_are_not_repeated():
+    st = Style.load("formal")
+    opts = st.glyphs.get("a", [])
+    v = Variation(st.variation, 0, 1.0)
+    if len(opts) > 1:
+        for _ in range(20):
+            assert v.choose(opts, avoid=opts[0]) is not opts[0]
+
+
+def test_joined_ts_share_one_crossbar(style):
+    for w, bars in (("atta", 1), ("attta", 1), ("atata", 2)):
+        word = joined_word(style, w)
+        t = style.glyphs["t"][0]
+        if len(t.deferred) != 1 or len(word.joins) != len(w) - 1:  # bar not deferred, or a t that doesn't join
+            continue
+        deferred = [p for p, kind, _ in word.pieces if kind == "deferred"]
+        assert len(deferred) == bars, (style.name, w)
+    word = joined_word(style, "atta")
+    if len(word.joins) == 3 and len(style.glyphs["t"][0].deferred) == 1:
+        bar = [p for p, kind, _ in word.pieces if kind == "deferred"][0]
+        single = [p for p, kind, _ in joined_word(style, "ata").pieces if kind == "deferred"][0]
+        assert g.length(bar) > 1.3 * g.length(single)

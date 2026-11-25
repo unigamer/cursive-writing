@@ -7,6 +7,12 @@ Two levels:
     joining, which wobbles strokes without ever breaking a join.
 
 Amplitudes come from the style's "variation" block; `amount` scales them all.
+
+Doubled letters (ll, ee, ss) are where identical copies give machine writing
+away, so the second of a pair never reuses the first's alternate and its
+size, width, slant and loop draws are kept at least `repeat_apart` std-devs
+from the first's (see `_apart`). This moves values only, never adds random
+draws, so the rest of the text is unchanged.
 """
 
 from __future__ import annotations
@@ -25,6 +31,7 @@ DEFAULTS = {
     "loop_width": 0.08,  # relative std-dev of ascender/descender loop width
     "loop_height": 0.04,  # relative std-dev of ascender height / descender depth
     "flourish": 0.35,  # chance a word-final letter gets a longer finishing hairline
+    "repeat_apart": 1.0,  # a doubled letter (ll, ee, ss) differs from the first by at least this many std-devs
 }
 
 
@@ -33,15 +40,29 @@ class Variation:
         self.p = {**DEFAULTS, **(params or {})}
         self.amount = amount
         self.rng = np.random.default_rng(seed)
+        self.repeat = False  # set by place_word while drawing the second of a doubled letter
+        self._last: dict[str, float] = {}  # the previous letter's draws, by slot
 
     def _n(self, key: str) -> float:
         return float(self.rng.normal(0.0, self.p[key] * self.amount))
 
+    def _apart(self, slot: str, key: str) -> float:
+        """A `key` draw for `slot`, kept `repeat_apart` std-devs from the
+        previous letter's draw for that slot when this letter repeats it."""
+        v = self._n(key)
+        s = self.p["repeat_apart"] * self.p[key] * self.amount
+        if self.repeat and slot in self._last and s > 0:
+            d = v - self._last[slot]
+            if abs(d) < s:
+                v = self._last[slot] + (s if d >= 0 else -s)
+        self._last[slot] = v
+        return v
+
     def glyph_transform(self):
         """Return (matrix 2x2, offset 2, extra advance)."""
-        sy = 1.0 + self._n("size")
-        sx = sy * (1.0 + self._n("width"))
-        shear = self._n("slant")
+        sy = 1.0 + self._apart("size", "size")
+        sx = sy * (1.0 + self._apart("width", "width"))
+        shear = self._apart("slant", "slant")
         m = np.array([[sx, shear * sy], [0.0, sy]])
         off = np.array([0.0, self._n("baseline")])
         return m, off, self._n("spacing")
@@ -51,10 +72,10 @@ class Variation:
         their width and length vary a little, as in handwriting, while the
         x-height body is untouched so joins still meet where they should.
         Returns f(points) -> points, or None when there is nothing to vary."""
-        fw = self._n("loop_width")
-        fh = self._n("loop_height")
-        dw = self._n("loop_width")
-        dh = self._n("loop_height")
+        fw = self._apart("fw", "loop_width")
+        fh = self._apart("fh", "loop_height")
+        dw = self._apart("dw", "loop_width")
+        dh = self._apart("dh", "loop_height")
         if not (fw or fh or dw or dh):
             return None
         u = main[:, 0] - slant * main[:, 1]
@@ -91,7 +112,11 @@ class Variation:
             return 0.0
         return float(self.rng.uniform(0.5, 0.9)) * min(1.0, self.amount)
 
-    def choose(self, options: list):
+    def choose(self, options: list, avoid=None):
+        """A random pick; `avoid` (the previous copy of a doubled letter) is
+        left out when there is anything else to pick."""
+        if avoid is not None and len(options) > 1 and any(o is avoid for o in options):
+            options = [o for o in options if o is not avoid]
         return options[int(self.rng.integers(len(options)))] if options else None
 
     def line_field(self):

@@ -111,7 +111,9 @@ def place_word(text: str, style: Style, var: Variation, overrides: dict | None =
         if not options:
             x += style.word_space * 0.5
             continue
-        gl = var.choose(options)
+        # the second of a doubled letter (ll, ee) must not look stamped from the first
+        var.repeat = bool(placed) and i > 0 and text[i - 1] == ch
+        gl = var.choose(options, avoid=placed[-1].glyph if var.repeat else None)
         m, off, dadv = var.glyph_transform()
         warp = var.loop_warp(gl.main.points, style.glyph_slant) if ch.islower() else None
         o = np.array([x, 0.0]) + off

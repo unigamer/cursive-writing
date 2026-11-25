@@ -341,22 +341,53 @@ def all_pairs(style: Style) -> list[tuple[str, str]]:
     return [(x, y) for x in lower + upper for y in lower]
 
 
-def optimise_style(style: Style, pairs=None, min_gain: float = 0.15, progress=None) -> dict:
-    """Optimise every pair; return the table to store in pairs.json."""
+_WORKER_STYLE: Style | None = None
+
+
+def _init_worker(style: Style) -> None:
+    global _WORKER_STYLE
+    _WORKER_STYLE = style
+
+
+def _optimise_one(pair: tuple[str, str]):
+    x, y = pair
+    style = _WORKER_STYLE
+    a, b = style.glyphs[x][0], style.glyphs[y][0]
+    best, r, d = optimise_pair(style, a, b)
+    return best, r.score, d.score
+
+
+def optimise_style(style: Style, pairs=None, min_gain: float = 0.15, progress=None,
+                   workers: int = 1) -> dict:
+    """Optimise every pair; return the table to store in pairs.json.
+
+    `workers` > 1 spreads the pairs over that many processes; each pair is
+    optimised on its own, so the result is the same as a single-process run."""
     table = {}
     report = []
     pairs = pairs or all_pairs(style)
-    for k, (x, y) in enumerate(pairs):
-        a, b = style.glyphs[x][0], style.glyphs[y][0]
-        best, r, d = optimise_pair(style, a, b)
-        defaults = pair_params(replace(style, pairs={}), a, b)
-        report.append((x + y, d.score, r.score, best))
-        if d.score - r.score > min_gain:
-            keep = {key: best[key] for key in ("join", "dx", "lead_out", "lead_in", "tension", "arrive", "over")
-                    if best[key] != defaults[key]}
-            keep["score"] = round(r.score, 3)
-            keep["was"] = round(d.score, 3)
-            table[x + y] = keep
-        if progress:
-            progress(k + 1, len(pairs), x + y, d.score, r.score)
+    if workers > 1:
+        from concurrent.futures import ProcessPoolExecutor
+
+        pool = ProcessPoolExecutor(workers, initializer=_init_worker, initargs=(style,))
+        results = pool.map(_optimise_one, pairs, chunksize=1)
+    else:
+        _init_worker(style)
+        pool, results = None, map(_optimise_one, pairs)
+    try:
+        for k, ((x, y), (best, r_score, d_score)) in enumerate(zip(pairs, results)):
+            a, b = style.glyphs[x][0], style.glyphs[y][0]
+            defaults = pair_params(replace(style, pairs={}), a, b)
+            report.append((x + y, d_score, r_score, best))
+            if d_score - r_score > min_gain:
+                keep = {key: best[key] for key in ("join", "dx", "lead_out", "lead_in", "tension", "arrive", "over")
+                        if best[key] != defaults[key]}
+                keep["score"] = round(r_score, 3)
+                keep["was"] = round(d_score, 3)
+                table[x + y] = keep
+            if progress:
+                progress(k + 1, len(pairs), x + y, d_score, r_score)
+    finally:
+        if pool is not None:
+            pool.shutdown()
     return {"pairs": table, "report": report}

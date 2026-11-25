@@ -12,6 +12,15 @@
   <header class="top">
     <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c4 0 6-12 9-12s-2 12 2 12 5-9 7-9-1 9 3 9 3-3 3-3"/></svg>
     <h1>Cursive Writer</h1>
+    <div class="about">
+      <p>
+        Jonathan Jamieson ·
+        <a id="version" href="https://github.com/unigamer/cursive-writing/releases/tag/v0.2.3">release v0.2.3</a> ·
+        <a href="https://github.com/unigamer/cursive-writing">source on GitHub</a>
+      </p>
+      <a id="dl-offline" class="button" href="cursive-writer.html" download="cursive-writer.html"
+         title="This page as one HTML file that works offline, straight from disk">Download offline copy</a>
+    </div>
   </header>
 
   <main class="layout">
@@ -171,17 +180,11 @@
     </section>
   </main>
 
-  <footer class="credits">
-    <p>
-      The SVG is in millimetres, with one Inkscape layer and a group per line, so it plots directly from Inkscape
-      or a plotter's own SVG tools.
-    </p>
-    <p>
-      The script styles are traced from fonts by other designers and are shared under the SIL Open Font License;
-      the program is under the MIT License. What you write with it is yours.
-      <a id="licences-link" href="LICENSES.txt">Licences and credits</a>
-    </p>
-  </footer>
+  <details id="licences" class="licences">
+    <summary>Licences</summary>
+    <pre id="licences-text">The program is under the MIT License; the script styles are derived from fonts under the
+SIL Open Font License 1.1. Full texts and credits: <a href="LICENSES.txt">LICENSES.txt</a></pre>
+  </details>
 
   <script type="module" src="app.js"></script>
 </body>

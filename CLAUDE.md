@@ -22,7 +22,8 @@ Style tuning tools: `tools/editor.py` (glyph editor, port 8765), `tools/compose_
 Publishing a GitHub release triggers `.github/workflows/release.yml`: tests, `build_web.py --check`, builds the standalone page, attaches `cursive-writer.html` to the release, deploys GitHub Pages and appends both links to the release notes.
 
 ```sh
-# bump `version` in pyproject.toml first if needed, commit and push to main, then:
+# bump `version` in pyproject.toml first if needed, then run tools/build_web.py (the page
+# footer names the release; --check fails until it matches), commit and push to main, then:
 gh release create vX.Y.Z --target main --title "vX.Y.Z" --generate-notes
 ```
 

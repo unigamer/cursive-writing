@@ -72,5 +72,16 @@
     return port;
   }
 
-  window.CURSIVE_STANDALONE = { styles, worker };
+  // The whole page as it arrived. Called by a script at the very end of the
+  // page, which runs before app.js (a module) changes anything, so saving this
+  // gives back the same file.
+  function pageSource() {
+    const parts = [...document.childNodes].map((n) =>
+      n.nodeType === Node.DOCUMENT_TYPE_NODE ? "<!doctype html>"
+        : n.nodeType === Node.COMMENT_NODE ? "<!" + "--" + n.data + "--" + ">"
+          : n.outerHTML ?? "");
+    return parts.join("\n") + "\n";
+  }
+
+  window.CURSIVE_STANDALONE = { styles, worker, pageSource };
 })();

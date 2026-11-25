@@ -6,6 +6,8 @@ const $ = (id) => document.getElementById(id);
 // Set by the single-file build (tools/build_web.py --standalone, see
 // standalone.js): it supplies the style list and an engine with the data inside.
 const STANDALONE = window.CURSIVE_STANDALONE;
+// The deployed single-file page (see .github/workflows/release.yml).
+const PAGES_COPY = "https://unigamer.github.io/cursive-writing/cursive-writer.html";
 
 const DEFAULTS = {
   text: "Dear friend,\nThank you for everything.",
@@ -687,14 +689,43 @@ async function init() {
   $("dl-png").addEventListener("click", downloadPng);
   $("copy-cli").addEventListener("click", copyCli);
   initZoom();
-  // The single-file page shows its licences in-page; open them without
-  // touching the URL hash, which holds the settings.
-  $("licences-link").addEventListener("click", (e) => {
-    const box = $("licences");
-    if (!box) return; // served page: follow the link to LICENSES.txt
+  // The served page's licences section fills in from LICENSES.txt when opened
+  // (the single-file page has the full text built in).
+  $("licences").addEventListener("toggle", async (e) => {
+    const pre = $("licences-text");
+    if (!e.target.open || !pre || pre.dataset.loaded) return;
+    try {
+      const r = await fetch(new URL("LICENSES.txt", import.meta.url));
+      if (r.ok) {
+        pre.textContent = await r.text();
+        pre.dataset.loaded = "1";
+      }
+    } catch {
+      // keep the link to LICENSES.txt
+    }
+  });
+  // Offline copy, always the same version as this page: the single-file page
+  // saves itself; the served page fetches the single-file build deployed beside
+  // it, or (on a local server without one) the copy on the project's Pages site.
+  const offline = $("dl-offline");
+  offline.addEventListener("click", async (e) => {
     e.preventDefault();
-    box.open = true;
-    box.scrollIntoView({ behavior: "smooth" });
+    const name = offline.getAttribute("download");
+    const save = (blob) => {
+      const url = URL.createObjectURL(blob);
+      Object.assign(document.createElement("a"), { href: url, download: name }).click();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    };
+    if (STANDALONE?.source) return save(new Blob([STANDALONE.source], { type: "text/html" }));
+    for (const src of [new URL("cursive-writer.html", import.meta.url).href, PAGES_COPY]) {
+      try {
+        const r = await fetch(src, { cache: "no-cache" });
+        if (r.ok) return save(await r.blob());
+      } catch {
+        // try the next source
+      }
+    }
+    window.open(PAGES_COPY, "_blank", "noopener");
   });
   window.addEventListener("hashchange", () => {
     toForm(readHash());

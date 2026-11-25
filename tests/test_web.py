@@ -220,9 +220,12 @@ def standalone(js_tmp):
 
 def test_standalone_page_is_self_contained(standalone):
     html = standalone.read_text()
-    # nothing to fetch: every src/href is inline data or an in-page anchor
-    refs = re.findall(r'(?:src|href)="([^"]*)"', html)
+    # nothing to fetch: every src and <link> href is inline data or an in-page
+    # anchor; plain <a> links (the repo, the release) may point at the web
+    refs = re.findall(r'src="([^"]*)"', html) + re.findall(r'<link\b[^>]*\bhref="([^"]*)"', html)
     assert all(r.startswith(("data:", "#")) for r in refs), refs
+    links = re.findall(r'<a\b[^>]*\bhref="([^"]*)"', html)
+    assert all(r.startswith(("#", "https://")) for r in links), links
     for name in STYLES:
         assert f'"{name}":{{"name":"{name}"' in html
 
@@ -238,7 +241,6 @@ def test_standalone_page_carries_the_licences(names):
     shown = html_mod.unescape(m[1])
     for marker in required_notices(names or STYLES):
         assert marker in shown, marker
-    assert 'href="#licences"' in page
     head = page[:page.index("<html")]
     for name in names or STYLES:
         assert build_web.font_copyright(name) in head

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from dataclasses import replace
@@ -66,25 +67,31 @@ def main():
     ap.add_argument("--pairs", help="space-separated pairs (default: all / worst)")
     ap.add_argument("--worst", type=int, default=48, help="sheet: show the N worst (by default score)")
     ap.add_argument("--by", choices=["default", "optimised"], default="default")
+    ap.add_argument("-j", "--jobs", type=int, default=os.cpu_count() or 1,
+                    help="optimise: worker processes (default: one per CPU)")
+    ap.add_argument("--capitals", action="store_true",
+                    help="optimise: only the pairs that start with a capital")
     args = ap.parse_args()
     style = Style.load(args.style)
     sdir = STYLES_DIR / args.style
 
     if args.cmd == "optimise":
         pairs = [tuple(p) for p in args.pairs.split()] if args.pairs else all_pairs(style)
+        if args.capitals:
+            pairs = [p for p in pairs if p[0].isupper()]
         t0 = time.time()
 
         def progress(k, n, pr, before, after):
             if k % 50 == 0 or k == n:
                 print(f"  {k}/{n}  ({time.time() - t0:.0f}s)", flush=True)
 
-        out = optimise_style(replace(style, pairs={}), pairs, progress=progress)
+        out = optimise_style(replace(style, pairs={}), pairs, progress=progress, workers=args.jobs)
         # hand-tuned pairs ("manual": true in pairs.json) are never overwritten
         f = sdir / "pairs.json"
         old = json.loads(f.read_text()).get("pairs", {}) if f.exists() else {}
         # a full run starts afresh, except for hand-tuned entries; a partial run
         # does the same for its own pairs (an old override may no longer be needed)
-        redone = None if not args.pairs else {x + y for x, y in pairs}
+        redone = None if not (args.pairs or args.capitals) else {x + y for x, y in pairs}
         old = {k: v for k, v in old.items() if v.get("manual") or (redone is not None and k not in redone)}
         old.update({k: v for k, v in out["pairs"].items() if not old.get(k, {}).get("manual")})
         f.write_text(json.dumps({"note": "per-pair join settings found by tools/pairs.py optimise",

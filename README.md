@@ -312,7 +312,7 @@ For each pair, a search tries alternatives to the defaults and keeps the best:
 
 The search starts from several points (the defaults, and each entry form forced on) so it doesn't get stuck. Pairs still scoring poorly then get a joint grid search over exit cut, arrival, entry form and spacing, since some fixes need two settings to change at once. In every style, lowercase pairs average a join score of about 0.1, and every lowercase pair joins. Capitals listed in `join_capitals` join; the rest (K, M, N…) end in a flourish that curls under or back to the left, so joining them would cut through the letter, and standing alone is traditional for them.
 
-The results go in `pairs.json`, which the join engine reads. Re-run `optimise` after editing glyphs. Entries marked `"manual": true` are hand-tuned and are never overwritten.
+The search runs one worker process per CPU (`-j N` to change that); `--capitals` re-runs only the pairs that start with a capital, which are the slowest. The results go in `pairs.json`, which the join engine reads. Re-run `optimise` after editing glyphs. Entries marked `"manual": true` are hand-tuned and are never overwritten.
 
 Pairs that don't join are then kerned so they are spaced like normal letters, with a small clearance for flourishes. The body gap is the style's letter gap, or its tighter `capital_gap` after a capital. Re-run this after changing either in `style.json`:
 

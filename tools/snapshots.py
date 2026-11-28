@@ -43,10 +43,13 @@ SNAP_DIR = ROOT / "tests" / "snapshots"
 TOLERANCE = 0.05  # mm: the most any stroke may move before the card counts as changed
 STYLES = ["copperplate", "spencerian", "modern", "formal", "signature", "flowing", "roundhand"]
 
-# Two cards per style:
+# Three cards per style:
 #  card   - ordinary use: variation, shading, mixed text
 #  plain  - variation 0: every lowercase pair family and the capitals, so a
 #           glyph or join change shows up without random jitter in the way
+#  center - centred place cards: short lines of different lengths with big
+#           swash capitals and long exit strokes, which are what pushed
+#           centred text off centre when alignment used the advance width
 CARD = ("Dear Margaret,\nThank you for the lovely flowers; the little old-fashioned garden\n"
         "looks wonderful. Café at 10? Œuvres, naïve & “quoted” — 42%!\n"
         "Warmest wishes from your next-door neighbour, Oliver")
@@ -55,6 +58,7 @@ PLAIN = ("abcdefghijklmnopqrstuvwxyz zyxwvutsrqponmlkjihgfedcba\n"
          "Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India\n"
          "Juliet Kilo Lima Mike November Oscar Papa Quebec Romeo\n"
          "Sierra Tango Uniform Victor Whiskey Xray Yankee Zulu 0123456789")
+CENTER = "Alistaur Gaul\nChristopher Quill\nwith love\nYours, Zara\nl"
 
 
 def cases() -> dict[str, tuple[str, str, dict]]:
@@ -62,6 +66,8 @@ def cases() -> dict[str, tuple[str, str, dict]]:
     for i, s in enumerate(STYLES):
         out[f"{s}-card"] = (s, CARD, dict(size=5, page="240x440", margin=15, seed=3 + i, shade=0.5))
         out[f"{s}-plain"] = (s, PLAIN, dict(size=5, page="420x440", margin=15, seed=0, variation=0.0))
+        out[f"{s}-center"] = (s, CENTER, dict(size=5, page="230x240", margin=12, seed=3 + i,
+                                              align="center", valign="middle"))
     return out
 
 

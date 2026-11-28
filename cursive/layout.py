@@ -192,22 +192,25 @@ def layout(text: str, style: Style, width: float | None = None, seed: int | None
             cur_w += add
         flush()
 
-    # alignment, slant, then smooth per-line wobble (never breaks joins)
+    # slant, smooth per-line wobble (never breaks joins), then alignment on the
+    # final ink: slant and swashes reach past the advance width, so aligning on
+    # `ln.width` would push centred and right-aligned text off to the right.
+    # `ln.width` keeps meaning the line's advance width; only the paths move.
     shear = np.tan(np.radians(style.slant))
     for ln in lines:
-        dx = 0.0
-        if width is not None and align == "center":
-            dx = (width - ln.width) / 2
-        elif width is not None and align == "right":
-            dx = width - ln.width
         field = var.line_field()
         out = []
         for p in ln.paths:
-            q = p + np.array([dx, 0.0])
+            q = p
             if shear:
                 q = q + np.column_stack([(q[:, 1] - ln.baseline) * shear, np.zeros(len(q))])
             q = g.resample(q, 0.02) if len(q) > 1 else q
             out.append(field(q))
+        if width is not None and out and align in ("center", "right"):
+            minx = min(float(p[:, 0].min()) for p in out)
+            maxx = max(float(p[:, 0].max()) for p in out)
+            dx = width / 2 - (minx + maxx) / 2 if align == "center" else width - maxx
+            out = [p + np.array([dx, 0.0]) for p in out]
         # keep flourishes (descender loops, capital swashes) inside the left margin
         minx = min((float(p[:, 0].min()) for p in out), default=0.0)
         if width is not None and minx < 0:

@@ -190,18 +190,23 @@ export function layout(text, style, { width = null, seed = 0, amount = 1.0, alig
     flush();
   }
 
+  // slant, wobble, then align on the final ink (see layout.py); ln.width stays
+  // the advance width, only the paths move
   const shear = Math.tan(style.slant * (Math.PI / 180.0));
   for (const ln of lines) {
-    let dx = 0.0;
-    if (width !== null && align === "center") dx = (width - ln.width) / 2;
-    else if (width !== null && align === "right") dx = width - ln.width;
     const field = v.lineField();
     let out = ln.paths.map((p) => {
-      let q = g.add(p, [dx, 0.0]);
+      let q = p;
       if (shear) q = q.map(([qx, qy]) => [qx + (qy - ln.baseline) * shear, qy + 0.0]);
       q = q.length > 1 ? g.resample(q, 0.02) : q;
       return field(q);
     });
+    if (width !== null && out.length && (align === "center" || align === "right")) {
+      let lo = Infinity, hi = -Infinity;
+      for (const p of out) for (const q of p) { if (q[0] < lo) lo = q[0]; if (q[0] > hi) hi = q[0]; }
+      const dx = align === "center" ? width / 2 - (lo + hi) / 2 : width - hi;
+      out = out.map((p) => g.add(p, [dx, 0.0]));
+    }
     let minx = Infinity;
     for (const p of out) for (const q of p) if (q[0] < minx) minx = q[0];
     if (!out.length) minx = 0.0;

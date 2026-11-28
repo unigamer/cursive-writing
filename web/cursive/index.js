@@ -16,6 +16,7 @@ export const DEFAULTS = {
   page: "a4",
   margin: 20.0,
   align: "left",
+  valign: "top",
   seed: 0,
   variation: 1.0,
   pen: 0.35,
@@ -44,6 +45,17 @@ export function generate(text, style, opts = {}) {
   }
   const top = o.margin + firstTop * o.size;
   let mm = linesToMm(lines, o.size, [o.margin, top]);
+  if (o.valign === "middle" || o.valign === "bottom") {
+    // move the ink block down into the space left below it; text that
+    // already overflows the page stays on the top margin
+    let bottom = -Infinity;
+    for (const paths of mm) for (const p of paths) for (const q of p) if (q[1] > bottom) bottom = q[1];
+    if (bottom !== -Infinity) {
+      let dy = ph - o.margin - bottom;
+      if (o.valign === "middle") dy = dy / 2;
+      if (dy > 0) mm = linesToMm(lines, o.size, [o.margin, top + dy]);
+    }
+  }
   if (o.shade > 0) mm = mm.map((paths) => shadePaths(paths, style.glyph_slant, o.pen, o.shade));
   const title = Array.from(text).slice(0, 60).join("");
   const svg = toSvg(mm, page, o.pen, title);

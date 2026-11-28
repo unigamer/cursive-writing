@@ -73,6 +73,7 @@ python3 -m venv .venv && .venv/bin/pip install numpy pillow
 | `--variation` | `0` gives identical letters every time; `1` is the default; higher is looser. |
 | `--shade` | Imitates pointed-pen thick downstrokes by adding extra pen passes, up to this width in mm. The passes are woven into the stroke, so they add no pen lifts. |
 | `--align` | `left` / `center` / `right` |
+| `--valign` | `top` (default) / `middle` / `bottom`: where the block of text sits between the top and bottom margins. Text too long for the page stays on the top margin. |
 | `--list-chars` | Print every character the style can write and exit (`--style all` lists every style). Any other character in the text is left out, with a warning naming it; the web page shows the same warning and lists the characters under *Style*. |
 
 ### What the options do

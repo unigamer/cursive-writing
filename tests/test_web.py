@@ -144,9 +144,9 @@ def page_cases():
              dict(size=6, page="a5-landscape", margin=15, seed=3, shade=0.6)),
             (s, LONG, dict(size=5, page="a4", margin=20, seed=i)),
             (s, "Hello\n\nWorld of Script\n  indented  words ",
-             dict(size=8, page="200x120", margin=10, seed=11, align="center", variation=2.0)),
+             dict(size=8, page="200x120", margin=10, seed=11, align="center", valign="middle", variation=2.0)),
             (s, "minimum running elegant handwriting cursive",
-             dict(size=4, page="letter", margin=12, seed=7, align="right", pen=0.5, shade=0.4)),
+             dict(size=4, page="letter", margin=12, seed=7, align="right", valign="bottom", pen=0.5, shade=0.4)),
             (s, "    Two  spaces,   three   and\ta tab;\u00a0\u3000odd ones     at a wrap point too",
              dict(size=9, page="a5", margin=10, seed=5)),
             (s, "Zebra Quilt Xylophone Juggling Kites <&>",
@@ -158,10 +158,12 @@ def page_cases():
 
 
 def python_page(name, text, o):
-    o = dict(size=6.0, page="a4", margin=20.0, align="left", seed=0, variation=1.0, pen=0.35, shade=0.0) | o
+    o = dict(size=6.0, page="a4", margin=20.0, align="left", valign="top", seed=0, variation=1.0, pen=0.35,
+             shade=0.0) | o
     pw, ph = page_size(o["page"])
     _, mm = make_page(text, Style.load(name), size=o["size"], page=(pw, ph), margin=o["margin"],
-                      align=o["align"], seed=o["seed"], variation=o["variation"], pen=o["pen"], shade=o["shade"])
+                      align=o["align"], valign=o["valign"], seed=o["seed"], variation=o["variation"],
+                      pen=o["pen"], shade=o["shade"])
     return mm, to_svg(mm, (pw, ph), float(o["pen"]), title=text[:60])
 
 

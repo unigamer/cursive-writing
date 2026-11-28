@@ -19,6 +19,7 @@ const DEFAULTS = {
   ph: 120,
   margin: 15,
   align: "left",
+  valign: "middle",
   seed: 3,
   variation: 1,
   pen: 0.35,
@@ -76,6 +77,7 @@ function toForm(s) {
   $("page-w").value = s.pw;
   $("page-h").value = s.ph;
   setRadio("align", s.align);
+  setRadio("valign", s.valign);
   $("variation").value = s.variation;
   $("seed").value = s.seed;
   $("pen").value = s.pen;
@@ -103,6 +105,7 @@ function fromForm() {
     ph: num("page-h", DEFAULTS.ph, 10, 5000),
     margin: num("margin", DEFAULTS.margin, 0, 500),
     align: radio("align") ?? "left",
+    valign: radio("valign") ?? DEFAULTS.valign,
     seed: Math.trunc(num("seed", DEFAULTS.seed, 0, Number.MAX_SAFE_INTEGER)),
     variation: num("variation", DEFAULTS.variation, 0, 10),
     pen: num("pen", DEFAULTS.pen, 0.01, 10),
@@ -141,6 +144,7 @@ const engineOpts = (s) => ({
   page: pageSpec(s),
   margin: s.margin,
   align: s.align,
+  valign: s.valign,
   seed: s.seed,
   variation: s.variation,
   pen: s.pen,
@@ -618,13 +622,14 @@ async function downloadPng() {
 const shQuote = (s) => `'${s.replace(/'/g, `'\\''`)}'`;
 
 function cliCommand(s) {
-  const d = { size: 6, margin: 20, align: "left", seed: 0, variation: 1, pen: 0.35, shade: 0 };
+  const d = { size: 6, margin: 20, align: "left", valign: "top", seed: 0, variation: 1, pen: 0.35, shade: 0 };
   const parts = ["python", "-m", "cursive.cli", shQuote(s.text.replace(/\n/g, "\\n")), "--style", s.style];
   const add = (flag, v, dv) => v !== dv && parts.push(flag, String(v));
   add("--size", s.size, d.size);
   add("--page", pageSpec(s), "a4");
   add("--margin", s.margin, d.margin);
   add("--align", s.align, d.align);
+  add("--valign", s.valign, d.valign);
   add("--seed", s.seed, d.seed);
   add("--variation", s.variation, d.variation);
   add("--pen", s.pen, d.pen);

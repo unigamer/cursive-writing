@@ -29,6 +29,8 @@ def main(argv=None):
     ap.add_argument("--page", default="a4", help="a4, a5, a4-landscape, letter, or WxH in mm")
     ap.add_argument("--margin", type=float, default=20.0, help="page margin in mm")
     ap.add_argument("--align", choices=["left", "center", "right"], default="left")
+    ap.add_argument("--valign", choices=["top", "middle", "bottom"], default="top",
+                    help="vertical placement of the text between the margins")
     ap.add_argument("--seed", type=int, default=0, help="random seed for variation")
     ap.add_argument("--variation", type=float, default=1.0, help="variation multiplier (0 = none)")
     ap.add_argument("--pen", type=float, default=0.35, help="preview stroke width in mm")
@@ -54,7 +56,7 @@ def main(argv=None):
         print(f"warning: {msg[0].lower()}{msg[1:-1]} (see --list-chars)", file=sys.stderr)
     pw, ph = page_size(args.page)
     lines, mm = make_page(text, style, size=args.size, page=(pw, ph), margin=args.margin, align=args.align,
-                          seed=args.seed, variation=args.variation, pen=args.pen, shade=args.shade)
+                          valign=args.valign, seed=args.seed, variation=args.variation, pen=args.pen, shade=args.shade)
     Path(args.out).write_text(to_svg(mm, (pw, ph), args.pen, title=text[:60]))
     s = stats(mm)
     bottom = max((float(p[:, 1].max()) for paths in mm for p in paths), default=0)
@@ -84,7 +86,7 @@ def print_chars(style: Style) -> None:
 
 
 def make_page(text, style, size=6.0, page=(210, 297), margin=20.0, align="left", seed=0,
-              variation=1.0, pen=0.35, shade=0.0):
+              variation=1.0, pen=0.35, shade=0.0, valign="top"):
     """Lay out `text` on a page; returns (lines, paths in page mm per line).
     The web page (web/cursive/index.js) does the same, step for step."""
     pw, ph = page
@@ -94,6 +96,16 @@ def make_page(text, style, size=6.0, page=(210, 297), margin=20.0, align="left",
     first_top = max((float(p[:, 1].max()) for p in lines[0].paths), default=2.0) if lines else 2.0
     top = margin + first_top * size
     mm = lines_to_mm(lines, size, (margin, top))
+    if valign in ("middle", "bottom"):
+        # move the ink block down into the space left below it; text that
+        # already overflows the page stays on the top margin
+        bottom = max((float(p[:, 1].max()) for paths in mm for p in paths), default=None)
+        if bottom is not None:
+            dy = ph - margin - bottom
+            if valign == "middle":
+                dy = dy / 2
+            if dy > 0:
+                mm = lines_to_mm(lines, size, (margin, top + dy))
     if shade > 0:
         from .shade import shade_paths
         # shading passes are woven into each stroke, so they add no pen lifts

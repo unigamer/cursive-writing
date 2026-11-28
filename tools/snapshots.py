@@ -60,7 +60,7 @@ PLAIN = ("abcdefghijklmnopqrstuvwxyz zyxwvutsrqponmlkjihgfedcba\n"
 def cases() -> dict[str, tuple[str, str, dict]]:
     out = {}
     for i, s in enumerate(STYLES):
-        out[f"{s}-card"] = (s, CARD, dict(size=5, page="240x360", margin=15, seed=3 + i, shade=0.5))
+        out[f"{s}-card"] = (s, CARD, dict(size=5, page="240x440", margin=15, seed=3 + i, shade=0.5))
         out[f"{s}-plain"] = (s, PLAIN, dict(size=5, page="420x440", margin=15, seed=0, variation=0.0))
     return out
 
@@ -75,10 +75,12 @@ def fits(svg: str) -> bool:
 
 def render(style_name: str, text: str, o: dict) -> str:
     """The SVG the CLI would write for these settings."""
-    o = dict(size=6.0, page="a4", margin=20.0, align="left", seed=0, variation=1.0, pen=0.35, shade=0.0) | o
+    o = dict(size=6.0, page="a4", margin=20.0, align="left", valign="top", seed=0, variation=1.0, pen=0.35,
+             shade=0.0) | o
     pw, ph = page_size(o["page"])
     _, mm = make_page(text, Style.load(style_name), size=o["size"], page=(pw, ph), margin=o["margin"],
-                      align=o["align"], seed=o["seed"], variation=o["variation"], pen=o["pen"], shade=o["shade"])
+                      align=o["align"], valign=o["valign"], seed=o["seed"], variation=o["variation"],
+                      pen=o["pen"], shade=o["shade"])
     return to_svg(mm, (pw, ph), o["pen"], title=text[:60])
 
 

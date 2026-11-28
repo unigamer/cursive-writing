@@ -72,7 +72,7 @@ python3 -m venv .venv && .venv/bin/pip install numpy pillow
 | `--seed` | Picks the random variation. The same seed always gives the same output. |
 | `--variation` | `0` gives identical letters every time; `1` is the default; higher is looser. |
 | `--shade` | Imitates pointed-pen thick downstrokes by adding extra pen passes, up to this width in mm. The passes are woven into the stroke, so they add no pen lifts. |
-| `--align` | `left` / `center` / `right` |
+| `--align` | `left` / `center` / `right`. Centring and right alignment use the drawn ink after slant and wobble, so slanted strokes, capital swashes and exit strokes are centred too (before v0.2.5 the advance width was used, which pushed text to the right). Flourishes are always kept inside the left margin. |
 | `--valign` | `top` (default) / `middle` / `bottom`: where the block of text sits between the top and bottom margins. Text too long for the page stays on the top margin. |
 | `--list-chars` | Print every character the style can write and exit (`--style all` lists every style). Any other character in the text is left out, with a warning naming it; the web page shows the same warning and lists the characters under *Style*. |
 
@@ -323,7 +323,7 @@ python tools/pairs.py kern spencerian
 
 ### Visual snapshots
 
-`tests/snapshots/` holds two cards per style, as SVG: a letter with variation and shading, and a plain sheet (no variation) with the alphabet, common doubled letters, every capital and the digits. `tools/snapshots.py` redraws them and compares the geometry: the same number of pen strokes, and every stroke within 0.05 mm of the stored one. Any glyph, pair or engine change that moves ink therefore shows up, with pictures:
+`tests/snapshots/` holds three cards per style, as SVG: a letter with variation and shading, a plain sheet (no variation) with the alphabet, common doubled letters, every capital and the digits, and a centred place card (big swash capitals, lines of different lengths) that shows whether centred text still sits on the centre. `tools/snapshots.py` redraws them and compares the geometry: the same number of pen strokes, and every stroke within 0.05 mm of the stored one. Any glyph, pair or engine change that moves ink therefore shows up, with pictures:
 
 ```sh
 python tools/snapshots.py                    # list the cards that changed

@@ -153,6 +153,10 @@ def page_cases():
              dict(size=7, page="dl", margin=8, seed=123456789, variation=0.0, pen=1.0)),
             (s, "Little letters: coffee, butter, attitude, Mississippi, Llanelli, Wattt, AAh",
              dict(size=6, page="a5-landscape", margin=12, seed=21 + i)),
+            # alignment on the ink: big swash capitals centred, and a word too wide
+            # for its line, which the left-margin guard keeps on the margin
+            (s, "Alistaur Gaul\nChristopher", dict(size=3.9, page="162x112", margin=10, seed=3, align="center")),
+            (s, "Extraordinarily", dict(size=9, page="a6", margin=10, seed=4, align="right")),
         ]
     return cases
 

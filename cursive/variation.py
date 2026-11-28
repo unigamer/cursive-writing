@@ -110,7 +110,7 @@ class Variation:
         """Extra length (x-heights) for a word-final hairline, or 0."""
         if self.amount <= 0 or self.rng.uniform() >= self.p["flourish"]:
             return 0.0
-        return float(self.rng.uniform(0.5, 0.9)) * min(1.0, self.amount)
+        return float(self.rng.uniform(0.25, 0.5)) * min(1.0, self.amount)
 
     def choose(self, options: list, avoid=None):
         """A random pick; `avoid` (the previous copy of a doubled letter) is

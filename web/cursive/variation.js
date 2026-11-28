@@ -99,7 +99,7 @@ export class Variation {
 
   flourish() {
     if (this.amount <= 0 || this.rng.uniform() >= this.p.flourish) return 0.0;
-    return this.rng.uniform(0.5, 0.9) * Math.min(1.0, this.amount);
+    return this.rng.uniform(0.25, 0.5) * Math.min(1.0, this.amount);
   }
 
   /** A random pick; `avoid` (the previous copy of a doubled letter) is left

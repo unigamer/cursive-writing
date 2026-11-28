@@ -226,6 +226,93 @@ def extend_flourish(stroke: np.ndarray, length: float) -> np.ndarray:
     return np.vstack([stroke, tail[1:]])
 
 
+# Dots and accents keep clear of the word's ink: a flourish that would curl
+# up into its own i-dot is shortened, and a mark that lands on a neighbour's
+# loop (the grave of cafè under a leaning f) is nudged off it.
+MARK_CLEAR = 0.12  # nearest a dot or accent may come to the word's other ink
+FLOURISH_MARK_CLEAR = 0.35  # nearest a word-final flourish may come to its own mark
+MARK_NUDGE = ((0.0, 1.0), (0.6, 0.8), (-0.6, 0.8), (1.0, 0.0), (-1.0, 0.0))  # tried in this order
+MARK_NUDGE_STEPS = 15  # of 0.04 x-heights each
+
+
+def _sample(p: np.ndarray) -> np.ndarray:
+    return g.resample(p, 0.02) if len(p) > 1 else p
+
+
+def _gap2(a: np.ndarray, b: np.ndarray) -> float:
+    """Squared distance between the closest points of two point sets."""
+    d = a[:, None, :] - b[None, :, :]
+    return float(np.min(d[..., 0] * d[..., 0] + d[..., 1] * d[..., 1]))
+
+
+def mark_strokes(gl: Glyph) -> list[bool]:
+    """For each deferred stroke: is it a free-standing mark above the letter
+    (an i-dot or accent), rather than a stroke drawn across it (t-bar, x, ø)?"""
+    main = _sample(gl.main.points)
+    return [float(s.points[:, 1].min()) > 0.75 and _gap2(_sample(s.points), main) > 0.03 * 0.03
+            for s in gl.deferred]
+
+
+def flourish_clear_of_marks(stroke: np.ndarray, pg: PlacedGlyph) -> np.ndarray:
+    """The word-final flourish, shortened (or dropped) where it would reach
+    towards the letter's own dot or accent. Never closer than the plain tail."""
+    marks = [d for d, m in zip(pg.deferred, mark_strokes(pg.glyph)) if m]
+    if not marks:
+        return extend_flourish(stroke, pg.flourish)
+    ink = np.vstack([_sample(d) for d in marks])
+    want = min(FLOURISH_MARK_CLEAR * FLOURISH_MARK_CLEAR, _gap2(_sample(stroke), ink))
+    for f in (1.0, 0.7, 0.4):
+        s = extend_flourish(stroke, pg.flourish * f)
+        if _gap2(_sample(s), ink) >= want:
+            return s
+    return stroke
+
+
+def nudge_mark(mark: np.ndarray, ink: np.ndarray) -> np.ndarray:
+    """Move a dot or accent the least distance that takes it MARK_CLEAR from
+    `ink`; if nothing in reach does, as far from it as reach allows."""
+    q = _sample(mark)
+    clear2 = MARK_CLEAR * MARK_CLEAR
+    best, best_d = mark, _gap2(q, ink)
+    if best_d >= clear2:
+        return mark
+    for k in range(1, MARK_NUDGE_STEPS + 1):
+        for dx, dy in MARK_NUDGE:
+            off = np.array([dx * 0.04 * k, dy * 0.04 * k])
+            d = _gap2(q + off, ink)
+            if d >= clear2:
+                return mark + off
+            if d > best_d:
+                best, best_d = mark + off, d
+    return best
+
+
+# A letter's exit hairline is drawn long enough to reach the next letter, and
+# when it joins it is cut away (lead_out) for the connector. At the end of a
+# word nothing replaces it, so it is cut short instead: a finishing flick.
+FINAL_RISE = 0.3  # x-heights a word-final tail climbs from the bottom of its turn
+
+
+def trim_final_tail(stroke: np.ndarray, lead_out: float) -> np.ndarray:
+    """End the unjoined exit hairline once it has risen FINAL_RISE from its
+    lowest point (counted from the baseline when the low point is below it,
+    as in g, y, z). Tails that never climb that far are left whole."""
+    if lead_out <= 0 or len(stroke) < 3:
+        return stroke
+    s = g.arc_lengths(stroke)
+    start = int(np.searchsorted(s, s[-1] - lead_out))
+    if start >= len(stroke) - 1:
+        return stroke
+    j = start + int(np.argmin(stroke[start:, 1]))
+    target = max(float(stroke[j, 1]), 0.0) + FINAL_RISE
+    for k in range(j + 1, len(stroke)):
+        if stroke[k, 1] >= target:
+            a, b = stroke[k - 1], stroke[k]
+            t = (target - a[1]) / (b[1] - a[1])
+            return np.vstack([stroke[:k], a + t * (b - a)])
+    return stroke
+
+
 def _bar_only(pg: PlacedGlyph) -> bool:
     """A t whose only deferred stroke is its crossbar."""
     return pg.glyph.key == "t" and len(pg.deferred) == 1 and len(pg.deferred[0]) > 1
@@ -263,6 +350,8 @@ def assemble_word(placed: list[PlacedGlyph], style: Style) -> Word:
     if not placed:
         return w
     params = [pair_params(style, a.glyph, b.glyph) for a, b in zip(placed, placed[1:])]
+    # the word's last letter, ignoring trailing punctuation ("hair," ends in r)
+    last_letter = max((i for i, pg in enumerate(placed) if pg.glyph.key.isalpha()), default=-1)
     current: np.ndarray | None = None
     for i, pg in enumerate(placed):
         stroke = pg.main
@@ -277,8 +366,10 @@ def assemble_word(placed: list[PlacedGlyph], style: Style) -> Word:
             stroke = cut_end(stroke, prm_out["lead_out"])
         elif i == len(placed) - 1 and pg.glyph.final_trim > 0:
             stroke = cut_end(stroke, pg.glyph.final_trim)  # tidy word-final tail
-        elif i == len(placed) - 1 and pg.flourish > 0:
-            stroke = extend_flourish(stroke, pg.flourish)
+        elif i == last_letter:
+            stroke = trim_final_tail(stroke, pg.glyph.lead_out)
+            if pg.flourish > 0:
+                stroke = flourish_clear_of_marks(stroke, pg)
         if joined_in and current is not None:
             bridge = connector(current, stroke, prm_in["tension"], style.glyph_slant, arrive)
             current = np.vstack([current, bridge[1:-1], stroke])
@@ -292,8 +383,15 @@ def assemble_word(placed: list[PlacedGlyph], style: Style) -> Word:
         w.glyph_x.append(pg.x)
     if current is not None:
         w.paths.append(current)
-    # deferred strokes (dots, crossbars) after the word, left to right
-    for i, d in deferred_strokes(placed, w.joins):
+    # deferred strokes (dots, crossbars) after the word, left to right;
+    # dots and accents kept clear of everything else drawn
+    later = deferred_strokes(placed, w.joins)
+    is_mark = [any(d is s and m for s, m in zip(placed[i].deferred, mark_strokes(placed[i].glyph)))
+               for i, d in later]
+    if any(is_mark):
+        ink = np.vstack([_sample(p) for p in w.paths] + [_sample(d) for (_, d), m in zip(later, is_mark) if not m])
+        later = [(i, nudge_mark(d, ink) if m else d) for (i, d), m in zip(later, is_mark)]
+    for i, d in later:
         w.paths.append(d)
         w.pieces.append((d, "deferred", i))
     allp = np.vstack(w.paths)

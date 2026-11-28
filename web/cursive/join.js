@@ -163,6 +163,108 @@ export function extendFlourish(stroke, len) {
   return [...stroke, ...tail.slice(1)];
 }
 
+// Dots and accents keep clear of the word's ink: a flourish that would curl
+// up into its own i-dot is shortened, and a mark that lands on a neighbour's
+// loop (the grave of cafè under a leaning f) is nudged off it.
+const MARK_CLEAR = 0.12;
+const FLOURISH_MARK_CLEAR = 0.35;
+const MARK_NUDGE = [[0.0, 1.0], [0.6, 0.8], [-0.6, 0.8], [1.0, 0.0], [-1.0, 0.0]];
+const MARK_NUDGE_STEPS = 15;
+
+const sample = (p) => (p.length > 1 ? g.resample(p, 0.02) : p);
+
+/** Squared distance between the closest points of two point sets. */
+function gap2(a, b, ox = 0.0, oy = 0.0) {
+  let best = Infinity;
+  for (const p of a) {
+    const px = p[0] + ox;
+    const py = p[1] + oy;
+    for (const q of b) {
+      const dx = px - q[0];
+      const dy = py - q[1];
+      const d = dx * dx + dy * dy;
+      if (d < best) best = d;
+    }
+  }
+  return best;
+}
+
+/** For each deferred stroke: a free-standing mark above the letter (i-dot,
+ * accent), rather than a stroke drawn across it (t-bar, x, ø)? */
+export function markStrokes(gl) {
+  const main = sample(gl.strokes[0].points);
+  return gl.strokes.slice(1).map((s) => {
+    let lo = Infinity;
+    for (const q of s.points) if (q[1] < lo) lo = q[1];
+    return lo > 0.75 && gap2(sample(s.points), main) > 0.03 * 0.03;
+  });
+}
+
+/** The word-final flourish, shortened (or dropped) where it would reach
+ * towards the letter's own dot or accent. Never closer than the plain tail. */
+function flourishClearOfMarks(stroke, pg) {
+  const isMark = markStrokes(pg.glyph);
+  const marks = pg.deferred.filter((_, k) => isMark[k]);
+  if (!marks.length) return extendFlourish(stroke, pg.flourish);
+  const ink = marks.flatMap(sample);
+  const want = Math.min(FLOURISH_MARK_CLEAR * FLOURISH_MARK_CLEAR, gap2(sample(stroke), ink));
+  for (const f of [1.0, 0.7, 0.4]) {
+    const s = extendFlourish(stroke, pg.flourish * f);
+    if (gap2(sample(s), ink) >= want) return s;
+  }
+  return stroke;
+}
+
+/** Move a dot or accent the least distance that takes it MARK_CLEAR from
+ * `ink`; if nothing in reach does, as far from it as reach allows. */
+function nudgeMark(mark, ink) {
+  const q = sample(mark);
+  const clear2 = MARK_CLEAR * MARK_CLEAR;
+  let bestD = gap2(q, ink);
+  if (bestD >= clear2) return mark;
+  let best = null;
+  for (let k = 1; k <= MARK_NUDGE_STEPS; k++) {
+    for (const [dx, dy] of MARK_NUDGE) {
+      const ox = dx * 0.04 * k;
+      const oy = dy * 0.04 * k;
+      const d = gap2(q, ink, ox, oy);
+      if (d >= clear2) return g.add(mark, [ox, oy]);
+      if (d > bestD) {
+        best = [ox, oy];
+        bestD = d;
+      }
+    }
+  }
+  return best ? g.add(mark, best) : mark;
+}
+
+// A letter's exit hairline is drawn long enough to reach the next letter, and
+// when it joins it is cut away (lead_out) for the connector. At the end of a
+// word nothing replaces it, so it is cut short instead: a finishing flick.
+export const FINAL_RISE = 0.3;
+
+/** End the unjoined exit hairline once it has risen FINAL_RISE from its
+ * lowest point (counted from the baseline when the low point is below it,
+ * as in g, y, z). Tails that never climb that far are left whole. */
+export function trimFinalTail(stroke, leadOut) {
+  if (leadOut <= 0 || stroke.length < 3) return stroke;
+  const s = g.arcLengths(stroke);
+  const start = g.searchsorted(s, s[s.length - 1] - leadOut);
+  if (start >= stroke.length - 1) return stroke;
+  let j = start;
+  for (let k = start + 1; k < stroke.length; k++) if (stroke[k][1] < stroke[j][1]) j = k;
+  const target = Math.max(stroke[j][1], 0.0) + FINAL_RISE;
+  for (let k = j + 1; k < stroke.length; k++) {
+    if (stroke[k][1] >= target) {
+      const a = stroke[k - 1];
+      const b = stroke[k];
+      const t = (target - a[1]) / (b[1] - a[1]);
+      return [...stroke.slice(0, k), [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])]];
+    }
+  }
+  return stroke;
+}
+
 /**
  * Join placed glyphs (already positioned) into pen paths.
  * placed: [{glyph, main, deferred, x, flourish}]
@@ -202,6 +304,11 @@ export function assembleWord(placed, style) {
   if (!placed.length) return w;
   const params = [];
   for (let i = 0; i + 1 < placed.length; i++) params.push(pairParams(style, placed[i].glyph, placed[i + 1].glyph));
+  // the word's last letter, ignoring trailing punctuation ("hair," ends in r)
+  let lastLetter = -1;
+  placed.forEach((pg, i) => {
+    if (/^\p{L}+$/u.test(pg.glyph.key)) lastLetter = i;
+  });
   let current = null;
   placed.forEach((pg, i) => {
     let stroke = pg.main;
@@ -213,7 +320,10 @@ export function assembleWord(placed, style) {
     if (joinedIn) [stroke, arrive] = entryStroke(stroke, pg.glyph, placed[i - 1].glyph, prmIn, style.glyph_slant);
     if (joinsOut) stroke = cutEnd(stroke, prmOut.lead_out);
     else if (i === placed.length - 1 && pg.glyph.final_trim > 0) stroke = cutEnd(stroke, pg.glyph.final_trim);
-    else if (i === placed.length - 1 && pg.flourish > 0) stroke = extendFlourish(stroke, pg.flourish);
+    else if (i === lastLetter) {
+      stroke = trimFinalTail(stroke, pg.glyph.lead_out);
+      if (pg.flourish > 0) stroke = flourishClearOfMarks(stroke, pg);
+    }
     if (joinedIn && current !== null) {
       const bridge = connector(current, stroke, prmIn.tension, style.glyph_slant, arrive);
       current = [...current, ...bridge.slice(1, -1), ...stroke];
@@ -227,7 +337,17 @@ export function assembleWord(placed, style) {
     w.glyph_x.push(pg.x);
   });
   if (current !== null) w.paths.push(current);
-  for (const [i, d] of deferredStrokes(placed, w.joins)) {
+  // deferred strokes after the word; dots and accents kept clear of the rest
+  let later = deferredStrokes(placed, w.joins);
+  const isMark = later.map(([i, d]) => {
+    const m = markStrokes(placed[i].glyph);
+    return placed[i].deferred.some((s, k) => s === d && m[k]);
+  });
+  if (isMark.some(Boolean)) {
+    const ink = [...w.paths.flatMap(sample), ...later.filter((_, k) => !isMark[k]).flatMap(([, d]) => sample(d))];
+    later = later.map(([i, d], k) => [i, isMark[k] ? nudgeMark(d, ink) : d]);
+  }
+  for (const [i, d] of later) {
     w.paths.push(d);
     w.pieces.push([d, "deferred", i]);
   }

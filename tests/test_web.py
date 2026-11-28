@@ -157,6 +157,9 @@ def page_cases():
             # for its line, which the left-margin guard keeps on the margin
             (s, "Alistaur Gaul\nChristopher", dict(size=3.9, page="162x112", margin=10, seed=3, align="center")),
             (s, "Extraordinarily", dict(size=9, page="a6", margin=10, seed=4, align="right")),
+            # dots and accents kept clear: shortened flourishes, nudged marks
+            (s, "Rui ski taxi naï cafè née fé fì Mississippi Llanelli ui mi",
+             dict(size=6, page="a5-landscape", margin=10, seed=29 + i)),
         ]
     return cases
 

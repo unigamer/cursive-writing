@@ -326,3 +326,46 @@ def test_joined_ts_share_one_crossbar(style):
         bar = [p for p, kind, _ in word.pieces if kind == "deferred"][0]
         single = [p for p, kind, _ in joined_word(style, "ata").pieces if kind == "deferred"][0]
         assert g.length(bar) > 1.3 * g.length(single)
+
+
+def _mark_gaps(word, text):
+    """Distance from each i-dot or accent to the rest of the word's ink
+    (t- and f-bars and the x's second stroke cross their letter by design)."""
+    deferred = [(p, i) for p, kind, i in word.pieces if kind == "deferred"]
+    main = np.vstack([g.resample(p, 0.01) for p in word.paths[: len(word.paths) - len(deferred)]])
+    return [float(np.min(np.linalg.norm(main[:, None] - g.resample(p, 0.01)[None], axis=2)))
+            for p, i in deferred if text[i] not in "tfx"]
+
+
+@pytest.mark.parametrize("text", ["Rui", "ui", "taxi", "ski", "naï", "cafè", "née", "fé"])
+def test_dots_and_accents_keep_clear_of_the_ink(style, text):
+    """A word-final flourish never curls up into the i-dot, and an accent
+    under a neighbour's leaning loop (Spencerian cafè) is moved off it."""
+    if style.missing_chars(text):
+        pytest.skip("not in this style")
+    for seed in range(25):
+        gaps = _mark_gaps(joined_word(style, text, seed=seed, amount=1.0), text)
+        assert min(gaps) > 0.1, (style.name, text, seed, gaps)
+
+
+def test_flourish_backs_off_from_the_dot():
+    """Spencerian i: the dot lies on the slant of the exit hairline, so a full
+    flourish would point straight at it."""
+    st = available("spencerian")
+    if st is None:
+        pytest.skip("style not built")
+    for seed in range(40):
+        word = joined_word(st, "ui", seed=seed, amount=1.0)
+        assert min(_mark_gaps(word, "ui")) >= 0.3, seed
+
+
+@pytest.mark.parametrize("text", ["ski", "mum", "quiz", "hair,"])
+def test_word_final_tails_are_short(style, text):
+    """The last letter's exit hairline only reaches the next letter mid-word;
+    at the end of a word (punctuation or not) it stops as a short flick."""
+    word = joined_word(style, text)
+    last = max(i for i, c in enumerate(text) if c.isalpha())
+    if style.glyphs[text[last]][0].exit == "high":
+        pytest.skip("finishes on top of the letter (r on its shoulder), no rising tail")
+    tail = [p for p, kind, i in word.pieces if kind == "glyph" and i == last][0]
+    assert tail[-1, 1] < 0.4, (style.name, text, tail[-1, 1])
